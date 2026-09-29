@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f2353d2-b774-41e6-815b-2b0edcc74323" name="Changes" comment="Added better_cake_slices">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="0f2353d2-b774-41e6-815b-2b0edcc74323" name="Changes" comment="Updated Manager and all Resource Packs to Minecraft Version 26.3">
+      <change afterPath="$PROJECT_DIR$/.run/Dry Run Modrinth Publish All.run.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.run/Dry Run Modrinth Publish Selected.run.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.run/Dry Run Modrinth Publish Version Range.run.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.run/Publish All Resource Packs to Modrinth.run.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.run/Publish Selected Resource Packs to Modrinth.run.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/publish-modrinth.ps1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/vanilla-asset-catalogs/version_manifest_v2.json" beforeDir="false" afterPath="$PROJECT_DIR$/cache/vanilla-asset-catalogs/version_manifest_v2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/minecraft-release-version-matrix.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/config/minecraft-release-version-matrix.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/alternative_birch_leaves/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/alternative_birch_leaves/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/build-texture-packs.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/build-texture-packs.ps1" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +67,7 @@
     "Shell Script.Build All Texture Packs.executor": "Run",
     "Shell Script.Build Selected Texture Packs.executor": "Run",
     "Shell Script.Create New Texture Pack.executor": "Run",
+    "Shell Script.Publish Selected Resource Packs to Modrinth.executor": "Run",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
@@ -91,7 +97,7 @@
       <recent name="C:\Users\grego\IdeaProjects\Artemis-Texture-Packs\resource_packs\flowering_oak_leaves\assets\minecraft\blockstates" />
     </key>
   </component>
-  <component name="RunManager" selected="Shell Script.Build All Texture Packs">
+  <component name="RunManager" selected="Shell Script.Publish Selected Resource Packs to Modrinth">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Artemis-Texture-Packs" />
       <method v="2">
@@ -142,7 +148,8 @@
       <workItem from="1782942605456" duration="762000" />
       <workItem from="1787140943876" duration="236000" />
       <workItem from="1787141394281" duration="57000" />
-      <workItem from="1790692202281" duration="869000" />
+      <workItem from="1790692202281" duration="1552000" />
+      <workItem from="1790695957894" duration="6615000" />
     </task>
     <task id="LOCAL-00005" summary="Added better_carpets">
       <option name="closed" value="true" />
@@ -224,7 +231,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782933777054</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Updated Manager and all Resource Packs to Minecraft Version 26.3">
+      <option name="closed" value="true" />
+      <created>1790693147437</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1790693147437</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,6 +260,7 @@
     <MESSAGE value="Added flowering_oak_leaves" />
     <MESSAGE value="Added alternative_end_rod" />
     <MESSAGE value="Added nuggets_to_coins" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added nuggets_to_coins" />
+    <MESSAGE value="Updated Manager and all Resource Packs to Minecraft Version 26.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Manager and all Resource Packs to Minecraft Version 26.3" />
   </component>
 </project>

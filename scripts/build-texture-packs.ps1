@@ -331,9 +331,11 @@ function Read-RequestedVersions {
     }
     Write-Host ''
     Write-Host 'Examples:'
+    Write-Host '  all'
     Write-Host '  1.21.11'
     Write-Host '  1.20.4..1.21.11'
-    Write-Host '  1.20.4, 1.20.6..1.21.2'
+    Write-Host '  1.20.4 to 1.21.11'
+    Write-Host '  1.20.4, 1.20.6 to 1.21.2'
     Write-Host ''
 
     $inputValue = Read-Host 'Enter version or version range'
@@ -425,7 +427,19 @@ function Expand-RequestedVersionSelection {
     }
 
     foreach ($segment in $segments) {
-        if ($segment -match '^(?<start>.+?)\.\.(?<end>.+)$') {
+        if ($segment -ieq 'all') {
+            foreach ($versionEntry in @($orderedVersions | Where-Object { $_.Enabled })) {
+                $versionId = [string]$versionEntry.Id
+                if (-not $seen.ContainsKey($versionId)) {
+                    $seen[$versionId] = $true
+                    $selectedVersionIds.Add($versionId)
+                }
+            }
+
+            continue
+        }
+
+        if ($segment -match '^(?<start>.+?)\s*(?:\.\.|\s+to\s+)\s*(?<end>.+)$') {
             $startVersionId = $Matches.start.Trim()
             $endVersionId = $Matches.end.Trim()
 
@@ -1439,6 +1453,10 @@ if ($PromptForPack) {
 
 if ($PromptForVersion) {
     $Version = @(Read-RequestedVersions -Config $config)
+}
+
+if ($Version) {
+    $Version = @(Expand-RequestedVersionSelection -InputValue ($Version -join ',') -Config $config)
 }
 
 $packDirectories = Get-PackDirectories -RepoRoot $repoRoot -Config $config -RequestedPackNames $Pack

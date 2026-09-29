@@ -202,6 +202,11 @@ In IntelliJ, use the run-config dropdown at the top right and select:
 - `Build All Texture Packs For Version Range`
 - `Build Selected Texture Packs`
 - `Create New Texture Pack`
+- `Dry Run Modrinth Publish All`
+- `Dry Run Modrinth Publish Selected`
+- `Dry Run Modrinth Publish Version Range`
+- `Publish All Resource Packs to Modrinth`
+- `Publish Selected Resource Packs to Modrinth`
 
 `Build All Texture Packs` runs the full builder in the IntelliJ terminal.
 
@@ -210,6 +215,10 @@ In IntelliJ, use the run-config dropdown at the top right and select:
 `Build Selected Texture Packs` uses the main build script, prompts for one or more pack names, and then builds only that selection.
 
 `Create New Texture Pack` starts the scaffold script and prompts for the pack name in the IntelliJ terminal.
+
+The Modrinth dry-run targets use the ZIPs that already exist under `build/`, validate them, compute the Modrinth version names/numbers, and print what would be uploaded without creating anything on Modrinth. They prompt for a version selection, so you can enter `all`, one version like `1.13`, a range like `1.13.1 to 1.20.1`, or a comma-separated mix. The selected-pack Modrinth run targets also prompt for the Modrinth project, where you can paste a full project URL, slug, or project ID.
+
+The Modrinth publish targets also use the existing ZIPs under `build/`. They prompt for the version selection, prompt for your token at runtime, and ask you to type `PUBLISH` before any upload starts.
 
 ## Create a new pack
 
@@ -264,6 +273,107 @@ Build ZIP retention:
 - existing `build/<pack>/<pack>-<version>.zip` files stay in place across later builds
 - rebuilding the exact same pack/version replaces only that matching ZIP
 - `-Clean` clears temporary staging under the system temp directory and does not delete retained ZIPs
+
+## Modrinth publishing
+
+The publisher uses ZIPs already present under `build/` by default. It does not rebuild packs unless you pass `-Build`.
+
+This command does not upload anything:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\publish-modrinth.ps1
+```
+
+If you explicitly want to rebuild before publishing or dry-running, add `-Build`:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\publish-modrinth.ps1 -Build -Pack alternative_birch_leaves -Version 1.13
+```
+
+Real publishing requires `-Publish`:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\publish-modrinth.ps1 -Publish -PromptForToken
+```
+
+Use a Modrinth personal access token with the `VERSION_CREATE` scope. For a public GitHub repository, the safest local workflow is to paste the token only when the script prompts for it. Do not commit tokens, `.env` files, terminal transcripts, screenshots, or run configs containing real tokens.
+
+The shared IntelliJ publish run configurations already use `-PromptForToken`, so they ask for the token each time.
+
+For local-only automation, the script also supports reading `MODRINTH_TOKEN` from your environment when `-PromptForToken` is omitted:
+
+```powershell
+[Environment]::SetEnvironmentVariable('MODRINTH_TOKEN', '<your-token>', 'User')
+```
+
+If you use that environment variable, open a new terminal or restart IntelliJ after setting it.
+
+By default, each pack is published to the Modrinth project with the same slug as the source folder name. If the Modrinth slug differs, set `ProjectUrl` so the publisher uses the exact project page.
+
+Add a `Modrinth` block to that pack's `pack.build.psd1`:
+
+```powershell
+@{
+    MinVersion = '1.13'
+    Modrinth = @{
+        ProjectUrl = 'https://modrinth.com/resourcepack/alternative-birch-leaves'
+        ReleaseVersion = '1.0.0'
+    }
+}
+```
+
+You can also use `ProjectId`, `Project`, or `Slug` instead of `ProjectUrl` if you prefer Modrinth's project ID or slug.
+
+When using `Publish Selected Resource Packs to Modrinth`, the script asks for the project interactively. Press Enter to use the configured value, or paste one of these:
+
+```text
+https://modrinth.com/resourcepack/alternative-birch-leaves
+alternative-birch-leaves
+AABBCCDD
+```
+
+Useful optional fields:
+
+```powershell
+Modrinth = @{
+    ProjectUrl = 'https://modrinth.com/resourcepack/alternative-birch-leaves'
+    ReleaseVersion = '1.0.0'
+    VersionNumberTemplate = '{ReleaseVersion}-mc.{MinecraftVersion}'
+    NameTemplate = '{PackDisplayName} {ReleaseVersion} for Minecraft {MinecraftVersion}'
+    Changelog = ''
+    VersionType = 'release'
+    Status = 'listed'
+    Featured = $false
+    Environment = 'client_only'
+}
+```
+
+The generated Modrinth version number includes the Minecraft version, such as `1.0.0-mc.1.21.11`, because Modrinth requires version numbers to be unique within a project.
+
+The publisher validates every selected ZIP before upload:
+
+- the ZIP must exist under `build/<pack>/`
+- the ZIP must contain root `pack.mcmeta`
+- the generated Modrinth version number must be valid
+- `VersionType` and `Status` must be supported Modrinth values
+
+When `-Publish` is used, the script reads existing Modrinth versions first and skips version numbers that already exist.
+
+Examples:
+
+```powershell
+# dry run one pack for one version
+powershell -ExecutionPolicy Bypass -File .\scripts\publish-modrinth.ps1 -Pack alternative_birch_leaves -Version 1.21.11
+
+# dry run one pack for a version range
+powershell -ExecutionPolicy Bypass -File .\scripts\publish-modrinth.ps1 -Pack alternative_birch_leaves -Version @('1.13.1','1.14','1.14.1')
+
+# publish one pack for one version
+powershell -ExecutionPolicy Bypass -File .\scripts\publish-modrinth.ps1 -Publish -PromptForToken -Pack alternative_birch_leaves -Version 1.21.11
+
+# publish everything
+powershell -ExecutionPolicy Bypass -File .\scripts\publish-modrinth.ps1 -Publish -PromptForToken
+```
 
 ## GitHub Actions
 
