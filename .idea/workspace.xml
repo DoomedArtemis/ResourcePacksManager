@@ -5,19 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f2353d2-b774-41e6-815b-2b0edcc74323" name="Changes" comment="Added better_cake_slices">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/build-packs.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build-packs.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/Build All Texture Packs.run.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.run/Build All Texture Packs.run.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/Build Selected Texture Packs.run.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.run/Build Selected Texture Packs.run.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build All Texture Packs.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Create New Texture Pack.cmd" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/texture-pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/config/texture-pack.build.psd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_carpets/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_carpets/pack.build.psd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/flowering_lily_pads/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/flowering_lily_pads/pack.build.psd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/build-selected-texture-packs.ps1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/build-texture-packs.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/build-texture-packs.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/new-texture-pack.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/new-texture-pack.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/vanilla-asset-catalogs/version_manifest_v2.json" beforeDir="false" afterPath="$PROJECT_DIR$/cache/vanilla-asset-catalogs/version_manifest_v2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/minecraft-release-version-matrix.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/config/minecraft-release-version-matrix.psd1" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +32,7 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/IntelligenceModding/Artemis-Texture-Packs.git&quot;,
+    &quot;url&quot;: &quot;https://github.com/DoomedArtemis/ResourcePacksManager.git&quot;,
     &quot;accountId&quot;: &quot;9cafa911-0ffb-4733-88ae-74d3d74c06a5&quot;
   }
 }</component>
@@ -61,6 +53,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
@@ -147,6 +140,9 @@
       <updated>1782900668852</updated>
       <workItem from="1782900671063" duration="8851000" />
       <workItem from="1782942605456" duration="762000" />
+      <workItem from="1787140943876" duration="236000" />
+      <workItem from="1787141394281" duration="57000" />
+      <workItem from="1790692202281" duration="869000" />
     </task>
     <task id="LOCAL-00005" summary="Added better_carpets">
       <option name="closed" value="true" />

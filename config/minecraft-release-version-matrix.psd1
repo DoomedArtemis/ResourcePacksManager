@@ -303,5 +303,11 @@
             PackFormat = @{ major = 88; minor = 0 }
             EmitSupportedFormats = $true
         }
+        @{
+            Id = '26.3'
+            Enabled = $true
+            PackFormat = @{ major = 97; minor = 1 }
+            EmitSupportedFormats = $true
+        }
     )
 }

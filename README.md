@@ -174,7 +174,7 @@ The global version list is generated into:
 
 - `config/minecraft-release-version-matrix.psd1`
 
-That file currently covers every official release version after `1.12.2`, from `1.13` through `26.2`, and the main config loads it automatically.
+That file currently covers every official release version after `1.12.2`, from `1.13` through `26.3`, and the main config loads it automatically.
 
 ## `pack.mcmeta` compatibility handling
 
@@ -250,7 +250,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Pack
 powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Version 1.21.11
 
 # build one pack for selected versions
-powershell -ExecutionPolicy Bypass -Command "& '.\scripts\build-texture-packs.ps1' -Pack alternative_birch_leaves -Version @('1.13','1.20.4','26.2')"
+powershell -ExecutionPolicy Bypass -Command "& '.\scripts\build-texture-packs.ps1' -Pack alternative_birch_leaves -Version @('1.13','1.20.4','26.3')"
 
 # build all packs for an inclusive version range
 powershell -ExecutionPolicy Bypass -Command "& '.\scripts\build-texture-packs.ps1' -Version @('1.20.4','1.20.5','1.20.6')"
@@ -279,4 +279,4 @@ Your first pack is here:
 
 - [resource_packs/alternative_birch_leaves](/C:/Users/grego/IdeaProjects/Artemis-Texture-Packs/resource_packs/alternative_birch_leaves)
 
-Its current asset files are in typed `drop/...` folders, and the builder now resolves them automatically for every release version from `1.13` through `26.2`.
+Its current asset files are in typed `drop/...` folders, and the builder now resolves them automatically for every release version from `1.13` through `26.3`.
