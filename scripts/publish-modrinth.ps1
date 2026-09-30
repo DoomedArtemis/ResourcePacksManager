@@ -12,6 +12,12 @@ param(
     [switch]$Yes,
     [switch]$CheckRemote,
     [switch]$PromptForToken,
+    [switch]$PromptForChangelog,
+    [AllowEmptyString()][string]$Changelog,
+    [switch]$PromptForReleaseVersion,
+    [Alias('UploadVersion')][string]$ReleaseVersion,
+    [string]$ArchiveRoot = 'archive',
+    [string]$LocalModrinthStatePath = 'config/modrinth.local.psd1',
     [string]$ApiBaseUrl = 'https://api.modrinth.com/v2',
     [string]$TokenEnvironmentVariable = 'MODRINTH_TOKEN',
     [string]$DefaultReleaseVersion = '1.0.0',
@@ -39,6 +45,36 @@ function Resolve-FullPath {
     }
 
     return [System.IO.Path]::GetFullPath((Join-Path -Path $BasePath -ChildPath $Path))
+}
+
+function Get-RepoRelativePath {
+    param(
+        [Parameter(Mandatory = $true)][string]$RepoRoot,
+        [Parameter(Mandatory = $true)][string]$Path
+    )
+
+    $repoFullPath = [System.IO.Path]::GetFullPath($RepoRoot).TrimEnd(
+        [System.IO.Path]::DirectorySeparatorChar,
+        [System.IO.Path]::AltDirectorySeparatorChar
+    )
+    $fullPath = [System.IO.Path]::GetFullPath($Path)
+
+    if (-not $fullPath.StartsWith($repoFullPath, [System.StringComparison]::OrdinalIgnoreCase)) {
+        return $null
+    }
+
+    return $fullPath.Substring($repoFullPath.Length).TrimStart(
+        [System.IO.Path]::DirectorySeparatorChar,
+        [System.IO.Path]::AltDirectorySeparatorChar
+    ).Replace('\', '/')
+}
+
+function Ensure-Directory {
+    param([Parameter(Mandatory = $true)][string]$Path)
+
+    if (-not (Test-Path -LiteralPath $Path -PathType Container)) {
+        New-Item -ItemType Directory -Path $Path | Out-Null
+    }
 }
 
 function ConvertTo-Hashtable {
@@ -81,6 +117,22 @@ function ConvertTo-Hashtable {
     }
 
     return $InputObject
+}
+
+function ConvertTo-Psd1StringLiteral {
+    param([AllowNull()][string]$Value)
+
+    if ($null -eq $Value) {
+        return '$null'
+    }
+
+    return "'$($Value.Replace("'", "''"))'"
+}
+
+function Get-ModrinthZipFileName {
+    param([Parameter(Mandatory = $true)]$Item)
+
+    return "$($Item.PackName)-$($Item.VersionNumber).zip"
 }
 
 function Get-HashtableValueOrDefault {
@@ -383,6 +435,119 @@ function Read-RequestedModrinthProjectReference {
     return ConvertFrom-ModrinthProjectReference -ProjectReference $inputValue
 }
 
+function Assert-LocalModrinthStateIsNotTracked {
+    param(
+        [Parameter(Mandatory = $true)][string]$RepoRoot,
+        [Parameter(Mandatory = $true)][string]$StatePath
+    )
+
+    $relativePath = Get-RepoRelativePath -RepoRoot $RepoRoot -Path $StatePath
+    if ([string]::IsNullOrWhiteSpace($relativePath)) {
+        return
+    }
+
+    $gitCommand = Get-Command git -ErrorAction SilentlyContinue
+    if (-not $gitCommand) {
+        return
+    }
+
+    $trackedPaths = @(& git -C $RepoRoot ls-files -- $relativePath)
+    if ($LASTEXITCODE -eq 0 -and $trackedPaths -contains $relativePath) {
+        throw "Refusing to use local Modrinth state because it is tracked by git: $relativePath. Remove it from git history/index before storing tokens there."
+    }
+}
+
+function Read-LocalModrinthState {
+    param(
+        [Parameter(Mandatory = $true)][string]$RepoRoot,
+        [Parameter(Mandatory = $true)][string]$StatePath
+    )
+
+    Assert-LocalModrinthStateIsNotTracked -RepoRoot $RepoRoot -StatePath $StatePath
+
+    $state = @{
+        Projects = @{}
+    }
+
+    if (Test-Path -LiteralPath $StatePath -PathType Leaf) {
+        $state = ConvertTo-Hashtable -InputObject (Import-PowerShellDataFile -Path $StatePath)
+    }
+
+    if (-not $state.ContainsKey('Projects') -or $null -eq $state.Projects) {
+        $state['Projects'] = @{}
+    }
+    else {
+        $state['Projects'] = ConvertTo-Hashtable -InputObject $state.Projects
+    }
+
+    return $state
+}
+
+function Get-LocalModrinthPackState {
+    param(
+        [Parameter(Mandatory = $true)][hashtable]$State,
+        [Parameter(Mandatory = $true)][string]$PackName
+    )
+
+    if (-not $State.ContainsKey('Projects') -or -not $State.Projects.ContainsKey($PackName)) {
+        return @{}
+    }
+
+    return ConvertTo-Hashtable -InputObject $State.Projects[$PackName]
+}
+
+function Write-LocalModrinthState {
+    param(
+        [Parameter(Mandatory = $true)][hashtable]$State,
+        [Parameter(Mandatory = $true)][string]$StatePath
+    )
+
+    $parentPath = Split-Path -Path $StatePath -Parent
+    if (-not [string]::IsNullOrWhiteSpace($parentPath)) {
+        Ensure-Directory -Path $parentPath
+    }
+
+    $lines = New-Object System.Collections.Generic.List[string]
+    $lines.Add('@{') | Out-Null
+    $lines.Add('    Projects = @{') | Out-Null
+
+    foreach ($packName in @($State.Projects.Keys | Sort-Object)) {
+        $packState = ConvertTo-Hashtable -InputObject $State.Projects[$packName]
+        $projectId = [string](Get-HashtableValueOrDefault -Table $packState -Key 'ProjectId' -DefaultValue '')
+        $tokenValue = [string](Get-HashtableValueOrDefault -Table $packState -Key 'Token' -DefaultValue '')
+        $updatedAt = [string](Get-HashtableValueOrDefault -Table $packState -Key 'UpdatedAt' -DefaultValue '')
+
+        $lines.Add("        $(ConvertTo-Psd1StringLiteral -Value $packName) = @{") | Out-Null
+        $lines.Add("            ProjectId = $(ConvertTo-Psd1StringLiteral -Value $projectId)") | Out-Null
+        $lines.Add("            Token = $(ConvertTo-Psd1StringLiteral -Value $tokenValue)") | Out-Null
+        $lines.Add("            UpdatedAt = $(ConvertTo-Psd1StringLiteral -Value $updatedAt)") | Out-Null
+        $lines.Add('        }') | Out-Null
+    }
+
+    $lines.Add('    }') | Out-Null
+    $lines.Add('}') | Out-Null
+
+    Set-Content -LiteralPath $StatePath -Value $lines -Encoding UTF8
+}
+
+function Save-LocalModrinthPackState {
+    param(
+        [Parameter(Mandatory = $true)][hashtable]$State,
+        [Parameter(Mandatory = $true)][string]$StatePath,
+        [Parameter(Mandatory = $true)][string]$PackName,
+        [Parameter(Mandatory = $true)][string]$ProjectId,
+        [Parameter(Mandatory = $true)][AllowEmptyString()][string]$Token
+    )
+
+    $State.Projects[$PackName] = @{
+        ProjectId = $ProjectId
+        Token = $Token
+        UpdatedAt = [System.DateTimeOffset]::UtcNow.ToString('o')
+    }
+
+    Write-LocalModrinthState -State $State -StatePath $StatePath
+}
+
 function Get-PackDirectories {
     param(
         [Parameter(Mandatory = $true)][string]$RepoRoot,
@@ -664,7 +829,7 @@ function Publish-ModrinthVersion {
 
         $fileContent = [System.Net.Http.StreamContent]::new($fileStream)
         $fileContent.Headers.ContentType = [System.Net.Http.Headers.MediaTypeHeaderValue]::Parse('application/zip')
-        $multipart.Add($fileContent, 'file', [System.IO.Path]::GetFileName($Item.ZipPath))
+        $multipart.Add($fileContent, 'file', (Get-ModrinthZipFileName -Item $Item))
 
         $uri = "$($ApiBaseUrl.TrimEnd('/'))/version"
         $response = $Client.PostAsync($uri, $multipart).GetAwaiter().GetResult()
@@ -710,6 +875,46 @@ function Assert-ValidUploadItem {
     }
 }
 
+function Move-UploadedZipToArchive {
+    param(
+        [Parameter(Mandatory = $true)]$Item,
+        [Parameter(Mandatory = $true)][string]$ArchiveRootPath
+    )
+
+    $destinationDirectory = Join-Path -Path (Join-Path -Path $ArchiveRootPath -ChildPath $Item.PackName) -ChildPath $Item.ReleaseVersion
+    Ensure-Directory -Path $destinationDirectory
+
+    $destinationFileName = Get-ModrinthZipFileName -Item $Item
+    $destinationPath = Join-Path -Path $destinationDirectory -ChildPath $destinationFileName
+    if (Test-Path -LiteralPath $destinationPath -PathType Leaf) {
+        $sourceHash = (Get-FileHash -LiteralPath $Item.ZipPath -Algorithm SHA256).Hash
+        $destinationHash = (Get-FileHash -LiteralPath $destinationPath -Algorithm SHA256).Hash
+        if ($sourceHash -eq $destinationHash) {
+            Remove-Item -LiteralPath $Item.ZipPath
+            return $destinationPath
+        }
+
+        $timestamp = [System.DateTimeOffset]::UtcNow.ToString('yyyyMMddHHmmss')
+        $baseName = [System.IO.Path]::GetFileNameWithoutExtension($destinationFileName)
+        $extension = [System.IO.Path]::GetExtension($Item.ZipPath)
+        $destinationPath = Join-Path -Path $destinationDirectory -ChildPath "$baseName-uploaded-$timestamp$extension"
+    }
+
+    Move-Item -LiteralPath $Item.ZipPath -Destination $destinationPath
+    return $destinationPath
+}
+
+function New-VersionedUploadZipCopy {
+    param([Parameter(Mandatory = $true)]$Item)
+
+    $uploadDirectory = Join-Path -Path ([System.IO.Path]::GetTempPath()) -ChildPath (Join-Path -Path 'resource-packs-manager-modrinth-upload' -ChildPath ([System.Guid]::NewGuid().ToString('N')))
+    Ensure-Directory -Path $uploadDirectory
+
+    $uploadPath = Join-Path -Path $uploadDirectory -ChildPath (Get-ModrinthZipFileName -Item $Item)
+    Copy-Item -LiteralPath $Item.ZipPath -Destination $uploadPath
+    return $uploadPath
+}
+
 $repoRoot = Split-Path -Path $PSScriptRoot -Parent
 $configFullPath = Resolve-FullPath -BasePath $repoRoot -Path $ConfigPath
 if (-not (Test-Path -LiteralPath $configFullPath)) {
@@ -717,6 +922,9 @@ if (-not (Test-Path -LiteralPath $configFullPath)) {
 }
 
 $config = ConvertTo-Hashtable -InputObject (Import-PowerShellDataFile -Path $configFullPath)
+$archiveRootPath = Resolve-FullPath -BasePath $repoRoot -Path $ArchiveRoot
+$localModrinthStateFullPath = Resolve-FullPath -BasePath $repoRoot -Path $LocalModrinthStatePath
+$localModrinthState = Read-LocalModrinthState -RepoRoot $repoRoot -StatePath $localModrinthStateFullPath
 if ($config.ContainsKey('VersionMatrixPath') -and $config.VersionMatrixPath) {
     $versionMatrixPath = Resolve-FullPath -BasePath $repoRoot -Path ([string]$config.VersionMatrixPath)
     if (-not (Test-Path -LiteralPath $versionMatrixPath)) {
@@ -745,6 +953,14 @@ if ($PromptForVersion -and $Version) {
     throw 'Use either -Version or -PromptForVersion, not both.'
 }
 
+if ($PromptForChangelog -and $PSBoundParameters.ContainsKey('Changelog')) {
+    throw 'Use either -Changelog or -PromptForChangelog, not both.'
+}
+
+if ($PromptForReleaseVersion -and $PSBoundParameters.ContainsKey('ReleaseVersion')) {
+    throw 'Use either -ReleaseVersion or -PromptForReleaseVersion, not both.'
+}
+
 if ($PromptForPack) {
     $Pack = @(Read-RequestedPackNames -RepoRoot $repoRoot -Config $config)
 }
@@ -755,6 +971,24 @@ if ($PromptForVersion) {
 
 if ($Version) {
     $Version = @(Expand-RequestedVersionSelection -InputValue ($Version -join ',') -Config $config)
+}
+
+$releaseVersionOverride = $null
+if ($PromptForReleaseVersion) {
+    Write-Host ''
+    Write-Host "Enter the release version for this upload run, such as '1.0.0'."
+    Write-Host "The Minecraft version is added automatically, producing values like '1.0.0-mc.26.3'."
+    $releaseVersionInput = Read-Host 'Release version'
+    if (-not [string]::IsNullOrWhiteSpace($releaseVersionInput)) {
+        $releaseVersionOverride = $releaseVersionInput.Trim()
+    }
+}
+elseif ($PSBoundParameters.ContainsKey('ReleaseVersion')) {
+    if ([string]::IsNullOrWhiteSpace($ReleaseVersion)) {
+        throw 'ReleaseVersion cannot be empty.'
+    }
+
+    $releaseVersionOverride = $ReleaseVersion.Trim()
 }
 
 $packDirectories = Get-PackDirectories -RepoRoot $repoRoot -Config $config -RequestedPackNames $Pack
@@ -780,6 +1014,12 @@ if ($PromptForProject) {
         $modrinth = Get-PackModrinthConfig -PackName $packDirectory.Name -PackOptions $packOptions
         if ($null -eq $modrinth) {
             continue
+        }
+
+        $savedPackState = Get-LocalModrinthPackState -State $localModrinthState -PackName $packDirectory.Name
+        $savedProjectId = [string](Get-HashtableValueOrDefault -Table $savedPackState -Key 'ProjectId' -DefaultValue '')
+        if (-not [string]::IsNullOrWhiteSpace($savedProjectId)) {
+            $modrinth.ProjectId = $savedProjectId
         }
 
         $projectOverrides[$packDirectory.Name] = Read-RequestedModrinthProjectReference -PackName $packDirectory.Name -DefaultProjectReference ([string]$modrinth.ProjectId)
@@ -818,6 +1058,16 @@ foreach ($packDirectory in $packDirectories) {
         Write-Host "Skipping $($packDirectory.Name): Modrinth.Enabled is false."
         continue
     }
+    if ($releaseVersionOverride) {
+        $modrinth.ReleaseVersion = $releaseVersionOverride
+    }
+
+    $savedPackState = Get-LocalModrinthPackState -State $localModrinthState -PackName $packDirectory.Name
+    $savedProjectId = [string](Get-HashtableValueOrDefault -Table $savedPackState -Key 'ProjectId' -DefaultValue '')
+    if (-not [string]::IsNullOrWhiteSpace($savedProjectId)) {
+        $modrinth.ProjectId = $savedProjectId
+    }
+
     if ($projectOverrides.ContainsKey($packDirectory.Name)) {
         $modrinth.ProjectId = [string]$projectOverrides[$packDirectory.Name]
     }
@@ -858,6 +1108,7 @@ foreach ($packDirectory in $packDirectories) {
             Featured = $modrinth.Featured
             Loaders = @($modrinth.Loaders)
             ZipPath = $zipPath
+            Token = ''
         }
 
         Assert-ValidUploadItem -Item $item
@@ -870,11 +1121,22 @@ if ($uploadItems.Count -eq 0) {
     exit 0
 }
 
-$token = ''
-if ($PromptForToken) {
-    $token = Read-PlainTextSecret -Prompt 'Enter Modrinth token'
+if ($PromptForChangelog) {
+    Write-Host ''
+    Write-Host 'Enter a changelog for this upload run, or press Enter to leave it empty.'
+    $Changelog = Read-Host 'Changelog'
+    foreach ($item in $uploadItems) {
+        $item.Changelog = $Changelog
+    }
 }
-else {
+elseif ($PSBoundParameters.ContainsKey('Changelog')) {
+    foreach ($item in $uploadItems) {
+        $item.Changelog = $Changelog
+    }
+}
+
+$token = ''
+if (-not $PromptForToken) {
     $token = [Environment]::GetEnvironmentVariable($TokenEnvironmentVariable, 'Process')
     if ([string]::IsNullOrWhiteSpace($token)) {
         $token = [Environment]::GetEnvironmentVariable($TokenEnvironmentVariable, 'User')
@@ -884,8 +1146,29 @@ else {
     }
 }
 
-if ($Publish -and [string]::IsNullOrWhiteSpace($token)) {
-    throw "Publishing requires a Modrinth token in the $TokenEnvironmentVariable environment variable."
+foreach ($item in $uploadItems) {
+    if (-not [string]::IsNullOrWhiteSpace($token)) {
+        $item.Token = $token
+        continue
+    }
+
+    $savedPackState = Get-LocalModrinthPackState -State $localModrinthState -PackName $item.PackName
+    $savedToken = [string](Get-HashtableValueOrDefault -Table $savedPackState -Key 'Token' -DefaultValue '')
+    if (-not [string]::IsNullOrWhiteSpace($savedToken)) {
+        $item.Token = $savedToken
+    }
+}
+
+$missingTokenItems = @($uploadItems | Where-Object { [string]::IsNullOrWhiteSpace($_.Token) })
+if ($PromptForToken -and $missingTokenItems.Count -gt 0) {
+    $token = Read-PlainTextSecret -Prompt 'Enter Modrinth token'
+    foreach ($item in $missingTokenItems) {
+        $item.Token = $token
+    }
+}
+
+if (($Publish -or $CheckRemote) -and @($uploadItems | Where-Object { [string]::IsNullOrWhiteSpace($_.Token) }).Count -gt 0) {
+    throw "Publishing or remote duplicate checks require a Modrinth token from -PromptForToken, the $TokenEnvironmentVariable environment variable, or $LocalModrinthStatePath."
 }
 
 if ($Publish -and -not $Yes) {
@@ -899,17 +1182,14 @@ if ($Publish -and -not $Yes) {
 }
 
 $shouldReadRemote = $Publish -or $CheckRemote
-$client = $null
 $existingVersionsByProject = @{}
 $resolvedProjectIds = @{}
 if ($shouldReadRemote) {
-    if ([string]::IsNullOrWhiteSpace($token)) {
-        throw "Remote duplicate checks require a Modrinth token in the $TokenEnvironmentVariable environment variable."
-    }
-
-    $client = New-ModrinthHttpClient -Token $token
-    try {
-        foreach ($projectId in @($uploadItems | Select-Object -ExpandProperty ProjectId -Unique)) {
+    foreach ($projectId in @($uploadItems | Select-Object -ExpandProperty ProjectId -Unique)) {
+        $projectItems = @($uploadItems | Where-Object { $_.ProjectId -eq $projectId })
+        $projectToken = [string]$projectItems[0].Token
+        $client = New-ModrinthHttpClient -Token $projectToken
+        try {
             $project = Invoke-ModrinthGetProject -Client $client -ProjectId $projectId
             $resolvedProjectIds[$projectId] = [string]$project.id
 
@@ -920,68 +1200,77 @@ if ($shouldReadRemote) {
             }
             $existingVersionsByProject[$projectId] = $lookup
         }
-    }
-    catch {
-        if ($client) {
+        finally {
             $client.Dispose()
         }
-        throw
     }
 }
 
 $summary = New-Object System.Collections.Generic.List[object]
-if (-not $client -and $Publish) {
-    $client = New-ModrinthHttpClient -Token $token
-}
 
-try {
-    foreach ($item in $uploadItems) {
-        $alreadyExists = $false
-        if ($existingVersionsByProject.ContainsKey($item.ProjectId)) {
-            $alreadyExists = $existingVersionsByProject[$item.ProjectId].ContainsKey($item.VersionNumber)
-        }
+foreach ($item in $uploadItems) {
+    $alreadyExists = $false
+    if ($existingVersionsByProject.ContainsKey($item.ProjectId)) {
+        $alreadyExists = $existingVersionsByProject[$item.ProjectId].ContainsKey($item.VersionNumber)
+    }
 
-        if ($alreadyExists) {
-            Write-Host "Skipping existing $($item.PackName) $($item.MinecraftVersion): $($item.VersionNumber)"
-            $summary.Add([pscustomobject]@{
-                Pack = $item.PackName
-                MinecraftVersion = $item.MinecraftVersion
-                VersionNumber = $item.VersionNumber
-                Action = 'skipped-existing'
-            }) | Out-Null
-            continue
-        }
-
-        if (-not $Publish) {
-            Write-Host "Dry run: would publish $($item.PackName) $($item.MinecraftVersion) as $($item.VersionNumber) -> project $($item.ProjectId)"
-            $summary.Add([pscustomobject]@{
-                Pack = $item.PackName
-                MinecraftVersion = $item.MinecraftVersion
-                VersionNumber = $item.VersionNumber
-                Action = 'dry-run'
-            }) | Out-Null
-            continue
-        }
-
-        if ($resolvedProjectIds.ContainsKey($item.ProjectId)) {
-            $item.ProjectId = [string]$resolvedProjectIds[$item.ProjectId]
-        }
-
-        Write-Host "Publishing $($item.PackName) $($item.MinecraftVersion) as $($item.VersionNumber)..."
-        $createdVersion = Publish-ModrinthVersion -Client $client -Item $item
+    if ($alreadyExists) {
+        Write-Host "Skipping existing $($item.PackName) $($item.MinecraftVersion): $($item.VersionNumber)"
         $summary.Add([pscustomobject]@{
             Pack = $item.PackName
             MinecraftVersion = $item.MinecraftVersion
             VersionNumber = $item.VersionNumber
-            Action = 'published'
-            ModrinthVersionId = if ($createdVersion) { $createdVersion.id } else { $null }
+            Action = 'skipped-existing'
         }) | Out-Null
+        continue
     }
-}
-finally {
-    if ($client) {
+
+    if (-not $Publish) {
+        Write-Host "Dry run: would publish $($item.PackName) $($item.MinecraftVersion) as $($item.VersionNumber) using file $(Get-ModrinthZipFileName -Item $item) -> project $($item.ProjectId)"
+        $summary.Add([pscustomobject]@{
+            Pack = $item.PackName
+            MinecraftVersion = $item.MinecraftVersion
+            VersionNumber = $item.VersionNumber
+            Action = 'dry-run'
+        }) | Out-Null
+        continue
+    }
+
+    if ($resolvedProjectIds.ContainsKey($item.ProjectId)) {
+        $item.ProjectId = [string]$resolvedProjectIds[$item.ProjectId]
+    }
+
+    Write-Host "Publishing $($item.PackName) $($item.MinecraftVersion) as $($item.VersionNumber) using file $(Get-ModrinthZipFileName -Item $item)..."
+    $originalZipPath = $item.ZipPath
+    $uploadZipPath = New-VersionedUploadZipCopy -Item $item
+    $item.ZipPath = $uploadZipPath
+    $client = New-ModrinthHttpClient -Token ([string]$item.Token)
+    try {
+        $createdVersion = Publish-ModrinthVersion -Client $client -Item $item
+    }
+    finally {
         $client.Dispose()
+        $item.ZipPath = $originalZipPath
+        if (Test-Path -LiteralPath $uploadZipPath -PathType Leaf) {
+            Remove-Item -LiteralPath $uploadZipPath
+        }
+        $uploadDirectory = Split-Path -Path $uploadZipPath -Parent
+        if (Test-Path -LiteralPath $uploadDirectory -PathType Container) {
+            Remove-Item -LiteralPath $uploadDirectory -Force
+        }
     }
+
+    Save-LocalModrinthPackState -State $localModrinthState -StatePath $localModrinthStateFullPath -PackName $item.PackName -ProjectId $item.ProjectId -Token ([string]$item.Token)
+    $archivePath = Move-UploadedZipToArchive -Item $item -ArchiveRootPath $archiveRootPath
+
+    $summary.Add([pscustomobject]@{
+        Pack = $item.PackName
+        MinecraftVersion = $item.MinecraftVersion
+        VersionNumber = $item.VersionNumber
+        Action = 'published'
+        ModrinthVersionId = if ($createdVersion) { $createdVersion.id } else { $null }
+        ArchivePath = $archivePath
+    }) | Out-Null
 }
 
 Write-Host ''

@@ -4,17 +4,312 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f2353d2-b774-41e6-815b-2b0edcc74323" name="Changes" comment="Updated Manager and all Resource Packs to Minecraft Version 26.3">
-      <change afterPath="$PROJECT_DIR$/.run/Dry Run Modrinth Publish All.run.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.run/Dry Run Modrinth Publish Selected.run.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.run/Dry Run Modrinth Publish Version Range.run.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.run/Publish All Resource Packs to Modrinth.run.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.run/Publish Selected Resource Packs to Modrinth.run.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/publish-modrinth.ps1" afterDir="false" />
+    <list default="true" id="0f2353d2-b774-41e6-815b-2b0edcc74323" name="Changes" comment="Added automatic publishing for Modrinth">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.run/Publish All Resource Packs to Modrinth.run.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.run/Publish All Resource Packs to Modrinth.run.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.run/Publish Selected Resource Packs to Modrinth.run.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.run/Publish Selected Resource Packs to Modrinth.run.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/alternative_birch_leaves/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/alternative_birch_leaves/pack.build.psd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/build-texture-packs.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/build-texture-packs.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.13.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.13.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.13.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.14.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.14.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.14.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.14.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.14.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.15.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.15.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.15.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.16.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.16.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.16.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.16.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.16.5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.16.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.17.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.17.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.18.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.18.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.18.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.19.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.19.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.19.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.19.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.19.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.20.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.20.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.20.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.20.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.20.5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.20.6.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.20.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.21.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.21.10.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.21.11.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.21.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.21.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.21.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.21.5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.21.6.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.21.7.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.21.8.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.21.9.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-1.21.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-26.1.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-26.1.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-26.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-26.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_birch_leaves/alternative_birch_leaves-26.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.13.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.13.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.13.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.14.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.14.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.14.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.14.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.14.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.15.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.15.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.15.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.16.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.16.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.16.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.16.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.16.5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.16.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.17.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.17.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.18.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.18.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.18.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.19.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.19.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.19.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.19.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.19.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.20.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.20.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.20.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.20.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.20.5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.20.6.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.20.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.21.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.21.10.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.21.11.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.21.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.21.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.21.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.21.5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.21.6.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.21.7.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.21.8.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.21.9.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-1.21.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-26.1.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-26.1.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-26.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-26.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_end_rod/alternative_end_rod-26.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.19.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.19.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.19.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.19.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.19.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.20.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.20.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.20.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.20.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.20.5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.20.6.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.20.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.21.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.21.10.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.21.11.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.21.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.21.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.21.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.21.5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.21.6.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.21.7.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.21.8.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.21.9.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-1.21.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-26.1.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-26.1.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-26.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-26.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_mud_color/alternative_mud_color-26.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.14.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.14.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.14.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.14.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.14.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.15.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.15.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.15.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.16.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.16.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.16.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.16.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.16.5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.16.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.17.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.17.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.18.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.18.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.18.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.19.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.19.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.19.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.19.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.19.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.20.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.20.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.20.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.20.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.20.5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.20.6.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.20.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.21.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.21.10.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.21.11.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.21.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.21.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.21.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.21.5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.21.6.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.21.7.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.21.8.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.21.9.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-1.21.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-26.1.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-26.1.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-26.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-26.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/alternative_nether_portal_color/alternative_nether_portal_color-26.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.17.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.17.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.18.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.18.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.18.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.19.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.19.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.19.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.19.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.19.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.20.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.20.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.20.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.20.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.20.5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.20.6.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.20.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.21.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.21.10.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.21.11.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.21.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.21.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.21.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.21.5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.21.6.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.21.7.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.21.8.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.21.9.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-1.21.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-26.1.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-26.1.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-26.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-26.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/amethyst_to_jade/amethyst_to_jade-26.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.13.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.13.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.13.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.14.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.14.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.14.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.14.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.14.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.15.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.15.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.15.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.16.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.16.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.16.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.16.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.16.5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.16.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.17.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.17.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.18.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.18.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.18.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.19.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.19.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.19.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.19.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.19.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.20.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.20.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.20.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.20.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.20.5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.20.6.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.20.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.21.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.21.10.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.21.11.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.21.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.21.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.21.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.21.5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.21.6.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.21.7.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.21.8.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.21.9.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-1.21.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-26.1.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-26.1.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-26.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-26.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_cake_slices/better_cake_slices-26.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.13.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.13.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.13.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.14.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.14.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.14.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.14.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.14.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.15.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.15.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.15.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.16.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.16.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.16.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.16.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.16.5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.16.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.17.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.17.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.18.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.18.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.18.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.19.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.19.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.19.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.19.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.19.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.20.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.20.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.20.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.20.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.20.5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.20.6.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.20.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.21.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/publish-modrinth.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/publish-modrinth.ps1" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,31 +351,31 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "Shell Script.Build All Texture Packs.executor": "Run",
-    "Shell Script.Build Selected Texture Packs.executor": "Run",
-    "Shell Script.Create New Texture Pack.executor": "Run",
-    "Shell Script.Publish Selected Resource Packs to Modrinth.executor": "Run",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/grego/IdeaProjects/Artemis-Texture-Packs/alternative_end_rod",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;Shell Script.Build All Texture Packs.executor&quot;: &quot;Run&quot;,
+    &quot;Shell Script.Build Selected Texture Packs.executor&quot;: &quot;Run&quot;,
+    &quot;Shell Script.Create New Texture Pack.executor&quot;: &quot;Run&quot;,
+    &quot;Shell Script.Publish Selected Resource Packs to Modrinth.executor&quot;: &quot;Run&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/grego/IdeaProjects/Artemis-Texture-Packs/alternative_end_rod&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\grego\IdeaProjects\Artemis-Texture-Packs\alternative_end_rod" />
@@ -149,7 +444,8 @@
       <workItem from="1787140943876" duration="236000" />
       <workItem from="1787141394281" duration="57000" />
       <workItem from="1790692202281" duration="1552000" />
-      <workItem from="1790695957894" duration="6615000" />
+      <workItem from="1790695957894" duration="6928000" />
+      <workItem from="1790766875785" duration="3942000" />
     </task>
     <task id="LOCAL-00005" summary="Added better_carpets">
       <option name="closed" value="true" />
@@ -239,7 +535,15 @@
       <option name="project" value="LOCAL" />
       <updated>1790693147437</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added automatic publishing for Modrinth">
+      <option name="closed" value="true" />
+      <created>1790704624271</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1790704624271</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,6 +565,7 @@
     <MESSAGE value="Added alternative_end_rod" />
     <MESSAGE value="Added nuggets_to_coins" />
     <MESSAGE value="Updated Manager and all Resource Packs to Minecraft Version 26.3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Manager and all Resource Packs to Minecraft Version 26.3" />
+    <MESSAGE value="Added automatic publishing for Modrinth" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added automatic publishing for Modrinth" />
   </component>
 </project>

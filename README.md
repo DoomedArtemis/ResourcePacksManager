@@ -296,9 +296,13 @@ Real publishing requires `-Publish`:
 powershell -ExecutionPolicy Bypass -File .\scripts\publish-modrinth.ps1 -Publish -PromptForToken
 ```
 
-Use a Modrinth personal access token with the `VERSION_CREATE` scope. For a public GitHub repository, the safest local workflow is to paste the token only when the script prompts for it. Do not commit tokens, `.env` files, terminal transcripts, screenshots, or run configs containing real tokens.
+Use a Modrinth personal access token with the `VERSION_CREATE` scope. After a successful upload, the publisher saves the resolved Modrinth project ID and token for that pack in `config/modrinth.local.psd1`. That file is ignored by git and the script refuses to use it if it is ever tracked, because it can contain real tokens.
 
-The shared IntelliJ publish run configurations already use `-PromptForToken`, so they ask for the token each time.
+The shared IntelliJ publish run configurations already use `-PromptForToken`. The first successful upload stores the token locally; later runs reuse the saved token for that pack and only prompt when a selected pack does not have one yet.
+
+The publish run configurations also use `-PromptForChangelog`. Type a changelog for that upload run, or press Enter to send an empty changelog. This value is temporary and is not saved to `config/modrinth.local.psd1`.
+
+They also use `-PromptForReleaseVersion`. Enter a release version like `1.0.0`; the publisher combines it with each Minecraft version, so Minecraft `26.3` uploads with the version number and ZIP filename `1.0.0-mc.26.3`. Press Enter to use the configured default.
 
 For local-only automation, the script also supports reading `MODRINTH_TOKEN` from your environment when `-PromptForToken` is omitted:
 
@@ -359,6 +363,10 @@ The publisher validates every selected ZIP before upload:
 
 When `-Publish` is used, the script reads existing Modrinth versions first and skips version numbers that already exist.
 
+Before each upload, the publisher creates a temporary copy of the build ZIP using the uploaded filename, such as `<pack>-1.0.0-mc.26.3.zip`, so the remote file uses that name instead of the build filename `<pack>-26.3.zip`.
+
+After each successful upload, the exact ZIP contents that were uploaded are moved from `build/<pack>/` to `archive/<pack>/<releaseVersion>/` and renamed with the same uploaded version filename, such as `archive/<pack>/1.0.0/<pack>-1.0.0-mc.26.3.zip`. If the same archive file already exists with the same SHA-256 hash, the duplicate build copy is removed. If the archive path already exists with different contents, the new upload copy is kept with an `-uploaded-<timestamp>` suffix.
+
 Examples:
 
 ```powershell
@@ -370,6 +378,12 @@ powershell -ExecutionPolicy Bypass -File .\scripts\publish-modrinth.ps1 -Pack al
 
 # publish one pack for one version
 powershell -ExecutionPolicy Bypass -File .\scripts\publish-modrinth.ps1 -Publish -PromptForToken -Pack alternative_birch_leaves -Version 1.21.11
+
+# publish with a changelog for this run only
+powershell -ExecutionPolicy Bypass -File .\scripts\publish-modrinth.ps1 -Publish -PromptForToken -Changelog "Updated pack metadata." -Pack alternative_birch_leaves -Version 1.21.11
+
+# publish with a release version for this run only; uploads as alternative_birch_leaves-1.0.0-mc.26.3.zip
+powershell -ExecutionPolicy Bypass -File .\scripts\publish-modrinth.ps1 -Publish -PromptForToken -ReleaseVersion 1.0.0 -Pack alternative_birch_leaves -Version 26.3
 
 # publish everything
 powershell -ExecutionPolicy Bypass -File .\scripts\publish-modrinth.ps1 -Publish -PromptForToken
