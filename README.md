@@ -1,202 +1,248 @@
-# Artemis Texture Pack Builder
+# Resource Packs Manager
 
-This repository now builds texture packs from folders under `resource_packs/`.
+Resource Packs Manager is a PowerShell-based build and publishing workspace for Minecraft Java resource packs. It keeps editable pack sources in `resource_packs/`, generates version-specific resource-pack ZIPs in `build/`, and can prepare or publish those ZIPs to Modrinth.
 
-## Top-level structure
+The project is designed for maintaining multiple small resource packs against many Minecraft releases. A pack can provide canonical Minecraft asset paths directly, or it can place common asset types into typed `drop/` folders and let the builder resolve their final vanilla paths for each target version.
 
-```text
-resource_packs/   source packs you edit
-scripts/          build, scaffold, and release-matrix maintenance scripts
-config/           builder config plus generated Minecraft release matrix
-build/            generated zip outputs grouped by pack
-cache/            cached Mojang asset catalogs and remembered route maps
-.github/          CI workflow
-```
-
-Each folder inside `resource_packs/` is one source pack. The folder name becomes the pack name for output files and the default in-game description.
-
-## Pack layout
-
-Example:
+## Repository Layout
 
 ```text
-resource_packs/
-  alternative_birch_leaves/
-    pack.png
-    assets/
-      minecraft/
-        textures/
-        models/
-    drop/
+resource_packs/   editable source packs, one folder per pack
+scripts/          build, scaffold, publish, and version-matrix scripts
+config/           global build configuration and Minecraft version matrix
+build/            generated ZIP files, grouped by pack
+archive/          uploaded or retained release ZIPs, grouped by pack and release
+cache/            disposable Mojang asset catalogs and resolved route caches
+.run/             shared IntelliJ run configurations
 ```
 
-For your current pack, the builder reads:
+`cache/` and `config/modrinth.local.psd1` are ignored by git. The local Modrinth state file may contain project IDs and tokens, and the publisher refuses to use it if it is tracked.
 
-- `resource_packs/alternative_birch_leaves/pack.png`
-- `resource_packs/alternative_birch_leaves/drop/**`
-- `resource_packs/alternative_birch_leaves/pack.build.psd1`
+## Pack Sources
 
-and leaves those source files untouched.
+Each direct child of `resource_packs/` is treated as one source pack. The folder name is used as the internal pack name, as the default Modrinth slug, and as part of generated ZIP filenames.
 
-## Two input modes
-
-### 1. Canonical assets
-
-Put files under `assets/...` when you already know the exact target path.
-
-Example:
+A pack may contain:
 
 ```text
-resource_packs/alternative_birch_leaves/assets/minecraft/textures/block/birch_leaves.png
+resource_packs/<pack>/
+  pack.png
+  pack.build.psd1
+  assets/
+    minecraft/
+      ...
+  drop/
+    textures/
+    models/
+    blockstates/
+    lang/
+    font/
+    particles/
+    atlases/
+    shaders/
+    sounds/
+    texts/
+  variants/
+    ...
 ```
 
-The builder copies that into the finished pack and then applies version-specific rewrites like `block -> blocks` for old Minecraft versions.
+`pack.png` is copied to the root of each generated ZIP. The builder also creates `pack.mcmeta` for each selected Minecraft version, using the configured pack-format metadata for that version.
 
-### 2. Typed auto-sort uploads
+## Asset Input Modes
 
-Put files into typed subfolders under `drop/` when you want the project to figure out the vanilla target path automatically.
+The builder supports two source styles.
 
-Example:
+Canonical assets are files already placed under their final resource-pack path:
 
 ```text
-resource_packs/alternative_birch_leaves/drop/textures/block/birch_leaves.png
-resource_packs/alternative_birch_leaves/drop/textures/item/stone_pickaxe.png
-resource_packs/alternative_birch_leaves/drop/textures/particle/flame.png
-resource_packs/alternative_birch_leaves/drop/models/block/birch_leaves.json
-resource_packs/alternative_birch_leaves/drop/models/item/stone_pickaxe.json
-resource_packs/alternative_birch_leaves/drop/blockstates/birch_leaves.json
+resource_packs/<pack>/assets/minecraft/textures/block/<file>.png
 ```
 
-Available typed drop folders:
+These files are copied directly into the generated pack. Version-specific path rewrites from the release matrix are still applied, such as older Minecraft path conventions.
 
-- `drop/textures/`
-- `drop/models/`
-- `drop/blockstates/`
-- `drop/lang/`
-- `drop/font/`
-- `drop/particles/`
-- `drop/atlases/`
-- `drop/shaders/`
-- `drop/sounds/`
-- `drop/texts/`
-
-Recommended subfolders where the asset class splits by purpose:
-
-- `drop/textures/block/`
-- `drop/textures/item/`
-- `drop/textures/particle/`
-- `drop/models/block/`
-- `drop/models/item/`
-
-The builder downloads or reuses an official Mojang asset catalog per Minecraft version, narrows the lookup by typed folder, and places the file into the correct `assets/...` path in the generated output.
-
-It also remembers the resolved output path of each dropped source file per pack and per Minecraft version under:
-
-- `cache/vanilla-asset-catalogs/resolved-pack-routes/<pack>/<version>.json`
-
-`cache/` is disposable local build acceleration data. If you delete it, the next build recreates what it needs.
-
-Notes:
-
-- `pack.png` is never sorted into `assets/minecraft`; it stays at the resource-pack root.
-- For textures and models, prefer the `block/` or `item/` subfolders from the start.
-- You can still add deeper subfolders as extra hints, such as `drop/textures/entity/` or `drop/models/gui/`, when Minecraft uses them.
-- If a filename is still ambiguous inside the selected asset class, the build fails and tells you which target paths matched. In that case, either add a more specific subfolder hint or place that file under `assets/...` yourself.
-- `assets/...` remains the fallback for anything custom or unclear.
-
-## Per-pack version selection
-
-Each pack can decide which Minecraft versions it should build by adding:
+Typed drop assets are files placed under `drop/<type>/...`:
 
 ```text
-resource_packs/<pack>/pack.build.psd1
+resource_packs/<pack>/drop/textures/block/<file>.png
+resource_packs/<pack>/drop/models/item/<file>.json
+resource_packs/<pack>/drop/lang/en_us.json
 ```
 
-Example:
+For dropped files, the builder loads or reuses the official Mojang asset catalog for the selected Minecraft version, searches within the matching asset type, and resolves the correct `assets/minecraft/...` output path. Subfolders such as `block`, `item`, or `particle` act as hints and reduce ambiguity.
+
+If a dropped file could resolve to multiple vanilla paths, the build fails with the matching candidates. In that case, make the hint path more specific or place the file under `assets/` with the exact intended path.
+
+Resolved routes are cached under:
+
+```text
+cache/vanilla-asset-catalogs/resolved-pack-routes/<pack>/<version>.json
+```
+
+This cache only accelerates later builds. It can be deleted and regenerated.
+
+## Build Configuration
+
+Global build settings live in `config/texture-pack.build.psd1`.
+
+Important settings include:
+
+- `PackRoot`: source-pack root, currently `resource_packs`
+- `PackIconFile`: icon filename copied to ZIP root, currently `pack.png`
+- `PackBuildConfigFile`: per-pack config filename, currently `pack.build.psd1`
+- `CanonicalAssetsFolder`: direct asset folder, currently `assets`
+- `AutoSortFolder`: typed drop folder, currently `drop`
+- `VersionMatrixPath`: generated Minecraft release matrix
+- `AutoSortMappings`: supported typed drop folders and their Minecraft asset prefixes
+- `BaseDescription`: default generated pack description template
+- `BuildRoot`: generated ZIP root, currently `build`
+- `PackageNameTemplate`: generated ZIP basename template
+- `Validation`: build-time validation rules
+
+The config supports token replacement in templates. Common tokens are:
+
+- `{PackName}`
+- `{PackDisplayName}`
+- `{VersionId}`
+- `{MinecraftVersion}`
+- `{ReleaseVersion}`
+
+## Minecraft Version Matrix
+
+`config/minecraft-release-version-matrix.psd1` contains the configured Minecraft release list and per-version compatibility metadata.
+
+Each version entry can define:
+
+- `Id`: Minecraft version identifier used by build and publish commands
+- `PackFormat`: generated `pack.mcmeta` format value
+- `SupportedFormats`: optional `supported_formats` metadata
+- `Renames`: exact asset path renames
+- `PathRewrites`: path prefix rewrites
+- `Remove`: output path rules removed for that version
+- `Required`: output path rules that must exist
+- `PackMetadata`: extra values merged into the `pack` node
+- `RootMetadata`: extra root-level metadata merged into `pack.mcmeta`
+- `Enabled`: whether the version participates in builds
+
+The current matrix is generated from Mojang metadata and loaded by the global config. `scripts/sync-minecraft-release-matrix.ps1` is the maintenance script for refreshing the matrix when new Minecraft releases need to be added.
+
+## Per-Pack Configuration
+
+Each pack can define `pack.build.psd1` to limit versions, customize publishing, or apply file-level rules.
+
+Version selectors:
 
 ```powershell
 @{
+    Versions = @('1.20.4', '1.21.1')
+    ExcludeVersions = @('1.20.5')
     MinVersion = '1.13'
+    MaxVersion = '1.21.11'
+    AfterVersion = '1.12.2'
+    BeforeVersion = '26.1'
 }
 ```
 
-That means the pack will be generated for every configured release version from `1.13` upward.
+Selector behavior:
 
-You can also exclude versions instead:
+- `Versions` is an allow-list
+- `ExcludeVersions` removes matching versions
+- `MinVersion` and `MaxVersion` are inclusive
+- `AfterVersion` and `BeforeVersion` are exclusive
+- comparison follows the order in the configured version matrix
+- command-line version selection is applied first, then pack-local filtering
+
+File rules include or exclude source files by version:
 
 ```powershell
 @{
-    ExcludeVersions = @(
-        '1.12.2'
+    FileRules = @(
+        @{
+            Path = 'textures/item/<file>.png'
+            MinVersion = '1.20'
+        }
     )
 }
 ```
 
-You can also select version ranges based on the order of versions in the global config.
+`Path` can match either the source-relative path or the typed drop path. A rule ending in `/` matches everything below that path.
 
-Inclusive range:
-
-```powershell
-@{
-    MinVersion = '1.16.5'
-    MaxVersion = '1.20.4'
-}
-```
-
-Exclusive range:
+File variants replace one source file with another for selected versions:
 
 ```powershell
 @{
-    AfterVersion = '1.12.2'
-    BeforeVersion = '1.21.9'
+    FileVariants = @(
+        @{
+            Path = 'lang/en_us.json'
+            SourcePath = 'variants/<version>/drop/lang/en_us.json'
+            MinVersion = '1.21.9'
+        }
+    )
 }
 ```
 
-Rules:
+Variants are useful when a version needs different JSON, textures, or models while preserving the same output path.
 
-- `Versions` is an allow-list for that pack
-- `ExcludeVersions` removes versions for that pack
-- `MinVersion` and `MaxVersion` are inclusive bounds
-- `AfterVersion` and `BeforeVersion` are exclusive bounds
-- range comparison uses the order of `Versions` in the global [config/texture-pack.build.psd1](/C:/Users/grego/IdeaProjects/Artemis-Texture-Packs/config/texture-pack.build.psd1)
-- if the file does not exist, the pack uses all globally enabled versions
-- CLI selection still applies first, then the pack-local filter is applied on top
+## Build Output
 
-## Output
+The build script generates:
 
-The builder generates:
+```text
+build/<pack>/<pack>-<version>.zip
+```
 
-- `build/<pack>/<pack>-<version>.zip`
+Builds use a temporary staging directory under the system temp folder, then write the final ZIP into `build/`. Existing ZIPs for other versions remain in place. Rebuilding the same pack/version replaces only that matching ZIP.
 
-## Full release matrix
+The generated ZIP contains:
 
-The global version list is generated into:
+- root `pack.mcmeta`
+- root `pack.png`, when present in the source pack
+- resolved `assets/minecraft/...` files from `assets/` and `drop/`
 
-- `config/minecraft-release-version-matrix.psd1`
+Build validation can enforce lowercase output paths, parse generated JSON and `.mcmeta` files, and check texture metadata pairs depending on the global validation settings.
 
-That file currently covers every official release version after `1.12.2`, from `1.13` through `26.3`, and the main config loads it automatically.
+## Pack Metadata
 
-## `pack.mcmeta` compatibility handling
+The builder generates `pack.mcmeta` differently depending on the target Minecraft version metadata:
 
-The builder supports Mojang's current resource-pack metadata breakpoints:
+- older versions receive integer `pack_format`
+- versions that support it may receive `supported_formats`
+- versions using Mojang's newer format model receive `min_format` and `max_format`
 
-- up to `1.20.1`: `pack_format` only
-- `1.20.2` through `1.21.8`: integer `pack_format` plus optional `supported_formats`
-- `1.21.9` and newer: `min_format` / `max_format` using Mojang's newer pack-format model
+The default pack description comes from `BaseDescription` in the global config. Per-version matrix entries can override or extend generated metadata with `Description`, `PackMetadata`, and `RootMetadata`.
 
-For `1.21.9+`, the generated metadata no longer writes `pack_format` or `supported_formats`. It emits `min_format` and `max_format` directly so packs show up as compatible in the resource-pack selection UI.
+## Commands
 
-## Local build
+The scripts can be run directly with PowerShell:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -ListPacks
+powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -ListVersions
+powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Pack <pack>
+powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Version <version>
+powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Pack <pack> -Version <version>
+powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -PromptForPack
+powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -PromptForVersion
+powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Clean
 ```
 
-## IntelliJ run targets
+Interactive version selection accepts `all`, a single version, an inclusive range such as `<start>..<end>` or `<start> to <end>`, and comma-separated mixes.
 
-This repo now includes shared IntelliJ run configurations under `.run/`.
+The scaffold script creates a new pack folder using the configured source layout:
 
-In IntelliJ, use the run-config dropdown at the top right and select:
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\new-texture-pack.ps1 -Name <pack> -MinVersion <version>
+```
+
+The sync script refreshes the generated Minecraft release matrix:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\sync-minecraft-release-matrix.ps1
+```
+
+## IntelliJ Run Configurations
+
+Shared IntelliJ run configurations are stored in `.run/`:
 
 - `Build All Texture Packs`
 - `Build All Texture Packs For Version Range`
@@ -208,199 +254,67 @@ In IntelliJ, use the run-config dropdown at the top right and select:
 - `Publish All Resource Packs to Modrinth`
 - `Publish Selected Resource Packs to Modrinth`
 
-`Build All Texture Packs` runs the full builder in the IntelliJ terminal.
+These run the same PowerShell scripts with prompt-based flags for pack, version, project, changelog, release version, and token input.
 
-`Build All Texture Packs For Version Range` prompts for one version, an inclusive version range like `1.20.4..1.21.11`, or a comma-separated mix, then builds every pack for that selection.
+## Modrinth Publishing
 
-`Build Selected Texture Packs` uses the main build script, prompts for one or more pack names, and then builds only that selection.
+`scripts/publish-modrinth.ps1` prepares Modrinth upload items from ZIPs already present under `build/`. It performs a dry run unless `-Publish` is provided.
 
-`Create New Texture Pack` starts the scaffold script and prompts for the pack name in the IntelliJ terminal.
+Useful publishing parameters:
 
-The Modrinth dry-run targets use the ZIPs that already exist under `build/`, validate them, compute the Modrinth version names/numbers, and print what would be uploaded without creating anything on Modrinth. They prompt for a version selection, so you can enter `all`, one version like `1.13`, a range like `1.13.1 to 1.20.1`, or a comma-separated mix. The selected-pack Modrinth run targets also prompt for the Modrinth project, where you can paste a full project URL, slug, or project ID.
+- `-Pack`: select one or more source packs
+- `-Version`: select one or more Minecraft versions or ranges
+- `-PromptForPack`: prompt for pack selection
+- `-PromptForVersion`: prompt for version selection
+- `-PromptForProject`: prompt for Modrinth project references
+- `-Build`: build selected ZIPs before publishing
+- `-SkipBuild`: use existing ZIPs only
+- `-Publish`: create Modrinth versions
+- `-CheckRemote`: check existing remote Modrinth versions during dry runs
+- `-PromptForToken`: prompt for a token
+- `-PromptForChangelog`: prompt for a changelog
+- `-ReleaseVersion`: override the release version used in Modrinth version numbers
+- `-PromptForReleaseVersion`: prompt for that release version
 
-The Modrinth publish targets also use the existing ZIPs under `build/`. They prompt for the version selection, prompt for your token at runtime, and ask you to type `PUBLISH` before any upload starts.
+Project references can be Modrinth resource-pack URLs, project IDs, or slugs. By default, the pack folder name is used as the Modrinth slug unless a project is configured or saved locally.
 
-## Create a new pack
-
-In IntelliJ, run `Create New Texture Pack`, enter the pack name, and the repo will create the full folder scaffold under `resource_packs/`.
-
-It creates:
-
-- `pack.build.psd1`
-- `assets/minecraft/`
-- `drop/textures/block/`
-- `drop/textures/item/`
-- `drop/textures/particle/`
-- `drop/models/block/`
-- `drop/models/item/`
-- the other typed `drop/` folders
-
-You can also run it directly:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\new-texture-pack.ps1 -Name stone_tools -MinVersion 1.13
-```
-
-Use the PowerShell scripts directly or the shared IntelliJ run targets in `.run/`.
-
-Useful commands:
-
-```powershell
-# list available packs
-powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -ListPacks
-
-# list configured versions
-powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -ListVersions
-
-# build one pack
-powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Pack alternative_birch_leaves
-
-# build all packs for one version
-powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Version 1.21.11
-
-# build one pack for selected versions
-powershell -ExecutionPolicy Bypass -Command "& '.\scripts\build-texture-packs.ps1' -Pack alternative_birch_leaves -Version @('1.13','1.20.4','26.3')"
-
-# build all packs for an inclusive version range
-powershell -ExecutionPolicy Bypass -Command "& '.\scripts\build-texture-packs.ps1' -Version @('1.20.4','1.20.5','1.20.6')"
-
-# clear only temporary staging data; existing build zips stay in place
-powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Clean
-```
-
-Build ZIP retention:
-
-- existing `build/<pack>/<pack>-<version>.zip` files stay in place across later builds
-- rebuilding the exact same pack/version replaces only that matching ZIP
-- `-Clean` clears temporary staging under the system temp directory and does not delete retained ZIPs
-
-## Modrinth publishing
-
-The publisher uses ZIPs already present under `build/` by default. It does not rebuild packs unless you pass `-Build`.
-
-This command does not upload anything:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\publish-modrinth.ps1
-```
-
-If you explicitly want to rebuild before publishing or dry-running, add `-Build`:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\publish-modrinth.ps1 -Build -Pack alternative_birch_leaves -Version 1.13
-```
-
-Real publishing requires `-Publish`:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\publish-modrinth.ps1 -Publish -PromptForToken
-```
-
-Use a Modrinth personal access token with the `VERSION_CREATE` scope. After a successful upload, the publisher saves the resolved Modrinth project ID and token for that pack in `config/modrinth.local.psd1`. That file is ignored by git and the script refuses to use it if it is ever tracked, because it can contain real tokens.
-
-The shared IntelliJ publish run configurations already use `-PromptForToken`. The first successful upload stores the token locally; later runs reuse the saved token for that pack and only prompt when a selected pack does not have one yet.
-
-The publish run configurations also use `-PromptForChangelog`. Type a changelog for that upload run, or press Enter to send an empty changelog. This value is temporary and is not saved to `config/modrinth.local.psd1`.
-
-They also use `-PromptForReleaseVersion`. Enter a release version like `1.0.0`; the publisher combines it with each Minecraft version, so Minecraft `26.3` uploads with the version number and ZIP filename `1.0.0-mc.26.3`. Press Enter to use the configured default.
-
-For local-only automation, the script also supports reading `MODRINTH_TOKEN` from your environment when `-PromptForToken` is omitted:
-
-```powershell
-[Environment]::SetEnvironmentVariable('MODRINTH_TOKEN', '<your-token>', 'User')
-```
-
-If you use that environment variable, open a new terminal or restart IntelliJ after setting it.
-
-By default, each pack is published to the Modrinth project with the same slug as the source folder name. If the Modrinth slug differs, set `ProjectUrl` so the publisher uses the exact project page.
-
-Add a `Modrinth` block to that pack's `pack.build.psd1`:
+Per-pack Modrinth settings live in the pack's `pack.build.psd1`:
 
 ```powershell
 @{
-    MinVersion = '1.13'
     Modrinth = @{
-        ProjectUrl = 'https://modrinth.com/resourcepack/alternative-birch-leaves'
+        ProjectUrl = 'https://modrinth.com/resourcepack/<slug>'
         ReleaseVersion = '1.0.0'
+        VersionNumberTemplate = '{ReleaseVersion}-mc.{MinecraftVersion}'
+        NameTemplate = '{PackDisplayName} {ReleaseVersion} for Minecraft {MinecraftVersion}'
+        Changelog = ''
+        VersionType = 'release'
+        Status = 'listed'
+        Featured = $false
+        Environment = 'client_only'
     }
 }
 ```
 
-You can also use `ProjectId`, `Project`, or `Slug` instead of `ProjectUrl` if you prefer Modrinth's project ID or slug.
+`ProjectId`, `Project`, or `Slug` can be used instead of `ProjectUrl`. Set `Enabled = $false` inside the `Modrinth` block to exclude a pack from publishing.
 
-When using `Publish Selected Resource Packs to Modrinth`, the script asks for the project interactively. Press Enter to use the configured value, or paste one of these:
-
-```text
-https://modrinth.com/resourcepack/alternative-birch-leaves
-alternative-birch-leaves
-AABBCCDD
-```
-
-Useful optional fields:
-
-```powershell
-Modrinth = @{
-    ProjectUrl = 'https://modrinth.com/resourcepack/alternative-birch-leaves'
-    ReleaseVersion = '1.0.0'
-    VersionNumberTemplate = '{ReleaseVersion}-mc.{MinecraftVersion}'
-    NameTemplate = '{PackDisplayName} {ReleaseVersion} for Minecraft {MinecraftVersion}'
-    Changelog = ''
-    VersionType = 'release'
-    Status = 'listed'
-    Featured = $false
-    Environment = 'client_only'
-}
-```
-
-The generated Modrinth version number includes the Minecraft version, such as `1.0.0-mc.1.21.11`, because Modrinth requires version numbers to be unique within a project.
-
-The publisher validates every selected ZIP before upload:
+The publisher validates every selected upload item before upload:
 
 - the ZIP must exist under `build/<pack>/`
 - the ZIP must contain root `pack.mcmeta`
-- the generated Modrinth version number must be valid
-- `VersionType` and `Status` must be supported Modrinth values
+- the generated Modrinth version number must use supported characters
+- `VersionType` and `Status` must be valid Modrinth values
 
-When `-Publish` is used, the script reads existing Modrinth versions first and skips version numbers that already exist.
+Publishing requires a Modrinth personal access token with the `VERSION_CREATE` scope. The token can come from `-PromptForToken`, the `MODRINTH_TOKEN` environment variable, or the ignored local state file at `config/modrinth.local.psd1`.
 
-Before each upload, the publisher creates a temporary copy of the build ZIP using the uploaded filename, such as `<pack>-1.0.0-mc.26.3.zip`, so the remote file uses that name instead of the build filename `<pack>-26.3.zip`.
+When publishing, the script reads existing Modrinth versions and skips version numbers that already exist. Uploaded ZIPs are copied with their Modrinth upload filename, then moved from `build/<pack>/` into:
 
-After each successful upload, the exact ZIP contents that were uploaded are moved from `build/<pack>/` to `archive/<pack>/<releaseVersion>/` and renamed with the same uploaded version filename, such as `archive/<pack>/1.0.0/<pack>-1.0.0-mc.26.3.zip`. If the same archive file already exists with the same SHA-256 hash, the duplicate build copy is removed. If the archive path already exists with different contents, the new upload copy is kept with an `-uploaded-<timestamp>` suffix.
-
-Examples:
-
-```powershell
-# dry run one pack for one version
-powershell -ExecutionPolicy Bypass -File .\scripts\publish-modrinth.ps1 -Pack alternative_birch_leaves -Version 1.21.11
-
-# dry run one pack for a version range
-powershell -ExecutionPolicy Bypass -File .\scripts\publish-modrinth.ps1 -Pack alternative_birch_leaves -Version @('1.13.1','1.14','1.14.1')
-
-# publish one pack for one version
-powershell -ExecutionPolicy Bypass -File .\scripts\publish-modrinth.ps1 -Publish -PromptForToken -Pack alternative_birch_leaves -Version 1.21.11
-
-# publish with a changelog for this run only
-powershell -ExecutionPolicy Bypass -File .\scripts\publish-modrinth.ps1 -Publish -PromptForToken -Changelog "Updated pack metadata." -Pack alternative_birch_leaves -Version 1.21.11
-
-# publish with a release version for this run only; uploads as alternative_birch_leaves-1.0.0-mc.26.3.zip
-powershell -ExecutionPolicy Bypass -File .\scripts\publish-modrinth.ps1 -Publish -PromptForToken -ReleaseVersion 1.0.0 -Pack alternative_birch_leaves -Version 26.3
-
-# publish everything
-powershell -ExecutionPolicy Bypass -File .\scripts\publish-modrinth.ps1 -Publish -PromptForToken
+```text
+archive/<pack>/<releaseVersion>/<pack>-<releaseVersion>-mc.<minecraftVersion>.zip
 ```
 
-## GitHub Actions
+If the archive path already contains identical contents, the duplicate build copy is removed. If the path exists with different contents, the uploaded copy is kept with a timestamp suffix.
 
-The workflow at [.github/workflows/build-packs.yml](/C:/Users/grego/IdeaProjects/Artemis-Texture-Packs/.github/workflows/build-packs.yml) builds packs automatically when pack sources, config, or scripts change.
+## Licensing
 
-## Release matrix maintenance
-
-`scripts/sync-minecraft-release-matrix.ps1` is not part of normal local builds. Keep it for the rare case where Mojang adds new release versions and you want to regenerate [config/minecraft-release-version-matrix.psd1](/C:/Users/grego/IdeaProjects/Artemis-Texture-Packs/config/minecraft-release-version-matrix.psd1) from official metadata.
-
-## Current source pack
-
-Your first pack is here:
-
-- [resource_packs/alternative_birch_leaves](/C:/Users/grego/IdeaProjects/Artemis-Texture-Packs/resource_packs/alternative_birch_leaves)
-
-Its current asset files are in typed `drop/...` folders, and the builder now resolves them automatically for every release version from `1.13` through `26.3`.
+The repository is licensed under the MIT License. See `LICENSE` for the full text.
