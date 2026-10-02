@@ -4,184 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69da52cd-7463-4c66-9153-40bdcaaf6a07" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.13.1.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.13.2.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.13.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.14.1.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.14.2.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.14.3.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.14.4.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.14.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.15.1.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.15.2.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.15.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.16.1.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.16.2.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.16.3.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.16.4.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.16.5.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.16.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.17.1.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.17.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.18.1.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.18.2.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.18.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.19.1.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.19.2.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.19.3.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.19.4.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.19.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/nuggets_to_coins/1.0.0/nuggets_to_coins-1.0.0-mc.1.20.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.21.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/better_carpets/1.1.0/better_carpets-1.1.0-mc.1.21.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.21.10.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/better_carpets/1.1.0/better_carpets-1.1.0-mc.1.21.10.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.21.11.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/better_carpets/1.1.0/better_carpets-1.1.0-mc.1.21.11.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.21.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/better_carpets/1.1.0/better_carpets-1.1.0-mc.1.21.2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.21.3.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/better_carpets/1.1.0/better_carpets-1.1.0-mc.1.21.3.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.21.4.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/better_carpets/1.1.0/better_carpets-1.1.0-mc.1.21.4.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.21.5.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/better_carpets/1.1.0/better_carpets-1.1.0-mc.1.21.5.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.21.6.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/better_carpets/1.1.0/better_carpets-1.1.0-mc.1.21.6.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.21.7.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/better_carpets/1.1.0/better_carpets-1.1.0-mc.1.21.7.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.21.8.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/better_carpets/1.1.0/better_carpets-1.1.0-mc.1.21.8.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-1.21.9.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/better_carpets/1.1.0/better_carpets-1.1.0-mc.1.21.9.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-26.1.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/better_carpets/1.1.0/better_carpets-1.1.0-mc.26.1.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-26.1.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/better_carpets/1.1.0/better_carpets-1.1.0-mc.26.1.2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-26.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/better_carpets/1.1.0/better_carpets-1.1.0-mc.26.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-26.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/better_carpets/1.1.0/better_carpets-1.1.0-mc.26.2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_carpets/better_carpets-26.3.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/better_carpets/1.1.0/better_carpets-1.1.0-mc.26.3.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.13.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.13.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.13.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.13.2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.13.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.13.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.14.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.14.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.14.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.14.2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.14.3.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.14.3.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.14.4.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.14.4.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.14.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.14.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.15.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.15.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.15.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.15.2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.15.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.15.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.16.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.16.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.16.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.16.2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.16.3.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.16.3.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.16.4.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.16.4.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.16.5.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.16.5.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.16.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.16.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.17.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.17.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.17.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.17.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.18.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.18.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.18.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.18.2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.18.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.18.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.19.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.19.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.19.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.19.2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.19.3.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.19.3.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.19.4.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.19.4.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.19.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.19.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.20.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.20.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.20.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.20.2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.20.3.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.20.3.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.20.4.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.20.4.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.20.5.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.20.5.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.20.6.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.20.6.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.20.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.20.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.21.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.21.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.21.10.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.21.10.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.21.11.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.21.11.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.21.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.21.2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.21.3.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.21.3.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.21.4.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.21.4.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.21.5.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.21.5.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.21.6.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.21.6.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.21.7.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.21.7.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.21.8.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.21.8.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.21.9.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.21.9.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-1.21.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.1.21.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-26.1.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.26.1.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-26.1.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.26.1.2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-26.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.26.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-26.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.26.2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_lily_pads/flowering_lily_pads-26.3.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_lily_pads/1.0.0/flowering_lily_pads-1.0.0-mc.26.3.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.13.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.13.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.13.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.13.2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.13.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.13.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.14.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.14.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.14.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.14.2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.14.3.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.14.3.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.14.4.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.14.4.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.14.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.14.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.15.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.15.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.15.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.15.2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.15.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.15.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.16.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.16.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.16.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.16.2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.16.3.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.16.3.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.16.4.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.16.4.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.16.5.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.16.5.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.16.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.16.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.17.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.17.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.17.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.17.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.18.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.18.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.18.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.18.2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.18.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.18.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.19.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.19.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.19.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.19.2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.19.3.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.19.3.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.19.4.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.19.4.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.19.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.19.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.20.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.20.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.20.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.20.2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.20.3.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.20.3.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.20.4.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.20.4.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.20.5.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.20.5.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.20.6.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.20.6.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.20.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.20.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.21.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.21.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.21.10.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.21.10.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.21.11.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.21.11.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.21.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.21.2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.21.3.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.21.3.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.21.4.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.21.4.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.21.5.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.21.5.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.21.6.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.21.6.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.21.7.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.21.7.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.21.8.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.21.8.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.21.9.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.21.9.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-1.21.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.1.21.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-26.1.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.26.1.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-26.1.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.26.1.2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-26.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.26.1.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-26.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.26.2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flowering_oak_leaves/flowering_oak_leaves-26.3.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/flowering_oak_leaves/1.0.0/flowering_oak_leaves-1.0.0-mc.26.3.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.13.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.13.2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.13.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.14.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.14.2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.14.3.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.14.4.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.14.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.15.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.15.2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.15.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.16.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.16.2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.16.3.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.16.4.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.16.5.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.16.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.17.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.17.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.18.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.18.2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.18.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.19.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.19.2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.19.3.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.19.4.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.19.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/nuggets_to_coins/nuggets_to_coins-1.20.zip" beforeDir="false" />
-    </list>
+    <list default="true" id="69da52cd-7463-4c66-9153-40bdcaaf6a07" name="Changes" comment="Reworked Readme" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -242,7 +65,19 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Shell Script.Publish Selected Resource Packs to Modrinth" />
+  <component name="RunManager" selected="Shell Script.Publish Selected Resource Packs to Modrinth">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Resource-Packs-Manager" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Resource-Packs-Manager" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="69da52cd-7463-4c66-9153-40bdcaaf6a07" name="Changes" comment="" />
@@ -252,11 +87,24 @@
       <updated>1790774647994</updated>
       <workItem from="1790774650010" duration="858000" />
       <workItem from="1790793381398" duration="454000" />
-      <workItem from="1790851582662" duration="2488000" />
+      <workItem from="1790851582662" duration="2528000" />
     </task>
+    <task id="LOCAL-00001" summary="Reworked Readme">
+      <option name="closed" value="true" />
+      <created>1790854358900</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1790854358900</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Reworked Readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reworked Readme" />
   </component>
 </project>
