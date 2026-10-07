@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/template_candle",
+  "textures": {
+    "candle": "minecraft:block/white_candle",
+    "floor": "minecraft:block/white_candle_floor",
+    "particle": "minecraft:block/white_candle"
+  }
+}

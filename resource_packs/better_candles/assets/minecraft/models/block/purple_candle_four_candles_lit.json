@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/template_four_candles",
+  "textures": {
+    "candle": "minecraft:block/purple_candle_lit",
+    "floor": "minecraft:block/purple_candle_floor",
+    "particle": "minecraft:block/purple_candle_lit"
+  }
+}

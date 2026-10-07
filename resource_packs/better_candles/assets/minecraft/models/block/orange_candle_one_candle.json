@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/template_candle",
+  "textures": {
+    "candle": "minecraft:block/orange_candle",
+    "floor": "minecraft:block/orange_candle_floor",
+    "particle": "minecraft:block/orange_candle"
+  }
+}

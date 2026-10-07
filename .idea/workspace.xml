@@ -4,7 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69da52cd-7463-4c66-9153-40bdcaaf6a07" name="Changes" comment="Reworked Readme" />
+    <list default="true" id="69da52cd-7463-4c66-9153-40bdcaaf6a07" name="Changes" comment="Finished publishing on Modrinth">
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/candle_four_candles.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/candle_four_candles_lit.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/candle_one_candle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/candle_one_candle_lit.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/candle_three_candles.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/candle_three_candles_lit.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/candle_two_candles.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/candle_two_candles_lit.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/template_candle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/template_four_candles.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/template_three_candles.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/template_two_candles.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/textures/block/black_candle_floor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/textures/block/blue_candle_floor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/textures/block/brown_candle_floor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/textures/block/candle_floor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/textures/block/cyan_candle_floor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/textures/block/gray_candle_floor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/textures/block/green_candle_floor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/textures/block/light_blue_candle_floor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/textures/block/light_gray_candle_floor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/textures/block/lime_candle_floor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/textures/block/magenta_candle_floor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/textures/block/orange_candle_floor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/textures/block/pink_candle_floor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/textures/block/purple_candle_floor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/textures/block/red_candle_floor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/textures/block/white_candle_floor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/textures/block/yellow_candle_floor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/better_candles/pack.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,26 +77,37 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;Shell Script.Publish Selected Resource Packs to Modrinth.executor&quot;: &quot;Run&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Shell Script.Build Selected Texture Packs.executor": "Run",
+    "Shell Script.Create New Texture Pack.executor": "Run",
+    "Shell Script.Publish Selected Resource Packs to Modrinth.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/grego/IdeaProjects/Resource-Packs-Manager/resource_packs/better_candles",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\grego\IdeaProjects\Resource-Packs-Manager\resource_packs\better_candles" />
+      <recent name="C:\Users\grego\IdeaProjects\Resource-Packs-Manager\resource_packs\better_candles\assets\minecraft\models\block\old" />
+      <recent name="C:\Users\grego\IdeaProjects\Resource-Packs-Manager\resource_packs\better_candles\assets\minecraft\textures\block" />
+      <recent name="C:\Users\grego\IdeaProjects\Resource-Packs-Manager\resource_packs\better_candles\assets\minecraft\models\block" />
+    </key>
+  </component>
   <component name="RunManager" selected="Shell Script.Publish Selected Resource Packs to Modrinth">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Resource-Packs-Manager" />
@@ -88,6 +131,11 @@
       <workItem from="1790774650010" duration="858000" />
       <workItem from="1790793381398" duration="454000" />
       <workItem from="1790851582662" duration="2528000" />
+      <workItem from="1790944751695" duration="506000" />
+      <workItem from="1791296189977" duration="592000" />
+      <workItem from="1791310988022" duration="8000" />
+      <workItem from="1791317205448" duration="8301000" />
+      <workItem from="1791327343199" duration="1989000" />
     </task>
     <task id="LOCAL-00001" summary="Reworked Readme">
       <option name="closed" value="true" />
@@ -97,7 +145,15 @@
       <option name="project" value="LOCAL" />
       <updated>1790854358900</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Finished publishing on Modrinth">
+      <option name="closed" value="true" />
+      <created>1790945030947</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1790945030947</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,6 +161,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Reworked Readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reworked Readme" />
+    <MESSAGE value="Finished publishing on Modrinth" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished publishing on Modrinth" />
   </component>
 </project>
