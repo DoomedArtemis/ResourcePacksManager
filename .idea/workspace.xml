@@ -4,13 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69da52cd-7463-4c66-9153-40bdcaaf6a07" name="Changes" comment="Finished publishing on Modrinth">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="69da52cd-7463-4c66-9153-40bdcaaf6a07" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/Publish All Resource Packs to Modrinth.run.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.run/Publish All Resource Packs to Modrinth.run.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/Publish Selected Resource Packs to Modrinth.run.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.run/Publish Selected Resource Packs to Modrinth.run.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/archive/better_candles/1.0.0/better_candles-1.0.0-mc.1.17.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.17.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.18.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.18.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.18.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.19.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.19.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.19.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.19.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.19.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.20.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.20.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.20.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.20.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.20.5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.20.6.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.20.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.21.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.21.10.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.21.11.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.21.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.21.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.21.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.21.5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.21.6.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.21.7.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.21.8.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.21.9.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-1.21.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-26.1.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-26.1.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-26.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-26.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/better_candles/better_candles-26.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/publish-curseforge.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/publish-curseforge.ps1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/publish-modrinth.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/publish-modrinth.ps1" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,29 +83,31 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;Shell Script.Build Selected Texture Packs.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Create New Texture Pack.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Publish Selected Resource Packs to Modrinth.executor&quot;: &quot;Run&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/grego/IdeaProjects/Resource-Packs-Manager/resource_packs/better_candles&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Shell Script.Build Selected Texture Packs.executor": "Run",
+    "Shell Script.Create New Texture Pack.executor": "Run",
+    "Shell Script.Publish All Resource Packs to CurseForge.executor": "Run",
+    "Shell Script.Publish Selected Resource Packs to CurseForge.executor": "Run",
+    "Shell Script.Publish Selected Resource Packs to Modrinth.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/grego/IdeaProjects/Resource-Packs-Manager/resource_packs/better_candles",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\grego\IdeaProjects\Resource-Packs-Manager\resource_packs\better_candles" />
@@ -84,7 +116,7 @@
       <recent name="C:\Users\grego\IdeaProjects\Resource-Packs-Manager\resource_packs\better_candles\assets\minecraft\models\block" />
     </key>
   </component>
-  <component name="RunManager" selected="Shell Script.Publish Selected Resource Packs to Modrinth">
+  <component name="RunManager" selected="Shell Script.Publish Selected Resource Packs to CurseForge">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Resource-Packs-Manager" />
       <method v="2">
@@ -112,7 +144,8 @@
       <workItem from="1791310988022" duration="8000" />
       <workItem from="1791317205448" duration="8301000" />
       <workItem from="1791327343199" duration="1989000" />
-      <workItem from="1791370969880" duration="2705000" />
+      <workItem from="1791370969880" duration="4331000" />
+      <workItem from="1791388753635" duration="1457000" />
     </task>
     <task id="LOCAL-00001" summary="Reworked Readme">
       <option name="closed" value="true" />
@@ -130,7 +163,15 @@
       <option name="project" value="LOCAL" />
       <updated>1790945030947</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added CurseForge publishing">
+      <option name="closed" value="true" />
+      <created>1791374453715</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1791374453715</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,6 +180,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Reworked Readme" />
     <MESSAGE value="Finished publishing on Modrinth" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished publishing on Modrinth" />
+    <MESSAGE value="Added CurseForge publishing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added CurseForge publishing" />
   </component>
 </project>

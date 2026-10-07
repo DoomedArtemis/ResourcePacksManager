@@ -412,7 +412,7 @@ function Read-RequestedVersions {
 function Read-RequestedModrinthProjectReference {
     param(
         [Parameter(Mandatory = $true)][string]$PackName,
-        [Parameter(Mandatory = $true)][string]$DefaultProjectReference
+        [AllowEmptyString()][string]$DefaultProjectReference
     )
 
     Write-Host ''

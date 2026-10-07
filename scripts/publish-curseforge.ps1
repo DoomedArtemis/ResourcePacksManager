@@ -411,7 +411,7 @@ function Read-RequestedVersions {
 function Read-RequestedCurseForgeProjectReference {
     param(
         [Parameter(Mandatory = $true)][string]$PackName,
-        [Parameter(Mandatory = $true)][string]$DefaultProjectReference
+        [AllowEmptyString()][string]$DefaultProjectReference
     )
 
     Write-Host ''
@@ -746,7 +746,7 @@ function Get-PackCurseForgeConfig {
 
     $releaseVersion = [string](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'ReleaseVersion' -DefaultValue $DefaultReleaseVersion)
     $versionNumberTemplate = [string](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'VersionNumberTemplate' -DefaultValue '{ReleaseVersion}-mc.{MinecraftVersion}')
-    $nameTemplate = [string](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'NameTemplate' -DefaultValue '{PackDisplayName} {ReleaseVersion} for Minecraft {MinecraftVersion}')
+    $nameTemplate = [string](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'NameTemplate' -DefaultValue '{PackName}-{ReleaseVersion}-mc{MinecraftVersion}')
     $changelog = [string](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'Changelog' -DefaultValue '')
     $releaseType = [string](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'ReleaseType' -DefaultValue $DefaultReleaseType)
     $changelogType = [string](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'ChangelogType' -DefaultValue $DefaultChangelogType)
