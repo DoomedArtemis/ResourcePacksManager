@@ -1,0 +1,5 @@
+cache/
+.ai/
+config/modrinth.local.psd1
+
+.idea/workspace.xml
