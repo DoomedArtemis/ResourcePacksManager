@@ -1,6 +1,6 @@
 # Resource Packs Manager
 
-Resource Packs Manager is a PowerShell-based build and publishing workspace for Minecraft Java resource packs. It keeps editable pack sources in `resource_packs/`, generates version-specific resource-pack ZIPs in `build/`, and can prepare or publish those ZIPs to Modrinth.
+Resource Packs Manager is a PowerShell-based build and publishing workspace for Minecraft Java resource packs. It keeps editable pack sources in `resource_packs/`, generates version-specific resource-pack ZIPs in `build/`, and can prepare or publish those ZIPs to Modrinth or CurseForge.
 
 The project is designed for maintaining multiple small resource packs against many Minecraft releases. A pack can provide canonical Minecraft asset paths directly, or it can place common asset types into typed `drop/` folders and let the builder resolve their final vanilla paths for each target version.
 
@@ -16,7 +16,7 @@ cache/            disposable Mojang asset catalogs and resolved route caches
 .run/             shared IntelliJ run configurations
 ```
 
-`cache/` and `config/modrinth.local.psd1` are ignored by git. The local Modrinth state file may contain project IDs and tokens, and the publisher refuses to use it if it is tracked.
+`cache/`, `config/modrinth.local.psd1`, and `config/curseforge.local.psd1` are ignored by git. The local publishing state files may contain project IDs and tokens, and the publishers refuse to use them if they are tracked.
 
 ## Pack Sources
 
@@ -253,12 +253,17 @@ Shared IntelliJ run configurations are stored in `.run/`:
 - `Dry Run Modrinth Publish Version Range`
 - `Publish All Resource Packs to Modrinth`
 - `Publish Selected Resource Packs to Modrinth`
+- `Dry Run CurseForge Publish All`
+- `Dry Run CurseForge Publish Selected`
+- `Dry Run CurseForge Publish Version Range`
+- `Publish All Resource Packs to CurseForge`
+- `Publish Selected Resource Packs to CurseForge`
 
 These run the same PowerShell scripts with prompt-based flags for pack, version, project, changelog, release version, and token input.
 
 ## Modrinth Publishing
 
-`scripts/publish-modrinth.ps1` prepares Modrinth upload items from ZIPs already present under `build/`. It performs a dry run unless `-Publish` is provided.
+`scripts/publish-modrinth.ps1` prepares Modrinth upload items from release ZIPs. It looks first in `archive/<pack>/<releaseVersion>/`, then falls back to `build/<pack>/`. If `-Build` is provided and neither location has the ZIP, it builds that pack/version before publishing. It performs a dry run unless `-Publish` is provided.
 
 Useful publishing parameters:
 
@@ -267,8 +272,8 @@ Useful publishing parameters:
 - `-PromptForPack`: prompt for pack selection
 - `-PromptForVersion`: prompt for version selection
 - `-PromptForProject`: prompt for Modrinth project references
-- `-Build`: build selected ZIPs before publishing
-- `-SkipBuild`: use existing ZIPs only
+- `-Build`: build a pack/version only when no matching archive or build ZIP exists
+- `-SkipBuild`: use existing archive/build ZIPs only
 - `-Publish`: create Modrinth versions
 - `-CheckRemote`: check existing remote Modrinth versions during dry runs
 - `-PromptForToken`: prompt for a token
@@ -307,13 +312,63 @@ The publisher validates every selected upload item before upload:
 
 Publishing requires a Modrinth personal access token with the `VERSION_CREATE` scope. The token can come from `-PromptForToken`, the `MODRINTH_TOKEN` environment variable, or the ignored local state file at `config/modrinth.local.psd1`.
 
-When publishing, the script reads existing Modrinth versions and skips version numbers that already exist. Uploaded ZIPs are copied with their Modrinth upload filename, then moved from `build/<pack>/` into:
+When publishing, the script reads existing Modrinth versions and skips version numbers that already exist. Uploaded ZIPs are copied with their Modrinth upload filename. ZIPs from `build/<pack>/` are moved into the archive after upload; ZIPs already found in `archive/` are reused in place:
 
 ```text
 archive/<pack>/<releaseVersion>/<pack>-<releaseVersion>-mc.<minecraftVersion>.zip
 ```
 
 If the archive path already contains identical contents, the duplicate build copy is removed. If the path exists with different contents, the uploaded copy is kept with a timestamp suffix.
+
+## CurseForge Publishing
+
+`scripts/publish-curseforge.ps1` prepares CurseForge upload items from release ZIPs. It looks first in `archive/<pack>/<releaseVersion>/`, then falls back to `build/<pack>/`. If `-Build` is provided and neither location has the ZIP, it builds that pack/version before publishing. It performs a dry run unless `-Publish` is provided.
+
+Useful publishing parameters match the Modrinth publisher where CurseForge supports the same workflow:
+
+- `-Pack`: select one or more source packs
+- `-Version`: select one or more Minecraft versions or ranges
+- `-PromptForPack`: prompt for pack selection
+- `-PromptForVersion`: prompt for version selection
+- `-PromptForProject`: prompt for CurseForge project IDs
+- `-Build`: build a pack/version only when no matching archive or build ZIP exists
+- `-SkipBuild`: use existing archive/build ZIPs only
+- `-Publish`: upload CurseForge files
+- `-CheckRemote`: check local publish state for duplicates; CurseForge does not document a remote file-listing endpoint for this upload API
+- `-PromptForToken`: prompt for a token
+- `-PromptForChangelog`: prompt for a changelog
+- `-ReleaseVersion`: override the release version used in file names
+- `-PromptForReleaseVersion`: prompt for that release version
+
+Project references must be numeric CurseForge project IDs, or author dashboard URLs containing that ID, such as `https://authors.curseforge.com/dashboard/projects/123456`. Public project slugs are not enough for upload API calls.
+
+Per-pack CurseForge settings live in the pack's `pack.build.psd1`:
+
+```powershell
+@{
+    CurseForge = @{
+        ProjectId = '123456'
+        ReleaseVersion = '1.0.0'
+        VersionNumberTemplate = '{ReleaseVersion}-mc.{MinecraftVersion}'
+        NameTemplate = '{PackDisplayName} {ReleaseVersion} for Minecraft {MinecraftVersion}'
+        Changelog = ''
+        ChangelogType = 'text'
+        ReleaseType = 'release'
+        ManualRelease = $false
+        GameVersionNames = @('{MinecraftVersion}')
+    }
+}
+```
+
+`ProjectUrl`, `Url`, or `Project` can be used instead of `ProjectId` as long as the value resolves to a numeric CurseForge project ID. Set `Enabled = $false` inside the `CurseForge` block to exclude a pack from publishing.
+
+Publishing requires a CurseForge API token. The token can come from `-PromptForToken`, the `CURSEFORGE_TOKEN` environment variable, or the ignored local state file at `config/curseforge.local.psd1`.
+
+When publishing, uploaded ZIPs are copied with their CurseForge upload filename. ZIPs from `build/<pack>/` are moved into the archive after upload; ZIPs already found in `archive/` are reused in place:
+
+```text
+archive/<pack>/<releaseVersion>/<pack>-<releaseVersion>-mc.<minecraftVersion>.zip
+```
 
 ## Licensing
 

@@ -1,5 +1,6 @@
 cache/
 .ai/
 config/modrinth.local.psd1
+config/curseforge.local.psd1
 
 .idea/workspace.xml

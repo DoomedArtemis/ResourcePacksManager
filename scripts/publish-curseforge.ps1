@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [string]$ConfigPath = 'config/texture-pack.build.psd1',
     [string[]]$Version,
@@ -17,14 +17,13 @@ param(
     [switch]$PromptForReleaseVersion,
     [Alias('UploadVersion')][string]$ReleaseVersion,
     [string]$ArchiveRoot = 'archive',
-    [string]$LocalModrinthStatePath = 'config/modrinth.local.psd1',
-    [string]$ApiBaseUrl = 'https://api.modrinth.com/v2',
-    [string]$TokenEnvironmentVariable = 'MODRINTH_TOKEN',
+    [string]$LocalCurseForgeStatePath = 'config/curseforge.local.psd1',
+    [string]$ApiBaseUrl = 'https://minecraft.curseforge.com',
+    [string]$TokenEnvironmentVariable = 'CURSEFORGE_TOKEN',
     [string]$DefaultReleaseVersion = '1.0.0',
-    [string]$DefaultStatus = 'listed',
-    [string]$DefaultVersionType = 'release',
-    [string]$DefaultEnvironment = 'client_only',
-    [string]$UserAgent = 'grego/resource-packs-manager/1.0 (Modrinth publishing script)'
+    [string]$DefaultReleaseType = 'release',
+    [string]$DefaultChangelogType = 'text',
+    [string]$UserAgent = 'grego/resource-packs-manager/1.0 (CurseForge publishing script)'
 )
 
 Set-StrictMode -Version Latest
@@ -129,7 +128,7 @@ function ConvertTo-Psd1StringLiteral {
     return "'$($Value.Replace("'", "''"))'"
 }
 
-function Get-ModrinthZipFileName {
+function Get-CurseForgeZipFileName {
     param([Parameter(Mandatory = $true)]$Item)
 
     return "$($Item.PackName)-$($Item.VersionNumber).zip"
@@ -409,33 +408,33 @@ function Read-RequestedVersions {
     return @(Expand-RequestedVersionSelection -InputValue $inputValue -Config $Config)
 }
 
-function Read-RequestedModrinthProjectReference {
+function Read-RequestedCurseForgeProjectReference {
     param(
         [Parameter(Mandatory = $true)][string]$PackName,
         [Parameter(Mandatory = $true)][string]$DefaultProjectReference
     )
 
     Write-Host ''
-    Write-Host "Modrinth project for pack '$PackName':"
-    Write-Host '  Paste a full project URL, slug, or project ID.'
-    Write-Host '  Example URL: https://modrinth.com/resourcepack/alternative-birch-leaves'
+    Write-Host "CurseForge project for pack '$PackName':"
+    Write-Host '  Paste a numeric project ID, or an author dashboard URL containing the numeric ID.'
+    Write-Host '  Example URL: https://authors.curseforge.com/dashboard/projects/123456'
     if (-not [string]::IsNullOrWhiteSpace($DefaultProjectReference)) {
         Write-Host "  Press Enter to use: $DefaultProjectReference"
     }
 
-    $inputValue = Read-Host 'Enter Modrinth project'
+    $inputValue = Read-Host 'Enter CurseForge project'
     if ([string]::IsNullOrWhiteSpace($inputValue)) {
         if ([string]::IsNullOrWhiteSpace($DefaultProjectReference)) {
-            throw "No Modrinth project entered for pack '$PackName'."
+            throw "No CurseForge project entered for pack '$PackName'."
         }
 
         $inputValue = $DefaultProjectReference
     }
 
-    return ConvertFrom-ModrinthProjectReference -ProjectReference $inputValue
+    return ConvertFrom-CurseForgeProjectReference -ProjectReference $inputValue
 }
 
-function Assert-LocalModrinthStateIsNotTracked {
+function Assert-LocalCurseForgeStateIsNotTracked {
     param(
         [Parameter(Mandatory = $true)][string]$RepoRoot,
         [Parameter(Mandatory = $true)][string]$StatePath
@@ -453,17 +452,17 @@ function Assert-LocalModrinthStateIsNotTracked {
 
     $trackedPaths = @(& git -C $RepoRoot ls-files -- $relativePath)
     if ($LASTEXITCODE -eq 0 -and $trackedPaths -contains $relativePath) {
-        throw "Refusing to use local Modrinth state because it is tracked by git: $relativePath. Remove it from git history/index before storing tokens there."
+        throw "Refusing to use local CurseForge state because it is tracked by git: $relativePath. Remove it from git history/index before storing tokens there."
     }
 }
 
-function Read-LocalModrinthState {
+function Read-LocalCurseForgeState {
     param(
         [Parameter(Mandatory = $true)][string]$RepoRoot,
         [Parameter(Mandatory = $true)][string]$StatePath
     )
 
-    Assert-LocalModrinthStateIsNotTracked -RepoRoot $RepoRoot -StatePath $StatePath
+    Assert-LocalCurseForgeStateIsNotTracked -RepoRoot $RepoRoot -StatePath $StatePath
 
     $state = @{
         Projects = @{}
@@ -483,7 +482,7 @@ function Read-LocalModrinthState {
     return $state
 }
 
-function Get-LocalModrinthPackState {
+function Get-LocalCurseForgePackState {
     param(
         [Parameter(Mandatory = $true)][hashtable]$State,
         [Parameter(Mandatory = $true)][string]$PackName
@@ -496,7 +495,7 @@ function Get-LocalModrinthPackState {
     return ConvertTo-Hashtable -InputObject $State.Projects[$PackName]
 }
 
-function Write-LocalModrinthState {
+function Write-LocalCurseForgeState {
     param(
         [Parameter(Mandatory = $true)][hashtable]$State,
         [Parameter(Mandatory = $true)][string]$StatePath
@@ -516,11 +515,30 @@ function Write-LocalModrinthState {
         $projectId = [string](Get-HashtableValueOrDefault -Table $packState -Key 'ProjectId' -DefaultValue '')
         $tokenValue = [string](Get-HashtableValueOrDefault -Table $packState -Key 'Token' -DefaultValue '')
         $updatedAt = [string](Get-HashtableValueOrDefault -Table $packState -Key 'UpdatedAt' -DefaultValue '')
+        $publishedFiles = @(Get-HashtableValueOrDefault -Table $packState -Key 'PublishedFiles' -DefaultValue @())
 
         $lines.Add("        $(ConvertTo-Psd1StringLiteral -Value $packName) = @{") | Out-Null
         $lines.Add("            ProjectId = $(ConvertTo-Psd1StringLiteral -Value $projectId)") | Out-Null
         $lines.Add("            Token = $(ConvertTo-Psd1StringLiteral -Value $tokenValue)") | Out-Null
         $lines.Add("            UpdatedAt = $(ConvertTo-Psd1StringLiteral -Value $updatedAt)") | Out-Null
+        $lines.Add('            PublishedFiles = @(') | Out-Null
+        foreach ($publishedFile in @($publishedFiles | Sort-Object VersionNumber, MinecraftVersion)) {
+            $publishedFileState = ConvertTo-Hashtable -InputObject $publishedFile
+            $publishedProjectId = [string](Get-HashtableValueOrDefault -Table $publishedFileState -Key 'ProjectId' -DefaultValue '')
+            $versionNumber = [string](Get-HashtableValueOrDefault -Table $publishedFileState -Key 'VersionNumber' -DefaultValue '')
+            $minecraftVersion = [string](Get-HashtableValueOrDefault -Table $publishedFileState -Key 'MinecraftVersion' -DefaultValue '')
+            $fileId = [string](Get-HashtableValueOrDefault -Table $publishedFileState -Key 'FileId' -DefaultValue '')
+            $publishedAt = [string](Get-HashtableValueOrDefault -Table $publishedFileState -Key 'PublishedAt' -DefaultValue '')
+
+            $lines.Add('                @{') | Out-Null
+            $lines.Add("                    ProjectId = $(ConvertTo-Psd1StringLiteral -Value $publishedProjectId)") | Out-Null
+            $lines.Add("                    VersionNumber = $(ConvertTo-Psd1StringLiteral -Value $versionNumber)") | Out-Null
+            $lines.Add("                    MinecraftVersion = $(ConvertTo-Psd1StringLiteral -Value $minecraftVersion)") | Out-Null
+            $lines.Add("                    FileId = $(ConvertTo-Psd1StringLiteral -Value $fileId)") | Out-Null
+            $lines.Add("                    PublishedAt = $(ConvertTo-Psd1StringLiteral -Value $publishedAt)") | Out-Null
+            $lines.Add('                }') | Out-Null
+        }
+        $lines.Add('            )') | Out-Null
         $lines.Add('        }') | Out-Null
     }
 
@@ -530,22 +548,68 @@ function Write-LocalModrinthState {
     Set-Content -LiteralPath $StatePath -Value $lines -Encoding UTF8
 }
 
-function Save-LocalModrinthPackState {
+function Save-LocalCurseForgePackState {
     param(
         [Parameter(Mandatory = $true)][hashtable]$State,
         [Parameter(Mandatory = $true)][string]$StatePath,
         [Parameter(Mandatory = $true)][string]$PackName,
         [Parameter(Mandatory = $true)][string]$ProjectId,
-        [Parameter(Mandatory = $true)][AllowEmptyString()][string]$Token
+        [Parameter(Mandatory = $true)][AllowEmptyString()][string]$Token,
+        [Parameter(Mandatory = $true)][string]$VersionNumber,
+        [Parameter(Mandatory = $true)][string]$MinecraftVersion,
+        [AllowNull()][string]$FileId
     )
+
+    $existingPackState = Get-LocalCurseForgePackState -State $State -PackName $PackName
+    $publishedFiles = New-Object System.Collections.Generic.List[object]
+    foreach ($publishedFile in @(Get-HashtableValueOrDefault -Table $existingPackState -Key 'PublishedFiles' -DefaultValue @())) {
+        $publishedFileState = ConvertTo-Hashtable -InputObject $publishedFile
+        if (
+            [string](Get-HashtableValueOrDefault -Table $publishedFileState -Key 'ProjectId' -DefaultValue '') -eq $ProjectId -and
+            [string](Get-HashtableValueOrDefault -Table $publishedFileState -Key 'VersionNumber' -DefaultValue '') -eq $VersionNumber
+        ) {
+            continue
+        }
+
+        $publishedFiles.Add($publishedFileState) | Out-Null
+    }
+
+    $publishedFiles.Add(@{
+        ProjectId = $ProjectId
+        VersionNumber = $VersionNumber
+        MinecraftVersion = $MinecraftVersion
+        FileId = if ($null -eq $FileId) { '' } else { $FileId }
+        PublishedAt = [System.DateTimeOffset]::UtcNow.ToString('o')
+    }) | Out-Null
 
     $State.Projects[$PackName] = @{
         ProjectId = $ProjectId
         Token = $Token
         UpdatedAt = [System.DateTimeOffset]::UtcNow.ToString('o')
+        PublishedFiles = @($publishedFiles.ToArray())
     }
 
-    Write-LocalModrinthState -State $State -StatePath $StatePath
+    Write-LocalCurseForgeState -State $State -StatePath $StatePath
+}
+
+function Test-LocalCurseForgeVersionPublished {
+    param(
+        [Parameter(Mandatory = $true)][hashtable]$State,
+        [Parameter(Mandatory = $true)]$Item
+    )
+
+    $packState = Get-LocalCurseForgePackState -State $State -PackName $Item.PackName
+    foreach ($publishedFile in @(Get-HashtableValueOrDefault -Table $packState -Key 'PublishedFiles' -DefaultValue @())) {
+        $publishedFileState = ConvertTo-Hashtable -InputObject $publishedFile
+        if (
+            [string](Get-HashtableValueOrDefault -Table $publishedFileState -Key 'ProjectId' -DefaultValue '') -eq [string]$Item.ProjectId -and
+            [string](Get-HashtableValueOrDefault -Table $publishedFileState -Key 'VersionNumber' -DefaultValue '') -eq [string]$Item.VersionNumber
+        ) {
+            return $true
+        }
+    }
+
+    return $false
 }
 
 function Get-PackDirectories {
@@ -612,7 +676,7 @@ function Get-PackSelectedVersions {
     })
 }
 
-function ConvertFrom-ModrinthProjectReference {
+function ConvertFrom-CurseForgeProjectReference {
     param([Parameter(Mandatory = $true)][string]$ProjectReference)
 
     $value = $ProjectReference.Trim()
@@ -627,72 +691,67 @@ function ConvertFrom-ModrinthProjectReference {
                 $uri.AbsolutePath.Trim('/').Split('/', [System.StringSplitOptions]::RemoveEmptyEntries)
             )
 
-            if ($uri.Host -notmatch '(^|\.)modrinth\.com$') {
-                throw "Project URL host must be modrinth.com: $value"
+            if ($uri.Host -notmatch '(^|\.)curseforge\.com$') {
+                throw "Project URL host must be curseforge.com: $value"
             }
 
-            if ($segments.Count -lt 2) {
-                throw "Project URL must look like https://modrinth.com/resourcepack/<slug>: $value"
+            foreach ($segment in $segments) {
+                if ($segment -match '^\d+$') {
+                    return $segment
+                }
             }
 
-            $projectType = $segments[0].ToLowerInvariant()
-            if ($projectType -notin @('resourcepack', 'mod', 'plugin', 'datapack', 'shader')) {
-                throw "Unsupported Modrinth project URL type '$projectType' in: $value"
-            }
-
-            return [System.Uri]::UnescapeDataString($segments[1])
+            throw "CurseForge project URLs must contain a numeric project ID, such as an authors dashboard URL: $value"
         }
         catch {
-            throw "Invalid Modrinth project reference '$ProjectReference': $($_.Exception.Message)"
+            throw "Invalid CurseForge project reference '$ProjectReference': $($_.Exception.Message)"
         }
+    }
+
+    if ($value -notmatch '^\d+$') {
+        throw "CurseForge project references must be numeric project IDs. Public slugs are not enough for upload API calls: $value"
     }
 
     return $value
 }
 
-function Get-PackModrinthConfig {
+function Get-PackCurseForgeConfig {
     param(
         [Parameter(Mandatory = $true)][string]$PackName,
         [Parameter(Mandatory = $true)][hashtable]$PackOptions
     )
 
-    $modrinthConfig = @{}
-    if ($PackOptions.ContainsKey('Modrinth') -and $PackOptions.Modrinth) {
-        $modrinthConfig = ConvertTo-Hashtable -InputObject $PackOptions.Modrinth
+    $curseforgeConfig = @{}
+    if ($PackOptions.ContainsKey('CurseForge') -and $PackOptions.CurseForge) {
+        $curseforgeConfig = ConvertTo-Hashtable -InputObject $PackOptions.CurseForge
     }
 
-    if ($modrinthConfig.ContainsKey('Enabled') -and -not [bool]$modrinthConfig.Enabled) {
+    if ($curseforgeConfig.ContainsKey('Enabled') -and -not [bool]$curseforgeConfig.Enabled) {
         return $null
     }
 
-    $projectId = [string](Get-HashtableValueOrDefault -Table $modrinthConfig -Key 'ProjectUrl' -DefaultValue '')
+    $projectId = [string](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'ProjectUrl' -DefaultValue '')
     if ([string]::IsNullOrWhiteSpace($projectId)) {
-        $projectId = [string](Get-HashtableValueOrDefault -Table $modrinthConfig -Key 'Url' -DefaultValue '')
+        $projectId = [string](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'Url' -DefaultValue '')
     }
     if ([string]::IsNullOrWhiteSpace($projectId)) {
-        $projectId = [string](Get-HashtableValueOrDefault -Table $modrinthConfig -Key 'ProjectId' -DefaultValue '')
+        $projectId = [string](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'ProjectId' -DefaultValue '')
     }
     if ([string]::IsNullOrWhiteSpace($projectId)) {
-        $projectId = [string](Get-HashtableValueOrDefault -Table $modrinthConfig -Key 'Project' -DefaultValue '')
+        $projectId = [string](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'Project' -DefaultValue '')
     }
-    if ([string]::IsNullOrWhiteSpace($projectId)) {
-        $projectId = [string](Get-HashtableValueOrDefault -Table $modrinthConfig -Key 'Slug' -DefaultValue '')
-    }
-    if ([string]::IsNullOrWhiteSpace($projectId)) {
-        $projectId = $PackName
+    if (-not [string]::IsNullOrWhiteSpace($projectId)) {
+        $projectId = ConvertFrom-CurseForgeProjectReference -ProjectReference $projectId
     }
 
-    $projectId = ConvertFrom-ModrinthProjectReference -ProjectReference $projectId
-
-    $releaseVersion = [string](Get-HashtableValueOrDefault -Table $modrinthConfig -Key 'ReleaseVersion' -DefaultValue $DefaultReleaseVersion)
-    $versionNumberTemplate = [string](Get-HashtableValueOrDefault -Table $modrinthConfig -Key 'VersionNumberTemplate' -DefaultValue '{ReleaseVersion}-mc.{MinecraftVersion}')
-    $nameTemplate = [string](Get-HashtableValueOrDefault -Table $modrinthConfig -Key 'NameTemplate' -DefaultValue '{PackDisplayName} {ReleaseVersion} for Minecraft {MinecraftVersion}')
-    $changelog = [string](Get-HashtableValueOrDefault -Table $modrinthConfig -Key 'Changelog' -DefaultValue '')
-    $status = [string](Get-HashtableValueOrDefault -Table $modrinthConfig -Key 'Status' -DefaultValue $DefaultStatus)
-    $versionType = [string](Get-HashtableValueOrDefault -Table $modrinthConfig -Key 'VersionType' -DefaultValue $DefaultVersionType)
-    $environment = [string](Get-HashtableValueOrDefault -Table $modrinthConfig -Key 'Environment' -DefaultValue $DefaultEnvironment)
-    $featured = [bool](Get-HashtableValueOrDefault -Table $modrinthConfig -Key 'Featured' -DefaultValue $false)
-    $loaders = @(Get-HashtableValueOrDefault -Table $modrinthConfig -Key 'Loaders' -DefaultValue @('minecraft')) | ForEach-Object { [string]$_ }
+    $releaseVersion = [string](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'ReleaseVersion' -DefaultValue $DefaultReleaseVersion)
+    $versionNumberTemplate = [string](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'VersionNumberTemplate' -DefaultValue '{ReleaseVersion}-mc.{MinecraftVersion}')
+    $nameTemplate = [string](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'NameTemplate' -DefaultValue '{PackDisplayName} {ReleaseVersion} for Minecraft {MinecraftVersion}')
+    $changelog = [string](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'Changelog' -DefaultValue '')
+    $releaseType = [string](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'ReleaseType' -DefaultValue $DefaultReleaseType)
+    $changelogType = [string](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'ChangelogType' -DefaultValue $DefaultChangelogType)
+    $manualRelease = [bool](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'ManualRelease' -DefaultValue $false)
+    $gameVersionNameTemplates = @(Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'GameVersionNames' -DefaultValue @('{MinecraftVersion}')) | ForEach-Object { [string]$_ }
 
     return [pscustomobject]@{
         ProjectId = $projectId
@@ -700,11 +759,10 @@ function Get-PackModrinthConfig {
         VersionNumberTemplate = $versionNumberTemplate
         NameTemplate = $nameTemplate
         Changelog = $changelog
-        Status = $status
-        VersionType = $versionType
-        Environment = $environment
-        Featured = $featured
-        Loaders = @($loaders)
+        ReleaseType = $releaseType
+        ChangelogType = $changelogType
+        ManualRelease = $manualRelease
+        GameVersionNameTemplates = @($gameVersionNameTemplates)
     }
 }
 
@@ -726,13 +784,13 @@ function Test-ZipHasRootPackMcmeta {
     }
 }
 
-function New-ModrinthHttpClient {
+function New-CurseForgeHttpClient {
     param([string]$Token)
 
     $client = [System.Net.Http.HttpClient]::new()
     $client.DefaultRequestHeaders.TryAddWithoutValidation('User-Agent', $UserAgent) | Out-Null
     if (-not [string]::IsNullOrWhiteSpace($Token)) {
-        $client.DefaultRequestHeaders.TryAddWithoutValidation('Authorization', $Token) | Out-Null
+        $client.DefaultRequestHeaders.TryAddWithoutValidation('X-Api-Token', $Token) | Out-Null
     }
 
     return $client
@@ -753,71 +811,19 @@ function Read-PlainTextSecret {
     }
 }
 
-function Invoke-ModrinthGetProjectVersions {
-    param(
-        [Parameter(Mandatory = $true)][System.Net.Http.HttpClient]$Client,
-        [Parameter(Mandatory = $true)][string]$ProjectId
-    )
-
-    $encodedProjectId = [System.Uri]::EscapeDataString($ProjectId)
-    $encodedLoaders = [System.Uri]::EscapeDataString('["minecraft"]')
-    $uri = "$($ApiBaseUrl.TrimEnd('/'))/project/$encodedProjectId/version?loaders=$encodedLoaders&include_changelog=false"
-    $response = $Client.GetAsync($uri).GetAwaiter().GetResult()
-    $body = $response.Content.ReadAsStringAsync().GetAwaiter().GetResult()
-
-    if (-not $response.IsSuccessStatusCode) {
-        throw "Failed to read Modrinth versions for project '$ProjectId' ($([int]$response.StatusCode) $($response.ReasonPhrase)): $body"
-    }
-
-    if ([string]::IsNullOrWhiteSpace($body)) {
-        return @()
-    }
-
-    return @($body | ConvertFrom-Json)
-}
-
-function Invoke-ModrinthGetProject {
-    param(
-        [Parameter(Mandatory = $true)][System.Net.Http.HttpClient]$Client,
-        [Parameter(Mandatory = $true)][string]$ProjectId
-    )
-
-    $encodedProjectId = [System.Uri]::EscapeDataString($ProjectId)
-    $uri = "$($ApiBaseUrl.TrimEnd('/'))/project/$encodedProjectId"
-    $response = $Client.GetAsync($uri).GetAwaiter().GetResult()
-    $body = $response.Content.ReadAsStringAsync().GetAwaiter().GetResult()
-
-    if (-not $response.IsSuccessStatusCode) {
-        throw "Failed to read Modrinth project '$ProjectId' ($([int]$response.StatusCode) $($response.ReasonPhrase)): $body"
-    }
-
-    if ([string]::IsNullOrWhiteSpace($body)) {
-        throw "Modrinth project '$ProjectId' returned an empty response."
-    }
-
-    return ($body | ConvertFrom-Json)
-}
-
-function Publish-ModrinthVersion {
+function Publish-CurseForgeVersion {
     param(
         [Parameter(Mandatory = $true)][System.Net.Http.HttpClient]$Client,
         [Parameter(Mandatory = $true)]$Item
     )
 
     $data = [ordered]@{
-        name = $Item.VersionName
-        version_number = $Item.VersionNumber
         changelog = $Item.Changelog
-        dependencies = @()
-        game_versions = @($Item.MinecraftVersion)
-        version_type = $Item.VersionType
-        loaders = @($Item.Loaders)
-        status = $Item.Status
-        featured = [bool]$Item.Featured
-        project_id = $Item.ProjectId
-        file_parts = @('file')
-        primary_file = 'file'
-        environment = $Item.Environment
+        changelogType = $Item.ChangelogType
+        displayName = $Item.VersionName
+        gameVersionNames = @($Item.GameVersionNames)
+        releaseType = $Item.ReleaseType
+        isMarkedForManualRelease = [bool]$Item.ManualRelease
     }
 
     $json = $data | ConvertTo-Json -Depth 20 -Compress
@@ -825,18 +831,19 @@ function Publish-ModrinthVersion {
     $fileStream = [System.IO.File]::OpenRead($Item.ZipPath)
     try {
         $dataContent = [System.Net.Http.StringContent]::new($json, [System.Text.Encoding]::UTF8, 'application/json')
-        $multipart.Add($dataContent, 'data')
+        $multipart.Add($dataContent, 'metadata')
 
         $fileContent = [System.Net.Http.StreamContent]::new($fileStream)
         $fileContent.Headers.ContentType = [System.Net.Http.Headers.MediaTypeHeaderValue]::Parse('application/zip')
-        $multipart.Add($fileContent, 'file', (Get-ModrinthZipFileName -Item $Item))
+        $multipart.Add($fileContent, 'file', (Get-CurseForgeZipFileName -Item $Item))
 
-        $uri = "$($ApiBaseUrl.TrimEnd('/'))/version"
+        $encodedProjectId = [System.Uri]::EscapeDataString([string]$Item.ProjectId)
+        $uri = "$($ApiBaseUrl.TrimEnd('/'))/api/projects/$encodedProjectId/upload-file"
         $response = $Client.PostAsync($uri, $multipart).GetAwaiter().GetResult()
         $body = $response.Content.ReadAsStringAsync().GetAwaiter().GetResult()
 
         if (-not $response.IsSuccessStatusCode) {
-            throw "Failed to create Modrinth version '$($Item.VersionNumber)' for '$($Item.PackName)' ($([int]$response.StatusCode) $($response.ReasonPhrase)): $body"
+            throw "Failed to create CurseForge version '$($Item.VersionNumber)' for '$($Item.PackName)' ($([int]$response.StatusCode) $($response.ReasonPhrase)): $body"
         }
 
         if ([string]::IsNullOrWhiteSpace($body)) {
@@ -854,16 +861,24 @@ function Publish-ModrinthVersion {
 function Assert-ValidUploadItem {
     param([Parameter(Mandatory = $true)]$Item)
 
+    if ([string]::IsNullOrWhiteSpace($Item.ProjectId) -or $Item.ProjectId -notmatch '^\d+$') {
+        throw "Invalid CurseForge project ID for pack '$($Item.PackName)': '$($Item.ProjectId)'. Use the numeric project ID from the author dashboard."
+    }
+
     if ($Item.VersionNumber -notmatch '^[0-9A-Za-z][0-9A-Za-z._+\-]*$') {
-        throw "Invalid Modrinth version number for pack '$($Item.PackName)' Minecraft '$($Item.MinecraftVersion)': '$($Item.VersionNumber)'. Use letters, numbers, dots, underscores, plus signs, and hyphens only."
+        throw "Invalid CurseForge version number for pack '$($Item.PackName)' Minecraft '$($Item.MinecraftVersion)': '$($Item.VersionNumber)'. Use letters, numbers, dots, underscores, plus signs, and hyphens only."
     }
 
-    if ($Item.VersionType -notin @('release', 'beta', 'alpha')) {
-        throw "Invalid Modrinth version type for pack '$($Item.PackName)': '$($Item.VersionType)'."
+    if ($Item.ReleaseType -notin @('release', 'beta', 'alpha')) {
+        throw "Invalid CurseForge release type for pack '$($Item.PackName)': '$($Item.ReleaseType)'."
     }
 
-    if ($Item.Status -notin @('listed', 'archived', 'draft', 'unlisted', 'scheduled')) {
-        throw "Invalid Modrinth status for pack '$($Item.PackName)': '$($Item.Status)'."
+    if ($Item.ChangelogType -notin @('text', 'html', 'markdown')) {
+        throw "Invalid CurseForge changelog type for pack '$($Item.PackName)': '$($Item.ChangelogType)'."
+    }
+
+    if (@($Item.GameVersionNames).Count -eq 0 -or @($Item.GameVersionNames | Where-Object { [string]::IsNullOrWhiteSpace([string]$_) }).Count -gt 0) {
+        throw "CurseForge game version names must not be empty for pack '$($Item.PackName)' Minecraft '$($Item.MinecraftVersion)'."
     }
 
     if (-not (Test-Path -LiteralPath $Item.ZipPath -PathType Leaf)) {
@@ -884,7 +899,7 @@ function Move-UploadedZipToArchive {
     $destinationDirectory = Join-Path -Path (Join-Path -Path $ArchiveRootPath -ChildPath $Item.PackName) -ChildPath $Item.ReleaseVersion
     Ensure-Directory -Path $destinationDirectory
 
-    $destinationFileName = Get-ModrinthZipFileName -Item $Item
+    $destinationFileName = Get-CurseForgeZipFileName -Item $Item
     $destinationPath = Join-Path -Path $destinationDirectory -ChildPath $destinationFileName
     if ([System.IO.Path]::GetFullPath($Item.ZipPath).Equals([System.IO.Path]::GetFullPath($destinationPath), [System.StringComparison]::OrdinalIgnoreCase)) {
         return $destinationPath
@@ -936,7 +951,7 @@ function Resolve-PublishZipPath {
         [Parameter(Mandatory = $true)][bool]$ShouldBuildIfMissing
     )
 
-    $archiveZipPath = Join-Path -Path (Join-Path -Path (Join-Path -Path $ArchiveRootPath -ChildPath $Item.PackName) -ChildPath $Item.ReleaseVersion) -ChildPath (Get-ModrinthZipFileName -Item $Item)
+    $archiveZipPath = Join-Path -Path (Join-Path -Path (Join-Path -Path $ArchiveRootPath -ChildPath $Item.PackName) -ChildPath $Item.ReleaseVersion) -ChildPath (Get-CurseForgeZipFileName -Item $Item)
     if (Test-Path -LiteralPath $archiveZipPath -PathType Leaf) {
         return [pscustomobject]@{
             Path = $archiveZipPath
@@ -967,10 +982,10 @@ function Resolve-PublishZipPath {
 function New-VersionedUploadZipCopy {
     param([Parameter(Mandatory = $true)]$Item)
 
-    $uploadDirectory = Join-Path -Path ([System.IO.Path]::GetTempPath()) -ChildPath (Join-Path -Path 'resource-packs-manager-modrinth-upload' -ChildPath ([System.Guid]::NewGuid().ToString('N')))
+    $uploadDirectory = Join-Path -Path ([System.IO.Path]::GetTempPath()) -ChildPath (Join-Path -Path 'resource-packs-manager-curseforge-upload' -ChildPath ([System.Guid]::NewGuid().ToString('N')))
     Ensure-Directory -Path $uploadDirectory
 
-    $uploadPath = Join-Path -Path $uploadDirectory -ChildPath (Get-ModrinthZipFileName -Item $Item)
+    $uploadPath = Join-Path -Path $uploadDirectory -ChildPath (Get-CurseForgeZipFileName -Item $Item)
     Copy-Item -LiteralPath $Item.ZipPath -Destination $uploadPath
     return $uploadPath
 }
@@ -983,8 +998,8 @@ if (-not (Test-Path -LiteralPath $configFullPath)) {
 
 $config = ConvertTo-Hashtable -InputObject (Import-PowerShellDataFile -Path $configFullPath)
 $archiveRootPath = Resolve-FullPath -BasePath $repoRoot -Path $ArchiveRoot
-$localModrinthStateFullPath = Resolve-FullPath -BasePath $repoRoot -Path $LocalModrinthStatePath
-$localModrinthState = Read-LocalModrinthState -RepoRoot $repoRoot -StatePath $localModrinthStateFullPath
+$localCurseForgeStateFullPath = Resolve-FullPath -BasePath $repoRoot -Path $LocalCurseForgeStatePath
+$localCurseForgeState = Read-LocalCurseForgeState -RepoRoot $repoRoot -StatePath $localCurseForgeStateFullPath
 if ($config.ContainsKey('VersionMatrixPath') -and $config.VersionMatrixPath) {
     $versionMatrixPath = Resolve-FullPath -BasePath $repoRoot -Path ([string]$config.VersionMatrixPath)
     if (-not (Test-Path -LiteralPath $versionMatrixPath)) {
@@ -1071,18 +1086,18 @@ $projectOverrides = @{}
 if ($PromptForProject) {
     foreach ($packDirectory in $packDirectories) {
         $packOptions = Get-PackBuildOptions -PackDirectory $packDirectory -Config $config
-        $modrinth = Get-PackModrinthConfig -PackName $packDirectory.Name -PackOptions $packOptions
-        if ($null -eq $modrinth) {
+        $curseforge = Get-PackCurseForgeConfig -PackName $packDirectory.Name -PackOptions $packOptions
+        if ($null -eq $curseforge) {
             continue
         }
 
-        $savedPackState = Get-LocalModrinthPackState -State $localModrinthState -PackName $packDirectory.Name
+        $savedPackState = Get-LocalCurseForgePackState -State $localCurseForgeState -PackName $packDirectory.Name
         $savedProjectId = [string](Get-HashtableValueOrDefault -Table $savedPackState -Key 'ProjectId' -DefaultValue '')
         if (-not [string]::IsNullOrWhiteSpace($savedProjectId)) {
-            $modrinth.ProjectId = $savedProjectId
+            $curseforge.ProjectId = $savedProjectId
         }
 
-        $projectOverrides[$packDirectory.Name] = Read-RequestedModrinthProjectReference -PackName $packDirectory.Name -DefaultProjectReference ([string]$modrinth.ProjectId)
+        $projectOverrides[$packDirectory.Name] = Read-RequestedCurseForgeProjectReference -PackName $packDirectory.Name -DefaultProjectReference ([string]$curseforge.ProjectId)
     }
 }
 
@@ -1092,23 +1107,23 @@ $packageNameTemplate = [string]$config.PackageNameTemplate
 
 foreach ($packDirectory in $packDirectories) {
     $packOptions = Get-PackBuildOptions -PackDirectory $packDirectory -Config $config
-    $modrinth = Get-PackModrinthConfig -PackName $packDirectory.Name -PackOptions $packOptions
-    if ($null -eq $modrinth) {
-        Write-Host "Skipping $($packDirectory.Name): Modrinth.Enabled is false."
+    $curseforge = Get-PackCurseForgeConfig -PackName $packDirectory.Name -PackOptions $packOptions
+    if ($null -eq $curseforge) {
+        Write-Host "Skipping $($packDirectory.Name): CurseForge.Enabled is false."
         continue
     }
     if ($releaseVersionOverride) {
-        $modrinth.ReleaseVersion = $releaseVersionOverride
+        $curseforge.ReleaseVersion = $releaseVersionOverride
     }
 
-    $savedPackState = Get-LocalModrinthPackState -State $localModrinthState -PackName $packDirectory.Name
+    $savedPackState = Get-LocalCurseForgePackState -State $localCurseForgeState -PackName $packDirectory.Name
     $savedProjectId = [string](Get-HashtableValueOrDefault -Table $savedPackState -Key 'ProjectId' -DefaultValue '')
     if (-not [string]::IsNullOrWhiteSpace($savedProjectId)) {
-        $modrinth.ProjectId = $savedProjectId
+        $curseforge.ProjectId = $savedProjectId
     }
 
     if ($projectOverrides.ContainsKey($packDirectory.Name)) {
-        $modrinth.ProjectId = [string]$projectOverrides[$packDirectory.Name]
+        $curseforge.ProjectId = [string]$projectOverrides[$packDirectory.Name]
     }
 
     $packSelectedVersions = @(Get-PackSelectedVersions -PackDirectory $packDirectory -Config $config -GloballySelectedVersions $selectedVersions)
@@ -1119,7 +1134,7 @@ foreach ($packDirectory in $packDirectories) {
             PackDisplayName = Convert-ToPackDisplayName -PackFolderName $packDirectory.Name
             VersionId = $minecraftVersion
             MinecraftVersion = $minecraftVersion
-            ReleaseVersion = $modrinth.ReleaseVersion
+            ReleaseVersion = $curseforge.ReleaseVersion
         }
 
         $packageBaseName = Convert-Tokens -Value $packageNameTemplate -Tokens @{
@@ -1129,23 +1144,25 @@ foreach ($packDirectory in $packDirectories) {
         }
         $zipPath = Join-Path -Path (Join-Path -Path $buildRoot -ChildPath $packDirectory.Name) -ChildPath "$packageBaseName.zip"
 
-        $versionNumber = Convert-Tokens -Value $modrinth.VersionNumberTemplate -Tokens $tokens
-        $versionName = Convert-Tokens -Value $modrinth.NameTemplate -Tokens $tokens
-        $changelog = Convert-Tokens -Value $modrinth.Changelog -Tokens $tokens
+        $versionNumber = Convert-Tokens -Value $curseforge.VersionNumberTemplate -Tokens $tokens
+        $versionName = Convert-Tokens -Value $curseforge.NameTemplate -Tokens $tokens
+        $changelog = Convert-Tokens -Value $curseforge.Changelog -Tokens $tokens
+        $gameVersionNames = @($curseforge.GameVersionNameTemplates | ForEach-Object {
+            Convert-Tokens -Value ([string]$_) -Tokens $tokens
+        })
 
         $item = [pscustomobject]@{
             PackName = $packDirectory.Name
-            ProjectId = $modrinth.ProjectId
+            ProjectId = $curseforge.ProjectId
             MinecraftVersion = $minecraftVersion
-            ReleaseVersion = $modrinth.ReleaseVersion
+            ReleaseVersion = $curseforge.ReleaseVersion
             VersionNumber = $versionNumber
             VersionName = $versionName
             Changelog = $changelog
-            VersionType = $modrinth.VersionType
-            Status = $modrinth.Status
-            Environment = $modrinth.Environment
-            Featured = $modrinth.Featured
-            Loaders = @($modrinth.Loaders)
+            ReleaseType = $curseforge.ReleaseType
+            ChangelogType = $curseforge.ChangelogType
+            ManualRelease = $curseforge.ManualRelease
+            GameVersionNames = @($gameVersionNames)
             ZipPath = $zipPath
             ZipSource = ''
             Token = ''
@@ -1160,7 +1177,7 @@ foreach ($packDirectory in $packDirectories) {
 }
 
 if ($uploadItems.Count -eq 0) {
-    Write-Host 'No Modrinth upload items were selected.'
+    Write-Host 'No CurseForge upload items were selected.'
     exit 0
 }
 
@@ -1195,7 +1212,7 @@ foreach ($item in $uploadItems) {
         continue
     }
 
-    $savedPackState = Get-LocalModrinthPackState -State $localModrinthState -PackName $item.PackName
+    $savedPackState = Get-LocalCurseForgePackState -State $localCurseForgeState -PackName $item.PackName
     $savedToken = [string](Get-HashtableValueOrDefault -Table $savedPackState -Key 'Token' -DefaultValue '')
     if (-not [string]::IsNullOrWhiteSpace($savedToken)) {
         $item.Token = $savedToken
@@ -1204,19 +1221,19 @@ foreach ($item in $uploadItems) {
 
 $missingTokenItems = @($uploadItems | Where-Object { [string]::IsNullOrWhiteSpace($_.Token) })
 if ($PromptForToken -and $missingTokenItems.Count -gt 0) {
-    $token = Read-PlainTextSecret -Prompt 'Enter Modrinth token'
+    $token = Read-PlainTextSecret -Prompt 'Enter CurseForge token'
     foreach ($item in $missingTokenItems) {
         $item.Token = $token
     }
 }
 
-if (($Publish -or $CheckRemote) -and @($uploadItems | Where-Object { [string]::IsNullOrWhiteSpace($_.Token) }).Count -gt 0) {
-    throw "Publishing or remote duplicate checks require a Modrinth token from -PromptForToken, the $TokenEnvironmentVariable environment variable, or $LocalModrinthStatePath."
+if ($Publish -and @($uploadItems | Where-Object { [string]::IsNullOrWhiteSpace($_.Token) }).Count -gt 0) {
+    throw "Publishing requires a CurseForge token from -PromptForToken, the $TokenEnvironmentVariable environment variable, or $LocalCurseForgeStatePath."
 }
 
 if ($Publish -and -not $Yes) {
     Write-Host ''
-    Write-Host "This will create $($uploadItems.Count) Modrinth version(s) with status '$DefaultStatus' unless overridden per pack."
+    Write-Host "This will create $($uploadItems.Count) CurseForge file(s) with release type '$DefaultReleaseType' unless overridden per pack."
     Write-Host 'Type PUBLISH to continue.'
     $confirmation = Read-Host 'Confirmation'
     if ($confirmation -ne 'PUBLISH') {
@@ -1224,38 +1241,14 @@ if ($Publish -and -not $Yes) {
     }
 }
 
-$shouldReadRemote = $Publish -or $CheckRemote
-$existingVersionsByProject = @{}
-$resolvedProjectIds = @{}
-if ($shouldReadRemote) {
-    foreach ($projectId in @($uploadItems | Select-Object -ExpandProperty ProjectId -Unique)) {
-        $projectItems = @($uploadItems | Where-Object { $_.ProjectId -eq $projectId })
-        $projectToken = [string]$projectItems[0].Token
-        $client = New-ModrinthHttpClient -Token $projectToken
-        try {
-            $project = Invoke-ModrinthGetProject -Client $client -ProjectId $projectId
-            $resolvedProjectIds[$projectId] = [string]$project.id
-
-            $versionsForProject = Invoke-ModrinthGetProjectVersions -Client $client -ProjectId ([string]$project.id)
-            $lookup = @{}
-            foreach ($remoteVersion in @($versionsForProject)) {
-                $lookup[[string]$remoteVersion.version_number] = $remoteVersion
-            }
-            $existingVersionsByProject[$projectId] = $lookup
-        }
-        finally {
-            $client.Dispose()
-        }
-    }
+if ($CheckRemote) {
+    Write-Host 'CurseForge upload API does not expose a documented remote duplicate listing endpoint; checking local publish state only.'
 }
 
 $summary = New-Object System.Collections.Generic.List[object]
 
 foreach ($item in $uploadItems) {
-    $alreadyExists = $false
-    if ($existingVersionsByProject.ContainsKey($item.ProjectId)) {
-        $alreadyExists = $existingVersionsByProject[$item.ProjectId].ContainsKey($item.VersionNumber)
-    }
+    $alreadyExists = Test-LocalCurseForgeVersionPublished -State $localCurseForgeState -Item $item
 
     if ($alreadyExists) {
         Write-Host "Skipping existing $($item.PackName) $($item.MinecraftVersion): $($item.VersionNumber)"
@@ -1270,7 +1263,7 @@ foreach ($item in $uploadItems) {
     }
 
     if (-not $Publish) {
-        Write-Host "Dry run: would publish $($item.PackName) $($item.MinecraftVersion) as $($item.VersionNumber) using $($item.ZipSource) file $(Get-ModrinthZipFileName -Item $item) -> project $($item.ProjectId)"
+        Write-Host "Dry run: would publish $($item.PackName) $($item.MinecraftVersion) as $($item.VersionNumber) using $($item.ZipSource) file $(Get-CurseForgeZipFileName -Item $item) -> project $($item.ProjectId)"
         $summary.Add([pscustomobject]@{
             Pack = $item.PackName
             MinecraftVersion = $item.MinecraftVersion
@@ -1281,17 +1274,13 @@ foreach ($item in $uploadItems) {
         continue
     }
 
-    if ($resolvedProjectIds.ContainsKey($item.ProjectId)) {
-        $item.ProjectId = [string]$resolvedProjectIds[$item.ProjectId]
-    }
-
-    Write-Host "Publishing $($item.PackName) $($item.MinecraftVersion) as $($item.VersionNumber) using $($item.ZipSource) file $(Get-ModrinthZipFileName -Item $item)..."
+    Write-Host "Publishing $($item.PackName) $($item.MinecraftVersion) as $($item.VersionNumber) using $($item.ZipSource) file $(Get-CurseForgeZipFileName -Item $item)..."
     $originalZipPath = $item.ZipPath
     $uploadZipPath = New-VersionedUploadZipCopy -Item $item
     $item.ZipPath = $uploadZipPath
-    $client = New-ModrinthHttpClient -Token ([string]$item.Token)
+    $client = New-CurseForgeHttpClient -Token ([string]$item.Token)
     try {
-        $createdVersion = Publish-ModrinthVersion -Client $client -Item $item
+        $createdVersion = Publish-CurseForgeVersion -Client $client -Item $item
     }
     finally {
         $client.Dispose()
@@ -1305,7 +1294,7 @@ foreach ($item in $uploadItems) {
         }
     }
 
-    Save-LocalModrinthPackState -State $localModrinthState -StatePath $localModrinthStateFullPath -PackName $item.PackName -ProjectId $item.ProjectId -Token ([string]$item.Token)
+    Save-LocalCurseForgePackState -State $localCurseForgeState -StatePath $localCurseForgeStateFullPath -PackName $item.PackName -ProjectId $item.ProjectId -Token ([string]$item.Token) -VersionNumber $item.VersionNumber -MinecraftVersion $item.MinecraftVersion -FileId $(if ($createdVersion) { [string]$createdVersion.id } else { '' })
     $archivePath = Move-UploadedZipToArchive -Item $item -ArchiveRootPath $archiveRootPath
 
     $summary.Add([pscustomobject]@{
@@ -1314,16 +1303,17 @@ foreach ($item in $uploadItems) {
         VersionNumber = $item.VersionNumber
         ZipSource = $item.ZipSource
         Action = 'published'
-        ModrinthVersionId = if ($createdVersion) { $createdVersion.id } else { $null }
+        CurseForgeVersionId = if ($createdVersion) { $createdVersion.id } else { $null }
         ArchivePath = $archivePath
     }) | Out-Null
 }
 
 Write-Host ''
-Write-Host 'Modrinth publish summary:'
+Write-Host 'CurseForge publish summary:'
 $summary | Format-Table -AutoSize
 
 if (-not $Publish) {
     Write-Host ''
-    Write-Host 'No files were uploaded. Re-run with -Publish to create Modrinth versions.'
+    Write-Host 'No files were uploaded. Re-run with -Publish to create CurseForge versions.'
 }
+
