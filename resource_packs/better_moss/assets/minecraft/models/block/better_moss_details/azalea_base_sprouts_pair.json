@@ -1,0 +1,42 @@
+{
+  "textures": {
+    "stem": "minecraft:block/moss_decoration_stem",
+    "clover": "minecraft:block/clover",
+    "sprouts": "minecraft:block/moss_sprouts",
+    "particle": "minecraft:block/azalea_side"
+  },
+  "elements": [
+    {
+      "faces": {
+        "south": { "uv": [4, 12, 8, 16], "texture": "#sprouts" },
+        "north": { "uv": [4, 12, 8, 16], "texture": "#sprouts" }
+      },
+      "from": [1, 0, 5],
+      "to": [5, 4, 5]
+    },
+    {
+      "faces": {
+        "east": { "uv": [4, 12, 8, 16], "texture": "#sprouts" },
+        "west": { "uv": [4, 12, 8, 16], "texture": "#sprouts" }
+      },
+      "from": [3, 0, 3],
+      "to": [3, 4, 7]
+    },
+    {
+      "faces": {
+        "south": { "uv": [4, 12, 8, 16], "texture": "#sprouts" },
+        "north": { "uv": [4, 12, 8, 16], "texture": "#sprouts" }
+      },
+      "from": [9, 0, 13],
+      "to": [13, 4, 13]
+    },
+    {
+      "faces": {
+        "east": { "uv": [4, 12, 8, 16], "texture": "#sprouts" },
+        "west": { "uv": [4, 12, 8, 16], "texture": "#sprouts" }
+      },
+      "from": [11, 0, 11],
+      "to": [11, 4, 15]
+    }
+  ]
+}

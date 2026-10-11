@@ -1,0 +1,95 @@
+{
+  "multipart": [
+    {
+      "apply": [
+        { "model": "minecraft:block/moss_carpet", "y": 0, "weight": 3 },
+        { "model": "minecraft:block/moss_carpet", "y": 90, "weight": 3 },
+        { "model": "minecraft:block/moss_carpet", "y": 180, "weight": 3 },
+        { "model": "minecraft:block/moss_carpet", "y": 270, "weight": 3 },
+        { "model": "minecraft:block/moss_carpet_short", "y": 0, "weight": 2 },
+        { "model": "minecraft:block/moss_carpet_short", "y": 90, "weight": 2 },
+        { "model": "minecraft:block/moss_carpet_short", "y": 180, "weight": 2 },
+        { "model": "minecraft:block/moss_carpet_short", "y": 270, "weight": 2 },
+        { "model": "minecraft:block/moss_carpet_patchy", "y": 0, "weight": 2 },
+        { "model": "minecraft:block/moss_carpet_patchy", "y": 90, "weight": 2 },
+        { "model": "minecraft:block/moss_carpet_patchy", "y": 180, "weight": 2 },
+        { "model": "minecraft:block/moss_carpet_patchy", "y": 270, "weight": 2 },
+        { "model": "minecraft:block/moss_carpet_uneven", "y": 0, "weight": 1 },
+        { "model": "minecraft:block/moss_carpet_uneven", "y": 90, "weight": 1 },
+        { "model": "minecraft:block/moss_carpet_uneven", "y": 180, "weight": 1 },
+        { "model": "minecraft:block/moss_carpet_uneven", "y": 270, "weight": 1 }
+      ]
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/moss_carpet_no_detail", "weight": 604 },
+        { "model": "minecraft:block/moss_carpet_detail_clover_1", "y": 0, "weight": 10 },
+        { "model": "minecraft:block/moss_carpet_detail_clover_1", "y": 90, "weight": 10 },
+        { "model": "minecraft:block/moss_carpet_detail_clover_1", "y": 180, "weight": 10 },
+        { "model": "minecraft:block/moss_carpet_detail_clover_1", "y": 270, "weight": 10 },
+        { "model": "minecraft:block/moss_carpet_detail_clover_2", "y": 0, "weight": 10 },
+        { "model": "minecraft:block/moss_carpet_detail_clover_2", "y": 90, "weight": 10 },
+        { "model": "minecraft:block/moss_carpet_detail_clover_2", "y": 180, "weight": 10 },
+        { "model": "minecraft:block/moss_carpet_detail_clover_2", "y": 270, "weight": 10 },
+        { "model": "minecraft:block/moss_carpet_detail_clover_3", "y": 0, "weight": 10 },
+        { "model": "minecraft:block/moss_carpet_detail_clover_3", "y": 90, "weight": 10 },
+        { "model": "minecraft:block/moss_carpet_detail_clover_3", "y": 180, "weight": 10 },
+        { "model": "minecraft:block/moss_carpet_detail_clover_3", "y": 270, "weight": 10 },
+        { "model": "minecraft:block/moss_carpet_detail_clover_4", "y": 0, "weight": 10 },
+        { "model": "minecraft:block/moss_carpet_detail_clover_4", "y": 90, "weight": 10 },
+        { "model": "minecraft:block/moss_carpet_detail_clover_4", "y": 180, "weight": 10 },
+        { "model": "minecraft:block/moss_carpet_detail_clover_4", "y": 270, "weight": 10 },
+        { "model": "minecraft:block/moss_carpet_detail_sprouts", "y": 0, "weight": 5 },
+        { "model": "minecraft:block/moss_carpet_detail_sprouts", "y": 90, "weight": 5 },
+        { "model": "minecraft:block/moss_carpet_detail_sprouts", "y": 180, "weight": 5 },
+        { "model": "minecraft:block/moss_carpet_detail_sprouts", "y": 270, "weight": 5 },
+        { "model": "minecraft:block/moss_carpet_detail_pink_petals", "y": 0, "weight": 2 },
+        { "model": "minecraft:block/moss_carpet_detail_pink_petals", "y": 90, "weight": 2 },
+        { "model": "minecraft:block/moss_carpet_detail_pink_petals", "y": 180, "weight": 2 },
+        { "model": "minecraft:block/moss_carpet_detail_pink_petals", "y": 270, "weight": 2 },
+        { "model": "minecraft:block/moss_carpet_detail_wildflowers", "y": 0, "weight": 2 },
+        { "model": "minecraft:block/moss_carpet_detail_wildflowers", "y": 90, "weight": 2 },
+        { "model": "minecraft:block/moss_carpet_detail_wildflowers", "y": 180, "weight": 2 },
+        { "model": "minecraft:block/moss_carpet_detail_wildflowers", "y": 270, "weight": 2 }
+      ]
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/moss_carpet_no_detail", "weight": 380 },
+        { "model": "minecraft:block/moss_carpet_flower_overlay_white_flowers_1", "y": 0, "weight": 1 },
+        { "model": "minecraft:block/moss_carpet_flower_overlay_white_flowers_1", "y": 90, "weight": 1 },
+        { "model": "minecraft:block/moss_carpet_flower_overlay_white_flowers_1", "y": 180, "weight": 1 },
+        { "model": "minecraft:block/moss_carpet_flower_overlay_white_flowers_1", "y": 270, "weight": 1 },
+        { "model": "minecraft:block/moss_carpet_flower_overlay_white_flowers_2", "y": 0, "weight": 1 },
+        { "model": "minecraft:block/moss_carpet_flower_overlay_white_flowers_2", "y": 90, "weight": 1 },
+        { "model": "minecraft:block/moss_carpet_flower_overlay_white_flowers_2", "y": 180, "weight": 1 },
+        { "model": "minecraft:block/moss_carpet_flower_overlay_white_flowers_2", "y": 270, "weight": 1 },
+        { "model": "minecraft:block/moss_carpet_flower_overlay_white_flowers_3", "y": 0, "weight": 1 },
+        { "model": "minecraft:block/moss_carpet_flower_overlay_white_flowers_3", "y": 90, "weight": 1 },
+        { "model": "minecraft:block/moss_carpet_flower_overlay_white_flowers_3", "y": 180, "weight": 1 },
+        { "model": "minecraft:block/moss_carpet_flower_overlay_white_flowers_3", "y": 270, "weight": 1 },
+        { "model": "minecraft:block/moss_carpet_flower_overlay_purple_flowers", "y": 0, "weight": 1 },
+        { "model": "minecraft:block/moss_carpet_flower_overlay_purple_flowers", "y": 90, "weight": 1 },
+        { "model": "minecraft:block/moss_carpet_flower_overlay_purple_flowers", "y": 180, "weight": 1 },
+        { "model": "minecraft:block/moss_carpet_flower_overlay_purple_flowers", "y": 270, "weight": 1 },
+        { "model": "minecraft:block/moss_carpet_flower_overlay_wildflowers", "weight": 1, "y": 0 },
+        { "model": "minecraft:block/moss_carpet_flower_overlay_wildflowers", "weight": 1, "y": 90 },
+        { "model": "minecraft:block/moss_carpet_flower_overlay_wildflowers", "weight": 1, "y": 180 },
+        { "model": "minecraft:block/moss_carpet_flower_overlay_wildflowers", "weight": 1, "y": 270 }
+      ]
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/moss_block_face_bare", "weight": 388 },
+        { "y": 0, "weight": 2, "model": "minecraft:block/better_moss_details/mushroom_brown_1" },
+        { "y": 90, "weight": 2, "model": "minecraft:block/better_moss_details/mushroom_brown_1" },
+        { "y": 180, "weight": 2, "model": "minecraft:block/better_moss_details/mushroom_brown_1" },
+        { "y": 270, "weight": 2, "model": "minecraft:block/better_moss_details/mushroom_brown_1" },
+        { "y": 0, "weight": 1, "model": "minecraft:block/better_moss_details/mushroom_red_1" },
+        { "y": 90, "weight": 1, "model": "minecraft:block/better_moss_details/mushroom_red_1" },
+        { "y": 180, "weight": 1, "model": "minecraft:block/better_moss_details/mushroom_red_1" },
+        { "y": 270, "weight": 1, "model": "minecraft:block/better_moss_details/mushroom_red_1" }
+      ]
+    }
+  ]
+}

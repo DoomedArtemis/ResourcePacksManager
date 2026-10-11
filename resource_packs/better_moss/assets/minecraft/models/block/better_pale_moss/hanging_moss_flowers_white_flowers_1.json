@@ -1,0 +1,27 @@
+{
+  "ambientocclusion": false,
+  "elements": [
+    {
+      "from": [2.344145751, 0.001, 8.022],
+      "to": [13.657854249, 16.001, 8.022],
+      "rotation": { "origin": [8.001, 8.001, 8.022], "axis": "y", "angle": 45, "rescale": true },
+      "faces": {
+        "north": { "uv": [0, 0, 16, 16], "texture": "#cross" },
+        "south": { "uv": [0, 0, 16, 16], "texture": "#cross" }
+      }
+    },
+    {
+      "from": [8.021, 0.001, 2.345145751],
+      "to": [8.021, 16.001, 13.658854249],
+      "rotation": { "origin": [8.021, 8.001, 8.002], "axis": "y", "angle": 45, "rescale": true },
+      "faces": {
+        "west": { "uv": [0, 0, 16, 16], "texture": "#cross" },
+        "east": { "uv": [0, 0, 16, 16], "texture": "#cross" }
+      }
+    }
+  ],
+  "textures": {
+    "particle": "minecraft:block/pale_hanging_moss",
+    "cross": "minecraft:block/white_flowers_1"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:block/mossy_cobblestone_wall_side_tall",
+  "elements": [
+    {
+      "from": [5, 0, 0],
+      "to": [11, 16, 8],
+      "faces": {
+        "down": { "texture": "#wall", "cullface": "down" },
+        "up": { "texture": "#wall", "cullface": "up" },
+        "north": { "texture": "#wall", "cullface": "north" },
+        "west": { "texture": "#wall" },
+        "east": { "texture": "#wall" }
+      }
+    },
+    {
+      "faces": {
+        "south": { "cullface": "up", "texture": "#detail_sprouts", "uv": [4, 11, 8, 16] },
+        "north": { "cullface": "up", "texture": "#detail_sprouts", "uv": [4, 11, 8, 16] }
+      },
+      "from": [5.001, 16.004, 2.002],
+      "to": [9.0010000000000012, 21.004, 2.002]
+    },
+    {
+      "faces": {
+        "east": { "cullface": "up", "texture": "#detail_sprouts", "uv": [4, 11, 8, 16] },
+        "west": { "cullface": "up", "texture": "#detail_sprouts", "uv": [4, 11, 8, 16] }
+      },
+      "from": [7.001, 16.004, 0.0019999999999997797],
+      "to": [7.001, 21.004, 4.002]
+    }
+  ],
+  "textures": {
+    "detail_stem": "minecraft:block/moss_decoration_stem",
+    "detail_clover": "minecraft:block/clover",
+    "detail_sprouts": "minecraft:block/moss_sprouts"
+  }
+}

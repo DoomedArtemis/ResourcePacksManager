@@ -1,0 +1,15 @@
+{
+  "textures": {
+    "particle": "minecraft:block/moss_block",
+    "flowers": "minecraft:block/purple_flowers"
+  },
+  "elements": [
+    {
+      "faces": {
+        "up": { "cullface": "up", "texture": "#flowers", "uv": [0, 0, 16, 16] }
+      },
+      "from": [0.003, 1.029, 0.005],
+      "to": [16.003, 1.029, 16.005]
+    }
+  ]
+}

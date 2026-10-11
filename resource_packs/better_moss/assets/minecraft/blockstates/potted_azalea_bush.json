@@ -1,0 +1,18 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minecraft:block/potted_azalea_bush"
+      }
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/moss_block_face_bare", "weight": 36 },
+        { "model": "minecraft:block/potted_azalea_flower_detail", "y": 0, "weight": 1 },
+        { "model": "minecraft:block/potted_azalea_flower_detail", "y": 90, "weight": 1 },
+        { "model": "minecraft:block/potted_azalea_flower_detail", "y": 180, "weight": 1 },
+        { "model": "minecraft:block/potted_azalea_flower_detail", "y": 270, "weight": 1 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "variants": {
+    "type=bottom,waterlogged=false": [
+      { "model": "minecraft:block/mossy_stone_brick_slab", "weight": 80 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_brick_slab", "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_stone_brick_slab_clover_lush", "weight": 120 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_brick_slab_clover_lush", "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_stone_brick_slab_sprouts_lush", "weight": 100 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_brick_slab_sprouts_lush", "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_stone_brick_slab_mixed", "weight": 100 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_brick_slab_mixed", "weight": 25 }
+    ],
+    "type=bottom,waterlogged=true": [
+      { "model": "minecraft:block/mossy_stone_brick_slab", "weight": 80 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_brick_slab", "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_stone_brick_slab_clover_lush", "weight": 120 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_brick_slab_clover_lush_wet", "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_stone_brick_slab_sprouts_lush", "weight": 100 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_brick_slab_sprouts_lush_wet", "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_stone_brick_slab_mixed", "weight": 100 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_brick_slab_mixed_wet", "weight": 25 }
+    ],
+    "type=double": [
+      { "model": "minecraft:block/mossy_stone_bricks", "y": 0, "weight": 80 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks", "y": 0, "weight": 20 },
+      { "model": "minecraft:block/mossy_stone_bricks", "y": 90, "weight": 80 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks", "y": 90, "weight": 20 },
+      { "model": "minecraft:block/mossy_stone_bricks", "y": 180, "weight": 80 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks", "y": 180, "weight": 20 },
+      { "model": "minecraft:block/mossy_stone_bricks", "y": 270, "weight": 80 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks", "y": 270, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_clover_lush", "y": 0, "weight": 120 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_clover_lush", "y": 0, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_clover_lush", "y": 90, "weight": 120 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_clover_lush", "y": 90, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_clover_lush", "y": 180, "weight": 120 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_clover_lush", "y": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_clover_lush", "y": 270, "weight": 120 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_clover_lush", "y": 270, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_sprouts_lush", "y": 0, "weight": 100 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_sprouts_lush", "y": 0, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_sprouts_lush", "y": 90, "weight": 100 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_sprouts_lush", "y": 90, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_sprouts_lush", "y": 180, "weight": 100 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_sprouts_lush", "y": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_sprouts_lush", "y": 270, "weight": 100 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_sprouts_lush", "y": 270, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_mixed", "y": 0, "weight": 100 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_mixed", "y": 0, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_mixed", "y": 90, "weight": 100 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_mixed", "y": 90, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_mixed", "y": 180, "weight": 100 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_mixed", "y": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_mixed", "y": 270, "weight": 100 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_mixed", "y": 270, "weight": 25 }
+    ],
+    "type=top,waterlogged=false": [
+      { "model": "minecraft:block/mossy_stone_brick_slab_top", "weight": 80 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_brick_slab_top", "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_stone_brick_slab_top_clover_lush", "weight": 120 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_brick_slab_top_clover_lush", "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_stone_brick_slab_top_sprouts_lush", "weight": 100 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_brick_slab_top_sprouts_lush", "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_stone_brick_slab_top_mixed", "weight": 100 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_brick_slab_top_mixed", "weight": 25 }
+    ],
+    "type=top,waterlogged=true": [
+      { "model": "minecraft:block/mossy_stone_brick_slab_top", "weight": 80 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_brick_slab_top", "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_stone_brick_slab_top_clover_lush", "weight": 120 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_brick_slab_top_clover_lush_wet", "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_stone_brick_slab_top_sprouts_lush", "weight": 100 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_brick_slab_top_sprouts_lush_wet", "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_stone_brick_slab_top_mixed", "weight": 100 },
+      { "model": "minecraft:block/better_moss_details/seams_mossy_stone_brick_slab_top_mixed_wet", "weight": 25 }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "textures": {
+    "particle": "minecraft:block/moss_block",
+    "flowers": "minecraft:block/purple_flowers"
+  },
+  "elements": [
+    {
+      "faces": {
+        "up": { "cullface": "up", "texture": "#flowers", "uv": [11, 2, 14, 5] }
+      },
+      "from": [11.003, 1.029, 2.005],
+      "to": [14.003, 1.029, 5.004999999999999]
+    },
+    {
+      "faces": {
+        "up": { "cullface": "up", "texture": "#flowers", "uv": [1, 7, 4, 10] }
+      },
+      "from": [1.003, 1.029, 7.004999999999999],
+      "to": [4.003, 1.029, 10.004999999999999]
+    },
+    {
+      "faces": {
+        "up": { "cullface": "up", "texture": "#flowers", "uv": [9, 11, 12, 14] }
+      },
+      "from": [9.003, 1.029, 11.004999999999999],
+      "to": [12.003, 1.029, 14.004999999999999]
+    }
+  ]
+}

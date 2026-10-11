@@ -1,0 +1,15 @@
+{
+  "textures": {
+    "particle": "minecraft:block/azalea_top",
+    "flowers": "minecraft:block/purple_flowers"
+  },
+  "elements": [
+    {
+      "faces": {
+        "up": { "cullface": "up", "texture": "#flowers", "uv": [4, 4, 12, 12] }
+      },
+      "from": [4.001, 16.017, 4.002],
+      "to": [12.001, 16.017, 12.002]
+    }
+  ]
+}

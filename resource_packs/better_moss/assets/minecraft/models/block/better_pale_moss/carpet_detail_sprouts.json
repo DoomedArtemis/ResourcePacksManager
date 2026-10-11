@@ -1,0 +1,27 @@
+{
+  "textures": {
+    "particle": "minecraft:block/pale_moss_block",
+    "all": "minecraft:block/pale_moss_block",
+    "cross": "minecraft:block/pale_moss_sprouts"
+  },
+  "elements": [
+    {
+      "from": [2.346145751, 1.003, 8.005],
+      "to": [13.659854249, 17.003, 8.005],
+      "rotation": { "origin": [8.003, 9.003, 8.005], "axis": "y", "angle": 45, "rescale": true },
+      "faces": {
+        "north": { "uv": [0, 0, 16, 16], "texture": "#cross", "cullface": "up" },
+        "south": { "uv": [0, 0, 16, 16], "texture": "#cross", "cullface": "up" }
+      }
+    },
+    {
+      "from": [8.003, 1.003, 2.348145751],
+      "to": [8.003, 17.003, 13.661854249],
+      "rotation": { "origin": [8.003, 9.003, 8.005], "axis": "y", "angle": 45, "rescale": true },
+      "faces": {
+        "west": { "uv": [0, 0, 16, 16], "texture": "#cross", "cullface": "up" },
+        "east": { "uv": [0, 0, 16, 16], "texture": "#cross", "cullface": "up" }
+      }
+    }
+  ]
+}

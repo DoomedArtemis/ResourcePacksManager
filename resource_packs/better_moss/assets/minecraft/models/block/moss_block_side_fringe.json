@@ -1,0 +1,40 @@
+{
+  "textures": {
+    "particle": "minecraft:block/moss_block",
+    "fringe": "minecraft:block/better_moss_carpet_side"
+  },
+  "elements": [
+    {
+      "faces": {
+        "north": { "cullface": "north", "texture": "#fringe", "uv": [0, 0, 16, 3] }
+      },
+      "from": [0, 13, 0],
+      "to": [16, 16, 0],
+      "rotation": { "origin": [8, 16, 0], "axis": "x", "angle": 22.5, "rescale": false }
+    },
+    {
+      "faces": {
+        "east": { "cullface": "east", "texture": "#fringe", "uv": [0, 0, 16, 3] }
+      },
+      "from": [16, 13, 0],
+      "to": [16, 16, 16],
+      "rotation": { "origin": [16, 16, 8], "axis": "z", "angle": 22.5, "rescale": false }
+    },
+    {
+      "faces": {
+        "south": { "cullface": "south", "texture": "#fringe", "uv": [0, 0, 16, 3] }
+      },
+      "from": [0, 13, 16],
+      "to": [16, 16, 16],
+      "rotation": { "origin": [8, 16, 16], "axis": "x", "angle": -22.5, "rescale": false }
+    },
+    {
+      "faces": {
+        "west": { "cullface": "west", "texture": "#fringe", "uv": [0, 0, 16, 3] }
+      },
+      "from": [0, 13, 0],
+      "to": [0, 16, 16],
+      "rotation": { "origin": [0, 16, 8], "axis": "z", "angle": -22.5, "rescale": false }
+    }
+  ]
+}

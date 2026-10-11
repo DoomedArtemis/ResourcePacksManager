@@ -1,0 +1,39 @@
+{
+  "parent": "minecraft:block/mossy_stone_brick_wall_post",
+  "elements": [
+    {
+      "from": [4, 0, 4],
+      "to": [12, 16, 12],
+      "faces": {
+        "down": { "texture": "#wall", "cullface": "down" },
+        "up": { "texture": "#wall", "cullface": "up" },
+        "north": { "texture": "#wall" },
+        "south": { "texture": "#wall" },
+        "west": { "texture": "#wall" },
+        "east": { "texture": "#wall" }
+      },
+      "__comment": "Center post"
+    },
+    {
+      "faces": {
+        "south": { "cullface": "up", "texture": "#detail_sprouts", "uv": [4, 11, 8, 16] },
+        "north": { "cullface": "up", "texture": "#detail_sprouts", "uv": [4, 11, 8, 16] }
+      },
+      "from": [6.0009999999999994, 16.004, 6.002],
+      "to": [10.001, 21.004, 6.002]
+    },
+    {
+      "faces": {
+        "east": { "cullface": "up", "texture": "#detail_sprouts", "uv": [4, 11, 8, 16] },
+        "west": { "cullface": "up", "texture": "#detail_sprouts", "uv": [4, 11, 8, 16] }
+      },
+      "from": [8.001, 16.004, 4.002],
+      "to": [8.001, 21.004, 8.0019999999999989]
+    }
+  ],
+  "textures": {
+    "detail_stem": "minecraft:block/moss_decoration_stem",
+    "detail_clover": "minecraft:block/clover",
+    "detail_sprouts": "minecraft:block/moss_sprouts"
+  }
+}

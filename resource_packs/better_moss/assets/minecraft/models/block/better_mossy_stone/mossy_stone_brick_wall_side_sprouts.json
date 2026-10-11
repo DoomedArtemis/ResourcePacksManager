@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:block/mossy_stone_brick_wall_side",
+  "elements": [
+    {
+      "from": [5, 0, 0],
+      "to": [11, 14, 8],
+      "faces": {
+        "down": { "texture": "#wall", "cullface": "down" },
+        "up": { "texture": "#wall" },
+        "north": { "texture": "#wall", "cullface": "north" },
+        "west": { "texture": "#wall" },
+        "east": { "texture": "#wall" }
+      },
+      "__comment": "wall"
+    },
+    {
+      "faces": {
+        "south": { "uv": [4, 11, 8, 16], "texture": "#detail_sprouts" },
+        "north": { "uv": [4, 11, 8, 16], "texture": "#detail_sprouts" }
+      },
+      "from": [5.001, 14.004, 2.002],
+      "to": [9.0010000000000012, 19.003999999999998, 2.002]
+    },
+    {
+      "faces": {
+        "east": { "uv": [4, 11, 8, 16], "texture": "#detail_sprouts" },
+        "west": { "uv": [4, 11, 8, 16], "texture": "#detail_sprouts" }
+      },
+      "from": [7.001, 14.004, 0.0019999999999997797],
+      "to": [7.001, 19.003999999999998, 4.002]
+    }
+  ],
+  "textures": {
+    "detail_stem": "minecraft:block/moss_decoration_stem",
+    "detail_clover": "minecraft:block/clover",
+    "detail_sprouts": "minecraft:block/moss_sprouts"
+  }
+}

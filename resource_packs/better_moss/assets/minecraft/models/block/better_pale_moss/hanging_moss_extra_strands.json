@@ -1,0 +1,27 @@
+{
+  "ambientocclusion": false,
+  "elements": [
+    {
+      "rotation": { "angle": 45, "axis": "y", "origin": [6, 13, 8], "rescale": true },
+      "from": [3.8786796564403576, 10, 8],
+      "to": [8.1213203435596419, 16, 8],
+      "faces": {
+        "south": { "uv": [5, 0, 11, 6], "texture": "#foliage" },
+        "north": { "uv": [5, 0, 11, 6], "texture": "#foliage" }
+      }
+    },
+    {
+      "rotation": { "angle": 45, "axis": "y", "origin": [10, 13, 8], "rescale": true },
+      "from": [7.8786796564403581, 10, 8],
+      "to": [12.121320343559642, 16, 8],
+      "faces": {
+        "south": { "uv": [5, 0, 11, 6], "texture": "#foliage" },
+        "north": { "uv": [5, 0, 11, 6], "texture": "#foliage" }
+      }
+    }
+  ],
+  "textures": {
+    "particle": "minecraft:block/pale_hanging_moss",
+    "foliage": "minecraft:block/pale_hanging_moss"
+  }
+}

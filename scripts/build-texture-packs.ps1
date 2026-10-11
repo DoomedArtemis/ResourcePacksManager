@@ -389,7 +389,24 @@ function Get-PackBuildOptions {
         return @{}
     }
 
-    return Import-PowerShellDataFile -Path $configPath
+    $options = Import-PowerShellDataFile -Path $configPath
+    if ($options.ContainsKey('FileOptionsPath') -and $options.FileOptionsPath) {
+        $fileOptionsPath = Resolve-FullPath -BasePath $PackDirectory.FullName -Path ([string]$options.FileOptionsPath)
+        $packPrefix = $PackDirectory.FullName.TrimEnd('\', '/') + [System.IO.Path]::DirectorySeparatorChar
+        if (-not $fileOptionsPath.StartsWith($packPrefix, [System.StringComparison]::OrdinalIgnoreCase)) {
+            throw "FileOptionsPath must stay inside pack '$($PackDirectory.Name)'."
+        }
+        $fileOptions = ConvertTo-Hashtable -InputObject ((Get-Content -LiteralPath $fileOptionsPath -Raw -Encoding UTF8) | ConvertFrom-Json)
+        foreach ($key in $fileOptions.Keys) {
+            if ($key -notin @('FileRules', 'FileVariants')) {
+                throw "FileOptionsPath supports only FileRules and FileVariants, not '$key'."
+            }
+            $existing = @()
+            if ($options.ContainsKey($key)) { $existing = @($options[$key]) }
+            $options[$key] = @($existing) + @($fileOptions[$key])
+        }
+    }
+    return $options
 }
 
 function Get-VersionOrderLookup {
@@ -411,6 +428,7 @@ function Expand-RequestedVersionSelection {
     )
 
     $versionOrder = Get-VersionOrderLookup -Config $Config
+
     $orderedVersions = @($Config.Versions)
     $selectedVersionIds = New-Object System.Collections.Generic.List[string]
     $seen = @{}
@@ -961,6 +979,27 @@ function Get-PackInputFiles {
     }
     $versionOrder = Get-VersionOrderLookup -Config $Config
 
+    # Generated compatibility models can supply hundreds of exact replacements.
+    # Index those paths once instead of scanning the complete list for each file.
+    $exactVariants = @{}
+    $prefixVariants = New-Object System.Collections.Generic.List[hashtable]
+    foreach ($rawVariant in $fileVariants) {
+        if ($null -eq $rawVariant) { continue }
+        $variant = ConvertTo-Hashtable -InputObject $rawVariant
+        $variantPath = [string](Get-HashtableValueOrDefault -Table $variant -Key 'Path' -DefaultValue '')
+        $variantSourcePath = [string](Get-HashtableValueOrDefault -Table $variant -Key 'SourcePath' -DefaultValue '')
+        if ([string]::IsNullOrWhiteSpace($variantPath) -or [string]::IsNullOrWhiteSpace($variantSourcePath)) {
+            throw "Pack '$($PackDirectory.Name)' has a FileVariants entry without a non-empty Path or SourcePath."
+        }
+        if ($variantPath.EndsWith('/')) {
+            $prefixVariants.Add($variant)
+        } else {
+            if (-not $exactVariants.ContainsKey($variantPath)) {
+                $exactVariants[$variantPath] = New-Object System.Collections.Generic.List[hashtable]
+            }
+            $exactVariants[$variantPath].Add($variant)
+        }
+    }
     $inputFiles = New-Object System.Collections.Generic.List[object]
 
     $definitions = @(
@@ -1089,7 +1128,16 @@ function Get-PackInputFiles {
         if ($fileVariants.Count -gt 0) {
             $matchingVariants = New-Object System.Collections.Generic.List[hashtable]
 
-            foreach ($rawVariant in $fileVariants) {
+            $variantCandidates = New-Object System.Collections.Generic.List[hashtable]
+            foreach ($variant in $prefixVariants) { $variantCandidates.Add($variant) }
+            foreach ($candidatePath in @($inputFile.RulePaths)) {
+                if ($exactVariants.ContainsKey([string]$candidatePath)) {
+                    foreach ($variant in $exactVariants[[string]$candidatePath]) {
+                        if (-not $variantCandidates.Contains($variant)) { $variantCandidates.Add($variant) }
+                    }
+                }
+            }
+            foreach ($rawVariant in $variantCandidates) {
                 if ($null -eq $rawVariant) {
                     continue
                 }

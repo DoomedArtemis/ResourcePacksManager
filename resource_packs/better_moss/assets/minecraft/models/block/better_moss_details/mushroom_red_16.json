@@ -1,0 +1,33 @@
+{
+  "textures": {
+    "stem": "minecraft:block/mushroom_stem",
+    "cap": "minecraft:block/red_mushroom_block",
+    "particle": "minecraft:block/red_mushroom_block"
+  },
+  "elements": [
+    {
+      "faces": {
+        "south": { "cullface": "up", "texture": "#stem", "uv": [0, 0, 1, 1.9999999999999982] },
+        "north": { "cullface": "up", "texture": "#stem", "uv": [0, 0, 1, 1.9999999999999982] },
+        "up": { "cullface": "up", "texture": "#stem", "uv": [0, 0, 1, 1] },
+        "west": { "cullface": "up", "texture": "#stem", "uv": [0, 0, 1, 1.9999999999999982] },
+        "down": { "cullface": "up", "texture": "#stem", "uv": [0, 0, 1, 1] },
+        "east": { "cullface": "up", "texture": "#stem", "uv": [0, 0, 1, 1.9999999999999982] }
+      },
+      "from": [4, 15.999, 6],
+      "to": [5, 17.999, 7]
+    },
+    {
+      "faces": {
+        "south": { "cullface": "up", "texture": "#cap", "uv": [0, 0, 3, 1] },
+        "north": { "cullface": "up", "texture": "#cap", "uv": [0, 0, 3, 1] },
+        "up": { "cullface": "up", "texture": "#cap", "uv": [0, 0, 3, 3] },
+        "west": { "cullface": "up", "texture": "#cap", "uv": [0, 0, 3, 1] },
+        "down": { "cullface": "up", "texture": "#cap", "uv": [0, 0, 3, 3] },
+        "east": { "cullface": "up", "texture": "#cap", "uv": [0, 0, 3, 1] }
+      },
+      "from": [3, 17.999, 5],
+      "to": [6, 18.999, 8]
+    }
+  ]
+}

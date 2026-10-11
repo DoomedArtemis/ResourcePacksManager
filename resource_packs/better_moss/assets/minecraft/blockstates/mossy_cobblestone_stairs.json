@@ -1,0 +1,628 @@
+{
+  "variants": {
+    "facing=east,half=bottom,shape=inner_left,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "y": 270, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_clover_lush", "uvlock": true, "y": 270, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_sprouts_lush", "uvlock": true, "y": 270, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_mixed", "uvlock": true, "y": 270, "weight": 25 }
+    ],
+    "facing=east,half=bottom,shape=inner_left,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "y": 270, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_clover_lush", "uvlock": true, "y": 270, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_sprouts_lush", "uvlock": true, "y": 270, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_mixed", "uvlock": true, "y": 270, "weight": 25 }
+    ],
+    "facing=east,half=bottom,shape=inner_right,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_clover_lush", "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_sprouts_lush", "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_mixed", "weight": 25 }
+    ],
+    "facing=east,half=bottom,shape=inner_right,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_clover_lush", "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_sprouts_lush", "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_mixed", "weight": 25 }
+    ],
+    "facing=east,half=bottom,shape=outer_left,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "y": 270, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_clover_lush", "uvlock": true, "y": 270, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_sprouts_lush", "uvlock": true, "y": 270, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_mixed", "uvlock": true, "y": 270, "weight": 25 }
+    ],
+    "facing=east,half=bottom,shape=outer_left,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "y": 270, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_clover_lush", "uvlock": true, "y": 270, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_sprouts_lush", "uvlock": true, "y": 270, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_mixed", "uvlock": true, "y": 270, "weight": 25 }
+    ],
+    "facing=east,half=bottom,shape=outer_right,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_clover_lush", "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_sprouts_lush", "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_mixed", "weight": 25 }
+    ],
+    "facing=east,half=bottom,shape=outer_right,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_clover_lush", "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_sprouts_lush", "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_mixed", "weight": 25 }
+    ],
+    "facing=east,half=bottom,shape=straight,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs", "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_clover_lush", "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_sprouts_lush", "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_mixed", "weight": 25 }
+    ],
+    "facing=east,half=bottom,shape=straight,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs", "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_clover_lush", "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_sprouts_lush", "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_mixed", "weight": 25 }
+    ],
+    "facing=east,half=top,shape=inner_left,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "x": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_clover_inverted_lush", "uvlock": true, "x": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_sprouts_inverted_lush", "uvlock": true, "x": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_mixed_inverted", "uvlock": true, "x": 180, "weight": 25 }
+    ],
+    "facing=east,half=top,shape=inner_left,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "x": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_clover_inverted_lush", "uvlock": true, "x": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_sprouts_inverted_lush", "uvlock": true, "x": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_mixed_inverted", "uvlock": true, "x": 180, "weight": 25 }
+    ],
+    "facing=east,half=top,shape=inner_right,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "x": 180, "y": 90, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_clover_inverted_lush", "uvlock": true, "x": 180, "y": 90, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_sprouts_inverted_lush", "uvlock": true, "x": 180, "y": 90, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_mixed_inverted", "uvlock": true, "x": 180, "y": 90, "weight": 25 }
+    ],
+    "facing=east,half=top,shape=inner_right,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "x": 180, "y": 90, "weight": 20 },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_clover_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 90,
+        "weight": 30
+      },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_sprouts_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 90,
+        "weight": 25
+      },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_mixed_inverted", "uvlock": true, "x": 180, "y": 90, "weight": 25 }
+    ],
+    "facing=east,half=top,shape=outer_left,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "x": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_clover_inverted_lush", "uvlock": true, "x": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_sprouts_inverted_lush", "uvlock": true, "x": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_mixed_inverted", "uvlock": true, "x": 180, "weight": 25 }
+    ],
+    "facing=east,half=top,shape=outer_left,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "x": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_clover_inverted_lush", "uvlock": true, "x": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_sprouts_inverted_lush", "uvlock": true, "x": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_mixed_inverted", "uvlock": true, "x": 180, "weight": 25 }
+    ],
+    "facing=east,half=top,shape=outer_right,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "x": 180, "y": 90, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_clover_inverted_lush", "uvlock": true, "x": 180, "y": 90, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_sprouts_inverted_lush", "uvlock": true, "x": 180, "y": 90, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_mixed_inverted", "uvlock": true, "x": 180, "y": 90, "weight": 25 }
+    ],
+    "facing=east,half=top,shape=outer_right,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "x": 180, "y": 90, "weight": 20 },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_clover_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 90,
+        "weight": 30
+      },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_sprouts_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 90,
+        "weight": 25
+      },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_mixed_inverted", "uvlock": true, "x": 180, "y": 90, "weight": 25 }
+    ],
+    "facing=east,half=top,shape=straight,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs", "uvlock": true, "x": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_clover_inverted_lush", "uvlock": true, "x": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_sprouts_inverted_lush", "uvlock": true, "x": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_mixed_inverted", "uvlock": true, "x": 180, "weight": 25 }
+    ],
+    "facing=east,half=top,shape=straight,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs", "uvlock": true, "x": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_clover_inverted_lush", "uvlock": true, "x": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_sprouts_inverted_lush", "uvlock": true, "x": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_mixed_inverted", "uvlock": true, "x": 180, "weight": 25 }
+    ],
+    "facing=north,half=bottom,shape=inner_left,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "y": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_clover_lush", "uvlock": true, "y": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_sprouts_lush", "uvlock": true, "y": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_mixed", "uvlock": true, "y": 180, "weight": 25 }
+    ],
+    "facing=north,half=bottom,shape=inner_left,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "y": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_clover_lush", "uvlock": true, "y": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_sprouts_lush", "uvlock": true, "y": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_mixed", "uvlock": true, "y": 180, "weight": 25 }
+    ],
+    "facing=north,half=bottom,shape=inner_right,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "y": 270, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_clover_lush", "uvlock": true, "y": 270, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_sprouts_lush", "uvlock": true, "y": 270, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_mixed", "uvlock": true, "y": 270, "weight": 25 }
+    ],
+    "facing=north,half=bottom,shape=inner_right,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "y": 270, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_clover_lush", "uvlock": true, "y": 270, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_sprouts_lush", "uvlock": true, "y": 270, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_mixed", "uvlock": true, "y": 270, "weight": 25 }
+    ],
+    "facing=north,half=bottom,shape=outer_left,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "y": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_clover_lush", "uvlock": true, "y": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_sprouts_lush", "uvlock": true, "y": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_mixed", "uvlock": true, "y": 180, "weight": 25 }
+    ],
+    "facing=north,half=bottom,shape=outer_left,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "y": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_clover_lush", "uvlock": true, "y": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_sprouts_lush", "uvlock": true, "y": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_mixed", "uvlock": true, "y": 180, "weight": 25 }
+    ],
+    "facing=north,half=bottom,shape=outer_right,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "y": 270, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_clover_lush", "uvlock": true, "y": 270, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_sprouts_lush", "uvlock": true, "y": 270, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_mixed", "uvlock": true, "y": 270, "weight": 25 }
+    ],
+    "facing=north,half=bottom,shape=outer_right,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "y": 270, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_clover_lush", "uvlock": true, "y": 270, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_sprouts_lush", "uvlock": true, "y": 270, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_mixed", "uvlock": true, "y": 270, "weight": 25 }
+    ],
+    "facing=north,half=bottom,shape=straight,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs", "uvlock": true, "y": 270, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_clover_lush", "uvlock": true, "y": 270, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_sprouts_lush", "uvlock": true, "y": 270, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_mixed", "uvlock": true, "y": 270, "weight": 25 }
+    ],
+    "facing=north,half=bottom,shape=straight,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs", "uvlock": true, "y": 270, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_clover_lush", "uvlock": true, "y": 270, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_sprouts_lush", "uvlock": true, "y": 270, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_mixed", "uvlock": true, "y": 270, "weight": 25 }
+    ],
+    "facing=north,half=top,shape=inner_left,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "x": 180, "y": 270, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_clover_inverted_lush", "uvlock": true, "x": 180, "y": 270, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_sprouts_inverted_lush", "uvlock": true, "x": 180, "y": 270, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_mixed_inverted", "uvlock": true, "x": 180, "y": 270, "weight": 25 }
+    ],
+    "facing=north,half=top,shape=inner_left,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "x": 180, "y": 270, "weight": 20 },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_clover_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 270,
+        "weight": 30
+      },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_sprouts_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 270,
+        "weight": 25
+      },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_mixed_inverted", "uvlock": true, "x": 180, "y": 270, "weight": 25 }
+    ],
+    "facing=north,half=top,shape=inner_right,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "x": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_clover_inverted_lush", "uvlock": true, "x": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_sprouts_inverted_lush", "uvlock": true, "x": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_mixed_inverted", "uvlock": true, "x": 180, "weight": 25 }
+    ],
+    "facing=north,half=top,shape=inner_right,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "x": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_clover_inverted_lush", "uvlock": true, "x": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_sprouts_inverted_lush", "uvlock": true, "x": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_mixed_inverted", "uvlock": true, "x": 180, "weight": 25 }
+    ],
+    "facing=north,half=top,shape=outer_left,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "x": 180, "y": 270, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_clover_inverted_lush", "uvlock": true, "x": 180, "y": 270, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_sprouts_inverted_lush", "uvlock": true, "x": 180, "y": 270, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_mixed_inverted", "uvlock": true, "x": 180, "y": 270, "weight": 25 }
+    ],
+    "facing=north,half=top,shape=outer_left,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "x": 180, "y": 270, "weight": 20 },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_clover_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 270,
+        "weight": 30
+      },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_sprouts_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 270,
+        "weight": 25
+      },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_mixed_inverted", "uvlock": true, "x": 180, "y": 270, "weight": 25 }
+    ],
+    "facing=north,half=top,shape=outer_right,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "x": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_clover_inverted_lush", "uvlock": true, "x": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_sprouts_inverted_lush", "uvlock": true, "x": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_mixed_inverted", "uvlock": true, "x": 180, "weight": 25 }
+    ],
+    "facing=north,half=top,shape=outer_right,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "x": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_clover_inverted_lush", "uvlock": true, "x": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_sprouts_inverted_lush", "uvlock": true, "x": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_mixed_inverted", "uvlock": true, "x": 180, "weight": 25 }
+    ],
+    "facing=north,half=top,shape=straight,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs", "uvlock": true, "x": 180, "y": 270, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_clover_inverted_lush", "uvlock": true, "x": 180, "y": 270, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_sprouts_inverted_lush", "uvlock": true, "x": 180, "y": 270, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_mixed_inverted", "uvlock": true, "x": 180, "y": 270, "weight": 25 }
+    ],
+    "facing=north,half=top,shape=straight,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs", "uvlock": true, "x": 180, "y": 270, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_clover_inverted_lush", "uvlock": true, "x": 180, "y": 270, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_sprouts_inverted_lush", "uvlock": true, "x": 180, "y": 270, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_mixed_inverted", "uvlock": true, "x": 180, "y": 270, "weight": 25 }
+    ],
+    "facing=south,half=bottom,shape=inner_left,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_clover_lush", "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_sprouts_lush", "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_mixed", "weight": 25 }
+    ],
+    "facing=south,half=bottom,shape=inner_left,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_clover_lush", "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_sprouts_lush", "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_mixed", "weight": 25 }
+    ],
+    "facing=south,half=bottom,shape=inner_right,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "y": 90, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_clover_lush", "uvlock": true, "y": 90, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_sprouts_lush", "uvlock": true, "y": 90, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_mixed", "uvlock": true, "y": 90, "weight": 25 }
+    ],
+    "facing=south,half=bottom,shape=inner_right,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "y": 90, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_clover_lush", "uvlock": true, "y": 90, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_sprouts_lush", "uvlock": true, "y": 90, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_mixed", "uvlock": true, "y": 90, "weight": 25 }
+    ],
+    "facing=south,half=bottom,shape=outer_left,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_clover_lush", "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_sprouts_lush", "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_mixed", "weight": 25 }
+    ],
+    "facing=south,half=bottom,shape=outer_left,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_clover_lush", "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_sprouts_lush", "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_mixed", "weight": 25 }
+    ],
+    "facing=south,half=bottom,shape=outer_right,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "y": 90, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_clover_lush", "uvlock": true, "y": 90, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_sprouts_lush", "uvlock": true, "y": 90, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_mixed", "uvlock": true, "y": 90, "weight": 25 }
+    ],
+    "facing=south,half=bottom,shape=outer_right,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "y": 90, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_clover_lush", "uvlock": true, "y": 90, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_sprouts_lush", "uvlock": true, "y": 90, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_mixed", "uvlock": true, "y": 90, "weight": 25 }
+    ],
+    "facing=south,half=bottom,shape=straight,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs", "uvlock": true, "y": 90, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_clover_lush", "uvlock": true, "y": 90, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_sprouts_lush", "uvlock": true, "y": 90, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_mixed", "uvlock": true, "y": 90, "weight": 25 }
+    ],
+    "facing=south,half=bottom,shape=straight,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs", "uvlock": true, "y": 90, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_clover_lush", "uvlock": true, "y": 90, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_sprouts_lush", "uvlock": true, "y": 90, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_mixed", "uvlock": true, "y": 90, "weight": 25 }
+    ],
+    "facing=south,half=top,shape=inner_left,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "x": 180, "y": 90, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_clover_inverted_lush", "uvlock": true, "x": 180, "y": 90, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_sprouts_inverted_lush", "uvlock": true, "x": 180, "y": 90, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_mixed_inverted", "uvlock": true, "x": 180, "y": 90, "weight": 25 }
+    ],
+    "facing=south,half=top,shape=inner_left,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "x": 180, "y": 90, "weight": 20 },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_clover_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 90,
+        "weight": 30
+      },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_sprouts_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 90,
+        "weight": 25
+      },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_mixed_inverted", "uvlock": true, "x": 180, "y": 90, "weight": 25 }
+    ],
+    "facing=south,half=top,shape=inner_right,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "x": 180, "y": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_clover_inverted_lush", "uvlock": true, "x": 180, "y": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_sprouts_inverted_lush", "uvlock": true, "x": 180, "y": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_mixed_inverted", "uvlock": true, "x": 180, "y": 180, "weight": 25 }
+    ],
+    "facing=south,half=top,shape=inner_right,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "x": 180, "y": 180, "weight": 20 },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_clover_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 180,
+        "weight": 30
+      },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_sprouts_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 180,
+        "weight": 25
+      },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_mixed_inverted", "uvlock": true, "x": 180, "y": 180, "weight": 25 }
+    ],
+    "facing=south,half=top,shape=outer_left,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "x": 180, "y": 90, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_clover_inverted_lush", "uvlock": true, "x": 180, "y": 90, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_sprouts_inverted_lush", "uvlock": true, "x": 180, "y": 90, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_mixed_inverted", "uvlock": true, "x": 180, "y": 90, "weight": 25 }
+    ],
+    "facing=south,half=top,shape=outer_left,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "x": 180, "y": 90, "weight": 20 },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_clover_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 90,
+        "weight": 30
+      },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_sprouts_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 90,
+        "weight": 25
+      },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_mixed_inverted", "uvlock": true, "x": 180, "y": 90, "weight": 25 }
+    ],
+    "facing=south,half=top,shape=outer_right,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "x": 180, "y": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_clover_inverted_lush", "uvlock": true, "x": 180, "y": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_sprouts_inverted_lush", "uvlock": true, "x": 180, "y": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_mixed_inverted", "uvlock": true, "x": 180, "y": 180, "weight": 25 }
+    ],
+    "facing=south,half=top,shape=outer_right,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "x": 180, "y": 180, "weight": 20 },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_clover_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 180,
+        "weight": 30
+      },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_sprouts_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 180,
+        "weight": 25
+      },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_mixed_inverted", "uvlock": true, "x": 180, "y": 180, "weight": 25 }
+    ],
+    "facing=south,half=top,shape=straight,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs", "uvlock": true, "x": 180, "y": 90, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_clover_inverted_lush", "uvlock": true, "x": 180, "y": 90, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_sprouts_inverted_lush", "uvlock": true, "x": 180, "y": 90, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_mixed_inverted", "uvlock": true, "x": 180, "y": 90, "weight": 25 }
+    ],
+    "facing=south,half=top,shape=straight,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs", "uvlock": true, "x": 180, "y": 90, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_clover_inverted_lush", "uvlock": true, "x": 180, "y": 90, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_sprouts_inverted_lush", "uvlock": true, "x": 180, "y": 90, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_mixed_inverted", "uvlock": true, "x": 180, "y": 90, "weight": 25 }
+    ],
+    "facing=west,half=bottom,shape=inner_left,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "y": 90, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_clover_lush", "uvlock": true, "y": 90, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_sprouts_lush", "uvlock": true, "y": 90, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_mixed", "uvlock": true, "y": 90, "weight": 25 }
+    ],
+    "facing=west,half=bottom,shape=inner_left,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "y": 90, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_clover_lush", "uvlock": true, "y": 90, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_sprouts_lush", "uvlock": true, "y": 90, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_mixed", "uvlock": true, "y": 90, "weight": 25 }
+    ],
+    "facing=west,half=bottom,shape=inner_right,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "y": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_clover_lush", "uvlock": true, "y": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_sprouts_lush", "uvlock": true, "y": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_mixed", "uvlock": true, "y": 180, "weight": 25 }
+    ],
+    "facing=west,half=bottom,shape=inner_right,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "y": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_clover_lush", "uvlock": true, "y": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_sprouts_lush", "uvlock": true, "y": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_mixed", "uvlock": true, "y": 180, "weight": 25 }
+    ],
+    "facing=west,half=bottom,shape=outer_left,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "y": 90, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_clover_lush", "uvlock": true, "y": 90, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_sprouts_lush", "uvlock": true, "y": 90, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_mixed", "uvlock": true, "y": 90, "weight": 25 }
+    ],
+    "facing=west,half=bottom,shape=outer_left,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "y": 90, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_clover_lush", "uvlock": true, "y": 90, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_sprouts_lush", "uvlock": true, "y": 90, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_mixed", "uvlock": true, "y": 90, "weight": 25 }
+    ],
+    "facing=west,half=bottom,shape=outer_right,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "y": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_clover_lush", "uvlock": true, "y": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_sprouts_lush", "uvlock": true, "y": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_mixed", "uvlock": true, "y": 180, "weight": 25 }
+    ],
+    "facing=west,half=bottom,shape=outer_right,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "y": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_clover_lush", "uvlock": true, "y": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_sprouts_lush", "uvlock": true, "y": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_mixed", "uvlock": true, "y": 180, "weight": 25 }
+    ],
+    "facing=west,half=bottom,shape=straight,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs", "uvlock": true, "y": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_clover_lush", "uvlock": true, "y": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_sprouts_lush", "uvlock": true, "y": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_mixed", "uvlock": true, "y": 180, "weight": 25 }
+    ],
+    "facing=west,half=bottom,shape=straight,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs", "uvlock": true, "y": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_clover_lush", "uvlock": true, "y": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_sprouts_lush", "uvlock": true, "y": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_mixed", "uvlock": true, "y": 180, "weight": 25 }
+    ],
+    "facing=west,half=top,shape=inner_left,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "x": 180, "y": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_clover_inverted_lush", "uvlock": true, "x": 180, "y": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_sprouts_inverted_lush", "uvlock": true, "x": 180, "y": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_mixed_inverted", "uvlock": true, "x": 180, "y": 180, "weight": 25 }
+    ],
+    "facing=west,half=top,shape=inner_left,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "x": 180, "y": 180, "weight": 20 },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_clover_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 180,
+        "weight": 30
+      },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_sprouts_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 180,
+        "weight": 25
+      },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_mixed_inverted", "uvlock": true, "x": 180, "y": 180, "weight": 25 }
+    ],
+    "facing=west,half=top,shape=inner_right,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "x": 180, "y": 270, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_clover_inverted_lush", "uvlock": true, "x": 180, "y": 270, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_sprouts_inverted_lush", "uvlock": true, "x": 180, "y": 270, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_inner_mixed_inverted", "uvlock": true, "x": 180, "y": 270, "weight": 25 }
+    ],
+    "facing=west,half=top,shape=inner_right,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_inner", "uvlock": true, "x": 180, "y": 270, "weight": 20 },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_clover_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 270,
+        "weight": 30
+      },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_sprouts_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 270,
+        "weight": 25
+      },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_inner_mixed_inverted", "uvlock": true, "x": 180, "y": 270, "weight": 25 }
+    ],
+    "facing=west,half=top,shape=outer_left,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "x": 180, "y": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_clover_inverted_lush", "uvlock": true, "x": 180, "y": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_sprouts_inverted_lush", "uvlock": true, "x": 180, "y": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_mixed_inverted", "uvlock": true, "x": 180, "y": 180, "weight": 25 }
+    ],
+    "facing=west,half=top,shape=outer_left,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "x": 180, "y": 180, "weight": 20 },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_clover_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 180,
+        "weight": 30
+      },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_sprouts_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 180,
+        "weight": 25
+      },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_mixed_inverted", "uvlock": true, "x": 180, "y": 180, "weight": 25 }
+    ],
+    "facing=west,half=top,shape=outer_right,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "x": 180, "y": 270, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_clover_inverted_lush", "uvlock": true, "x": 180, "y": 270, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_sprouts_inverted_lush", "uvlock": true, "x": 180, "y": 270, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_outer_mixed_inverted", "uvlock": true, "x": 180, "y": 270, "weight": 25 }
+    ],
+    "facing=west,half=top,shape=outer_right,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs_outer", "uvlock": true, "x": 180, "y": 270, "weight": 20 },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_clover_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 270,
+        "weight": 30
+      },
+      {
+        "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_sprouts_inverted_lush",
+        "uvlock": true,
+        "x": 180,
+        "y": 270,
+        "weight": 25
+      },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_outer_mixed_inverted", "uvlock": true, "x": 180, "y": 270, "weight": 25 }
+    ],
+    "facing=west,half=top,shape=straight,waterlogged=false": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs", "uvlock": true, "x": 180, "y": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_clover_inverted_lush", "uvlock": true, "x": 180, "y": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_sprouts_inverted_lush", "uvlock": true, "x": 180, "y": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_stairs_mixed_inverted", "uvlock": true, "x": 180, "y": 180, "weight": 25 }
+    ],
+    "facing=west,half=top,shape=straight,waterlogged=true": [
+      { "model": "minecraft:block/mossy_cobblestone_stairs", "uvlock": true, "x": 180, "y": 180, "weight": 20 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_clover_inverted_lush", "uvlock": true, "x": 180, "y": 180, "weight": 30 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_sprouts_inverted_lush", "uvlock": true, "x": 180, "y": 180, "weight": 25 },
+      { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_stairs_mixed_inverted", "uvlock": true, "x": 180, "y": 180, "weight": 25 }
+    ]
+  }
+}

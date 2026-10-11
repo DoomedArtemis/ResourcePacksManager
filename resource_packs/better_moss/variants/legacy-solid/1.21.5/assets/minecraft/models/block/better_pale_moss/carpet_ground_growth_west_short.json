@@ -1,0 +1,71 @@
+{
+  "textures": {
+    "particle": "minecraft:block/pale_moss_carpet",
+    "growth": "minecraft:block/pale_moss_carpet_side_small"
+  },
+  "elements": [
+    {
+      "faces": {
+        "up": { "uv": [0, 14, 1, 15], "texture": "#growth" }
+      },
+      "from": [0, 0.0083, -2],
+      "to": [1, 0.0083, -1]
+    },
+    {
+      "faces": {
+        "up": { "uv": [3, 14, 4, 15], "texture": "#growth" }
+      },
+      "from": [3, 0.0083, -2],
+      "to": [4, 0.0083, -1]
+    },
+    {
+      "faces": {
+        "up": { "uv": [5, 14, 6, 15], "texture": "#growth" }
+      },
+      "from": [5, 0.0083, -2],
+      "to": [6, 0.0083, -1]
+    },
+    {
+      "faces": {
+        "up": { "uv": [7, 14, 10, 15], "texture": "#growth" }
+      },
+      "from": [7, 0.0083, -2],
+      "to": [10, 0.0083, -1]
+    },
+    {
+      "faces": {
+        "up": { "uv": [11, 14, 13, 15], "texture": "#growth" }
+      },
+      "from": [11, 0.0083, -2],
+      "to": [13, 0.0083, -1]
+    },
+    {
+      "faces": {
+        "up": { "uv": [14, 14, 15, 15], "texture": "#growth" }
+      },
+      "from": [14, 0.0083, -2],
+      "to": [15, 0.0083, -1]
+    },
+    {
+      "faces": {
+        "up": { "uv": [4, 15, 5, 16], "texture": "#growth" }
+      },
+      "from": [4, 0.0083, -1],
+      "to": [5, 0.0083, 0]
+    },
+    {
+      "faces": {
+        "up": { "uv": [7, 15, 9, 16], "texture": "#growth" }
+      },
+      "from": [7, 0.0083, -1],
+      "to": [9, 0.0083, 0]
+    },
+    {
+      "faces": {
+        "up": { "uv": [10, 15, 12, 16], "texture": "#growth" }
+      },
+      "from": [10, 0.0083, -1],
+      "to": [12, 0.0083, 0]
+    }
+  ]
+}

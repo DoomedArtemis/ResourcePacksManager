@@ -1,0 +1,46 @@
+{
+  "parent": "minecraft:block/mossy_stone_bricks",
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "down": { "texture": "#down", "cullface": "down" },
+        "up": { "texture": "#up", "cullface": "up" },
+        "north": { "texture": "#north", "cullface": "north" },
+        "south": { "texture": "#south", "cullface": "south" },
+        "west": { "texture": "#west", "cullface": "west" },
+        "east": { "texture": "#east", "cullface": "east" }
+      }
+    },
+    {
+      "faces": {
+        "south": { "cullface": "up", "texture": "#detail_stem", "uv": [0, 4, 1, 6] },
+        "north": { "cullface": "up", "texture": "#detail_stem", "uv": [0, 4, 1, 6] }
+      },
+      "from": [1.501, 16.004, 4.002],
+      "to": [2.501, 18.004, 4.002]
+    },
+    {
+      "faces": {
+        "east": { "cullface": "up", "texture": "#detail_stem", "uv": [0, 4, 1, 6] },
+        "west": { "cullface": "up", "texture": "#detail_stem", "uv": [0, 4, 1, 6] }
+      },
+      "from": [2.001, 16.004, 3.502],
+      "to": [2.001, 18.004, 4.502]
+    },
+    {
+      "faces": {
+        "down": { "cullface": "up", "texture": "#detail_clover", "uv": [10, 5, 13, 2] },
+        "up": { "cullface": "up", "texture": "#detail_clover", "uv": [10, 2, 13, 5] }
+      },
+      "from": [0.50099999999999989, 18.004, 2.502],
+      "to": [3.501, 18.004, 5.502]
+    }
+  ],
+  "textures": {
+    "detail_stem": "minecraft:block/moss_decoration_stem",
+    "detail_clover": "minecraft:block/clover",
+    "detail_sprouts": "minecraft:block/moss_sprouts"
+  }
+}

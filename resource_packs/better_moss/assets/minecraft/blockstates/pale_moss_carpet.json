@@ -1,0 +1,364 @@
+{
+  "multipart": [
+    {
+      "apply": [
+        { "model": "minecraft:block/better_pale_moss/moss_carpet", "y": 0, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet", "y": 90, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet", "y": 180, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet", "y": 270, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_short", "y": 0, "weight": 2 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_short", "y": 90, "weight": 2 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_short", "y": 180, "weight": 2 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_short", "y": 270, "weight": 2 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_patchy", "y": 0, "weight": 2 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_patchy", "y": 90, "weight": 2 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_patchy", "y": 180, "weight": 2 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_patchy", "y": 270, "weight": 2 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_uneven", "y": 0, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_uneven", "y": 90, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_uneven", "y": 180, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_uneven", "y": 270, "weight": 1 }
+      ],
+      "when": {
+        "bottom": "true"
+      }
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/better_pale_moss/moss_carpet", "y": 0, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet", "y": 90, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet", "y": 180, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet", "y": 270, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_short", "y": 0, "weight": 2 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_short", "y": 90, "weight": 2 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_short", "y": 180, "weight": 2 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_short", "y": 270, "weight": 2 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_patchy", "y": 0, "weight": 2 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_patchy", "y": 90, "weight": 2 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_patchy", "y": 180, "weight": 2 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_patchy", "y": 270, "weight": 2 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_uneven", "y": 0, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_uneven", "y": 90, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_uneven", "y": 180, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/moss_carpet_uneven", "y": 270, "weight": 1 }
+      ],
+      "when": {
+        "bottom": "false",
+        "east": "none",
+        "north": "none",
+        "south": "none",
+        "west": "none"
+      }
+    },
+    {
+      "apply": {
+        "model": "minecraft:block/pale_moss_carpet_side_tall"
+      },
+      "when": {
+        "north": "tall"
+      }
+    },
+    {
+      "apply": {
+        "model": "minecraft:block/pale_moss_carpet_side_small"
+      },
+      "when": {
+        "north": "low"
+      }
+    },
+    {
+      "apply": {
+        "model": "minecraft:block/pale_moss_carpet_side_tall"
+      },
+      "when": {
+        "bottom": "false",
+        "east": "none",
+        "north": "none",
+        "south": "none",
+        "west": "none"
+      }
+    },
+    {
+      "apply": {
+        "model": "minecraft:block/pale_moss_carpet_side_tall",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": "tall"
+      }
+    },
+    {
+      "apply": {
+        "model": "minecraft:block/pale_moss_carpet_side_small",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": "low"
+      }
+    },
+    {
+      "apply": {
+        "model": "minecraft:block/pale_moss_carpet_side_tall",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "bottom": "false",
+        "east": "none",
+        "north": "none",
+        "south": "none",
+        "west": "none"
+      }
+    },
+    {
+      "apply": {
+        "model": "minecraft:block/pale_moss_carpet_side_tall",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "tall"
+      }
+    },
+    {
+      "apply": {
+        "model": "minecraft:block/pale_moss_carpet_side_small",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "low"
+      }
+    },
+    {
+      "apply": {
+        "model": "minecraft:block/pale_moss_carpet_side_tall",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "bottom": "false",
+        "east": "none",
+        "north": "none",
+        "south": "none",
+        "west": "none"
+      }
+    },
+    {
+      "apply": {
+        "model": "minecraft:block/pale_moss_carpet_side_tall",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "tall"
+      }
+    },
+    {
+      "apply": {
+        "model": "minecraft:block/pale_moss_carpet_side_small",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "low"
+      }
+    },
+    {
+      "apply": {
+        "model": "minecraft:block/pale_moss_carpet_side_tall",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "bottom": "false",
+        "east": "none",
+        "north": "none",
+        "south": "none",
+        "west": "none"
+      }
+    },
+    {
+      "when": {
+        "bottom": "true"
+      },
+      "apply": [
+        { "model": "minecraft:block/moss_block_face_bare", "weight": 788 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_1", "y": 0, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_1", "y": 90, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_1", "y": 180, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_1", "y": 270, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_2", "y": 0, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_2", "y": 90, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_2", "y": 180, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_2", "y": 270, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_3", "y": 0, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_3", "y": 90, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_3", "y": 180, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_3", "y": 270, "weight": 1 }
+      ]
+    },
+    {
+      "when": {
+        "north": "none",
+        "bottom": "false",
+        "south": "none",
+        "west": "none",
+        "east": "none"
+      },
+      "apply": [
+        { "model": "minecraft:block/moss_block_face_bare", "weight": 788 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_1", "y": 0, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_1", "y": 90, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_1", "y": 180, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_1", "y": 270, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_2", "y": 0, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_2", "y": 90, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_2", "y": 180, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_2", "y": 270, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_3", "y": 0, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_3", "y": 90, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_3", "y": 180, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/flowers_up_white_flowers_3", "y": 270, "weight": 1 }
+      ]
+    },
+    {
+      "when": {
+        "bottom": "true"
+      },
+      "apply": [
+        { "model": "minecraft:block/moss_block_face_bare", "weight": 604 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_1", "y": 0, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_1", "y": 90, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_1", "y": 180, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_1", "y": 270, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_1", "y": 0, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_1", "y": 90, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_1", "y": 180, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_1", "y": 270, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_2", "y": 0, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_2", "y": 90, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_2", "y": 180, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_2", "y": 270, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_2", "y": 0, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_2", "y": 90, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_2", "y": 180, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_2", "y": 270, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_3", "y": 0, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_3", "y": 90, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_3", "y": 180, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_3", "y": 270, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_3", "y": 0, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_3", "y": 90, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_3", "y": 180, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_3", "y": 270, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_4", "y": 0, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_4", "y": 90, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_4", "y": 180, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_4", "y": 270, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_4", "y": 0, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_4", "y": 90, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_4", "y": 180, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_4", "y": 270, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_sprouts", "y": 0, "weight": 5 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_sprouts", "y": 90, "weight": 5 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_sprouts", "y": 180, "weight": 5 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_sprouts", "y": 270, "weight": 5 }
+      ]
+    },
+    {
+      "when": {
+        "north": "none",
+        "bottom": "false",
+        "south": "none",
+        "west": "none",
+        "east": "none"
+      },
+      "apply": [
+        { "model": "minecraft:block/moss_block_face_bare", "weight": 604 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_1", "y": 0, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_1", "y": 90, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_1", "y": 180, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_1", "y": 270, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_1", "y": 0, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_1", "y": 90, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_1", "y": 180, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_1", "y": 270, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_2", "y": 0, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_2", "y": 90, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_2", "y": 180, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_2", "y": 270, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_2", "y": 0, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_2", "y": 90, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_2", "y": 180, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_2", "y": 270, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_3", "y": 0, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_3", "y": 90, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_3", "y": 180, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_3", "y": 270, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_3", "y": 0, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_3", "y": 90, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_3", "y": 180, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_3", "y": 270, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_4", "y": 0, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_4", "y": 90, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_4", "y": 180, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_clover_4", "y": 270, "weight": 10 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_4", "y": 0, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_4", "y": 90, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_4", "y": 180, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_blooming_clover_4", "y": 270, "weight": 1 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_sprouts", "y": 0, "weight": 5 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_sprouts", "y": 90, "weight": 5 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_sprouts", "y": 180, "weight": 5 },
+        { "model": "minecraft:block/better_pale_moss/carpet_detail_sprouts", "y": 270, "weight": 5 }
+      ]
+    },
+    {
+      "when": {
+        "north": "none",
+        "bottom": "true"
+      },
+      "apply": [
+        { "model": "minecraft:block/better_pale_moss/carpet_ground_growth_north_full", "y": 0, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/carpet_ground_growth_north_short", "y": 0, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/carpet_ground_growth_none", "weight": 4 }
+      ]
+    },
+    {
+      "when": {
+        "east": "none",
+        "bottom": "true"
+      },
+      "apply": [
+        { "model": "minecraft:block/better_pale_moss/carpet_ground_growth_east_full", "y": 90, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/carpet_ground_growth_east_short", "y": 90, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/carpet_ground_growth_none", "weight": 4 }
+      ]
+    },
+    {
+      "when": {
+        "south": "none",
+        "bottom": "true"
+      },
+      "apply": [
+        { "model": "minecraft:block/better_pale_moss/carpet_ground_growth_south_full", "y": 180, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/carpet_ground_growth_south_short", "y": 180, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/carpet_ground_growth_none", "weight": 4 }
+      ]
+    },
+    {
+      "when": {
+        "west": "none",
+        "bottom": "true"
+      },
+      "apply": [
+        { "model": "minecraft:block/better_pale_moss/carpet_ground_growth_west_full", "y": 270, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/carpet_ground_growth_west_short", "y": 270, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/carpet_ground_growth_none", "weight": 4 }
+      ]
+    }
+  ]
+}

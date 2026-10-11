@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/better_moss_potted_azalea",
+  "textures": {
+    "plant": "minecraft:block/potted_azalea_bush_plant",
+    "side": "minecraft:block/potted_azalea_bush_side",
+    "top": "minecraft:block/potted_azalea_bush_top"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "": [
+      { "y": 0, "weight": 1, "model": "minecraft:block/better_infested_stone/infested_mossy_stone_bricks_clover_lush" },
+      { "y": 90, "weight": 1, "model": "minecraft:block/better_infested_stone/infested_mossy_stone_bricks_clover_lush" },
+      { "y": 180, "weight": 1, "model": "minecraft:block/better_infested_stone/infested_mossy_stone_bricks_clover_lush" },
+      { "y": 270, "weight": 1, "model": "minecraft:block/better_infested_stone/infested_mossy_stone_bricks_clover_lush" },
+      { "y": 0, "weight": 1, "model": "minecraft:block/better_infested_stone/infested_mossy_stone_bricks_sprouts_lush" },
+      { "y": 90, "weight": 1, "model": "minecraft:block/better_infested_stone/infested_mossy_stone_bricks_sprouts_lush" },
+      { "y": 180, "weight": 1, "model": "minecraft:block/better_infested_stone/infested_mossy_stone_bricks_sprouts_lush" },
+      { "y": 270, "weight": 1, "model": "minecraft:block/better_infested_stone/infested_mossy_stone_bricks_sprouts_lush" },
+      { "y": 0, "weight": 1, "model": "minecraft:block/better_infested_stone/infested_mossy_stone_bricks_mixed" },
+      { "y": 90, "weight": 1, "model": "minecraft:block/better_infested_stone/infested_mossy_stone_bricks_mixed" },
+      { "y": 180, "weight": 1, "model": "minecraft:block/better_infested_stone/infested_mossy_stone_bricks_mixed" },
+      { "y": 270, "weight": 1, "model": "minecraft:block/better_infested_stone/infested_mossy_stone_bricks_mixed" }
+    ]
+  }
+}

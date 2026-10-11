@@ -182,6 +182,10 @@ File variants replace one source file with another for selected versions:
 
 Variants are useful when a version needs different JSON, textures, or models while preserving the same output path.
 
+Large generated rule sets can be stored in a JSON file inside the pack. Set `FileOptionsPath` in `pack.build.psd1` to that file's relative path; its `FileRules` and `FileVariants` arrays are appended to the inline rules. Other option names are rejected.
+
+Better Moss uses `variants/legacy-solid/manifest.json` for versions before 26.1, which do not support transparent decoration textures on solid blocks. The compatibility models crop geometry to visible texture pixels while keeping the canonical models for 26.1 and newer. Dedicated copies of animated decoration sprites use a fixed frame in older versions; the original PNG bytes and normal Minecraft plant animations are preserved. After changing a model or texture, regenerate these variants with `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/update-moss-legacy-geometry.ps1`. The script downloads and verifies official client assets when they are missing from the ignored cache. Run `node --test scripts/moss-legacy-geometry.test.cjs` for the geometry tests.
+
 ## Build Output
 
 The build script generates:

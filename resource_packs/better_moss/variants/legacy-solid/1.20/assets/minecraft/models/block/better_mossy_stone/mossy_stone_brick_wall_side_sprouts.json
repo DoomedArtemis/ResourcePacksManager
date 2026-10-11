@@ -1,0 +1,108 @@
+{
+  "parent": "minecraft:block/mossy_stone_brick_wall_side",
+  "elements": [
+    {
+      "from": [5, 0, 0],
+      "to": [11, 14, 8],
+      "faces": {
+        "down": { "texture": "#wall", "cullface": "down" },
+        "up": { "texture": "#wall" },
+        "north": { "texture": "#wall", "cullface": "north" },
+        "west": { "texture": "#wall" },
+        "east": { "texture": "#wall" }
+      },
+      "__comment": "wall"
+    },
+    {
+      "faces": {
+        "south": { "uv": [7, 11, 8, 16], "texture": "#detail_sprouts" }
+      },
+      "from": [8.001000000000001, 14.004, 2.002],
+      "to": [9.001000000000001, 19.003999999999998, 2.002]
+    },
+    {
+      "faces": {
+        "south": { "uv": [4, 12, 5, 13], "texture": "#detail_sprouts" }
+      },
+      "from": [5.001, 17.003999999999998, 2.002],
+      "to": [6.001, 18.003999999999998, 2.002]
+    },
+    {
+      "faces": {
+        "south": { "uv": [4, 13, 6, 16], "texture": "#detail_sprouts" }
+      },
+      "from": [5.001, 14.004, 2.002],
+      "to": [7.001000000000001, 17.003999999999998, 2.002]
+    },
+    {
+      "faces": {
+        "north": { "uv": [7, 11, 8, 16], "texture": "#detail_sprouts" }
+      },
+      "from": [5.001, 14.004, 2.002],
+      "to": [6.001, 19.003999999999998, 2.002]
+    },
+    {
+      "faces": {
+        "north": { "uv": [4, 12, 5, 13], "texture": "#detail_sprouts" }
+      },
+      "from": [8.001000000000001, 17.003999999999998, 2.002],
+      "to": [9.001000000000001, 18.003999999999998, 2.002]
+    },
+    {
+      "faces": {
+        "north": { "uv": [4, 13, 6, 16], "texture": "#detail_sprouts" }
+      },
+      "from": [7.001000000000001, 14.004, 2.002],
+      "to": [9.001000000000001, 17.003999999999998, 2.002]
+    },
+    {
+      "faces": {
+        "east": { "uv": [7, 11, 8, 16], "texture": "#detail_sprouts" }
+      },
+      "from": [7.001, 14.004, 0.0019999999999997797],
+      "to": [7.001, 19.003999999999998, 1.0019999999999998]
+    },
+    {
+      "faces": {
+        "east": { "uv": [4, 12, 5, 13], "texture": "#detail_sprouts" }
+      },
+      "from": [7.001, 17.003999999999998, 3.002],
+      "to": [7.001, 18.003999999999998, 4.002]
+    },
+    {
+      "faces": {
+        "east": { "uv": [4, 13, 6, 16], "texture": "#detail_sprouts" }
+      },
+      "from": [7.001, 14.004, 2.002],
+      "to": [7.001, 17.003999999999998, 4.002]
+    },
+    {
+      "faces": {
+        "west": { "uv": [7, 11, 8, 16], "texture": "#detail_sprouts" }
+      },
+      "from": [7.001, 14.004, 3.002],
+      "to": [7.001, 19.003999999999998, 4.002]
+    },
+    {
+      "faces": {
+        "west": { "uv": [4, 12, 5, 13], "texture": "#detail_sprouts" }
+      },
+      "from": [7.001, 17.003999999999998, 0.0019999999999997797],
+      "to": [7.001, 18.003999999999998, 1.0019999999999998]
+    },
+    {
+      "faces": {
+        "west": { "uv": [4, 13, 6, 16], "texture": "#detail_sprouts" }
+      },
+      "from": [7.001, 14.004, 0.0019999999999997797],
+      "to": [7.001, 17.003999999999998, 2.002]
+    }
+  ],
+  "textures": {
+    "particle": "#wall",
+    "wall": "minecraft:block/mossy_stone_bricks",
+    "detail_stem": "minecraft:block/moss_decoration_stem",
+    "detail_clover": "minecraft:block/clover",
+    "detail_sprouts": "minecraft:block/moss_sprouts"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "multipart": [
+    {
+      "apply": [
+        { "model": "minecraft:block/mossy_stone_bricks", "y": 0, "weight": 80 },
+        { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks", "y": 0, "weight": 20 },
+        { "model": "minecraft:block/mossy_stone_bricks", "y": 90, "weight": 80 },
+        { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks", "y": 90, "weight": 20 },
+        { "model": "minecraft:block/mossy_stone_bricks", "y": 180, "weight": 80 },
+        { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks", "y": 180, "weight": 20 },
+        { "model": "minecraft:block/mossy_stone_bricks", "y": 270, "weight": 80 },
+        { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks", "y": 270, "weight": 20 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_clover_lush", "y": 0, "weight": 120 },
+        { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_clover_lush", "y": 0, "weight": 30 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_clover_lush", "y": 90, "weight": 120 },
+        { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_clover_lush", "y": 90, "weight": 30 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_clover_lush", "y": 180, "weight": 120 },
+        { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_clover_lush", "y": 180, "weight": 30 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_clover_lush", "y": 270, "weight": 120 },
+        { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_clover_lush", "y": 270, "weight": 30 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_sprouts_lush", "y": 0, "weight": 100 },
+        { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_sprouts_lush", "y": 0, "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_sprouts_lush", "y": 90, "weight": 100 },
+        { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_sprouts_lush", "y": 90, "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_sprouts_lush", "y": 180, "weight": 100 },
+        { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_sprouts_lush", "y": 180, "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_sprouts_lush", "y": 270, "weight": 100 },
+        { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_sprouts_lush", "y": 270, "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_mixed", "y": 0, "weight": 100 },
+        { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_mixed", "y": 0, "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_mixed", "y": 90, "weight": 100 },
+        { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_mixed", "y": 90, "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_mixed", "y": 180, "weight": 100 },
+        { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_mixed", "y": 180, "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_stone_bricks_mixed", "y": 270, "weight": 100 },
+        { "model": "minecraft:block/better_moss_details/seams_mossy_stone_bricks_mixed", "y": 270, "weight": 25 }
+      ]
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/moss_block_face_bare", "weight": 388 },
+        { "y": 0, "weight": 2, "model": "minecraft:block/better_moss_details/mushroom_brown_16" },
+        { "y": 90, "weight": 2, "model": "minecraft:block/better_moss_details/mushroom_brown_16" },
+        { "y": 180, "weight": 2, "model": "minecraft:block/better_moss_details/mushroom_brown_16" },
+        { "y": 270, "weight": 2, "model": "minecraft:block/better_moss_details/mushroom_brown_16" },
+        { "y": 0, "weight": 1, "model": "minecraft:block/better_moss_details/mushroom_red_16" },
+        { "y": 90, "weight": 1, "model": "minecraft:block/better_moss_details/mushroom_red_16" },
+        { "y": 180, "weight": 1, "model": "minecraft:block/better_moss_details/mushroom_red_16" },
+        { "y": 270, "weight": 1, "model": "minecraft:block/better_moss_details/mushroom_red_16" }
+      ]
+    }
+  ]
+}

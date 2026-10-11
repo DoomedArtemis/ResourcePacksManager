@@ -1,0 +1,38 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minecraft:block/azalea"
+      }
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/moss_block_face_bare", "weight": 36 },
+        { "y": 0, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_clover_sparse" },
+        { "y": 90, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_clover_sparse" },
+        { "y": 180, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_clover_sparse" },
+        { "y": 270, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_clover_sparse" },
+        { "y": 0, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_clover_pair" },
+        { "y": 90, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_clover_pair" },
+        { "y": 180, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_clover_pair" },
+        { "y": 270, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_clover_pair" },
+        { "y": 0, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_sprouts_sparse" },
+        { "y": 90, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_sprouts_sparse" },
+        { "y": 180, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_sprouts_sparse" },
+        { "y": 270, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_sprouts_sparse" },
+        { "y": 0, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_sprouts_pair" },
+        { "y": 90, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_sprouts_pair" },
+        { "y": 180, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_sprouts_pair" },
+        { "y": 270, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_sprouts_pair" },
+        { "y": 0, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_mixed_sparse" },
+        { "y": 90, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_mixed_sparse" },
+        { "y": 180, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_mixed_sparse" },
+        { "y": 270, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_mixed_sparse" },
+        { "y": 0, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_mixed_cluster" },
+        { "y": 90, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_mixed_cluster" },
+        { "y": 180, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_mixed_cluster" },
+        { "y": 270, "weight": 1, "model": "minecraft:block/better_moss_details/azalea_base_mixed_cluster" }
+      ]
+    }
+  ]
+}

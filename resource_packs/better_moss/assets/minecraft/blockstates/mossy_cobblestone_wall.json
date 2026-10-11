@@ -1,0 +1,220 @@
+{
+  "multipart": [
+    {
+      "apply": [
+        { "model": "minecraft:block/mossy_cobblestone_wall_post", "weight": 20 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_post_clover_lush", "weight": 30 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_post_sprouts_lush", "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_post_mixed", "weight": 25 }
+      ],
+      "when": {
+        "up": "true",
+        "waterlogged": "false"
+      }
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/mossy_cobblestone_wall_post", "weight": 20 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_post_clover_lush", "weight": 30 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_post_sprouts_lush", "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_post_mixed", "weight": 25 }
+      ],
+      "when": {
+        "up": "true",
+        "waterlogged": "true"
+      }
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/mossy_cobblestone_wall_side", "uvlock": true, "weight": 20 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_clover_lush", "uvlock": true, "weight": 30 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_sprouts_lush", "uvlock": true, "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_mixed", "uvlock": true, "weight": 25 }
+      ],
+      "when": {
+        "north": "low",
+        "waterlogged": "false"
+      }
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/mossy_cobblestone_wall_side", "uvlock": true, "weight": 20 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_clover_lush", "uvlock": true, "weight": 30 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_sprouts_lush", "uvlock": true, "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_mixed", "uvlock": true, "weight": 25 }
+      ],
+      "when": {
+        "north": "low",
+        "waterlogged": "true"
+      }
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/mossy_cobblestone_wall_side", "uvlock": true, "y": 90, "weight": 20 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_clover_lush", "uvlock": true, "y": 90, "weight": 30 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_sprouts_lush", "uvlock": true, "y": 90, "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_mixed", "uvlock": true, "y": 90, "weight": 25 }
+      ],
+      "when": {
+        "east": "low",
+        "waterlogged": "false"
+      }
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/mossy_cobblestone_wall_side", "uvlock": true, "y": 90, "weight": 20 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_clover_lush", "uvlock": true, "y": 90, "weight": 30 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_sprouts_lush", "uvlock": true, "y": 90, "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_mixed", "uvlock": true, "y": 90, "weight": 25 }
+      ],
+      "when": {
+        "east": "low",
+        "waterlogged": "true"
+      }
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/mossy_cobblestone_wall_side", "uvlock": true, "y": 180, "weight": 20 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_clover_lush", "uvlock": true, "y": 180, "weight": 30 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_sprouts_lush", "uvlock": true, "y": 180, "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_mixed", "uvlock": true, "y": 180, "weight": 25 }
+      ],
+      "when": {
+        "south": "low",
+        "waterlogged": "false"
+      }
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/mossy_cobblestone_wall_side", "uvlock": true, "y": 180, "weight": 20 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_clover_lush", "uvlock": true, "y": 180, "weight": 30 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_sprouts_lush", "uvlock": true, "y": 180, "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_mixed", "uvlock": true, "y": 180, "weight": 25 }
+      ],
+      "when": {
+        "south": "low",
+        "waterlogged": "true"
+      }
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/mossy_cobblestone_wall_side", "uvlock": true, "y": 270, "weight": 20 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_clover_lush", "uvlock": true, "y": 270, "weight": 30 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_sprouts_lush", "uvlock": true, "y": 270, "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_mixed", "uvlock": true, "y": 270, "weight": 25 }
+      ],
+      "when": {
+        "west": "low",
+        "waterlogged": "false"
+      }
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/mossy_cobblestone_wall_side", "uvlock": true, "y": 270, "weight": 20 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_clover_lush", "uvlock": true, "y": 270, "weight": 30 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_sprouts_lush", "uvlock": true, "y": 270, "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_mixed", "uvlock": true, "y": 270, "weight": 25 }
+      ],
+      "when": {
+        "west": "low",
+        "waterlogged": "true"
+      }
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/mossy_cobblestone_wall_side_tall", "uvlock": true, "weight": 20 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_tall_clover_lush", "uvlock": true, "weight": 30 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_tall_sprouts_lush", "uvlock": true, "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_tall_mixed", "uvlock": true, "weight": 25 }
+      ],
+      "when": {
+        "north": "tall",
+        "waterlogged": "false"
+      }
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/mossy_cobblestone_wall_side_tall", "uvlock": true, "weight": 20 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_tall_clover_lush", "uvlock": true, "weight": 30 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_tall_sprouts_lush", "uvlock": true, "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_tall_mixed", "uvlock": true, "weight": 25 }
+      ],
+      "when": {
+        "north": "tall",
+        "waterlogged": "true"
+      }
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/mossy_cobblestone_wall_side_tall", "uvlock": true, "y": 90, "weight": 20 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_tall_clover_lush", "uvlock": true, "y": 90, "weight": 30 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_tall_sprouts_lush", "uvlock": true, "y": 90, "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_tall_mixed", "uvlock": true, "y": 90, "weight": 25 }
+      ],
+      "when": {
+        "east": "tall",
+        "waterlogged": "false"
+      }
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/mossy_cobblestone_wall_side_tall", "uvlock": true, "y": 90, "weight": 20 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_tall_clover_lush", "uvlock": true, "y": 90, "weight": 30 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_tall_sprouts_lush", "uvlock": true, "y": 90, "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_tall_mixed", "uvlock": true, "y": 90, "weight": 25 }
+      ],
+      "when": {
+        "east": "tall",
+        "waterlogged": "true"
+      }
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/mossy_cobblestone_wall_side_tall", "uvlock": true, "y": 180, "weight": 20 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_tall_clover_lush", "uvlock": true, "y": 180, "weight": 30 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_tall_sprouts_lush", "uvlock": true, "y": 180, "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_tall_mixed", "uvlock": true, "y": 180, "weight": 25 }
+      ],
+      "when": {
+        "south": "tall",
+        "waterlogged": "false"
+      }
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/mossy_cobblestone_wall_side_tall", "uvlock": true, "y": 180, "weight": 20 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_tall_clover_lush", "uvlock": true, "y": 180, "weight": 30 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_tall_sprouts_lush", "uvlock": true, "y": 180, "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_tall_mixed", "uvlock": true, "y": 180, "weight": 25 }
+      ],
+      "when": {
+        "south": "tall",
+        "waterlogged": "true"
+      }
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/mossy_cobblestone_wall_side_tall", "uvlock": true, "y": 270, "weight": 20 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_tall_clover_lush", "uvlock": true, "y": 270, "weight": 30 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_tall_sprouts_lush", "uvlock": true, "y": 270, "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/mossy_cobblestone_wall_side_tall_mixed", "uvlock": true, "y": 270, "weight": 25 }
+      ],
+      "when": {
+        "west": "tall",
+        "waterlogged": "false"
+      }
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/mossy_cobblestone_wall_side_tall", "uvlock": true, "y": 270, "weight": 20 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_tall_clover_lush", "uvlock": true, "y": 270, "weight": 30 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_tall_sprouts_lush", "uvlock": true, "y": 270, "weight": 25 },
+        { "model": "minecraft:block/better_mossy_stone/waterlogged/mossy_cobblestone_wall_side_tall_mixed", "uvlock": true, "y": 270, "weight": 25 }
+      ],
+      "when": {
+        "west": "tall",
+        "waterlogged": "true"
+      }
+    }
+  ]
+}

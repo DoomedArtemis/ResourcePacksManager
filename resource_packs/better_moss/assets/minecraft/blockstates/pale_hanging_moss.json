@@ -1,0 +1,50 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "tip": "false"
+      },
+      "apply": {
+        "model": "minecraft:block/pale_hanging_moss"
+      }
+    },
+    {
+      "when": {
+        "tip": "true"
+      },
+      "apply": {
+        "model": "minecraft:block/pale_hanging_moss_tip"
+      }
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/moss_block_face_bare", "weight": 4 },
+        { "y": 0, "weight": 1, "model": "minecraft:block/better_pale_moss/hanging_moss_extra_strands" },
+        { "y": 90, "weight": 1, "model": "minecraft:block/better_pale_moss/hanging_moss_extra_strands" },
+        { "y": 180, "weight": 1, "model": "minecraft:block/better_pale_moss/hanging_moss_extra_strands" },
+        { "y": 270, "weight": 1, "model": "minecraft:block/better_pale_moss/hanging_moss_extra_strands" }
+      ]
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/moss_block_face_bare", "weight": 192 },
+        { "model": "minecraft:block/better_pale_moss/hanging_moss_flowers_white_flowers_1", "y": 0, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/hanging_moss_flowers_white_flowers_1", "y": 90, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/hanging_moss_flowers_white_flowers_1", "y": 180, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/hanging_moss_flowers_white_flowers_1", "y": 270, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/hanging_moss_flowers_white_flowers_2", "y": 0, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/hanging_moss_flowers_white_flowers_2", "y": 90, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/hanging_moss_flowers_white_flowers_2", "y": 180, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/hanging_moss_flowers_white_flowers_2", "y": 270, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/hanging_moss_flowers_white_flowers_3", "y": 0, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/hanging_moss_flowers_white_flowers_3", "y": 90, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/hanging_moss_flowers_white_flowers_3", "y": 180, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/hanging_moss_flowers_white_flowers_3", "y": 270, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/hanging_moss_flowers_pale_blooming_clover", "y": 0, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/hanging_moss_flowers_pale_blooming_clover", "y": 90, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/hanging_moss_flowers_pale_blooming_clover", "y": 180, "weight": 3 },
+        { "model": "minecraft:block/better_pale_moss/hanging_moss_flowers_pale_blooming_clover", "y": 270, "weight": 3 }
+      ]
+    }
+  ]
+}

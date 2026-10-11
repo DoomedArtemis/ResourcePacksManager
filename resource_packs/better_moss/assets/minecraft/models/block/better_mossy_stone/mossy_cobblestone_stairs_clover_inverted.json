@@ -1,0 +1,57 @@
+{
+  "parent": "minecraft:block/mossy_cobblestone_stairs",
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 8, 16],
+      "faces": {
+        "down": { "uv": [0, 0, 16, 16], "texture": "#bottom", "cullface": "down" },
+        "up": { "uv": [0, 0, 16, 16], "texture": "#top" },
+        "north": { "uv": [0, 8, 16, 16], "texture": "#side", "cullface": "north" },
+        "south": { "uv": [0, 8, 16, 16], "texture": "#side", "cullface": "south" },
+        "west": { "uv": [0, 8, 16, 16], "texture": "#side", "cullface": "west" },
+        "east": { "uv": [0, 8, 16, 16], "texture": "#side", "cullface": "east" }
+      }
+    },
+    {
+      "from": [8, 8, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "up": { "uv": [8, 0, 16, 16], "texture": "#top", "cullface": "up" },
+        "north": { "uv": [0, 0, 8, 8], "texture": "#side", "cullface": "north" },
+        "south": { "uv": [8, 0, 16, 8], "texture": "#side", "cullface": "south" },
+        "west": { "uv": [0, 0, 16, 8], "texture": "#side" },
+        "east": { "uv": [0, 0, 16, 8], "texture": "#side", "cullface": "east" }
+      }
+    },
+    {
+      "faces": {
+        "south": { "cullface": "down", "texture": "#detail_stem", "uv": [0, 6, 1, 4] },
+        "north": { "cullface": "down", "texture": "#detail_stem", "uv": [0, 6, 1, 4] }
+      },
+      "from": [1.501, -2.004, 5.002],
+      "to": [2.501, -0.004, 5.002]
+    },
+    {
+      "faces": {
+        "east": { "cullface": "down", "texture": "#detail_stem", "uv": [0, 6, 1, 4] },
+        "west": { "cullface": "down", "texture": "#detail_stem", "uv": [0, 6, 1, 4] }
+      },
+      "from": [2.001, -2.004, 4.502],
+      "to": [2.001, -0.004, 5.502]
+    },
+    {
+      "faces": {
+        "down": { "cullface": "down", "texture": "#detail_clover", "uv": [10, 5, 13, 2] },
+        "up": { "cullface": "down", "texture": "#detail_clover", "uv": [10, 2, 13, 5] }
+      },
+      "from": [0.50099999999999989, -2.004, 3.502],
+      "to": [3.501, -2.004, 6.502]
+    }
+  ],
+  "textures": {
+    "detail_stem": "minecraft:block/moss_decoration_stem",
+    "detail_clover": "minecraft:block/clover",
+    "detail_sprouts": "minecraft:block/moss_sprouts"
+  }
+}

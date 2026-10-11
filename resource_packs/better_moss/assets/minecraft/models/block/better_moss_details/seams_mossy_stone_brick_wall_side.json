@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:block/mossy_stone_brick_wall_side",
+  "elements": [
+    {
+      "from": [5, 0, 0],
+      "to": [11, 14, 8],
+      "faces": {
+        "down": { "texture": "#wall", "cullface": "down" },
+        "up": { "texture": "#wall" },
+        "north": { "texture": "#wall", "cullface": "north" },
+        "west": { "texture": "#wall" },
+        "east": { "texture": "#wall" }
+      },
+      "__comment": "wall"
+    },
+    {
+      "faces": {
+        "north": { "cullface": "north", "texture": "#seam_growth", "uv": [5, 13, 7, 16] }
+      },
+      "from": [7, 0, -0.012],
+      "to": [9, 3, -0.012]
+    },
+    {
+      "faces": {
+        "south": { "uv": [5, 13, 7, 16], "texture": "#seam_growth" }
+      },
+      "from": [7, 0, 8.012],
+      "to": [9, 3, 8.012]
+    },
+    {
+      "faces": {
+        "east": { "uv": [5, 13, 7, 16], "texture": "#seam_growth" }
+      },
+      "from": [11.012, 0, 3],
+      "to": [11.012, 3, 5]
+    },
+    {
+      "faces": {
+        "west": { "uv": [5, 13, 7, 16], "texture": "#seam_growth" }
+      },
+      "from": [4.988, 0, 3],
+      "to": [4.988, 3, 5]
+    }
+  ],
+  "textures": {
+    "seam_growth": "minecraft:block/moss_sprouts"
+  }
+}

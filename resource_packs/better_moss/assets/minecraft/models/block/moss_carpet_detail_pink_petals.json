@@ -1,0 +1,72 @@
+{
+  "textures": {
+    "particle": "minecraft:block/moss_block",
+    "all": "minecraft:block/moss_block",
+    "flowerbed": "minecraft:block/pink_petals",
+    "stem": "minecraft:block/moss_decoration_stem"
+  },
+  "elements": [
+    {
+      "from": [0.003, 4.003, 0.005],
+      "to": [8.003, 4.003, 8.005],
+      "faces": {
+        "up": { "uv": [0, 0, 8, 8], "texture": "#flowerbed", "cullface": "up" },
+        "down": { "uv": [0, 8, 8, 0], "texture": "#flowerbed", "cullface": "up" }
+      }
+    },
+    {
+      "from": [4.253, 1.003, -2.595],
+      "to": [4.253, 4.003, -1.595],
+      "rotation": { "angle": -45, "axis": "y", "origin": [0.003, 1.003, 0.005] },
+      "faces": {
+        "east": { "uv": [0, 4, 1, 7], "texture": "#stem", "cullface": "up" },
+        "west": { "uv": [0, 4, 1, 7], "texture": "#stem", "cullface": "up" }
+      }
+    },
+    {
+      "from": [3.753, 1.003, -2.095],
+      "to": [4.753, 4.003, -2.095],
+      "rotation": { "angle": -45, "axis": "y", "origin": [0.003, 1.003, 0.005] },
+      "faces": {
+        "north": { "uv": [0, 4, 1, 7], "texture": "#stem", "cullface": "up" },
+        "south": { "uv": [0, 4, 1, 7], "texture": "#stem", "cullface": "up" }
+      }
+    },
+    {
+      "from": [4.903, 1.003, 2.305],
+      "to": [4.903, 4.003, 3.305],
+      "rotation": { "angle": -45, "axis": "y", "origin": [0.003, 1.003, 0.005] },
+      "faces": {
+        "east": { "uv": [0, 4, 1, 7], "texture": "#stem", "cullface": "up" },
+        "west": { "uv": [0, 4, 1, 7], "texture": "#stem", "cullface": "up" }
+      }
+    },
+    {
+      "from": [4.403, 1.003, 2.805],
+      "to": [5.403, 4.003, 2.805],
+      "rotation": { "angle": -45, "axis": "y", "origin": [0.003, 1.003, 0.005] },
+      "faces": {
+        "north": { "uv": [0, 4, 1, 7], "texture": "#stem", "cullface": "up" },
+        "south": { "uv": [0, 4, 1, 7], "texture": "#stem", "cullface": "up" }
+      }
+    },
+    {
+      "from": [9.153, 1.003, -0.445],
+      "to": [9.153, 4.003, 0.555],
+      "rotation": { "angle": -45, "axis": "y", "origin": [0.003, 1.003, 0.005] },
+      "faces": {
+        "east": { "uv": [0, 4, 1, 7], "texture": "#stem", "cullface": "up" },
+        "west": { "uv": [0, 4, 1, 7], "texture": "#stem", "cullface": "up" }
+      }
+    },
+    {
+      "from": [8.653, 1.003, 0.055],
+      "to": [9.653, 4.003, 0.055],
+      "rotation": { "angle": -45, "axis": "y", "origin": [0.003, 1.003, 0.005] },
+      "faces": {
+        "north": { "uv": [0, 4, 1, 7], "texture": "#stem", "cullface": "up" },
+        "south": { "uv": [0, 4, 1, 7], "texture": "#stem", "cullface": "up" }
+      }
+    }
+  ]
+}

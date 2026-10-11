@@ -1,0 +1,21 @@
+{
+  "textures": {
+    "west": "minecraft:block/stone_bricks",
+    "bottom": "minecraft:block/stone_bricks",
+    "particle": "minecraft:block/stone_bricks",
+    "detail_stem": "minecraft:block/pale_moss_decoration_stem",
+    "down": "minecraft:block/stone_bricks",
+    "east": "minecraft:block/stone_bricks",
+    "detail_sprouts": "minecraft:block/pale_moss_sprouts",
+    "north": "minecraft:block/stone_bricks",
+    "wall": "minecraft:block/stone_bricks",
+    "up": "minecraft:block/stone_bricks",
+    "top": "minecraft:block/stone_bricks",
+    "all": "minecraft:block/stone_bricks",
+    "side": "minecraft:block/stone_bricks",
+    "detail_clover": "minecraft:block/pale_clover",
+    "south": "minecraft:block/stone_bricks",
+    "detail_moss": "minecraft:block/pale_moss_block"
+  },
+  "parent": "minecraft:block/better_mossy_stone/mossy_stone_bricks_mixed"
+}
