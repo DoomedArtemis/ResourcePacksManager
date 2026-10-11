@@ -1,0 +1,8 @@
+﻿Lavender textures adapted from The Lavender Update by OutofContent / KineticStudio.
+
+The original assets are used under the MIT License.
+
+Original project:
+https://www.curseforge.com/minecraft/mc-mods/the-lavender-update
+
+A copy of the applicable MIT License is included with this resource pack.

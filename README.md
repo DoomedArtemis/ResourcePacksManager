@@ -196,6 +196,8 @@ The generated ZIP contains:
 
 - root `pack.mcmeta`
 - root `pack.png`, when present in the source pack
+- extra files placed directly in the source pack root (such as `LICENSE.txt`)
+- files from `extras/`, copied to the ZIP root with their subfolders preserved
 - resolved `assets/minecraft/...` files from `assets/` and `drop/`
 
 Build validation can enforce lowercase output paths, parse generated JSON and `.mcmeta` files, and check texture metadata pairs depending on the global validation settings.
@@ -209,6 +211,24 @@ The builder generates `pack.mcmeta` differently depending on the target Minecraf
 - versions using Mojang's newer format model receive `min_format` and `max_format`
 
 The default pack description comes from `BaseDescription` in the global config. Per-version matrix entries can override or extend generated metadata with `Description`, `PackMetadata`, and `RootMetadata`.
+
+To customize one pack, put a JSON `pack.mcmeta` in its source root. Its fields are merged into generated metadata. You can also set these options in `pack.build.psd1`:
+
+```powershell
+@{
+    Description = 'My pack for Minecraft {VersionId}'
+    PackMetadata = @{
+        credits = 'Textures by the original creators'
+    }
+    RootMetadata = @{
+        license = 'See LICENSE.txt'
+    }
+}
+```
+
+Metadata precedence is generated version metadata, source `pack.mcmeta`, `RootMetadata`, `PackMetadata`, then `Description`. The builder always retains the target version's generated compatibility fields (`pack_format`, `supported_formats`, `min_format`, `max_format`), even if custom metadata supplies them.
+
+Put documentation such as `license.txt` directly in the source pack root. Use `extras/` for nested extra files; for example, `extras/docs/CREDITS.txt` becomes `docs/CREDITS.txt` in the ZIP. The build config and source `pack.mcmeta` are handled separately. Lowercase path validation applies to `assets/`; documentation filenames may contain capitals. JSON and `.mcmeta` files still need valid JSON. Place custom `pack.mcmeta` at the source root, rather than in `extras/`.
 
 ## Commands
 
@@ -372,4 +392,4 @@ archive/<pack>/<releaseVersion>/<pack>-<releaseVersion>-mc.<minecraftVersion>.zi
 
 ## Licensing
 
-The repository is licensed under the MIT License. See `LICENSE` for the full text.
+The repository is licensed under the MIT License. Vanilla Lavender and Vanilla Lavender Enhanced include third-party textures adapted from The Lavender Update by OutofContent / KineticStudio under the MIT License. See `LICENSE` for the repository license, [Vanilla Lavender's credits](resource_packs/vanilla_lavender/CREDITS.txt) and [texture license](resource_packs/vanilla_lavender/LICENSE.txt), and [Vanilla Lavender Enhanced's credits](resource_packs/vanilla_lavender_enhanced/CREDITS.txt) and [texture license](resource_packs/vanilla_lavender_enhanced/LICENSE.txt). Both pack notices are included in each pack's generated ZIPs.

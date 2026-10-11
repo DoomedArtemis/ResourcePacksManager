@@ -132,7 +132,7 @@ function Merge-Hashtable {
 
     foreach ($key in $Overlay.Keys) {
         if ($Base.ContainsKey($key) -and $Base[$key] -is [hashtable] -and $Overlay[$key] -is [hashtable]) {
-            Merge-Hashtable -Base $Base[$key] -Overlay $Overlay[$key]
+            $Base[$key] = Merge-Hashtable -Base $Base[$key] -Overlay $Overlay[$key]
             continue
         }
 
@@ -947,7 +947,6 @@ function Get-PackInputFiles {
     )
 
     $packRoot = $PackDirectory.FullName
-    $packIconFile = [string]$Config.PackIconFile
     $canonicalAssetsFolder = [string]$Config.CanonicalAssetsFolder
     $autoSortFolder = [string]$Config.AutoSortFolder
     $autoSortMappings = @($Config.AutoSortMappings)
@@ -967,8 +966,15 @@ function Get-PackInputFiles {
     $definitions = @(
         @{ Kind = 'auto'; Path = $autoSortFolder; VirtualRoot = ''; Priority = 10 }
         @{ Kind = 'direct'; Path = $canonicalAssetsFolder; VirtualRoot = $canonicalAssetsFolder; Priority = 20 }
-        @{ Kind = 'root'; Path = $packIconFile; VirtualRoot = $packIconFile; Priority = 30 }
+        @{ Kind = 'direct'; Path = 'extras'; VirtualRoot = ''; Priority = 30 }
     )
+
+    foreach ($rootFile in Get-ChildItem -LiteralPath $packRoot -File) {
+        if ($rootFile.Name -eq [string]$Config.PackBuildConfigFile -or $rootFile.Name -eq 'pack.mcmeta' -or (Test-IgnoredSourceFile -Name $rootFile.Name)) {
+            continue
+        }
+        $definitions += @{ Kind = 'root'; Path = $rootFile.Name; VirtualRoot = $rootFile.Name; Priority = 30 }
+    }
 
     foreach ($definition in $definitions) {
         $fullPath = Resolve-FullPath -BasePath $packRoot -Path ([string]$definition.Path)
@@ -1003,7 +1009,10 @@ function Get-PackInputFiles {
                     }
 
                     $relative = Get-NormalizedRelativePath -BasePath $fullPath -FullPath $file.FullName
-                    $virtualPath = if ($relative) {
+                    $virtualPath = if (-not [string]$definition.VirtualRoot) {
+                        $relative
+                    }
+                    elseif ($relative) {
                         ([string]$definition.VirtualRoot).TrimEnd('/') + '/' + $relative
                     }
                     else {
@@ -1304,7 +1313,10 @@ function Build-PackVersion {
                 $resolvedRouteCache[$inputFile.SourceRelativePath] = $resolvedPath
             }
 
-            if ($Config.Validation.RequireLowercasePaths -and $resolvedPath -cmatch '[A-Z]') {
+            if ($resolvedPath -eq 'pack.mcmeta') {
+                throw "Supply pack.mcmeta at the source pack root, or use PackMetadata/RootMetadata in pack.build.psd1."
+            }
+            if ($Config.Validation.RequireLowercasePaths -and $resolvedPath.StartsWith('assets/', [System.StringComparison]::OrdinalIgnoreCase) -and $resolvedPath -cmatch '[A-Z]') {
                 throw "Output path contains uppercase characters for pack '$($PackDirectory.Name)' version '$($VersionConfig.Id)': $resolvedPath"
             }
 
@@ -1337,6 +1349,34 @@ function Build-PackVersion {
         }
 
         $mcmetaObject = New-PackMcmetaObject -Tokens $tokens -VersionConfig $VersionConfig
+        $customMetadata = @{}
+        $sourceMcmeta = Join-Path -Path $PackDirectory.FullName -ChildPath 'pack.mcmeta'
+        if (Test-Path -LiteralPath $sourceMcmeta -PathType Leaf) {
+            $customMetadata = ConvertTo-Hashtable -InputObject (Get-Content -LiteralPath $sourceMcmeta -Raw | ConvertFrom-Json)
+            if ($customMetadata -isnot [hashtable]) {
+                throw "Source pack.mcmeta must contain a JSON object: $sourceMcmeta"
+            }
+        }
+        $packOptions = Get-PackBuildOptions -PackDirectory $PackDirectory -Config $Config
+        if ($packOptions.ContainsKey('RootMetadata')) {
+            $customMetadata = Merge-Hashtable -Base $customMetadata -Overlay (ConvertTo-Hashtable -InputObject $packOptions.RootMetadata)
+        }
+        if ($packOptions.ContainsKey('PackMetadata')) {
+            $customMetadata = Merge-Hashtable -Base $customMetadata -Overlay @{ pack = (ConvertTo-Hashtable -InputObject $packOptions.PackMetadata) }
+        }
+        if ($packOptions.ContainsKey('Description')) {
+            $customMetadata = Merge-Hashtable -Base $customMetadata -Overlay @{ pack = @{ description = (Convert-Tokens -Value ([string]$packOptions.Description) -Tokens $tokens) } }
+        }
+        if ($customMetadata.ContainsKey('pack')) {
+            if ($customMetadata.pack -isnot [hashtable]) {
+                throw "Custom pack metadata must contain a JSON object for 'pack'."
+            }
+            # Compatibility values always come from the target version matrix.
+            foreach ($formatKey in @('pack_format', 'supported_formats', 'min_format', 'max_format')) {
+                $customMetadata.pack.Remove($formatKey)
+            }
+        }
+        $mcmetaObject = Merge-Hashtable -Base (ConvertTo-Hashtable -InputObject $mcmetaObject) -Overlay $customMetadata
         $mcmetaJson = $mcmetaObject | ConvertTo-Json -Depth 100
         Set-Content -LiteralPath (Join-Path -Path $outputFolder -ChildPath 'pack.mcmeta') -Value $mcmetaJson -Encoding UTF8
 
