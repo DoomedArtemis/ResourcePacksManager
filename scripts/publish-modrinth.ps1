@@ -29,6 +29,7 @@ param(
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'combined-pack-support.ps1')
 
 Add-Type -AssemblyName System.IO.Compression
 Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -132,7 +133,7 @@ function ConvertTo-Psd1StringLiteral {
 function Get-ModrinthZipFileName {
     param([Parameter(Mandatory = $true)]$Item)
 
-    return "$($Item.PackName)-$($Item.VersionNumber).zip"
+    return "$($Item.PackName)-$(Convert-PublishVersionNumber $Item.VersionNumber).zip"
 }
 
 function Get-HashtableValueOrDefault {
@@ -561,6 +562,7 @@ function Get-PackDirectories {
     }
 
     $packDirectories = @(Get-ChildItem -LiteralPath $packsRoot -Directory | Sort-Object Name)
+    $packDirectories += @(Get-CombinedPackDirectories -RepoRoot $RepoRoot -Config $Config)
     if ($RequestedPackNames) {
         $lookup = @{}
         foreach ($requested in $RequestedPackNames) {
@@ -584,6 +586,8 @@ function Get-PackBuildOptions {
         [Parameter(Mandatory = $true)]$Config
     )
 
+    $definitionPath = Get-CombinedDefinitionPath -PackDirectory $PackDirectory
+    if ($definitionPath) { return ConvertTo-Hashtable -InputObject (Import-PowerShellDataFile -Path $definitionPath) }
     $configPath = Join-Path -Path $PackDirectory.FullName -ChildPath ([string]$Config.PackBuildConfigFile)
     if (-not (Test-Path -LiteralPath $configPath)) {
         return @{}
@@ -685,7 +689,7 @@ function Get-PackModrinthConfig {
     $projectId = ConvertFrom-ModrinthProjectReference -ProjectReference $projectId
 
     $releaseVersion = [string](Get-HashtableValueOrDefault -Table $modrinthConfig -Key 'ReleaseVersion' -DefaultValue $DefaultReleaseVersion)
-    $versionNumberTemplate = [string](Get-HashtableValueOrDefault -Table $modrinthConfig -Key 'VersionNumberTemplate' -DefaultValue '{ReleaseVersion}-mc.{MinecraftVersion}')
+    $versionNumberTemplate = [string](Get-HashtableValueOrDefault -Table $modrinthConfig -Key 'VersionNumberTemplate' -DefaultValue '{ReleaseVersion}-mc{MinecraftVersion}')
     $nameTemplate = [string](Get-HashtableValueOrDefault -Table $modrinthConfig -Key 'NameTemplate' -DefaultValue '{PackDisplayName} {ReleaseVersion} for Minecraft {MinecraftVersion}')
     $changelog = [string](Get-HashtableValueOrDefault -Table $modrinthConfig -Key 'Changelog' -DefaultValue '')
     $status = [string](Get-HashtableValueOrDefault -Table $modrinthConfig -Key 'Status' -DefaultValue $DefaultStatus)
@@ -887,6 +891,7 @@ function Move-UploadedZipToArchive {
     $destinationFileName = Get-ModrinthZipFileName -Item $Item
     $destinationPath = Join-Path -Path $destinationDirectory -ChildPath $destinationFileName
     if ([System.IO.Path]::GetFullPath($Item.ZipPath).Equals([System.IO.Path]::GetFullPath($destinationPath), [System.StringComparison]::OrdinalIgnoreCase)) {
+        Remove-ArchivedBuildReport -ZipPath $Item.ZipPath
         return $destinationPath
     }
 
@@ -895,6 +900,7 @@ function Move-UploadedZipToArchive {
         $destinationHash = (Get-FileHash -LiteralPath $destinationPath -Algorithm SHA256).Hash
         if ($sourceHash -eq $destinationHash) {
             Remove-Item -LiteralPath $Item.ZipPath
+            Remove-ArchivedBuildReport -ZipPath $Item.ZipPath
             return $destinationPath
         }
 
@@ -905,6 +911,7 @@ function Move-UploadedZipToArchive {
     }
 
     Move-Item -LiteralPath $Item.ZipPath -Destination $destinationPath
+    Remove-ArchivedBuildReport -ZipPath $Item.ZipPath
     return $destinationPath
 }
 
@@ -921,7 +928,7 @@ function Invoke-BuildForPublishItem {
     }
 
     Write-Host "Building $PackName $VersionId because no archive or build ZIP exists..."
-    & $buildScript -ConfigPath $ConfigPath -Pack $PackName -Version $VersionId
+    & $buildScript -ConfigPath $ConfigPath -Pack $PackName -Version $VersionId | Out-Host
     if (-not $?) {
         throw "Build failed for pack '$PackName' Minecraft '$VersionId'."
     }
@@ -937,6 +944,11 @@ function Resolve-PublishZipPath {
     )
 
     $archiveZipPath = Join-Path -Path (Join-Path -Path (Join-Path -Path $ArchiveRootPath -ChildPath $Item.PackName) -ChildPath $Item.ReleaseVersion) -ChildPath (Get-ModrinthZipFileName -Item $Item)
+    if (-not (Test-Path -LiteralPath $archiveZipPath -PathType Leaf)) {
+        $legacyFileName = (Split-Path $archiveZipPath -Leaf) -replace '-mc(?=[0-9])', '-mc.'
+        $legacyPath = Join-Path (Split-Path $archiveZipPath -Parent) $legacyFileName
+        if (Test-Path -LiteralPath $legacyPath -PathType Leaf) { $archiveZipPath = $legacyPath }
+    }
     if (Test-Path -LiteralPath $archiveZipPath -PathType Leaf) {
         return [pscustomobject]@{
             Path = $archiveZipPath
@@ -1037,7 +1049,7 @@ $releaseVersionOverride = $null
 if ($PromptForReleaseVersion) {
     Write-Host ''
     Write-Host "Enter the release version for this upload run, such as '1.0.0'."
-    Write-Host "The Minecraft version is added automatically, producing values like '1.0.0-mc.26.3'."
+    Write-Host "The Minecraft version is added automatically, producing values like '1.0.0-mc26.3'."
     $releaseVersionInput = Read-Host 'Release version'
     if (-not [string]::IsNullOrWhiteSpace($releaseVersionInput)) {
         $releaseVersionOverride = $releaseVersionInput.Trim()
@@ -1129,7 +1141,7 @@ foreach ($packDirectory in $packDirectories) {
         }
         $zipPath = Join-Path -Path (Join-Path -Path $buildRoot -ChildPath $packDirectory.Name) -ChildPath "$packageBaseName.zip"
 
-        $versionNumber = Convert-Tokens -Value $modrinth.VersionNumberTemplate -Tokens $tokens
+        $versionNumber = Convert-PublishVersionNumber (Convert-Tokens -Value $modrinth.VersionNumberTemplate -Tokens $tokens)
         $versionName = Convert-Tokens -Value $modrinth.NameTemplate -Tokens $tokens
         $changelog = Convert-Tokens -Value $modrinth.Changelog -Tokens $tokens
 
@@ -1239,7 +1251,7 @@ if ($shouldReadRemote) {
             $versionsForProject = Invoke-ModrinthGetProjectVersions -Client $client -ProjectId ([string]$project.id)
             $lookup = @{}
             foreach ($remoteVersion in @($versionsForProject)) {
-                $lookup[[string]$remoteVersion.version_number] = $remoteVersion
+                $lookup[(Convert-PublishVersionNumber ([string]$remoteVersion.version_number))] = $remoteVersion
             }
             $existingVersionsByProject[$projectId] = $lookup
         }
@@ -1254,7 +1266,7 @@ $summary = New-Object System.Collections.Generic.List[object]
 foreach ($item in $uploadItems) {
     $alreadyExists = $false
     if ($existingVersionsByProject.ContainsKey($item.ProjectId)) {
-        $alreadyExists = $existingVersionsByProject[$item.ProjectId].ContainsKey($item.VersionNumber)
+        $alreadyExists = $existingVersionsByProject[$item.ProjectId].ContainsKey((Convert-PublishVersionNumber $item.VersionNumber))
     }
 
     if ($alreadyExists) {

@@ -28,6 +28,7 @@ param(
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'combined-pack-support.ps1')
 
 Add-Type -AssemblyName System.IO.Compression
 Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -131,7 +132,7 @@ function ConvertTo-Psd1StringLiteral {
 function Get-CurseForgeZipFileName {
     param([Parameter(Mandatory = $true)]$Item)
 
-    return "$($Item.PackName)-$($Item.VersionNumber).zip"
+    return "$($Item.PackName)-$(Convert-PublishVersionNumber $Item.VersionNumber).zip"
 }
 
 function Get-HashtableValueOrDefault {
@@ -603,7 +604,7 @@ function Test-LocalCurseForgeVersionPublished {
         $publishedFileState = ConvertTo-Hashtable -InputObject $publishedFile
         if (
             [string](Get-HashtableValueOrDefault -Table $publishedFileState -Key 'ProjectId' -DefaultValue '') -eq [string]$Item.ProjectId -and
-            [string](Get-HashtableValueOrDefault -Table $publishedFileState -Key 'VersionNumber' -DefaultValue '') -eq [string]$Item.VersionNumber
+            (Convert-PublishVersionNumber ([string](Get-HashtableValueOrDefault -Table $publishedFileState -Key 'VersionNumber' -DefaultValue ''))) -eq (Convert-PublishVersionNumber ([string]$Item.VersionNumber))
         ) {
             return $true
         }
@@ -625,6 +626,7 @@ function Get-PackDirectories {
     }
 
     $packDirectories = @(Get-ChildItem -LiteralPath $packsRoot -Directory | Sort-Object Name)
+    $packDirectories += @(Get-CombinedPackDirectories -RepoRoot $RepoRoot -Config $Config)
     if ($RequestedPackNames) {
         $lookup = @{}
         foreach ($requested in $RequestedPackNames) {
@@ -648,6 +650,8 @@ function Get-PackBuildOptions {
         [Parameter(Mandatory = $true)]$Config
     )
 
+    $definitionPath = Get-CombinedDefinitionPath -PackDirectory $PackDirectory
+    if ($definitionPath) { return ConvertTo-Hashtable -InputObject (Import-PowerShellDataFile -Path $definitionPath) }
     $configPath = Join-Path -Path $PackDirectory.FullName -ChildPath ([string]$Config.PackBuildConfigFile)
     if (-not (Test-Path -LiteralPath $configPath)) {
         return @{}
@@ -745,7 +749,7 @@ function Get-PackCurseForgeConfig {
     }
 
     $releaseVersion = [string](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'ReleaseVersion' -DefaultValue $DefaultReleaseVersion)
-    $versionNumberTemplate = [string](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'VersionNumberTemplate' -DefaultValue '{ReleaseVersion}-mc.{MinecraftVersion}')
+    $versionNumberTemplate = [string](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'VersionNumberTemplate' -DefaultValue '{ReleaseVersion}-mc{MinecraftVersion}')
     $nameTemplate = [string](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'NameTemplate' -DefaultValue '{PackName}-{ReleaseVersion}-mc{MinecraftVersion}')
     $changelog = [string](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'Changelog' -DefaultValue '')
     $releaseType = [string](Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'ReleaseType' -DefaultValue $DefaultReleaseType)
@@ -902,6 +906,7 @@ function Move-UploadedZipToArchive {
     $destinationFileName = Get-CurseForgeZipFileName -Item $Item
     $destinationPath = Join-Path -Path $destinationDirectory -ChildPath $destinationFileName
     if ([System.IO.Path]::GetFullPath($Item.ZipPath).Equals([System.IO.Path]::GetFullPath($destinationPath), [System.StringComparison]::OrdinalIgnoreCase)) {
+        Remove-ArchivedBuildReport -ZipPath $Item.ZipPath
         return $destinationPath
     }
 
@@ -910,6 +915,7 @@ function Move-UploadedZipToArchive {
         $destinationHash = (Get-FileHash -LiteralPath $destinationPath -Algorithm SHA256).Hash
         if ($sourceHash -eq $destinationHash) {
             Remove-Item -LiteralPath $Item.ZipPath
+            Remove-ArchivedBuildReport -ZipPath $Item.ZipPath
             return $destinationPath
         }
 
@@ -920,6 +926,7 @@ function Move-UploadedZipToArchive {
     }
 
     Move-Item -LiteralPath $Item.ZipPath -Destination $destinationPath
+    Remove-ArchivedBuildReport -ZipPath $Item.ZipPath
     return $destinationPath
 }
 
@@ -936,7 +943,7 @@ function Invoke-BuildForPublishItem {
     }
 
     Write-Host "Building $PackName $VersionId because no archive or build ZIP exists..."
-    & $buildScript -ConfigPath $ConfigPath -Pack $PackName -Version $VersionId
+    & $buildScript -ConfigPath $ConfigPath -Pack $PackName -Version $VersionId | Out-Host
     if (-not $?) {
         throw "Build failed for pack '$PackName' Minecraft '$VersionId'."
     }
@@ -952,6 +959,11 @@ function Resolve-PublishZipPath {
     )
 
     $archiveZipPath = Join-Path -Path (Join-Path -Path (Join-Path -Path $ArchiveRootPath -ChildPath $Item.PackName) -ChildPath $Item.ReleaseVersion) -ChildPath (Get-CurseForgeZipFileName -Item $Item)
+    if (-not (Test-Path -LiteralPath $archiveZipPath -PathType Leaf)) {
+        $legacyFileName = (Split-Path $archiveZipPath -Leaf) -replace '-mc(?=[0-9])', '-mc.'
+        $legacyPath = Join-Path (Split-Path $archiveZipPath -Parent) $legacyFileName
+        if (Test-Path -LiteralPath $legacyPath -PathType Leaf) { $archiveZipPath = $legacyPath }
+    }
     if (Test-Path -LiteralPath $archiveZipPath -PathType Leaf) {
         return [pscustomobject]@{
             Path = $archiveZipPath
@@ -1052,7 +1064,7 @@ $releaseVersionOverride = $null
 if ($PromptForReleaseVersion) {
     Write-Host ''
     Write-Host "Enter the release version for this upload run, such as '1.0.0'."
-    Write-Host "The Minecraft version is added automatically, producing values like '1.0.0-mc.26.3'."
+    Write-Host "The Minecraft version is added automatically, producing values like '1.0.0-mc26.3'."
     $releaseVersionInput = Read-Host 'Release version'
     if (-not [string]::IsNullOrWhiteSpace($releaseVersionInput)) {
         $releaseVersionOverride = $releaseVersionInput.Trim()
@@ -1144,7 +1156,7 @@ foreach ($packDirectory in $packDirectories) {
         }
         $zipPath = Join-Path -Path (Join-Path -Path $buildRoot -ChildPath $packDirectory.Name) -ChildPath "$packageBaseName.zip"
 
-        $versionNumber = Convert-Tokens -Value $curseforge.VersionNumberTemplate -Tokens $tokens
+        $versionNumber = Convert-PublishVersionNumber (Convert-Tokens -Value $curseforge.VersionNumberTemplate -Tokens $tokens)
         $versionName = Convert-Tokens -Value $curseforge.NameTemplate -Tokens $tokens
         $changelog = Convert-Tokens -Value $curseforge.Changelog -Tokens $tokens
         $gameVersionNames = @($curseforge.GameVersionNameTemplates | ForEach-Object {

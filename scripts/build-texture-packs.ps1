@@ -12,6 +12,29 @@ param(
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'combined-pack-support.ps1')
+
+function Show-BuildProgress {
+    param([int]$Id, [string]$Activity, [string]$Stage, [int]$Completed = -1, [int]$Total = 1)
+    $percent = -1
+    if ($Completed -ge 0) { $percent = [Math]::Min(100, [Math]::Max(0, [int][Math]::Floor(100 * $Completed / [Math]::Max(1, $Total)))) }
+    Write-Progress -Id $Id -Activity $Activity -Status $Stage -PercentComplete $percent
+    # IDE output panes may not render PowerShell's interactive progress bar.
+    if (-not (Get-Variable -Name BuildProgressLog -Scope Script -ErrorAction SilentlyContinue)) { $script:BuildProgressLog = @{} }
+    $now = [DateTime]::UtcNow
+    $previous = $script:BuildProgressLog[$Id]
+    if ($null -eq $previous -or $previous.Activity -ne $Activity -or $previous.Stage -ne $Stage -or ($now - $previous.Time).TotalSeconds -ge 5) {
+        if ($Completed -ge 0) { Write-Host "[$percent%] $Activity - $Stage ($Completed/$Total)" }
+        else { Write-Host "$Activity - $Stage" }
+        $script:BuildProgressLog[$Id] = @{ Activity = $Activity; Stage = $Stage; Time = $now }
+    }
+}
+
+function Close-BuildProgress {
+    param([int]$Id, [string]$Activity)
+    Write-Progress -Id $Id -Activity $Activity -Completed
+    if (Get-Variable -Name BuildProgressLog -Scope Script -ErrorAction SilentlyContinue) { $script:BuildProgressLog.Remove($Id) }
+}
 
 function Resolve-FullPath {
     param(
@@ -359,6 +382,7 @@ function Get-PackDirectories {
     }
 
     $packDirectories = @(Get-ChildItem -LiteralPath $packsRoot -Directory | Sort-Object Name)
+    $packDirectories += @(Get-CombinedPackDirectories -RepoRoot $RepoRoot -Config $Config)
 
     if ($RequestedPackNames) {
         $lookup = @{}
@@ -383,6 +407,8 @@ function Get-PackBuildOptions {
         [Parameter(Mandatory = $true)]$Config
     )
 
+    $definitionPath = Get-CombinedDefinitionPath -PackDirectory $PackDirectory
+    if ($definitionPath) { return Import-PowerShellDataFile -Path $definitionPath }
     $configFileName = [string]$Config.PackBuildConfigFile
     $configPath = Join-Path -Path $PackDirectory.FullName -ChildPath $configFileName
     if (-not (Test-Path -LiteralPath $configPath)) {
@@ -1262,7 +1288,10 @@ function New-ZipFromDirectory {
     Add-Type -AssemblyName System.IO.Compression.FileSystem
     $archive = [System.IO.Compression.ZipFile]::Open($DestinationPath, [System.IO.Compression.ZipArchiveMode]::Create)
     try {
-        foreach ($file in Get-ChildItem -LiteralPath $SourceDirectory -File -Recurse) {
+        $zipFiles = @(Get-ChildItem -LiteralPath $SourceDirectory -File -Recurse)
+        $zipIndex = 0
+        foreach ($file in $zipFiles) {
+            Show-BuildProgress -Id 3 -Activity 'Creating ZIP' -Stage ([IO.Path]::GetFileName($DestinationPath)) -Completed $zipIndex -Total $zipFiles.Count
             $entryPath = Get-NormalizedRelativePath -BasePath $SourceDirectory -FullPath $file.FullName
             $entry = $archive.CreateEntry($entryPath, [System.IO.Compression.CompressionLevel]::Optimal)
             $entryStream = $entry.Open()
@@ -1278,10 +1307,12 @@ function New-ZipFromDirectory {
             finally {
                 $entryStream.Dispose()
             }
+            $zipIndex++
         }
     }
     finally {
         $archive.Dispose()
+        Close-BuildProgress -Id 3 -Activity 'Creating ZIP'
     }
 }
 
@@ -1308,6 +1339,15 @@ function Build-PackVersion {
         }
     }
 
+    $definitionPath = Get-CombinedDefinitionPath -PackDirectory $PackDirectory
+    if ($definitionPath) {
+        & (Join-Path $PSScriptRoot 'build-combined-pack.ps1') -DefinitionPath $definitionPath -ConfigPath $ConfigPath -Version $VersionConfig.Id | Out-Host
+        if (-not $?) { throw "Combined build failed for '$($PackDirectory.Name)'." }
+        $tokens = Get-PackTokens -Config $Config -PackDirectory $PackDirectory -VersionConfig $VersionConfig
+        $packageName = Convert-Tokens -Value $Config.PackageNameTemplate -Tokens $tokens
+        return @{ PackName = $PackDirectory.Name; VersionId = $VersionConfig.Id; Status = 'success'; WarningCount = 0;
+            ZipPath = Join-Path (Resolve-FullPath -BasePath $RepoRoot -Path $Config.BuildRoot) "$($PackDirectory.Name)/$packageName.zip" }
+    }
     $tokens = Get-PackTokens -Config $Config -PackDirectory $PackDirectory -VersionConfig $VersionConfig
     $buildRoot = Resolve-FullPath -BasePath $RepoRoot -Path ([string]$Config.BuildRoot)
     Ensure-Directory -Path $buildRoot
@@ -1327,6 +1367,8 @@ function Build-PackVersion {
     Ensure-Directory -Path $zipPackRoot
     Ensure-Directory -Path $outputFolder
     try {
+        $activity = "$($PackDirectory.Name) / Minecraft $($VersionConfig.Id)"
+        Show-BuildProgress -Id 2 -Activity $activity -Stage 'Selecting source files'
         $inputFiles = Get-PackInputFiles -PackDirectory $PackDirectory -Config $Config -VersionConfig $VersionConfig
         $warnings = New-Object System.Collections.Generic.List[string]
         $destinations = @{}
@@ -1334,7 +1376,10 @@ function Build-PackVersion {
         $routeCache = Get-PackRouteCache -RepoRoot $RepoRoot -Config $Config -PackDirectory $PackDirectory -VersionConfig $VersionConfig
         $resolvedRouteCache = @{}
 
+        $inputIndex = 0
         foreach ($inputFile in $inputFiles) {
+            Show-BuildProgress -Id 2 -Activity $activity -Stage 'Resolving asset paths' -Completed $inputIndex -Total @($inputFiles).Count
+            $inputIndex++
             $resolvedPath = switch ($inputFile.Kind) {
                 'root' { $inputFile.VirtualPath }
                 'direct' { $inputFile.VirtualPath }
@@ -1390,10 +1435,13 @@ function Build-PackVersion {
             }
         }
 
+        $copyIndex = 0
         foreach ($destPath in $destinations.Keys) {
+            Show-BuildProgress -Id 2 -Activity $activity -Stage 'Copying assets' -Completed $copyIndex -Total $destinations.Count
             $fullDestPath = Resolve-FullPath -BasePath $outputFolder -Path $destPath
             Ensure-Directory -Path ([System.IO.Path]::GetDirectoryName($fullDestPath))
             Copy-Item -LiteralPath $destinations[$destPath].SourcePath -Destination $fullDestPath -Force
+            $copyIndex++
         }
 
         $mcmetaObject = New-PackMcmetaObject -Tokens $tokens -VersionConfig $VersionConfig
@@ -1428,6 +1476,7 @@ function Build-PackVersion {
         $mcmetaJson = $mcmetaObject | ConvertTo-Json -Depth 100
         Set-Content -LiteralPath (Join-Path -Path $outputFolder -ChildPath 'pack.mcmeta') -Value $mcmetaJson -Encoding UTF8
 
+        Show-BuildProgress -Id 2 -Activity $activity -Stage 'Validating metadata and assets'
         if ($Config.Validation.ParseJsonFiles) {
             foreach ($jsonFile in Get-ChildItem -LiteralPath $outputFolder -File -Recurse -Filter '*.json') {
                 try {
@@ -1473,6 +1522,7 @@ function Build-PackVersion {
             }
         }
 
+        Show-BuildProgress -Id 2 -Activity $activity -Stage 'Packaging ZIP'
         New-ZipFromDirectory -SourceDirectory $outputFolder -DestinationPath $zipPath
         Save-PackRouteCache -RepoRoot $RepoRoot -Config $Config -PackDirectory $PackDirectory -VersionConfig $VersionConfig -RouteCache $resolvedRouteCache
 
@@ -1485,6 +1535,7 @@ function Build-PackVersion {
         }
     }
     finally {
+        Close-BuildProgress -Id 2 -Activity 'Building pack'
         if (Test-Path -LiteralPath $outputFolder) {
             Remove-Item -LiteralPath $outputFolder -Recurse -Force
         }
@@ -1583,9 +1634,20 @@ if ($Version) {
 $results = @()
 $failures = New-Object System.Collections.Generic.List[string]
 
+$buildJobs = @(
 foreach ($packDirectory in $packDirectories) {
     $packSelectedVersions = Get-PackSelectedVersions -PackDirectory $packDirectory -Config $config -GloballySelectedVersions $selectedVersions
     foreach ($versionConfig in $packSelectedVersions) {
+        @{ PackDirectory = $packDirectory; VersionConfig = $versionConfig }
+    }
+}
+)
+$jobIndex = 0
+try {
+    foreach ($job in $buildJobs) {
+        $packDirectory = $job.PackDirectory
+        $versionConfig = $job.VersionConfig
+        Show-BuildProgress -Id 0 -Activity 'Building resource packs' -Stage "$($packDirectory.Name) / Minecraft $($versionConfig.Id)" -Completed $jobIndex -Total $buildJobs.Count
         try {
             $result = Build-PackVersion -RepoRoot $repoRoot -Config $config -PackDirectory $packDirectory -VersionConfig $versionConfig
             $results += ,$result
@@ -1598,8 +1660,11 @@ foreach ($packDirectory in $packDirectories) {
             $failures.Add($message)
             Write-Warning $message
         }
+        $jobIndex++
+        Show-BuildProgress -Id 0 -Activity 'Building resource packs' -Stage 'Build jobs processed' -Completed $jobIndex -Total $buildJobs.Count
     }
 }
+finally { Close-BuildProgress -Id 0 -Activity 'Building resource packs' }
 
 if ($failures.Count -gt 0) {
     throw ($failures -join [Environment]::NewLine)

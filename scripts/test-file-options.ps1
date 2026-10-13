@@ -1,6 +1,7 @@
 [CmdletBinding()]
 param()
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'combined-pack-support.ps1')
 
 # Load only function definitions, without starting the build script.
 $parseTokens = $null
