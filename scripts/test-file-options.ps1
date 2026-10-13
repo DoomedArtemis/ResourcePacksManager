@@ -48,6 +48,66 @@ try {
     $legacy = @(Get-PackInputFiles -PackDirectory $directory -Config $config -VersionConfig $config.Versions[0])
     if ([IO.Path]::GetFullPath($legacy[0].SourcePath) -ne [IO.Path]::GetFullPath((Join-Path $fixtureRoot 'variants/test.json'))) { throw 'Prefix variant was not selected.' }
 
+    # Mod compatibility filters assets independently of ordinary FileRules.
+    $config.Versions = @('1.20.1', '1.20.2', '1.21', '1.21.1', '1.21.2') | ForEach-Object { @{ Id = $_; Enabled = $true } }
+    New-Item -ItemType Directory -Path (Join-Path $fixtureRoot 'assets/demo/models/block') -Force | Out-Null
+    [IO.File]::WriteAllText((Join-Path $fixtureRoot 'assets/demo/models/block/test.json'), '{}', $encoding)
+    [IO.File]::WriteAllText((Join-Path $fixtureRoot 'assets/minecraft/models/block/custom_floor.json'), '{}', $encoding)
+    function Set-CompatibilityFixture([string]$optionsText) {
+        [IO.File]::WriteAllText((Join-Path $fixtureRoot 'pack.build.psd1'), $optionsText, $encoding)
+    }
+    function Assert-CompatibilityFiles([string]$version, [int]$expected) {
+        $versionConfig = $config.Versions | Where-Object { $_.Id -eq $version }
+        $files = @(Get-PackInputFiles -PackDirectory $directory -Config $config -VersionConfig $versionConfig)
+        if ($files.Count -ne $expected) { throw "Compatibility fixture for ${version}: expected $expected files, found $($files.Count)." }
+    }
+    Set-CompatibilityFixture "@{ Compatibility = @{ demo = @{ Versions = @('1.20.1', '1.21.1') } }; FileRules = @(@{ Path = 'assets/demo/' }) }"
+    Assert-CompatibilityFiles '1.20.1' 3
+    Assert-CompatibilityFiles '1.20.2' 2
+    Assert-CompatibilityFiles '1.21.1' 3
+    Set-CompatibilityFixture "@{ Compatibility = @{ demo = @{ Versions = @('1.20.1..1.21.1'); ExcludeVersions = @('1.20.2 to 1.21') } } }"
+    Assert-CompatibilityFiles '1.20.1' 3
+    Assert-CompatibilityFiles '1.20.2' 2
+    Assert-CompatibilityFiles '1.21' 2
+    Assert-CompatibilityFiles '1.21.1' 3
+    Assert-CompatibilityFiles '1.21.2' 2
+    Set-CompatibilityFixture "@{ Compatibility = @{ demo = @{ AfterVersion = '1.20.1'; BeforeVersion = '1.21.2'; MinVersion = '1.20.2'; MaxVersion = '1.21.1'; Paths = @('assets/demo/', 'assets/minecraft/models/block/custom_floor.json') } } }"
+    Assert-CompatibilityFiles '1.20.1' 1
+    Assert-CompatibilityFiles '1.20.2' 3
+    Assert-CompatibilityFiles '1.21.1' 3
+    Assert-CompatibilityFiles '1.21.2' 1
+    Set-CompatibilityFixture "@{ Compatibility = @{ demo = @{ Enabled = `$false } } }"
+    Assert-CompatibilityFiles '1.20.1' 2
+    Set-CompatibilityFixture "@{ Compatibility = @{ demo = @{ Versions = @() } } }"
+    Assert-CompatibilityFiles '1.20.1' 2
+    $supportOptions = @{ Compatibility = @{
+        second = @{ Versions = @('1.20.1..1.21.1'); Support = 'Second mod support.' }
+        first = @{ Versions = @('1.20.1'); Support = 'First mod support.' }
+        disabled = @{ Enabled = $false; Support = 'Must not appear.' }
+        no_note = @{ Versions = @('1.20.1') }
+    } }
+    $supportRules = @(Get-PackCompatibilityRules -Options $supportOptions -Config $config -VersionConfig $config.Versions[0] -PackName 'fixture')
+    $supportText = Get-PackCompatibilitySupportText -Rules $supportRules
+    $expectedSupport = 'First mod support.' + [Environment]::NewLine + [Environment]::NewLine + 'Second mod support.' + [Environment]::NewLine
+    if ($supportText -cne $expectedSupport) { throw 'Active support notes were not combined in stable mod-ID order.' }
+    $supportRules = @(Get-PackCompatibilityRules -Options $supportOptions -Config $config -VersionConfig $config.Versions[3] -PackName 'fixture')
+    if ((Get-PackCompatibilitySupportText -Rules $supportRules) -cne ('Second mod support.' + [Environment]::NewLine)) { throw 'Unsupported mod note leaked into support text.' }
+    $supportRules = @(Get-PackCompatibilityRules -Options $supportOptions -Config $config -VersionConfig $config.Versions[4] -PackName 'fixture')
+    if (Get-PackCompatibilitySupportText -Rules $supportRules) { throw 'Support text generated without an active mod note.' }
+    foreach ($invalidOptions in @(
+        "@{ Compatibility = @{ demo = @{ Versions = @('unknown') } } }",
+        "@{ Compatibility = @{ demo = @{ Versions = @('1.21.1..1.20.1') } } }",
+        "@{ Compatibility = @{ demo = @{ MinVersion = '1.21.1'; MaxVersion = '1.20.1' } } }",
+        "@{ Compatibility = @{ demo = @{ Paths = @('assets/demo/*') } } }",
+        "@{ Compatibility = @{ demo = @{ Support = @('invalid') } } }",
+        "@{ Compatibility = @{ demo = @{ Unexpected = `$true } } }"
+    )) {
+        Set-CompatibilityFixture $invalidOptions
+        $rejected = $false
+        try { Get-PackInputFiles -PackDirectory $directory -Config $config -VersionConfig $config.Versions[0] | Out-Null } catch { $rejected = $true }
+        if (-not $rejected) { throw "Invalid compatibility options accepted: $invalidOptions" }
+    }
+    Set-CompatibilityFixture "@{ FileOptionsPath = 'variants/rules.json' }"
     [IO.File]::WriteAllText((Join-Path $fixtureRoot 'variants/rules.json'), '{"UnexpectedOption": []}', $encoding)
     $rejected = $false
     try { Get-PackBuildOptions -PackDirectory $directory -Config $config | Out-Null } catch { $rejected = $true }
@@ -56,7 +116,7 @@ try {
     $rejected = $false
     try { Get-PackBuildOptions -PackDirectory $directory -Config $config | Out-Null } catch { $rejected = $true }
     if (-not $rejected) { throw 'FileOptionsPath escaped the pack.' }
-    Write-Output 'Passed JSON option merging, exact/prefix variant routing, modern preservation, and invalid option/path checks.'
+    Write-Output 'Passed JSON options, variants, compatibility selectors, exclusions, custom paths, disabled entries, support-note aggregation, and invalid option checks.'
 } finally {
     $resolvedFixture = [IO.Path]::GetFullPath($fixtureRoot)
     if (-not $resolvedFixture.StartsWith($temporaryRoot.TrimEnd('\') + '\', [StringComparison]::OrdinalIgnoreCase) -or (Split-Path $resolvedFixture -Leaf) -notlike 'moss-file-options-*') {

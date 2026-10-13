@@ -602,6 +602,82 @@ function Test-VersionSelectorMatch {
     return $true
 }
 
+function Get-PackCompatibilityRules {
+    param(
+        [Parameter(Mandatory = $true)][hashtable]$Options,
+        [Parameter(Mandatory = $true)]$Config,
+        [Parameter(Mandatory = $true)]$VersionConfig,
+        [Parameter(Mandatory = $true)][string]$PackName
+    )
+
+    if (-not $Options.ContainsKey('Compatibility')) { return @() }
+    if ($Options.Compatibility -isnot [System.Collections.IDictionary]) {
+        throw "Pack '$PackName' Compatibility must be a table keyed by mod ID."
+    }
+    $versionOrder = Get-VersionOrderLookup -Config $Config
+    foreach ($modId in @($Options.Compatibility.Keys | Sort-Object)) {
+        $context = "Pack '$PackName' Compatibility '$modId'"
+        if ([string]$modId -cnotmatch '^[a-z0-9_.-]+$') { throw "$context has an invalid mod ID." }
+        if ($Options.Compatibility[$modId] -isnot [System.Collections.IDictionary]) {
+            throw "$context must be a table."
+        }
+        $rawEntry = $Options.Compatibility[$modId]
+        if ($rawEntry.Contains('Support') -and $rawEntry['Support'] -isnot [string]) {
+            throw "$context Support must be a text string or here-string."
+        }
+        $entry = ConvertTo-Hashtable -InputObject $rawEntry
+        foreach ($key in $entry.Keys) {
+            if ($key -notin @('Enabled', 'Paths', 'Versions', 'ExcludeVersions', 'MinVersion', 'MaxVersion', 'AfterVersion', 'BeforeVersion', 'Support')) {
+                throw "$context has an unknown option '$key'."
+            }
+        }
+        $selectors = @{}
+        foreach ($key in @('Versions', 'ExcludeVersions')) {
+            if ($entry.ContainsKey($key)) {
+                $values = @($entry[$key])
+                $selectors[$key] = if ($values.Count -eq 0) { @() } else {
+                    @(Expand-RequestedVersionSelection -InputValue ($values -join ',') -Config $Config)
+                }
+            }
+        }
+        foreach ($key in @('MinVersion', 'MaxVersion', 'AfterVersion', 'BeforeVersion')) {
+            if ($entry.ContainsKey($key)) {
+                Assert-KnownVersionSelectorId -VersionId ([string]$entry[$key]) -OptionName $key -VersionOrder $versionOrder -ContextDescription $context
+                $selectors[$key] = $entry[$key]
+            }
+        }
+        foreach ($pair in @(@('MinVersion', 'MaxVersion'), @('AfterVersion', 'BeforeVersion'))) {
+            if ($selectors.ContainsKey($pair[0]) -and $selectors.ContainsKey($pair[1]) -and
+                $versionOrder[[string]$selectors[$pair[0]]] -gt $versionOrder[[string]$selectors[$pair[1]]]) {
+                throw "$context has reversed version bounds."
+            }
+        }
+        $paths = @("assets/$modId/")
+        if ($entry.ContainsKey('Paths')) { $paths = @($entry.Paths) }
+        if ($paths.Count -eq 0) { throw "$context Paths must not be empty." }
+        foreach ($rulePath in $paths) {
+            if ([string]::IsNullOrWhiteSpace([string]$rulePath) -or [string]$rulePath -match '[*?\\]' -or
+                [string]$rulePath -match '(^|/)\.\.(/|$)|^/|:') {
+                throw "$context Paths must contain relative exact paths or directory prefixes, without wildcards."
+            }
+        }
+        $include = Test-VersionSelectorMatch -Options $selectors -VersionConfig $VersionConfig -VersionOrder $versionOrder -ContextDescription $context
+        if ($entry.ContainsKey('Versions') -and @($entry.Versions).Count -eq 0) { $include = $false }
+        if ($entry.ContainsKey('Enabled') -and -not $entry.Enabled) { $include = $false }
+        [pscustomobject]@{ ModId = [string]$modId; Paths = $paths; IncludeForVersion = [bool]$include;
+            Support = [string](Get-HashtableValueOrDefault -Table $entry -Key 'Support' -DefaultValue '') }
+    }
+}
+
+function Get-PackCompatibilitySupportText {
+    param([object[]]$Rules = @())
+    $notes = @($Rules | Where-Object {
+        $_.IncludeForVersion -and -not [string]::IsNullOrWhiteSpace($_.Support)
+    } | Sort-Object ModId | ForEach-Object { $_.Support.Trim() })
+    if ($notes.Count -eq 0) { return '' }
+    return ($notes -join ([Environment]::NewLine + [Environment]::NewLine)) + [Environment]::NewLine
+}
+
 function New-InputFileWithReplacedSource {
     param(
         [Parameter(Mandatory = $true)]$InputFile,
@@ -996,6 +1072,7 @@ function Get-PackInputFiles {
     $autoSortMappings = @($Config.AutoSortMappings)
     $packOptions = Get-PackBuildOptions -PackDirectory $PackDirectory -Config $Config
     $fileRules = @()
+    $compatibilityRules = @(Get-PackCompatibilityRules -Options $packOptions -Config $Config -VersionConfig $VersionConfig -PackName $PackDirectory.Name)
     if ($packOptions.ContainsKey('FileRules') -and $packOptions.FileRules) {
         $fileRules = @($packOptions.FileRules)
     }
@@ -1215,6 +1292,24 @@ function Get-PackInputFiles {
                 $selectedInputFile = New-InputFileWithReplacedSource -InputFile $inputFile -NewSourcePath $variantSourceFullPath -PackRoot $packRoot
             }
         }
+
+        # Compatibility is an independent gate: permissive FileRules must not
+        # reintroduce mod assets for a version the mod does not support.
+        $compatibilityAllowed = $true
+        foreach ($compatibility in $compatibilityRules) {
+            if ($compatibility.IncludeForVersion) { continue }
+            foreach ($rulePath in $compatibility.Paths) {
+                foreach ($candidatePath in @($selectedInputFile.RulePaths)) {
+                    if (Test-RuleMatch -Path ([string]$candidatePath) -Rule ([string]$rulePath)) {
+                        $compatibilityAllowed = $false
+                        break
+                    }
+                }
+                if (-not $compatibilityAllowed) { break }
+            }
+            if (-not $compatibilityAllowed) { break }
+        }
+        if (-not $compatibilityAllowed) { continue }
 
         if ($fileRules.Count -eq 0) {
             $selectedInputFiles.Add($selectedInputFile)
@@ -1454,6 +1549,15 @@ function Build-PackVersion {
             }
         }
         $packOptions = Get-PackBuildOptions -PackDirectory $PackDirectory -Config $Config
+        $compatibilityRules = @(Get-PackCompatibilityRules -Options $packOptions -Config $Config -VersionConfig $VersionConfig -PackName $PackDirectory.Name)
+        $supportText = Get-PackCompatibilitySupportText -Rules $compatibilityRules
+        if ($supportText) {
+            if ($destinations.ContainsKey('support.txt')) {
+                throw "Pack '$($PackDirectory.Name)' supplies support.txt and Compatibility.Support. Remove the source support.txt to generate it from compatibility entries."
+            }
+            [IO.File]::WriteAllText((Join-Path $outputFolder 'support.txt'), $supportText, (New-Object System.Text.UTF8Encoding($false)))
+            $destinations['support.txt'] = @{ SourcePath = '<generated compatibility support>'; Priority = 30 }
+        }
         if ($packOptions.ContainsKey('RootMetadata')) {
             $customMetadata = Merge-Hashtable -Base $customMetadata -Overlay (ConvertTo-Hashtable -InputObject $packOptions.RootMetadata)
         }

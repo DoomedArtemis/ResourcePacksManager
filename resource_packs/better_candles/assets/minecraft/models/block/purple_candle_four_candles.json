@@ -2,7 +2,7 @@
   "parent": "minecraft:block/template_four_candles",
   "textures": {
     "candle": "minecraft:block/purple_candle",
-    "floor": "minecraft:block/purple_candle_floor",
+    "floor": "minecraft:block/purple_candle_floor_4",
     "particle": "minecraft:block/purple_candle"
   }
 }

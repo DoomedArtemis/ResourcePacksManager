@@ -2,7 +2,7 @@
   "parent": "minecraft:block/template_two_candles",
   "textures": {
     "candle": "minecraft:block/magenta_candle_lit",
-    "floor": "minecraft:block/magenta_candle_floor",
+    "floor": "minecraft:block/magenta_candle_floor_2",
     "particle": "minecraft:block/magenta_candle_lit"
   }
 }

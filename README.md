@@ -420,6 +420,38 @@ Selector behavior:
 - comparison follows the order in the configured version matrix
 - command-line version selection is applied first, then pack-local filtering
 
+### Mod compatibility versions
+
+Use `Compatibility` to control which Minecraft versions include each mod's assets without restricting the pack's vanilla support:
+
+```powershell
+@{
+    MinVersion = '1.17'
+    Compatibility = @{
+        dye_depot = @{
+            Versions = @('1.20.1', '1.21.1')
+        }
+        example_mod = @{
+            Versions = @('1.20.1..1.21.1', '26.1 to 26.3')
+            ExcludeVersions = @('1.20.2', '1.21.5..1.21.8')
+            MinVersion = '1.20.1'
+            MaxVersion = '26.3'
+            # Optional: include files outside assets/example_mod/ too.
+            Paths = @('assets/example_mod/', 'assets/minecraft/textures/block/example.png')
+            Support = 'Includes support for Example Mod. No separate compatibility pack needed.'
+        }
+    }
+}
+```
+
+Each mod ID defaults to filtering `assets/<mod-id>/`. Override `Paths` with exact source-relative or typed drop paths, or directory prefixes ending in `/`. Compatibility paths do not support wildcards. Matching files are included only when their mod's selectors match the selected Minecraft version; ordinary `FileRules` cannot reintroduce incompatible assets. Files outside these paths keep their normal behavior.
+
+Supported selectors are `Versions`, `ExcludeVersions`, `MinVersion`, `MaxVersion`, `AfterVersion`, and `BeforeVersion`. `Versions` and `ExcludeVersions` accept exact versions, inclusive `start..end` or `start to end` ranges, and comma-separated mixes. Ranges follow the configured Minecraft release matrix; multiple selectors apply together. Omit `Versions` to allow all versions within the other bounds, use `Versions = @()` to include none, or set `Enabled = $false` to disable that mod's assets entirely. Unknown versions, reversed bounds, invalid paths, and unknown compatibility options fail the build.
+
+Set `Support` inside each mod entry to a short player-facing note, including any links. It accepts a plain string or a multiline PowerShell here-string. The builder combines notes for enabled compatibilities matching the target version into one ZIP-root `support.txt`, separated by blank lines and ordered by mod ID. Unsupported and disabled mod notes are omitted. No file is generated when no active entry has a nonempty note. Keep the text in `pack.build.psd1`; do not also supply a source `support.txt`, which would conflict with the generated file.
+
+Better Candles lists Dye Depot's published Minecraft versions explicitly: **1.20.1 and 1.21.1**, verified against [Modrinth releases](https://modrinth.com/mod/dye-depot/versions) and [CurseForge files](https://www.curseforge.com/minecraft/mc-mods/dye-depot/files/all). Update that entry when new mod releases become available. This filters bundled assets; it does not install or detect mods in a player's game. Run `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-file-options.ps1` to check compatibility selectors and file routing.
+
 File rules include or exclude source files by version:
 
 ```powershell
@@ -453,17 +485,33 @@ Variants are useful when a version needs different JSON, textures, or models whi
 
 Large generated rule sets can be stored in a JSON file inside the pack. Set `FileOptionsPath` in `pack.build.psd1` to that file's relative path; its `FileRules` and `FileVariants` arrays are appended to the inline rules. Other option names are rejected.
 
-Better Moss uses `variants/legacy-solid/manifest.json` for versions before 26.1, which do not support transparent decoration textures on solid blocks. The compatibility models crop geometry to visible texture pixels while keeping the canonical models for 26.1 and newer. Dedicated copies of animated decoration sprites use a fixed frame in older versions; the original PNG bytes and normal Minecraft plant animations are preserved. After changing a model or texture, regenerate these variants with `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/update-moss-legacy-geometry.ps1`. The script downloads and verifies official client assets when they are missing from the ignored cache. Run `node --test scripts/moss-legacy-geometry.test.cjs` for the geometry tests.
+### Better Carpets
 
-### Better Carpets model maintenance
+Better Carpets adds varied overhangs to all 16 wool colors, moss carpets, and pale moss carpets, plus improved inventory views. Pale moss also gains occasional outward growth while retaining its normal wall growth.
 
-Better Carpets provides full, short, and uneven fringe variants for all 16 wool colors, plus varied angled overhangs for moss and pale moss carpets. Wool fringe uses zero-thickness planes with whole-pixel geometry and matching whole-texel UVs: one texture pixel covers one model unit, with no stretching, squashing, or rotation rescaling. Only opaque pixels from the original side textures become faces; transparent gaps are actual holes in the geometry, avoiding reliance on carpet transparency in older Minecraft versions such as 1.13. Small depth offsets prevent overlapping surfaces from flickering. Blockstate UV locking keeps the top texture aligned across randomized model rotations. Carpet items use Better Moss's inventory angle, scale, and raised position. Pale moss retains vanilla low/tall wall growth and adds occasional outward ground growth on sides with no wall growth, without Better Moss's flowers, clover, or sprouts.
-
-Overhangs pivot at the carpet's top (`y = 1` model unit), exactly one pixel above the block below, and sit `0.001` blocks (`0.016` model units) outside its edge. They tilt outward by 20 degrees from vertical in Minecraft 1.21.6 and newer. Older versions retain the supported 22.5-degree angle through `variants/legacy-angle/manifest.json`; both use the same top anchors and pixel scale.
-
-Regenerate these models with `node scripts/update-carpet-models.cjs` and validate them with `node scripts/carpet-models.test.cjs`. The generator reads the Better Moss base carpet model and the local reference `minecraft_assets/blockstates/pale_moss_carpet.json`; keep those inputs available when regenerating. Wool carpets support Minecraft 1.13 onward, moss carpets start at 1.17, and pale moss carpets start at 1.21.4. The pack's file rules omit unsupported assets from older builds.
+Wool carpets support Minecraft 1.13 onward, moss carpets start at 1.17, and pale moss carpets start at 1.21.4. Builds omit assets unavailable in the selected version.
 
 Build the standalone pack to review source changes. Artemis Enhanced Visuals prefers archived component releases, so rebuilding the combined pack can continue using an older Better Carpets release until the updated component is archived.
+
+## Better Candles
+
+Better Candles adds melted wax puddles that grow with the number of candles, for the undyed candle, all 16 vanilla colors, and supported Dye Depot colors. Vanilla support starts at Minecraft 1.17.
+
+Build selected Better Candles versions with:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-texture-packs.ps1 -Pack better_candles -Version '1.20.1,1.21.1'
+```
+
+### Built-in Dye Depot support
+
+Better Candles includes support for all 16 additional candle colors from [Dye Depot](https://modrinth.com/mod/dye-depot), for clusters of one through four candles, lit and unlit. Install the mod to use these colors; no separate compatibility pack is needed.
+
+The `Compatibility.dye_depot.Versions` entry includes Dye Depot support only in Minecraft **1.20.1 and 1.21.1** builds. Better Candles also works without the mod.
+
+For 1.20.1 and 1.21.1, the builder generates a brief `support.txt` announcing built-in Dye Depot support and linking to its Modrinth, CurseForge, and GitHub pages. The note lives in `Compatibility.dye_depot.Support` in `resource_packs/better_candles/pack.build.psd1`; other builds omit the note and file. Notes for additional active compatibilities are combined automatically.
+
+Rebuild Better Candles after changing its sources or compatibility configuration. Artemis Enhanced Visuals prefers matching archived component releases, so its next build can still use an older Better Candles release until the updated component is archived. Existing published or archived ZIPs are not rewritten by source changes.
 
 ## Build Output
 
@@ -480,8 +528,9 @@ An individual source pack's generated ZIP contains:
 - root `pack.mcmeta`
 - root `pack.png`, when present in the source pack
 - extra files placed directly in the source pack root (such as `LICENSE.txt`)
+- generated root `support.txt`, when active `Compatibility` entries define support notes
 - files from `extras/`, copied to the ZIP root with their subfolders preserved
-- resolved `assets/minecraft/...` files from `assets/` and `drop/`
+- resolved `assets/<namespace>/...` files from `assets/` and `drop/`, including mod namespaces when their compatibility rules allow them
 
 Build validation can enforce lowercase output paths, parse generated JSON and `.mcmeta` files, and check texture metadata pairs depending on the global validation settings.
 

@@ -2,7 +2,7 @@
   "parent": "minecraft:block/template_three_candles",
   "textures": {
     "candle": "minecraft:block/lime_candle_lit",
-    "floor": "minecraft:block/lime_candle_floor",
+    "floor": "minecraft:block/lime_candle_floor_3",
     "particle": "minecraft:block/lime_candle_lit"
   }
 }

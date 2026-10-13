@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/template_four_candles",
+  "textures": {
+    "candle": "dye_depot:block/beige_candle_lit",
+    "floor": "dye_depot:block/beige_candle_floor_4",
+    "particle": "dye_depot:block/beige_candle_lit",
+    "all": "dye_depot:block/beige_candle_lit"
+  }
+}

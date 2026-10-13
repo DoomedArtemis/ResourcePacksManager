@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/template_candle",
+  "textures": {
+    "candle": "dye_depot:block/slate_candle",
+    "floor": "dye_depot:block/slate_candle_floor",
+    "particle": "dye_depot:block/slate_candle",
+    "all": "dye_depot:block/slate_candle"
+  }
+}
