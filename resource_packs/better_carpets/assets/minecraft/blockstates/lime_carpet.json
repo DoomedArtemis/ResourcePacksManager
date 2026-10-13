@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "": [
+      { "model": "minecraft:block/lime_carpet", "y": 0, "uvlock": true, "weight": 4 },
+      { "model": "minecraft:block/lime_carpet", "y": 90, "uvlock": true, "weight": 4 },
+      { "model": "minecraft:block/lime_carpet", "y": 180, "uvlock": true, "weight": 4 },
+      { "model": "minecraft:block/lime_carpet", "y": 270, "uvlock": true, "weight": 4 },
+      { "model": "minecraft:block/lime_carpet_short", "y": 0, "uvlock": true, "weight": 3 },
+      { "model": "minecraft:block/lime_carpet_short", "y": 90, "uvlock": true, "weight": 3 },
+      { "model": "minecraft:block/lime_carpet_short", "y": 180, "uvlock": true, "weight": 3 },
+      { "model": "minecraft:block/lime_carpet_short", "y": 270, "uvlock": true, "weight": 3 },
+      { "model": "minecraft:block/lime_carpet_uneven", "y": 0, "uvlock": true, "weight": 1 },
+      { "model": "minecraft:block/lime_carpet_uneven", "y": 90, "uvlock": true, "weight": 1 },
+      { "model": "minecraft:block/lime_carpet_uneven", "y": 180, "uvlock": true, "weight": 1 },
+      { "model": "minecraft:block/lime_carpet_uneven", "y": 270, "uvlock": true, "weight": 1 }
+    ]
+  }
+}

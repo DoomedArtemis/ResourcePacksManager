@@ -433,7 +433,7 @@ File rules include or exclude source files by version:
 }
 ```
 
-`Path` can match either the source-relative path or the typed drop path. A rule ending in `/` matches everything below that path.
+`Path` can match either the source-relative path or the typed drop path. For canonical assets, include the full source-relative prefix, such as `assets/minecraft/models/block/moss_carpet.json`; `models/block/moss_carpet.json` is a typed drop path. A rule ending in `/` matches everything below that path. File rules and variants use exact paths or directory prefixes, not wildcards; the combined pack's `Include` and `Exclude` rules separately support wildcards.
 
 File variants replace one source file with another for selected versions:
 
@@ -454,6 +454,16 @@ Variants are useful when a version needs different JSON, textures, or models whi
 Large generated rule sets can be stored in a JSON file inside the pack. Set `FileOptionsPath` in `pack.build.psd1` to that file's relative path; its `FileRules` and `FileVariants` arrays are appended to the inline rules. Other option names are rejected.
 
 Better Moss uses `variants/legacy-solid/manifest.json` for versions before 26.1, which do not support transparent decoration textures on solid blocks. The compatibility models crop geometry to visible texture pixels while keeping the canonical models for 26.1 and newer. Dedicated copies of animated decoration sprites use a fixed frame in older versions; the original PNG bytes and normal Minecraft plant animations are preserved. After changing a model or texture, regenerate these variants with `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/update-moss-legacy-geometry.ps1`. The script downloads and verifies official client assets when they are missing from the ignored cache. Run `node --test scripts/moss-legacy-geometry.test.cjs` for the geometry tests.
+
+### Better Carpets model maintenance
+
+Better Carpets provides full, short, and uneven fringe variants for all 16 wool colors, plus varied angled overhangs for moss and pale moss carpets. Wool fringe uses zero-thickness planes with whole-pixel geometry and matching whole-texel UVs: one texture pixel covers one model unit, with no stretching, squashing, or rotation rescaling. Only opaque pixels from the original side textures become faces; transparent gaps are actual holes in the geometry, avoiding reliance on carpet transparency in older Minecraft versions such as 1.13. Small depth offsets prevent overlapping surfaces from flickering. Blockstate UV locking keeps the top texture aligned across randomized model rotations. Carpet items use Better Moss's inventory angle, scale, and raised position. Pale moss retains vanilla low/tall wall growth and adds occasional outward ground growth on sides with no wall growth, without Better Moss's flowers, clover, or sprouts.
+
+Overhangs pivot at the carpet's top (`y = 1` model unit), exactly one pixel above the block below, and sit `0.001` blocks (`0.016` model units) outside its edge. They tilt outward by 20 degrees from vertical in Minecraft 1.21.6 and newer. Older versions retain the supported 22.5-degree angle through `variants/legacy-angle/manifest.json`; both use the same top anchors and pixel scale.
+
+Regenerate these models with `node scripts/update-carpet-models.cjs` and validate them with `node scripts/carpet-models.test.cjs`. The generator reads the Better Moss base carpet model and the local reference `minecraft_assets/blockstates/pale_moss_carpet.json`; keep those inputs available when regenerating. Wool carpets support Minecraft 1.13 onward, moss carpets start at 1.17, and pale moss carpets start at 1.21.4. The pack's file rules omit unsupported assets from older builds.
+
+Build the standalone pack to review source changes. Artemis Enhanced Visuals prefers archived component releases, so rebuilding the combined pack can continue using an older Better Carpets release until the updated component is archived.
 
 ## Build Output
 
@@ -515,11 +525,19 @@ powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Pack
 powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Version <version>
 powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Pack <pack> -Version <version>
 powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -PromptForPack
+powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -PromptForPack -Version all
+powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -PromptForPack -PromptForVersion
+powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Pack better_carpets -Version '1.21.4..26.3'
 powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -PromptForVersion
 powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Clean
 ```
 
-Interactive version selection accepts `all`, a single version, an inclusive range such as `<start>..<end>` or `<start> to <end>`, and comma-separated mixes.
+Both `-Version` and interactive version selection accept `all`, a single version, an inclusive range such as `<start>..<end>` or `<start> to <end>`, and comma-separated mixes. Ranges follow the configured version matrix order; each pack's version filters still apply. Quote command-line ranges and mixes containing spaces.
+
+`Build Selected Texture Packs For Version Range` uses this same version selection after you enter the pack names. For example, select `better_carpets`, then enter `1.21.4..26.3` to build every configured version in that inclusive range, or `1.21.4, 1.21.11 to 26.3` to mix individual versions and ranges.
+The builder also prompts for versions when run with just `-PromptForPack`, unless `-Version` is supplied or you are only listing packs with `-ListPacks`.
+
+`Build Selected Texture Packs` asks only for pack names and builds all enabled versions supported by those packs. `Build All Texture Packs` builds all packs for all enabled supported versions without prompting. Their `For Version Range` counterparts ask for version selection.
 
 The scaffold script creates a new pack folder using the configured source layout:
 
@@ -537,9 +555,15 @@ powershell -ExecutionPolicy Bypass -File .\scripts\sync-minecraft-release-matrix
 
 Shared IntelliJ run configurations are stored in `.run/`:
 
-- `Build All Texture Packs`
-- `Build All Texture Packs For Version Range`
-- `Build Selected Texture Packs`
+| Build configuration | Pack selection | Version selection |
+| --- | --- | --- |
+| `Build All Texture Packs` | All packs | All enabled supported versions; no prompt |
+| `Build All Texture Packs For Version Range` | All packs | Prompts for versions or ranges |
+| `Build Selected Texture Packs` | Prompts for pack names | All enabled supported versions; no version prompt |
+| `Build Selected Texture Packs For Version Range` | Prompts for pack names | Prompts for versions or ranges |
+
+Other shared configurations:
+
 - `Build Artemis Enhanced Visuals`
 - `Create New Texture Pack`
 - `Dry Run Modrinth Publish All`
@@ -553,7 +577,7 @@ Shared IntelliJ run configurations are stored in `.run/`:
 - `Publish All Resource Packs to CurseForge`
 - `Publish Selected Resource Packs to CurseForge`
 
-These run the same PowerShell scripts with prompt-based flags for pack, version, project, changelog, release version, and token input.
+These configurations run the repository's PowerShell scripts. Build prompts follow the table above; publishing configurations prompt for their configured pack, version, project, changelog, release version, and token inputs.
 
 The all-pack and selected-pack build/publish configurations also include Artemis
 Enhanced Visuals. Its dedicated build configuration prompts for Minecraft versions

@@ -1,0 +1,49 @@
+{
+  "FileVariants": [
+    {
+      "Path": "assets/minecraft/models/block/overhanging_carpet.json",
+      "SourcePath": "variants/legacy-angle/assets/minecraft/models/block/overhanging_carpet.json",
+      "BeforeVersion": "1.21.6"
+    },
+    {
+      "Path": "assets/minecraft/models/block/overhanging_carpet_short.json",
+      "SourcePath": "variants/legacy-angle/assets/minecraft/models/block/overhanging_carpet_short.json",
+      "BeforeVersion": "1.21.6"
+    },
+    {
+      "Path": "assets/minecraft/models/block/overhanging_carpet_uneven.json",
+      "SourcePath": "variants/legacy-angle/assets/minecraft/models/block/overhanging_carpet_uneven.json",
+      "BeforeVersion": "1.21.6"
+    },
+    {
+      "Path": "assets/minecraft/models/block/overhanging_moss_carpet.json",
+      "SourcePath": "variants/legacy-angle/assets/minecraft/models/block/overhanging_moss_carpet.json",
+      "BeforeVersion": "1.21.6"
+    },
+    {
+      "Path": "assets/minecraft/models/block/overhanging_moss_carpet_short.json",
+      "SourcePath": "variants/legacy-angle/assets/minecraft/models/block/overhanging_moss_carpet_short.json",
+      "BeforeVersion": "1.21.6"
+    },
+    {
+      "Path": "assets/minecraft/models/block/overhanging_moss_carpet_uneven.json",
+      "SourcePath": "variants/legacy-angle/assets/minecraft/models/block/overhanging_moss_carpet_uneven.json",
+      "BeforeVersion": "1.21.6"
+    },
+    {
+      "Path": "assets/minecraft/models/block/overhanging_pale_moss_carpet.json",
+      "SourcePath": "variants/legacy-angle/assets/minecraft/models/block/overhanging_pale_moss_carpet.json",
+      "BeforeVersion": "1.21.6"
+    },
+    {
+      "Path": "assets/minecraft/models/block/overhanging_pale_moss_carpet_short.json",
+      "SourcePath": "variants/legacy-angle/assets/minecraft/models/block/overhanging_pale_moss_carpet_short.json",
+      "BeforeVersion": "1.21.6"
+    },
+    {
+      "Path": "assets/minecraft/models/block/overhanging_pale_moss_carpet_uneven.json",
+      "SourcePath": "variants/legacy-angle/assets/minecraft/models/block/overhanging_pale_moss_carpet_uneven.json",
+      "BeforeVersion": "1.21.6"
+    }
+  ]
+}

@@ -361,7 +361,7 @@ function Read-RequestedVersions {
     Write-Host '  1.20.4, 1.20.6 to 1.21.2'
     Write-Host ''
 
-    $inputValue = Read-Host 'Enter version or version range'
+    $inputValue = Read-Host 'Enter Minecraft versions (all, comma-separated versions, start..end, or start to end)'
     if ([string]::IsNullOrWhiteSpace($inputValue)) {
         throw 'No version selection entered.'
     }
@@ -1590,7 +1590,9 @@ if ($PromptForPack) {
     $Pack = @(Read-RequestedPackNames -RepoRoot $repoRoot -Config $config)
 }
 
-if ($PromptForVersion) {
+# Interactive pack selection must also ask which versions to build, even if
+# an IDE's saved run configuration supplies only -PromptForPack.
+if ($PromptForVersion -or ($PromptForPack -and -not $Version -and -not $ListPacks)) {
     $Version = @(Read-RequestedVersions -Config $config)
 }
 

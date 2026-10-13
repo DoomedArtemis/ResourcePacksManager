@@ -1,0 +1,15 @@
+{
+  "textures": {
+    "particle": "minecraft:block/pale_moss_carpet",
+    "growth": "minecraft:block/pale_moss_carpet_side_small"
+  },
+  "elements": [
+    {
+      "from": [0, 0.008, -4],
+      "to": [16, 0.008, 0],
+      "faces": {
+        "up": { "uv": [0, 12, 16, 16], "texture": "#growth" }
+      }
+    }
+  ]
+}
