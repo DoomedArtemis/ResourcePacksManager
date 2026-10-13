@@ -31,7 +31,7 @@ function Import-PackBuilderFunctions {
 function Assert-CombinedDefinition {
     param([hashtable]$Definition, [string[]]$AvailablePacks)
     foreach ($key in $Definition.Keys) {
-        if ($key -notin @('Name', 'DisplayName', 'Description', 'IconPath', 'Packs', 'Exclude', 'Modrinth', 'CurseForge', 'Versions', 'ExcludeVersions', 'MinVersion', 'MaxVersion', 'AfterVersion', 'BeforeVersion')) {
+        if ($key -notin @('Name', 'DisplayName', 'Description', 'PackMetadata', 'IconPath', 'Packs', 'Exclude', 'Modrinth', 'CurseForge', 'Versions', 'ExcludeVersions', 'MinVersion', 'MaxVersion', 'AfterVersion', 'BeforeVersion')) {
             throw "Unknown combined-pack option '$key'."
         }
     }
@@ -46,6 +46,9 @@ function Assert-CombinedDefinition {
         throw 'Combined pack Packs must list at least one pack.'
     }
     $seen = @{}
+    if ($Definition.ContainsKey('PackMetadata') -and $Definition.PackMetadata -isnot [hashtable]) {
+        throw 'Combined pack PackMetadata must be a table.'
+    }
     $enabledCount = 0
     foreach ($entry in $Definition.Packs) {
         if ($entry -isnot [hashtable]) { throw 'Each Packs entry must be a hashtable.' }
@@ -223,13 +226,19 @@ try {
         if ($definition.ContainsKey('Description')) { $tokens.BaseDescription = $definition.Description }
         $metadata = New-PackMcmetaObject -Tokens $tokens -VersionConfig $versionConfig
         $metadata.pack.description = Convert-Tokens -Value $tokens.BaseDescription -Tokens $tokens
+        $documentationDescription = [string]$metadata.pack.description
+        if ($definition.ContainsKey('PackMetadata')) {
+            $overrides = ConvertTo-Hashtable -InputObject $definition.PackMetadata
+            foreach ($formatKey in @('pack_format', 'supported_formats', 'min_format', 'max_format')) { $overrides.Remove($formatKey) }
+            $metadata = Merge-Hashtable -Base (ConvertTo-Hashtable -InputObject $metadata) -Overlay @{ pack = $overrides }
+        }
         $metadata | ConvertTo-Json -Depth 100 | Set-Content -LiteralPath (Join-Path $mergedRoot 'pack.mcmeta') -Encoding UTF8
         if ($definition.ContainsKey('IconPath') -and $definition.IconPath) {
             $icon = Resolve-FullPath -BasePath $repoRoot -Path $definition.IconPath
             Copy-Item -LiteralPath $icon -Destination (Join-Path $mergedRoot 'pack.png')
         }
         $definitionDirectory = Split-Path (Resolve-FullPath -BasePath $repoRoot -Path $DefinitionPath) -Parent
-        $componentVersions = Copy-CombinedPackDocumentation -RepoRoot $repoRoot -DefinitionDirectory $definitionDirectory -Destination $mergedRoot -Components $components -DisplayName $definition.DisplayName -MinecraftVersion $versionConfig.Id -Description ([string]$metadata.pack.description)
+        $componentVersions = Copy-CombinedPackDocumentation -RepoRoot $repoRoot -DefinitionDirectory $definitionDirectory -Destination $mergedRoot -Components $components -DisplayName $definition.DisplayName -MinecraftVersion $versionConfig.Id -Description $documentationDescription
         $packageTokens = Get-PackTokens -Config $config -PackDirectory ([pscustomobject]@{ Name = $definition.Name }) -VersionConfig $versionConfig
         $baseName = Convert-Tokens -Value $config.PackageNameTemplate -Tokens $packageTokens
         $stagedZip = Join-Path $workRoot "$baseName.zip"

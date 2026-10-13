@@ -1,5 +1,15 @@
 @{
     MinVersion = '1.13'
+    PackMetadata = @{
+        name = 'Better Carpets'
+        author = 'DoomedArtemis'
+        description = @(
+            @{ text = 'A softer touch for '; color = 'gray' }
+            @{ text = 'carpet edges'; color = 'aqua' }
+            @{ text = ' by '; color = 'gray' }
+            @{ text = 'Artemis'; color = 'gold' }
+        )
+    }
     FileOptionsPath = 'variants/legacy-angle/manifest.json'
     FileRules = @(
         @{

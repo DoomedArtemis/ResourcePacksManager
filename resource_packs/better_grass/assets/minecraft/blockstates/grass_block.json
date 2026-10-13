@@ -1,0 +1,512 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "snowy": "false"
+      },
+      "apply": [
+        {
+          "model": "minecraft:block/grass_block",
+          "y": 0,
+          "uvlock": true
+        },
+        {
+          "model": "minecraft:block/grass_block",
+          "y": 90,
+          "uvlock": true
+        },
+        {
+          "model": "minecraft:block/grass_block",
+          "y": 180,
+          "uvlock": true
+        },
+        {
+          "model": "minecraft:block/grass_block",
+          "y": 270,
+          "uvlock": true
+        }
+      ]
+    },
+    {
+      "when": {
+        "snowy": "true"
+      },
+      "apply": {
+        "model": "minecraft:block/grass_block_snow"
+      }
+    },
+    {
+      "when": {
+        "snowy": "false"
+      },
+      "apply": [
+        {
+          "model": "minecraft:block/better_grass/none",
+          "weight": 1188
+        },
+        {
+          "model": "minecraft:block/better_grass/clover_1",
+          "y": 0,
+          "weight": 20
+        },
+        {
+          "model": "minecraft:block/better_grass/clover_1",
+          "y": 90,
+          "weight": 20
+        },
+        {
+          "model": "minecraft:block/better_grass/clover_1",
+          "y": 180,
+          "weight": 20
+        },
+        {
+          "model": "minecraft:block/better_grass/clover_1",
+          "y": 270,
+          "weight": 20
+        },
+        {
+          "model": "minecraft:block/better_grass/clover_2",
+          "y": 0,
+          "weight": 20
+        },
+        {
+          "model": "minecraft:block/better_grass/clover_2",
+          "y": 90,
+          "weight": 20
+        },
+        {
+          "model": "minecraft:block/better_grass/clover_2",
+          "y": 180,
+          "weight": 20
+        },
+        {
+          "model": "minecraft:block/better_grass/clover_2",
+          "y": 270,
+          "weight": 20
+        },
+        {
+          "model": "minecraft:block/better_grass/clover_3",
+          "y": 0,
+          "weight": 20
+        },
+        {
+          "model": "minecraft:block/better_grass/clover_3",
+          "y": 90,
+          "weight": 20
+        },
+        {
+          "model": "minecraft:block/better_grass/clover_3",
+          "y": 180,
+          "weight": 20
+        },
+        {
+          "model": "minecraft:block/better_grass/clover_3",
+          "y": 270,
+          "weight": 20
+        },
+        {
+          "model": "minecraft:block/better_grass/clover_4",
+          "y": 0,
+          "weight": 20
+        },
+        {
+          "model": "minecraft:block/better_grass/clover_4",
+          "y": 90,
+          "weight": 20
+        },
+        {
+          "model": "minecraft:block/better_grass/clover_4",
+          "y": 180,
+          "weight": 20
+        },
+        {
+          "model": "minecraft:block/better_grass/clover_4",
+          "y": 270,
+          "weight": 20
+        },
+        {
+          "model": "minecraft:block/better_grass/sprouts",
+          "y": 0,
+          "weight": 10
+        },
+        {
+          "model": "minecraft:block/better_grass/sprouts",
+          "y": 90,
+          "weight": 10
+        },
+        {
+          "model": "minecraft:block/better_grass/sprouts",
+          "y": 180,
+          "weight": 10
+        },
+        {
+          "model": "minecraft:block/better_grass/sprouts",
+          "y": 270,
+          "weight": 10
+        },
+        {
+          "model": "minecraft:block/better_grass/pink_petals",
+          "y": 0,
+          "weight": 2
+        },
+        {
+          "model": "minecraft:block/better_grass/pink_petals",
+          "y": 90,
+          "weight": 2
+        },
+        {
+          "model": "minecraft:block/better_grass/pink_petals",
+          "y": 180,
+          "weight": 2
+        },
+        {
+          "model": "minecraft:block/better_grass/pink_petals",
+          "y": 270,
+          "weight": 2
+        },
+        {
+          "model": "minecraft:block/better_grass/wildflowers",
+          "y": 0,
+          "weight": 2
+        },
+        {
+          "model": "minecraft:block/better_grass/wildflowers",
+          "y": 90,
+          "weight": 2
+        },
+        {
+          "model": "minecraft:block/better_grass/wildflowers",
+          "y": 180,
+          "weight": 2
+        },
+        {
+          "model": "minecraft:block/better_grass/wildflowers",
+          "y": 270,
+          "weight": 2
+        },
+        {
+          "model": "minecraft:block/better_grass/white_flowers_1",
+          "y": 0,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/better_grass/white_flowers_1",
+          "y": 90,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/better_grass/white_flowers_1",
+          "y": 180,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/better_grass/white_flowers_1",
+          "y": 270,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/better_grass/white_flowers_2",
+          "y": 0,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/better_grass/white_flowers_2",
+          "y": 90,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/better_grass/white_flowers_2",
+          "y": 180,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/better_grass/white_flowers_2",
+          "y": 270,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/better_grass/white_flowers_3",
+          "y": 0,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/better_grass/white_flowers_3",
+          "y": 90,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/better_grass/white_flowers_3",
+          "y": 180,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/better_grass/white_flowers_3",
+          "y": 270,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/better_grass/purple_flowers",
+          "y": 0,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/better_grass/purple_flowers",
+          "y": 90,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/better_grass/purple_flowers",
+          "y": 180,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/better_grass/purple_flowers",
+          "y": 270,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/better_grass/stick",
+          "y": 0,
+          "weight": 4
+        },
+        {
+          "model": "minecraft:block/better_grass/stick",
+          "y": 90,
+          "weight": 4
+        },
+        {
+          "model": "minecraft:block/better_grass/stick",
+          "y": 180,
+          "weight": 4
+        },
+        {
+          "model": "minecraft:block/better_grass/stick",
+          "y": 270,
+          "weight": 4
+        },
+        {
+          "model": "minecraft:block/better_grass/sticks",
+          "y": 0,
+          "weight": 2
+        },
+        {
+          "model": "minecraft:block/better_grass/sticks",
+          "y": 90,
+          "weight": 2
+        },
+        {
+          "model": "minecraft:block/better_grass/sticks",
+          "y": 180,
+          "weight": 2
+        },
+        {
+          "model": "minecraft:block/better_grass/sticks",
+          "y": 270,
+          "weight": 2
+        },
+        {
+          "model": "minecraft:block/better_grass/pebble",
+          "y": 0,
+          "weight": 5
+        },
+        {
+          "model": "minecraft:block/better_grass/pebble",
+          "y": 90,
+          "weight": 5
+        },
+        {
+          "model": "minecraft:block/better_grass/pebble",
+          "y": 180,
+          "weight": 5
+        },
+        {
+          "model": "minecraft:block/better_grass/pebble",
+          "y": 270,
+          "weight": 5
+        },
+        {
+          "model": "minecraft:block/better_grass/pebbles",
+          "y": 0,
+          "weight": 2
+        },
+        {
+          "model": "minecraft:block/better_grass/pebbles",
+          "y": 90,
+          "weight": 2
+        },
+        {
+          "model": "minecraft:block/better_grass/pebbles",
+          "y": 180,
+          "weight": 2
+        },
+        {
+          "model": "minecraft:block/better_grass/pebbles",
+          "y": 270,
+          "weight": 2
+        }
+      ]
+    },
+    {
+      "when": {
+        "snowy": "false"
+      },
+      "apply": [
+        {
+          "model": "minecraft:block/better_grass/fringe_short",
+          "y": 0,
+          "weight": 4
+        },
+        {
+          "model": "minecraft:block/better_grass/fringe_short",
+          "y": 90,
+          "weight": 4
+        },
+        {
+          "model": "minecraft:block/better_grass/fringe_short",
+          "y": 180,
+          "weight": 4
+        },
+        {
+          "model": "minecraft:block/better_grass/fringe_short",
+          "y": 270,
+          "weight": 4
+        },
+        {
+          "model": "minecraft:block/better_grass/fringe_full",
+          "y": 0,
+          "weight": 3
+        },
+        {
+          "model": "minecraft:block/better_grass/fringe_full",
+          "y": 90,
+          "weight": 3
+        },
+        {
+          "model": "minecraft:block/better_grass/fringe_full",
+          "y": 180,
+          "weight": 3
+        },
+        {
+          "model": "minecraft:block/better_grass/fringe_full",
+          "y": 270,
+          "weight": 3
+        },
+        {
+          "model": "minecraft:block/better_grass/fringe_uneven",
+          "y": 0,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/better_grass/fringe_uneven",
+          "y": 90,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/better_grass/fringe_uneven",
+          "y": 180,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/better_grass/fringe_uneven",
+          "y": 270,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "when": {
+        "snowy": "false"
+      },
+      "apply": [
+        {
+          "model": "minecraft:block/better_grass/none",
+          "weight": 63
+        },
+        {
+          "model": "minecraft:block/better_grass/pebble_side",
+          "y": 0,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "when": {
+        "snowy": "false"
+      },
+      "apply": [
+        {
+          "model": "minecraft:block/better_grass/none",
+          "weight": 63
+        },
+        {
+          "model": "minecraft:block/better_grass/pebble_side",
+          "y": 90,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "when": {
+        "snowy": "false"
+      },
+      "apply": [
+        {
+          "model": "minecraft:block/better_grass/none",
+          "weight": 63
+        },
+        {
+          "model": "minecraft:block/better_grass/pebble_side",
+          "y": 180,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "when": {
+        "snowy": "false"
+      },
+      "apply": [
+        {
+          "model": "minecraft:block/better_grass/none",
+          "weight": 63
+        },
+        {
+          "model": "minecraft:block/better_grass/pebble_side",
+          "y": 270,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "when": {
+        "snowy": "false"
+      },
+      "apply": [
+        {
+          "model": "minecraft:block/better_grass/none",
+          "weight": 252
+        },
+        {
+          "model": "minecraft:block/better_grass/pebble_bottom",
+          "y": 0,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/better_grass/pebble_bottom",
+          "y": 90,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/better_grass/pebble_bottom",
+          "y": 180,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/better_grass/pebble_bottom",
+          "y": 270,
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

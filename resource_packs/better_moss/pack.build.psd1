@@ -1,5 +1,15 @@
 @{
     MinVersion = '1.17'
+    PackMetadata = @{
+        name = 'Better Moss'
+        author = 'DoomedArtemis'
+        description = @(
+            @{ text = 'A touch of '; color = 'gray' }
+            @{ text = 'lush moss'; color = 'dark_green' }
+            @{ text = ' by '; color = 'gray' }
+            @{ text = 'Artemis'; color = 'gold' }
+        )
+    }
     FileOptionsPath = 'variants/legacy-solid/manifest.json'
     FileVariants = @(
 

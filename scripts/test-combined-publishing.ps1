@@ -41,7 +41,7 @@ try {
             Set-Content -LiteralPath $item.ZipPath -Value 'test zip content'
             Set-Content -LiteralPath $reportPath -Value '{}'
             $archivePath = Move-UploadedZipToArchive -Item $item -ArchiveRootPath $archiveRoot
-            if ((Split-Path $archivePath -Leaf) -ne 'combined-1.0.0-mc1.17.zip') { throw "Wrong archive filename in $scriptName" }
+            if ((Split-Path $archivePath -Leaf) -ne 'Combined 1.0.0 MC1.17.zip') { throw "Wrong archive filename in $scriptName" }
             $item | Add-Member -NotePropertyName MinecraftVersion -NotePropertyValue '1.17'
             $resolvedZip = Resolve-PublishZipPath -Item $item -BuildZipPath $item.ZipPath -ArchiveRootPath $archiveRoot -ConfigPath 'fixture-config.psd1' -ShouldBuildIfMissing $false
             if ($resolvedZip.Source -ne 'archive' -or $resolvedZip.Path -ne $archivePath) { throw "Renamed archive lookup failed in $scriptName" }
@@ -49,7 +49,30 @@ try {
             Move-Item -LiteralPath $archivePath -Destination $oldArchivePath
             $resolvedZip = Resolve-PublishZipPath -Item $item -BuildZipPath $item.ZipPath -ArchiveRootPath $archiveRoot -ConfigPath 'fixture-config.psd1' -ShouldBuildIfMissing $false
             if ($resolvedZip.Source -ne 'archive' -or $resolvedZip.Path -ne $oldArchivePath) { throw "Legacy archive lookup failed in $scriptName" }
+            $archivedItem = [pscustomobject]@{ PackName = 'combined'; ReleaseVersion = '1.0.0'; MinecraftVersion = '1.17'; ZipSource = 'archive'; ZipPath = $oldArchivePath }
+            $originalHash = (Get-FileHash -LiteralPath $oldArchivePath).Hash
+            $uploadCopy = New-VersionedUploadZipCopy -Item $archivedItem
+            try {
+                if ((Split-Path $uploadCopy -Leaf) -ne (Split-Path $oldArchivePath -Leaf)) { throw "Archived upload filename changed in $scriptName" }
+                if ((Get-FileHash -LiteralPath $uploadCopy).Hash -ne $originalHash) { throw 'Archived upload content changed.' }
+            }
+            finally {
+                Remove-Item -LiteralPath $uploadCopy -Force
+                Remove-Item -LiteralPath (Split-Path $uploadCopy -Parent) -Force
+            }
+            if ((Move-UploadedZipToArchive -Item $archivedItem -ArchiveRootPath $archiveRoot) -ne $oldArchivePath -or
+                -not (Test-Path -LiteralPath $oldArchivePath) -or (Get-FileHash -LiteralPath $oldArchivePath).Hash -ne $originalHash) {
+                throw "Existing archive was renamed or changed in $scriptName"
+            }
+            $component = Get-CombinedArchivedComponent -RepoRoot (Join-Path $fixture $scriptName) -PackName 'combined' -MinecraftVersion '1.17'
+            if ($component.ZipPath -ne $oldArchivePath) { throw 'Combined legacy lookup failed.' }
             Move-Item -LiteralPath $oldArchivePath -Destination $archivePath
+            $component = Get-CombinedArchivedComponent -RepoRoot (Join-Path $fixture $scriptName) -PackName 'combined' -MinecraftVersion '1.17'
+            if ($component.ZipPath -ne $archivePath) { throw 'Combined readable filename lookup failed.' }
+            $customOptions = @{ PackMetadata = @{ name = 'Custom Pack Name' } }
+            if ((Get-ReleasePackDisplayName -PackDirectory $selected[0] -PackOptions $customOptions) -ne 'Custom Pack Name') { throw 'Configured release name ignored.' }
+            $customItem = [pscustomobject]@{ PackDisplayName = 'Custom Pack Name'; ReleaseVersion = '2.0.0'; MinecraftVersion = '26.2' }
+            if ((Get-ReleaseZipFileName -Item $customItem) -ne 'Custom Pack Name 2.0.0 MC26.2.zip') { throw 'Readable release name formatting failed.' }
             if ($scriptName -eq 'publish-curseforge.ps1') {
                 $item | Add-Member -NotePropertyName ProjectId -NotePropertyValue '12345'
                 $item.VersionNumber = '1.0.0-mc1.17'
@@ -70,6 +93,8 @@ try {
             Set-Content -LiteralPath $reportPath -Value '{}'
             $changedPath = Move-UploadedZipToArchive -Item $item -ArchiveRootPath $archiveRoot
             if ($changedPath -eq $archivePath -or -not (Test-Path $changedPath) -or (Test-Path $reportPath)) { throw "Archive collision cleanup failed in $scriptName" }
+            $resolvedZip = Resolve-PublishZipPath -Item $item -BuildZipPath $item.ZipPath -ArchiveRootPath $archiveRoot -ConfigPath 'fixture-config.psd1' -ShouldBuildIfMissing $false
+            if ($resolvedZip.Path -ne $changedPath) { throw 'Latest archive collision copy was not selected.' }
             # A failed archive operation must preserve the report.
             Set-Content -LiteralPath $reportPath -Value '{}'
             $failed = $false

@@ -1,0 +1,19 @@
+{
+  "FileVariants": [
+    {
+      "Path": "assets/minecraft/models/block/better_grass/fringe_short.json",
+      "SourcePath": "variants/legacy-angle/assets/minecraft/models/block/better_grass/fringe_short.json",
+      "BeforeVersion": "1.21.6"
+    },
+    {
+      "Path": "assets/minecraft/models/block/better_grass/fringe_full.json",
+      "SourcePath": "variants/legacy-angle/assets/minecraft/models/block/better_grass/fringe_full.json",
+      "BeforeVersion": "1.21.6"
+    },
+    {
+      "Path": "assets/minecraft/models/block/better_grass/fringe_uneven.json",
+      "SourcePath": "variants/legacy-angle/assets/minecraft/models/block/better_grass/fringe_uneven.json",
+      "BeforeVersion": "1.21.6"
+    }
+  ]
+}

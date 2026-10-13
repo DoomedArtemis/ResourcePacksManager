@@ -1,0 +1,41 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "minecraft:block/grass_block_top",
+    "material": "minecraft:block/better_grass/pebble"
+  },
+  "elements": [
+    {
+      "from": [7, 16.016, 6],
+      "to": [10, 16.016, 7],
+      "shade": false,
+      "faces": {
+        "up": { "uv": [7, 6, 10, 7], "texture": "#material", "cullface": "up" }
+      }
+    },
+    {
+      "from": [6, 16.016, 7],
+      "to": [10, 16.016, 9],
+      "shade": false,
+      "faces": {
+        "up": { "uv": [6, 7, 10, 9], "texture": "#material", "cullface": "up" }
+      }
+    },
+    {
+      "from": [7, 16.016, 6],
+      "to": [10, 16.016, 7],
+      "shade": false,
+      "faces": {
+        "down": { "uv": [7, 7, 10, 6], "texture": "#material", "cullface": "up" }
+      }
+    },
+    {
+      "from": [6, 16.016, 7],
+      "to": [10, 16.016, 9],
+      "shade": false,
+      "faces": {
+        "down": { "uv": [6, 9, 10, 7], "texture": "#material", "cullface": "up" }
+      }
+    }
+  ]
+}

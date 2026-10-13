@@ -1,19 +1,21 @@
 @{
     Name = 'artemis_enhanced_visuals'
     DisplayName = 'Artemis Enhanced Visuals'
-    # In-game pack description. Use a multiline @' ... '@ string like the other packs.
-    # {PackDisplayName} and {VersionId} are replaced during the build.
-    Description = 'A collection of Artemis resource packs that enhances Minecraft''s vanilla visuals while preserving its familiar style.'
-    # Optional icon path relative to the repository root.
-    IconPath = 'artemis_enhanced_visuals/pack.png'
-    # Modrinth/CurseForge publishing options and version selectors can be added here,
-    # using the same format as a normal pack.build.psd1.
 
-    # Higher numbers choose the blockstate (explicit, or vanilla for model-only packs).
-    # Winning blocks retain their model/parent/texture dependencies in private paths.
-    # Other files still use normal file priority. Missing textures are report warnings;
-    # missing models and deliberately excluded dependencies still fail.
-    # Disabled and unlisted packs are excluded. New packs are never added automatically.
+    Description = 'A collection of Artemis resource packs that enhances Minecraft''s vanilla visuals while preserving its familiar style.'
+    PackMetadata = @{
+        name = 'Artemis Enhanced Visuals'
+        author = 'DoomedArtemis'
+        description = @(
+            @{ text = 'A collection of '; color = 'gray' }
+            @{ text = 'vanilla visual touches'; color = 'aqua' }
+            @{ text = ' by '; color = 'gray' }
+            @{ text = 'Artemis'; color = 'gold' }
+        )
+    }
+
+    IconPath = 'artemis_enhanced_visuals/pack.png'
+
     Packs = @(
         @{ Name = 'alternative_birch_leaves'; Enabled = $true; Priority = 10 }
         @{ Name = 'alternative_end_rod'; Enabled = $true; Priority = 20 }
@@ -32,9 +34,5 @@
         @{ Name = 'vanilla_lavender_enhanced'; Enabled = $true; Priority = 160 }
     )
 
-    # Include/Exclude can also be placed on each pack entry. Rules use final ZIP paths.
-    # Include = @('assets/minecraft/textures/*') limits a pack to textures.
-    # Exclude = @('assets/minecraft/models/block/moss_carpet.json') excludes one file.
-    # A trailing slash matches a directory prefix; wildcards are supported.
     Exclude = @()
 }

@@ -4,6 +4,18 @@ Resource Packs Manager is a PowerShell-based build and publishing workspace for 
 
 The project is designed for maintaining multiple small resource packs against many Minecraft releases. A pack can provide canonical Minecraft asset paths directly, or it can place common asset types into typed `drop/` folders and let the builder resolve their final vanilla paths for each target version.
 
+## Getting Started
+
+Run commands from the repository root using PowerShell. Use a lowercase folder name for each pack; `example_pack` below is a placeholder for your own pack name.
+
+1. Create a source pack with `powershell -ExecutionPolicy Bypass -File scripts/new-texture-pack.ps1 -Name example_pack -MinVersion 1.13`, or add an existing pack under `resource_packs/`.
+2. Add its assets under `assets/<namespace>/...` or the supported typed `drop/` folders. Configure supported versions, file variants, mod compatibility, and publishing settings in its `pack.build.psd1`.
+3. Build it with `powershell -ExecutionPolicy Bypass -File scripts/build-texture-packs.ps1 -Pack example_pack -Version '1.21.4..26.3'`, or use the IntelliJ build configurations. Test the matching ZIP from `build/example_pack/` in Minecraft.
+4. Preview an upload with the Modrinth or CurseForge dry-run configuration, then publish using the matching publish configuration. Successful uploads move build ZIPs into `archive/<pack>/<release>/`.
+5. To include the pack in Artemis Enhanced Visuals, add it to the combined definition's `Packs` list and choose its priority. Rebuild the combined pack after updating its component releases.
+
+See the sections below for asset routing, version selection, build output, and publishing configuration.
+
 ## Repository Layout
 
 ```text
@@ -38,8 +50,9 @@ artemis_enhanced_visuals/
 
 ### Description, icon, and publishing settings
 
-Set the in-game description using `Description` in the combined definition. It
-supports the same multiline here-string syntax as normal pack descriptions:
+Set the plain-text description using `Description` in the combined definition. It
+appears in the generated player README and supplies the in-game description unless
+`PackMetadata.description` overrides it. It supports multiline here-string syntax:
 
 ```powershell
 Description = @'
@@ -49,15 +62,16 @@ For Minecraft {VersionId}.
 ```
 
 Credits are collected automatically from each included component's credit files
-into one ZIP-root `credits.txt`, with headings such as `vanilla_lavender_enhanced:`.
+into one ZIP-root `credits.txt`, with headings such as `example_pack:`.
 `artemis_enhanced_visuals/credits.txt` supplies an optional introduction; no manual
 component attribution list is needed. `artemis_enhanced_visuals/license.txt` is a
 copy of the repository's MIT License. Each build uses the current repository
 `LICENSE` as the ZIP's `license.txt`. Included components' original
 license notices are preserved under `licenses/<pack>/`, so
-the lavender attribution and original copyright/license notice remain included.
-`Description` changes the resource-pack menu text, not the project page description
-on Modrinth or CurseForge.
+third-party attribution and original copyright/license notices remain included.
+Use `PackMetadata.description` for colored Minecraft text components in the
+resource-pack menu while retaining plain `Description` text for the player README.
+Neither setting changes the project page description on Modrinth or CurseForge.
 
 `IconPath = 'artemis_enhanced_visuals/pack.png'` selects the combined icon. Paths are
 relative to the repository root; setting `IconPath = ''` omits the icon. Component
@@ -73,7 +87,7 @@ The generated ZIP-root `readme.txt` is written for players: it contains the in-g
 description, target Minecraft version, installation instructions, readable pack
 names and versions, and pointers to credits and licenses. It does not explain this
 manager's archives, source files, reports, or build process. Credit sections keep
-the requested identifiers such as `vanilla_lavender_enhanced:` and the original
+the requested identifiers such as `example_pack:` and the original
 attribution text; their introduction is also written for players.
 
 The combined builder first looks in `archive/<pack>/<release>/` for each component
@@ -88,8 +102,8 @@ The player README records the release actually used, rather than the newest
 release available for a different Minecraft version.
 The same version list is stored as `ComponentVersions` in the build report.
 
-For example, ZIPs in both `archive/better_carpets/1.1.0/` and
-`archive/better_carpets/1.2.0/` produce `Better Carpets: 1.2.0` in `readme.txt`.
+For example, ZIPs in both `archive/example_pack/1.1.0/` and
+`archive/example_pack/1.2.0/` produce `Example Pack: 1.2.0` in `readme.txt`.
 An empty `1.3.0/` folder does not change that selection. Versions are compared by
 their numbers, not folder modification time. Stable releases sort after prereleases
 with the same version number, and numeric prerelease identifiers are compared
@@ -106,31 +120,31 @@ the pack-name heading; they are not duplicated into separate `credits/<pack>/` f
 Edit its `Packs` list to choose what goes into **Artemis Enhanced Visuals**:
 
 ```powershell
-@{ Name = 'better_carpets'; Enabled = $true; Priority = 80 }
-@{ Name = 'better_moss'; Enabled = $true; Priority = 100 }
-@{ Name = 'swords_to_lightsabers'; Enabled = $false; Priority = 140 }
+@{ Name = 'component_a'; Enabled = $true; Priority = 80 }
+@{ Name = 'component_b'; Enabled = $true; Priority = 100 }
+@{ Name = 'optional_component'; Enabled = $false; Priority = 140 }
 ```
 
 Block appearance is selected by **blockstate priority**. Higher priorities win for
 the same blockstate; a model-only pack participates using that Minecraft version's
-vanilla blockstate when it changes a model used by the block. This makes `better_moss`
-supply the moss carpet while keeping the other carpets from `better_carpets`.
+vanilla blockstate when it changes a model used by the block. If two components
+change the same block, the higher-priority component supplies that block's appearance
+while unrelated blocks keep their other component's changes.
 Other assets still use file priority. Equal priorities on a shared path fail with
 a conflict message instead of choosing an arbitrary winner.
 Disabled packs and packs absent from the list are excluded; new source packs are
-never silently included. The starting selection includes most visual enhancements,
-with jade, coins, lightsabers, and the basic lavender pack disabled; the enhanced
-lavender pack is included.
+never silently included. The definition's `Packs` list is the source of truth for
+which components are enabled.
 
 For finer control, add `Include` and/or `Exclude` to a pack entry:
 
 ```powershell
 @{
-    Name = 'better_carpets'
+    Name = 'component_a'
     Enabled = $true
     Priority = 80
     Include = @('assets/*')
-    Exclude = @('assets/minecraft/models/block/moss_carpet.json')
+    Exclude = @('assets/minecraft/models/block/<block>.json')
 }
 ```
 
@@ -150,9 +164,9 @@ paths stay there, and unchanged vanilla models are supplied by Minecraft itself.
 Only alternate dependencies that need separate paths are placed in the
 `artemis_enhanced_visuals` namespace under `models/pack_dependencies/<pack>/<namespace>/`
 or `textures/block/pack_dependencies/<pack>/<namespace>/`, retaining their original
-filenames and subfolders. For example, a required alternate `block/moss_carpet.json`
-from Better Carpets becomes
-`assets/artemis_enhanced_visuals/models/pack_dependencies/better_carpets/minecraft/block/moss_carpet.json`.
+filenames and subfolders. For example, a required alternate `block/<block>.json`
+from `component_a` becomes
+`assets/artemis_enhanced_visuals/models/pack_dependencies/component_a/minecraft/block/<block>.json`.
 
 When two active blocks need different versions of a shared model or texture, both
 versions remain available. Identical models and textures share the normal output
@@ -428,7 +442,7 @@ Use `Compatibility` to control which Minecraft versions include each mod's asset
 @{
     MinVersion = '1.17'
     Compatibility = @{
-        dye_depot = @{
+        another_mod = @{
             Versions = @('1.20.1', '1.21.1')
         }
         example_mod = @{
@@ -450,7 +464,7 @@ Supported selectors are `Versions`, `ExcludeVersions`, `MinVersion`, `MaxVersion
 
 Set `Support` inside each mod entry to a short player-facing note, including any links. It accepts a plain string or a multiline PowerShell here-string. The builder combines notes for enabled compatibilities matching the target version into one ZIP-root `support.txt`, separated by blank lines and ordered by mod ID. Unsupported and disabled mod notes are omitted. No file is generated when no active entry has a nonempty note. Keep the text in `pack.build.psd1`; do not also supply a source `support.txt`, which would conflict with the generated file.
 
-Better Candles lists Dye Depot's published Minecraft versions explicitly: **1.20.1 and 1.21.1**, verified against [Modrinth releases](https://modrinth.com/mod/dye-depot/versions) and [CurseForge files](https://www.curseforge.com/minecraft/mc-mods/dye-depot/files/all). Update that entry when new mod releases become available. This filters bundled assets; it does not install or detect mods in a player's game. Run `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-file-options.ps1` to check compatibility selectors and file routing.
+Check a mod's published Minecraft versions before setting its compatibility selectors, and update them when new releases become available. Compatibility configuration filters bundled assets; it does not install or detect mods in a player's game. Run `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-file-options.ps1` to check compatibility selectors and file routing.
 
 File rules include or exclude source files by version:
 
@@ -465,7 +479,7 @@ File rules include or exclude source files by version:
 }
 ```
 
-`Path` can match either the source-relative path or the typed drop path. For canonical assets, include the full source-relative prefix, such as `assets/minecraft/models/block/moss_carpet.json`; `models/block/moss_carpet.json` is a typed drop path. A rule ending in `/` matches everything below that path. File rules and variants use exact paths or directory prefixes, not wildcards; the combined pack's `Include` and `Exclude` rules separately support wildcards.
+`Path` can match either the source-relative path or the typed drop path. For canonical assets, include the full source-relative prefix, such as `assets/minecraft/models/block/<block>.json`; `models/block/<block>.json` is a typed drop path. A rule ending in `/` matches everything below that path. File rules and variants use exact paths or directory prefixes, not wildcards; the combined pack's `Include` and `Exclude` rules separately support wildcards.
 
 File variants replace one source file with another for selected versions:
 
@@ -484,34 +498,6 @@ File variants replace one source file with another for selected versions:
 Variants are useful when a version needs different JSON, textures, or models while preserving the same output path.
 
 Large generated rule sets can be stored in a JSON file inside the pack. Set `FileOptionsPath` in `pack.build.psd1` to that file's relative path; its `FileRules` and `FileVariants` arrays are appended to the inline rules. Other option names are rejected.
-
-### Better Carpets
-
-Better Carpets adds varied overhangs to all 16 wool colors, moss carpets, and pale moss carpets, plus improved inventory views. Pale moss also gains occasional outward growth while retaining its normal wall growth.
-
-Wool carpets support Minecraft 1.13 onward, moss carpets start at 1.17, and pale moss carpets start at 1.21.4. Builds omit assets unavailable in the selected version.
-
-Build the standalone pack to review source changes. Artemis Enhanced Visuals prefers archived component releases, so rebuilding the combined pack can continue using an older Better Carpets release until the updated component is archived.
-
-## Better Candles
-
-Better Candles adds melted wax puddles that grow with the number of candles, for the undyed candle, all 16 vanilla colors, and supported Dye Depot colors. Vanilla support starts at Minecraft 1.17.
-
-Build selected Better Candles versions with:
-
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-texture-packs.ps1 -Pack better_candles -Version '1.20.1,1.21.1'
-```
-
-### Built-in Dye Depot support
-
-Better Candles includes support for all 16 additional candle colors from [Dye Depot](https://modrinth.com/mod/dye-depot), for clusters of one through four candles, lit and unlit. Install the mod to use these colors; no separate compatibility pack is needed.
-
-The `Compatibility.dye_depot.Versions` entry includes Dye Depot support only in Minecraft **1.20.1 and 1.21.1** builds. Better Candles also works without the mod.
-
-For 1.20.1 and 1.21.1, the builder generates a brief `support.txt` announcing built-in Dye Depot support and linking to its Modrinth, CurseForge, and GitHub pages. The note lives in `Compatibility.dye_depot.Support` in `resource_packs/better_candles/pack.build.psd1`; other builds omit the note and file. Notes for additional active compatibilities are combined automatically.
-
-Rebuild Better Candles after changing its sources or compatibility configuration. Artemis Enhanced Visuals prefers matching archived component releases, so its next build can still use an older Better Candles release until the updated component is archived. Existing published or archived ZIPs are not rewritten by source changes.
 
 ## Build Output
 
@@ -558,6 +544,23 @@ To customize one pack, put a JSON `pack.mcmeta` in its source root. Its fields a
 }
 ```
 
+For a colored in-game description, omit the top-level `Description` override and define Minecraft text components in `PackMetadata.description`:
+
+```powershell
+PackMetadata = @{
+    name = 'Example Pack'
+    author = 'Your Name'
+    description = @(
+        @{ text = 'A fresh look for '; color = 'gray' }
+        @{ text = 'Minecraft'; color = 'green' }
+        @{ text = ' by '; color = 'gray' }
+        @{ text = 'Your Name'; color = 'gold' }
+    )
+}
+```
+
+Named Minecraft colors work across older supported versions. The combined definition also accepts `PackMetadata`; its formatted menu description overrides the plain `Description`, while generated documentation keeps the plain text. `PackMetadata.name` also supplies the display name for new upload and archive ZIPs, such as `Example Pack 1.0.0 MC26.2.zip`. The Minecraft menu's pack title comes from the ZIP or folder name; author remains extra metadata. Build filenames stay unchanged. Existing archived ZIPs keep their exact filenames when uploaded to either platform. Archive lookup and the combined builder accept both readable filenames and the older `pack-release-mcversion.zip` / `pack-release-mc.version.zip` formats, including timestamp collision copies.
+
 Metadata precedence is generated version metadata, source `pack.mcmeta`, `RootMetadata`, `PackMetadata`, then `Description`. The builder always retains the target version's generated compatibility fields (`pack_format`, `supported_formats`, `min_format`, `max_format`), even if custom metadata supplies them.
 
 Put documentation such as `license.txt` directly in the source pack root. Use `extras/` for nested extra files; for example, `extras/docs/CREDITS.txt` becomes `docs/CREDITS.txt` in the ZIP. The build config and source `pack.mcmeta` are handled separately. Lowercase path validation applies to `assets/`; documentation filenames may contain capitals. JSON and `.mcmeta` files still need valid JSON. Place custom `pack.mcmeta` at the source root, rather than in `extras/`.
@@ -576,14 +579,14 @@ powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Pack
 powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -PromptForPack
 powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -PromptForPack -Version all
 powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -PromptForPack -PromptForVersion
-powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Pack better_carpets -Version '1.21.4..26.3'
+powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Pack example_pack -Version '1.21.4..26.3'
 powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -PromptForVersion
 powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Clean
 ```
 
 Both `-Version` and interactive version selection accept `all`, a single version, an inclusive range such as `<start>..<end>` or `<start> to <end>`, and comma-separated mixes. Ranges follow the configured version matrix order; each pack's version filters still apply. Quote command-line ranges and mixes containing spaces.
 
-`Build Selected Texture Packs For Version Range` uses this same version selection after you enter the pack names. For example, select `better_carpets`, then enter `1.21.4..26.3` to build every configured version in that inclusive range, or `1.21.4, 1.21.11 to 26.3` to mix individual versions and ranges.
+`Build Selected Texture Packs For Version Range` uses this same version selection after you enter the pack names. For example, select `example_pack`, then enter `1.21.4..26.3` to build every configured version in that inclusive range, or `1.21.4, 1.21.11 to 26.3` to mix individual versions and ranges.
 The builder also prompts for versions when run with just `-PromptForPack`, unless `-Version` is supplied or you are only listing packs with `-ListPacks`.
 
 `Build Selected Texture Packs` asks only for pack names and builds all enabled versions supported by those packs. `Build All Texture Packs` builds all packs for all enabled supported versions without prompting. Their `For Version Range` counterparts ask for version selection.
@@ -686,12 +689,12 @@ Publishing requires a Modrinth personal access token with the `VERSION_CREATE` s
 When publishing, the script reads existing Modrinth versions and skips version numbers that already exist. Uploaded ZIPs are copied with their Modrinth upload filename. ZIPs from `build/<pack>/` are moved into the archive after upload; ZIPs already found in `archive/` are reused in place:
 
 ```text
-archive/<pack>/<releaseVersion>/<pack>-<releaseVersion>-mc<minecraftVersion>.zip
+archive/<pack>/<releaseVersion>/<display name> <releaseVersion> MC<minecraftVersion>.zip
 ```
 
 If the archive path already contains identical contents, the duplicate build copy is removed. If the path exists with different contents, the uploaded copy is kept with a timestamp suffix.
 
-Upload filenames and default version numbers use `mc1.21.11`, with no dot after `mc`. Both publishers can still read legacy `mc.1.21.11` archive filenames. Duplicate detection treats the two spellings as the same release, so existing Modrinth releases and saved CurseForge publish records remain recognized without changing their historical records.
+New upload filenames use the pack's display name, release version, and uppercase `MC`, for example `Example Pack 1.0.0 MC26.2.zip`. Existing archive filenames are preserved when reused on either platform. Default version numbers still use `mc1.21.11`, with no dot after `mc`. Both publishers recognize older archive naming styles; duplicate detection treats `mc1.21.11` and `mc.1.21.11` as the same release, preserving existing Modrinth releases and saved CurseForge publish records.
 
 ## CurseForge Publishing
 
@@ -740,12 +743,12 @@ Publishing requires a CurseForge API token. The token can come from `-PromptForT
 When publishing, uploaded ZIPs are copied with their CurseForge upload filename. ZIPs from `build/<pack>/` are moved into the archive after upload; ZIPs already found in `archive/` are reused in place:
 
 ```text
-archive/<pack>/<releaseVersion>/<pack>-<releaseVersion>-mc<minecraftVersion>.zip
+archive/<pack>/<releaseVersion>/<display name> <releaseVersion> MC<minecraftVersion>.zip
 ```
 
 ## Licensing
 
-The repository is licensed under the MIT License. Vanilla Lavender and Vanilla Lavender Enhanced include third-party textures adapted from The Lavender Update by OutofContent / KineticStudio under the MIT License. See `LICENSE` for the repository license, [Vanilla Lavender's credits](resource_packs/vanilla_lavender/CREDITS.txt) and [texture license](resource_packs/vanilla_lavender/LICENSE.txt), and [Vanilla Lavender Enhanced's credits](resource_packs/vanilla_lavender_enhanced/CREDITS.txt) and [texture license](resource_packs/vanilla_lavender_enhanced/LICENSE.txt). Both pack notices are included in each pack's generated ZIPs.
+The repository is licensed under the MIT License; see `LICENSE`. Individual packs may include third-party work with separate credits and license notices in their source folders. Preserve those notices when editing or publishing a pack. The builders include applicable notices in individual ZIPs and collect them for the combined pack.
 
 Artemis Enhanced Visuals collects the included packs' attribution into its generated
 `credits.txt`, preserves their original license notices under `licenses/<pack>/`,

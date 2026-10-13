@@ -1,0 +1,57 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "minecraft:block/grass_block_top",
+    "purple_flowers": "minecraft:block/better_grass/purple_flowers"
+  },
+  "elements": [
+    {
+      "from": [11, 16.016, 2],
+      "to": [14, 16.016, 5],
+      "faces": {
+        "up": { "uv": [11, 2, 14, 5], "texture": "#purple_flowers", "cullface": "up" }
+      },
+      "shade": false
+    },
+    {
+      "from": [1, 16.016, 7],
+      "to": [4, 16.016, 10],
+      "faces": {
+        "up": { "uv": [1, 7, 4, 10], "texture": "#purple_flowers", "cullface": "up" }
+      },
+      "shade": false
+    },
+    {
+      "from": [9, 16.016, 11],
+      "to": [12, 16.016, 14],
+      "faces": {
+        "up": { "uv": [9, 11, 12, 14], "texture": "#purple_flowers", "cullface": "up" }
+      },
+      "shade": false
+    },
+    {
+      "from": [11, 16.016, 2],
+      "to": [14, 16.016, 5],
+      "faces": {
+        "down": { "uv": [11, 5, 14, 2], "texture": "#purple_flowers", "cullface": "up" }
+      },
+      "shade": false
+    },
+    {
+      "from": [1, 16.016, 7],
+      "to": [4, 16.016, 10],
+      "faces": {
+        "down": { "uv": [1, 10, 4, 7], "texture": "#purple_flowers", "cullface": "up" }
+      },
+      "shade": false
+    },
+    {
+      "from": [9, 16.016, 11],
+      "to": [12, 16.016, 14],
+      "faces": {
+        "down": { "uv": [9, 14, 12, 11], "texture": "#purple_flowers", "cullface": "up" }
+      },
+      "shade": false
+    }
+  ]
+}

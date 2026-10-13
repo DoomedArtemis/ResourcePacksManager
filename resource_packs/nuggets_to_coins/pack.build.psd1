@@ -1,5 +1,15 @@
 @{
     MinVersion = '1.13'
+    PackMetadata = @{
+        name = 'Nuggets to Coins'
+        author = 'DoomedArtemis'
+        description = @(
+            @{ text = 'A little shine for '; color = 'gray' }
+            @{ text = 'nugget coins'; color = 'gold' }
+            @{ text = ' by '; color = 'gray' }
+            @{ text = 'Artemis'; color = 'gold' }
+        )
+    }
     FileRules = @(
         @{
             Path = 'textures/item/copper_nugget.png'

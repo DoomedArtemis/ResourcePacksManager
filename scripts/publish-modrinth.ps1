@@ -133,7 +133,7 @@ function ConvertTo-Psd1StringLiteral {
 function Get-ModrinthZipFileName {
     param([Parameter(Mandatory = $true)]$Item)
 
-    return "$($Item.PackName)-$(Convert-PublishVersionNumber $Item.VersionNumber).zip"
+    return Get-ReleaseZipFileName -Item $Item
 }
 
 function Get-HashtableValueOrDefault {
@@ -886,6 +886,10 @@ function Move-UploadedZipToArchive {
     )
 
     $destinationDirectory = Join-Path -Path (Join-Path -Path $ArchiveRootPath -ChildPath $Item.PackName) -ChildPath $Item.ReleaseVersion
+    # Archived uploads retain their exact filename on every platform.
+    if ([IO.Path]::GetFullPath((Split-Path $Item.ZipPath -Parent)).Equals([IO.Path]::GetFullPath($destinationDirectory), [StringComparison]::OrdinalIgnoreCase)) {
+        return $Item.ZipPath
+    }
     Ensure-Directory -Path $destinationDirectory
 
     $destinationFileName = Get-ModrinthZipFileName -Item $Item
@@ -943,12 +947,9 @@ function Resolve-PublishZipPath {
         [Parameter(Mandatory = $true)][bool]$ShouldBuildIfMissing
     )
 
-    $archiveZipPath = Join-Path -Path (Join-Path -Path (Join-Path -Path $ArchiveRootPath -ChildPath $Item.PackName) -ChildPath $Item.ReleaseVersion) -ChildPath (Get-ModrinthZipFileName -Item $Item)
-    if (-not (Test-Path -LiteralPath $archiveZipPath -PathType Leaf)) {
-        $legacyFileName = (Split-Path $archiveZipPath -Leaf) -replace '-mc(?=[0-9])', '-mc.'
-        $legacyPath = Join-Path (Split-Path $archiveZipPath -Parent) $legacyFileName
-        if (Test-Path -LiteralPath $legacyPath -PathType Leaf) { $archiveZipPath = $legacyPath }
-    }
+    $archiveDirectory = Join-Path (Join-Path $ArchiveRootPath $Item.PackName) $Item.ReleaseVersion
+    $archived = Get-ReleaseArchiveZip -Directory $archiveDirectory -PackName $Item.PackName -ReleaseVersion $Item.ReleaseVersion -MinecraftVersion $Item.MinecraftVersion
+    $archiveZipPath = if ($null -ne $archived) { $archived.FullName } else { Join-Path $archiveDirectory (Get-ReleaseZipFileName -Item $Item) }
     if (Test-Path -LiteralPath $archiveZipPath -PathType Leaf) {
         return [pscustomobject]@{
             Path = $archiveZipPath
@@ -1128,7 +1129,7 @@ foreach ($packDirectory in $packDirectories) {
         $minecraftVersion = [string]$versionConfig.Id
         $tokens = @{
             PackName = $packDirectory.Name
-            PackDisplayName = Convert-ToPackDisplayName -PackFolderName $packDirectory.Name
+            PackDisplayName = Get-ReleasePackDisplayName -PackDirectory $packDirectory -PackOptions $packOptions
             VersionId = $minecraftVersion
             MinecraftVersion = $minecraftVersion
             ReleaseVersion = $modrinth.ReleaseVersion
@@ -1146,6 +1147,7 @@ foreach ($packDirectory in $packDirectories) {
         $changelog = Convert-Tokens -Value $modrinth.Changelog -Tokens $tokens
 
         $item = [pscustomobject]@{
+            PackDisplayName = $tokens.PackDisplayName
             PackName = $packDirectory.Name
             ProjectId = $modrinth.ProjectId
             MinecraftVersion = $minecraftVersion

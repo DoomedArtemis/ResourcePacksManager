@@ -1,8 +1,13 @@
-﻿@{
+@{
     MinVersion = '1.13'
-    Description = @'
-Replaces alliums and lilacs with vanilla-style lavender, including potted and tall variants.
-
-Textures adapted from The Lavender Update by OutofContent / KineticStudio, used under the MIT License.
-'@
+    PackMetadata = @{
+        name = 'Vanilla Lavender'
+        author = 'DoomedArtemis'
+        description = @(
+            @{ text = 'A touch of '; color = 'gray' }
+            @{ text = 'vanilla lavender'; color = 'light_purple' }
+            @{ text = ' by '; color = 'gray' }
+            @{ text = 'Artemis'; color = 'gold' }
+        )
+    }
 }

@@ -56,6 +56,40 @@ function Get-LatestArchivedPackVersion {
     return $latest.Name
 }
 
+function Get-ReleaseArchiveZip {
+    param([string]$Directory, [string]$PackName, [string]$ReleaseVersion, [string]$MinecraftVersion)
+    if (-not (Test-Path -LiteralPath $Directory -PathType Container)) { return $null }
+    $legacy = [regex]::Escape("$PackName-$ReleaseVersion-mc") + '\.?'+ [regex]::Escape($MinecraftVersion)
+    $readable = '.+ ' + [regex]::Escape($ReleaseVersion) + ' MC' + [regex]::Escape($MinecraftVersion)
+    $pattern = '^(?:' + $legacy + '|' + $readable + ')(?:-uploaded-[0-9]{14})?\.zip$'
+    return Get-ChildItem -LiteralPath $Directory -File -Filter '*.zip' |
+        Where-Object { $_.Name -match $pattern } |
+        Sort-Object LastWriteTimeUtc, Name -Descending | Select-Object -First 1
+}
+
+function Get-ReleasePackDisplayName {
+    param($PackDirectory, [hashtable]$PackOptions)
+    if ($PackOptions.ContainsKey('PackMetadata') -and $PackOptions.PackMetadata.ContainsKey('name') -and
+        -not [string]::IsNullOrWhiteSpace([string]$PackOptions.PackMetadata.name)) {
+        return ([string]$PackOptions.PackMetadata.name).Trim()
+    }
+    if ($PackOptions.ContainsKey('DisplayName') -and $PackOptions.DisplayName) { return [string]$PackOptions.DisplayName }
+    return Convert-ToPackDisplayName -PackFolderName $PackDirectory.Name
+}
+
+function Get-ReleaseZipFileName {
+    param($Item)
+    if ($Item.PSObject.Properties['ZipSource'] -and $Item.ZipSource -eq 'archive') {
+        return [IO.Path]::GetFileName($Item.ZipPath)
+    }
+    $title = if ($Item.PSObject.Properties['PackDisplayName']) { [string]$Item.PackDisplayName } else { Convert-ToPackDisplayName -PackFolderName $Item.PackName }
+    $minecraft = if ($Item.PSObject.Properties['MinecraftVersion']) { [string]$Item.MinecraftVersion } else { [string]$Item.VersionNumber -replace '^.*-mc\.?', '' }
+    if ([string]::IsNullOrWhiteSpace($title) -or $title -match '[<>:"/\\|?*\x00-\x1f]' -or $title -match '[. ]$') {
+        throw "Invalid pack name for release ZIP: '$title'."
+    }
+    return "$title $($Item.ReleaseVersion) MC$minecraft.zip"
+}
+
 function Get-CombinedArchivedComponent {
     param([string]$RepoRoot, [string]$PackName, [string]$MinecraftVersion)
     $root = Join-Path $RepoRoot "archive/$PackName"
@@ -64,10 +98,7 @@ function Get-CombinedArchivedComponent {
     foreach ($folder in Get-ChildItem -LiteralPath $root -Directory | Sort-Object Name) {
         $release = Convert-ArchivedPackRelease $folder.Name
         if ($null -eq $release) { continue }
-        $pattern = '^' + [regex]::Escape("$PackName-$($folder.Name)-mc") + '\.?' + [regex]::Escape($MinecraftVersion) + '(?:-uploaded-[0-9]{14})?\.zip$'
-        $zip = Get-ChildItem -LiteralPath $folder.FullName -File -Filter '*.zip' |
-            Where-Object { $_.Name -match $pattern } |
-            Sort-Object LastWriteTimeUtc, Name -Descending | Select-Object -First 1
+        $zip = Get-ReleaseArchiveZip -Directory $folder.FullName -PackName $PackName -ReleaseVersion $folder.Name -MinecraftVersion $MinecraftVersion
         if ($null -eq $zip) { continue }
         if ($null -eq $latest -or (Compare-ArchivedPackReleases $release $latest.Release) -gt 0) {
             $latest = @{ Release = $release; ReleaseVersion = $folder.Name; ZipPath = $zip.FullName }

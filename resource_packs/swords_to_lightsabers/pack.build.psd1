@@ -1,5 +1,15 @@
 @{
     MinVersion = '1.13'
+    PackMetadata = @{
+        name = 'Swords to Lightsabers'
+        author = 'DoomedArtemis'
+        description = @(
+            @{ text = 'A brighter blade with '; color = 'gray' }
+            @{ text = 'lightsabers'; color = 'aqua' }
+            @{ text = ' by '; color = 'gray' }
+            @{ text = 'Artemis'; color = 'gold' }
+        )
+    }
     FileRules = @(
         @{
             Path = 'textures/item/netherite_sword.png'

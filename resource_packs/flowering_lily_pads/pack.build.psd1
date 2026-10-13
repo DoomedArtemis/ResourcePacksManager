@@ -1,5 +1,15 @@
-﻿@{
+@{
     MinVersion = '1.13'
+    PackMetadata = @{
+        name = 'Flowering Lily Pads'
+        author = 'DoomedArtemis'
+        description = @(
+            @{ text = 'A little bloom for '; color = 'gray' }
+            @{ text = 'lily pads'; color = 'light_purple' }
+            @{ text = ' by '; color = 'gray' }
+            @{ text = 'Artemis'; color = 'gold' }
+        )
+    }
         FileRules = @(
             @{
                 Path = 'textures/block/spore_blossom.png'

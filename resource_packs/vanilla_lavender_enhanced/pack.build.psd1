@@ -1,5 +1,15 @@
-﻿@{
+@{
     MinVersion = '1.13'
+    PackMetadata = @{
+        name = 'Vanilla Lavender Enhanced'
+        author = 'DoomedArtemis'
+        description = @(
+            @{ text = 'A fuller bloom of '; color = 'gray' }
+            @{ text = 'vanilla lavender'; color = 'light_purple' }
+            @{ text = ' by '; color = 'gray' }
+            @{ text = 'Artemis'; color = 'gold' }
+        )
+    }
     FileVariants = @(
         @{
             Path = 'assets/minecraft/textures/block/lavender_tall.png'
@@ -14,9 +24,4 @@
             MaxVersion = '1.13.2'
         }
     )
-    Description = @'
-Replaces alliums and lilacs with fuller custom lavender models, including potted and tall variants.
-
-Textures adapted from The Lavender Update by OutofContent / KineticStudio, used under the MIT License.
-'@
 }

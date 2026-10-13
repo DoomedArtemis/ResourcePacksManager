@@ -4,116 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69da52cd-7463-4c66-9153-40bdcaaf6a07" name="Changes" comment="Added artemis_enhanced_visuals">
+    <list default="true" id="69da52cd-7463-4c66-9153-40bdcaaf6a07" name="Changes" comment="&quot;Better Candles&quot; Update 1.1.0">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/black_candle_four_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/black_candle_four_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/black_candle_four_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/black_candle_four_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/black_candle_three_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/black_candle_three_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/black_candle_three_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/black_candle_three_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/black_candle_two_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/black_candle_two_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/black_candle_two_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/black_candle_two_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/blue_candle_four_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/blue_candle_four_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/blue_candle_four_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/blue_candle_four_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/blue_candle_three_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/blue_candle_three_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/blue_candle_three_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/blue_candle_three_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/blue_candle_two_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/blue_candle_two_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/blue_candle_two_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/blue_candle_two_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/brown_candle_four_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/brown_candle_four_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/brown_candle_four_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/brown_candle_four_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/brown_candle_three_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/brown_candle_three_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/brown_candle_three_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/brown_candle_three_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/brown_candle_two_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/brown_candle_two_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/brown_candle_two_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/brown_candle_two_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/candle_four_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/candle_four_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/candle_four_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/candle_four_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/candle_three_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/candle_three_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/candle_three_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/candle_three_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/candle_two_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/candle_two_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/candle_two_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/candle_two_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/cyan_candle_four_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/cyan_candle_four_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/cyan_candle_four_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/cyan_candle_four_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/cyan_candle_three_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/cyan_candle_three_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/cyan_candle_three_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/cyan_candle_three_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/cyan_candle_two_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/cyan_candle_two_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/cyan_candle_two_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/cyan_candle_two_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/gray_candle_four_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/gray_candle_four_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/gray_candle_four_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/gray_candle_four_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/gray_candle_three_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/gray_candle_three_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/gray_candle_three_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/gray_candle_three_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/gray_candle_two_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/gray_candle_two_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/gray_candle_two_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/gray_candle_two_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/green_candle_four_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/green_candle_four_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/green_candle_four_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/green_candle_four_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/green_candle_three_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/green_candle_three_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/green_candle_three_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/green_candle_three_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/green_candle_two_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/green_candle_two_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/green_candle_two_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/green_candle_two_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_blue_candle_four_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_blue_candle_four_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_blue_candle_four_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_blue_candle_four_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_blue_candle_three_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_blue_candle_three_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_blue_candle_three_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_blue_candle_three_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_blue_candle_two_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_blue_candle_two_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_blue_candle_two_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_blue_candle_two_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_gray_candle_four_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_gray_candle_four_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_gray_candle_four_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_gray_candle_four_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_gray_candle_three_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_gray_candle_three_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_gray_candle_three_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_gray_candle_three_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_gray_candle_two_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_gray_candle_two_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_gray_candle_two_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/light_gray_candle_two_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/lime_candle_four_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/lime_candle_four_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/lime_candle_four_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/lime_candle_four_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/lime_candle_three_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/lime_candle_three_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/lime_candle_three_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/lime_candle_three_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/lime_candle_two_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/lime_candle_two_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/lime_candle_two_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/lime_candle_two_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/magenta_candle_four_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/magenta_candle_four_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/magenta_candle_four_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/magenta_candle_four_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/magenta_candle_three_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/magenta_candle_three_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/magenta_candle_three_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/magenta_candle_three_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/magenta_candle_two_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/magenta_candle_two_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/magenta_candle_two_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/magenta_candle_two_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/orange_candle_four_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/orange_candle_four_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/orange_candle_four_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/orange_candle_four_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/orange_candle_three_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/orange_candle_three_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/orange_candle_three_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/orange_candle_three_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/orange_candle_two_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/orange_candle_two_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/orange_candle_two_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/orange_candle_two_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/pink_candle_four_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/pink_candle_four_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/pink_candle_four_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/pink_candle_four_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/pink_candle_three_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/pink_candle_three_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/pink_candle_three_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/pink_candle_three_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/pink_candle_two_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/pink_candle_two_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/pink_candle_two_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/pink_candle_two_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/purple_candle_four_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/purple_candle_four_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/purple_candle_four_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/purple_candle_four_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/purple_candle_three_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/purple_candle_three_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/purple_candle_three_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/purple_candle_three_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/purple_candle_two_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/purple_candle_two_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/purple_candle_two_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/purple_candle_two_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/red_candle_four_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/red_candle_four_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/red_candle_four_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/red_candle_four_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/red_candle_three_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/red_candle_three_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/red_candle_three_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/red_candle_three_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/red_candle_two_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/red_candle_two_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/red_candle_two_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/red_candle_two_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/template_four_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/template_four_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/template_three_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/template_three_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/template_two_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/template_two_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/white_candle_four_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/white_candle_four_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/white_candle_four_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/white_candle_four_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/white_candle_three_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/white_candle_three_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/white_candle_three_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/white_candle_three_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/white_candle_two_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/white_candle_two_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/white_candle_two_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/white_candle_two_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/yellow_candle_four_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/yellow_candle_four_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/yellow_candle_four_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/yellow_candle_four_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/yellow_candle_three_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/yellow_candle_three_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/yellow_candle_three_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/yellow_candle_three_candles_lit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/yellow_candle_two_candles.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/yellow_candle_two_candles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/yellow_candle_two_candles_lit.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/assets/minecraft/models/block/yellow_candle_two_candles_lit.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/artemis_enhanced_visuals/artemis_enhanced_visuals.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/artemis_enhanced_visuals/artemis_enhanced_visuals.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/alternative_birch_leaves/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/alternative_birch_leaves/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/alternative_end_rod/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/alternative_end_rod/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/alternative_mud_color/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/alternative_mud_color/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/alternative_nether_portal_color/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/alternative_nether_portal_color/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/amethyst_to_jade/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/amethyst_to_jade/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/better_cake_slices/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_cake_slices/pack.build.psd1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/pack.build.psd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/build-texture-packs.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/build-texture-packs.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/test-file-options.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/test-file-options.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/better_carpets/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_carpets/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/better_moss/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_moss/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/flowering_lily_pads/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/flowering_lily_pads/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/flowering_oak_leaves/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/flowering_oak_leaves/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/nuggets_to_coins/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/nuggets_to_coins/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/swords_to_lightsabers/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/swords_to_lightsabers/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/vanilla_lavender/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/vanilla_lavender/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/vanilla_lavender_enhanced/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/vanilla_lavender_enhanced/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/build-combined-pack.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/build-combined-pack.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/combined-pack-support.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/combined-pack-support.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/publish-curseforge.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/publish-curseforge.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/publish-modrinth.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/publish-modrinth.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/test-combined-publishing.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/test-combined-publishing.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/update-carpet-models.cjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/update-dye-depot-candle-models.cjs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,23 +62,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.5783519621618227" />
-      <entry key="MS500" value="2.3088059767138422" />
-      <entry key="S2" value="9.96156836709941" />
-      <entry key="S5" value="19.75259455867874" />
-      <entry key="S10" value="25.733109738840092" />
-      <entry key="S30" value="34.51430527101607" />
-      <entry key="S60" value="44.18992741923201" />
-      <entry key="M2" value="58.85510295376183" />
-      <entry key="M5" value="137.71689136291408" />
-      <entry key="M10" value="324.48921656301104" />
-      <entry key="M15" value="521.7209492791515" />
-      <entry key="M30" value="996.0551677464097" />
-      <entry key="H1" value="1486.4932933527334" />
-      <entry key="H2" value="1939.4632862818105" />
-      <entry key="H4" value="2965.0694360735074" />
-      <entry key="D1" value="9870.253913867491" />
-      <entry key="W1" value="13538.27686775098" />
+      <entry key="MS100" value="2.1714794028503976" />
+      <entry key="MS500" value="6.742714126428761" />
+      <entry key="S2" value="19.137285517052554" />
+      <entry key="S5" value="34.954289622850766" />
+      <entry key="S10" value="47.44769638749703" />
+      <entry key="S30" value="61.83021621259596" />
+      <entry key="S60" value="72.73558376054409" />
+      <entry key="M2" value="93.8652183757523" />
+      <entry key="M5" value="198.97775186179243" />
+      <entry key="M10" value="448.69525156422293" />
+      <entry key="M15" value="679.4840259249052" />
+      <entry key="M30" value="1181.8912073977137" />
+      <entry key="H1" value="1869.736539606857" />
+      <entry key="H2" value="2775.383919846788" />
+      <entry key="H4" value="4110.599666274929" />
+      <entry key="D1" value="11605.733985073026" />
+      <entry key="W1" value="15884.126988863232" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -184,24 +100,27 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.5458699552985955" />
-      <entry key="MS500" value="2.298925913629521" />
-      <entry key="S2" value="9.949002354668016" />
-      <entry key="S5" value="19.742295457241305" />
-      <entry key="S10" value="25.726341750239335" />
-      <entry key="S30" value="34.51125615898587" />
-      <entry key="S60" value="44.18796724851932" />
-      <entry key="M2" value="58.85379955555179" />
-      <entry key="M5" value="137.71567051734544" />
-      <entry key="M10" value="324.48777963982377" />
-      <entry key="M15" value="521.7194271030271" />
-      <entry key="M30" value="996.0537462320516" />
-      <entry key="H1" value="1486.4922467388985" />
-      <entry key="H2" value="1939.4626093114996" />
-      <entry key="H4" value="2965.0689242113235" />
-      <entry key="D1" value="9870.253631837792" />
-      <entry key="W1" value="13538.27681242806" />
+      <entry key="MS100" value="2.1154708556710147" />
+      <entry key="MS500" value="6.709685378686505" />
+      <entry key="S2" value="19.114838923884342" />
+      <entry key="S5" value="34.938490119391936" />
+      <entry key="S10" value="47.437161224363024" />
+      <entry key="S30" value="61.825687758164115" />
+      <entry key="S60" value="72.73290947877983" />
+      <entry key="M2" value="93.86347714601524" />
+      <entry key="M5" value="198.97625023207627" />
+      <entry key="M10" value="448.69352920628074" />
+      <entry key="M15" value="679.4822701684258" />
+      <entry key="M30" value="1181.889650389661" />
+      <entry key="H1" value="1869.7352798468112" />
+      <entry key="H2" value="2775.3829709976512" />
+      <entry key="H4" value="4110.598960558521" />
+      <entry key="D1" value="11605.733653167568" />
+      <entry key="W1" value="15884.12692390987" />
     </decayedShown>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2,
@@ -214,37 +133,37 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "Shell Script.Build All Texture Packs.executor": "Run",
-    "Shell Script.Build Artemis Enhanced Visuals.executor": "Run",
-    "Shell Script.Build Selected Texture Packs For Version Range.executor": "Run",
-    "Shell Script.Build Selected Texture Packs.executor": "Run",
-    "Shell Script.Create New Texture Pack.executor": "Run",
-    "Shell Script.Publish All Resource Packs to CurseForge.executor": "Run",
-    "Shell Script.Publish Selected Resource Packs to CurseForge.executor": "Run",
-    "Shell Script.Publish Selected Resource Packs to Modrinth.executor": "Run",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/grego/Documents/IdeaProjects/Resource-Packs-Manager/resource_packs/better_candles_x_dye_depot",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;Shell Script.Build All Texture Packs.executor&quot;: &quot;Run&quot;,
+    &quot;Shell Script.Build Artemis Enhanced Visuals.executor&quot;: &quot;Run&quot;,
+    &quot;Shell Script.Build Selected Texture Packs For Version Range.executor&quot;: &quot;Run&quot;,
+    &quot;Shell Script.Build Selected Texture Packs.executor&quot;: &quot;Run&quot;,
+    &quot;Shell Script.Create New Texture Pack.executor&quot;: &quot;Run&quot;,
+    &quot;Shell Script.Publish All Resource Packs to CurseForge.executor&quot;: &quot;Run&quot;,
+    &quot;Shell Script.Publish Selected Resource Packs to CurseForge.executor&quot;: &quot;Run&quot;,
+    &quot;Shell Script.Publish Selected Resource Packs to Modrinth.executor&quot;: &quot;Run&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/grego/Documents/IdeaProjects/Resource-Packs-Manager/resource_packs/better_candles_x_dye_depot&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\grego\Documents\IdeaProjects\Resource-Packs-Manager\resource_packs\better_candles_x_dye_depot" />
@@ -261,7 +180,7 @@
       <recent name="C:\Users\grego\IdeaProjects\Resource-Packs-Manager\archive\better_candles\1.0.0" />
     </key>
   </component>
-  <component name="RunManager" selected="Shell Script.Publish Selected Resource Packs to Modrinth" />
+  <component name="RunManager" selected="Shell Script.Build Selected Texture Packs For Version Range" />
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -336,6 +255,8 @@
     <MESSAGE value="Changed CurseForge publishing" />
     <MESSAGE value="Added vanilla_lavender titles" />
     <MESSAGE value="Uploaded vanilla_lavender and vanilla_lavender_enhanced to CurseForge" />
-    <option name="LAST_COMMIT_MESSAGE" value="Uploaded vanilla_lavender and vanilla_lavender_enhanced to CurseForge" />
+    <MESSAGE value="&quot;Better Carpets&quot; Update 1.1.0" />
+    <MESSAGE value="&quot;Better Candles&quot; Update 1.1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Better Candles&quot; Update 1.1.0" />
   </component>
 </project>
