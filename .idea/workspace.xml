@@ -4,32 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69da52cd-7463-4c66-9153-40bdcaaf6a07" name="Changes" comment="&quot;Better Candles&quot; Update 1.1.0">
+    <list default="true" id="69da52cd-7463-4c66-9153-40bdcaaf6a07" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemis_enhanced_visuals/artemis_enhanced_visuals.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/artemis_enhanced_visuals/artemis_enhanced_visuals.psd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/alternative_birch_leaves/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/alternative_birch_leaves/pack.build.psd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/alternative_end_rod/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/alternative_end_rod/pack.build.psd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/alternative_mud_color/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/alternative_mud_color/pack.build.psd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/alternative_nether_portal_color/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/alternative_nether_portal_color/pack.build.psd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/amethyst_to_jade/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/amethyst_to_jade/pack.build.psd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_cake_slices/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_cake_slices/pack.build.psd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/pack.build.psd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_carpets/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_carpets/pack.build.psd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_moss/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_moss/pack.build.psd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/flowering_lily_pads/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/flowering_lily_pads/pack.build.psd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/flowering_oak_leaves/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/flowering_oak_leaves/pack.build.psd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/nuggets_to_coins/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/nuggets_to_coins/pack.build.psd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/swords_to_lightsabers/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/swords_to_lightsabers/pack.build.psd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/vanilla_lavender/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/vanilla_lavender/pack.build.psd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/vanilla_lavender_enhanced/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/vanilla_lavender_enhanced/pack.build.psd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/build-combined-pack.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/build-combined-pack.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/combined-pack-support.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/combined-pack-support.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/publish-curseforge.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/publish-curseforge.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/publish-modrinth.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/publish-modrinth.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/test-combined-publishing.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/test-combined-publishing.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/update-carpet-models.cjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/update-dye-depot-candle-models.cjs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +156,7 @@
       <recent name="C:\Users\grego\IdeaProjects\Resource-Packs-Manager\archive\better_candles\1.0.0" />
     </key>
   </component>
-  <component name="RunManager" selected="Shell Script.Build Selected Texture Packs For Version Range" />
+  <component name="RunManager" selected="Shell Script.Build Selected Texture Packs" />
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -258,5 +234,9 @@
     <MESSAGE value="&quot;Better Carpets&quot; Update 1.1.0" />
     <MESSAGE value="&quot;Better Candles&quot; Update 1.1.0" />
     <option name="LAST_COMMIT_MESSAGE" value="&quot;Better Candles&quot; Update 1.1.0" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
