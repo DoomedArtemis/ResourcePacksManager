@@ -1,0 +1,37 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minecraft:block/netherrack"
+      }
+    },
+    {
+      "apply": [
+        { "model": "minecraft:block/nether_quartz_ore_overlay", "y": 0, "uvlock": false },
+        { "model": "minecraft:block/nether_quartz_ore_overlay", "y": 90, "uvlock": false },
+        { "model": "minecraft:block/nether_quartz_ore_overlay", "y": 180, "uvlock": false },
+        { "model": "minecraft:block/nether_quartz_ore_overlay", "y": 270, "uvlock": false },
+        { "model": "minecraft:block/nether_quartz_ore_crystals_alt_overlay", "y": 0, "uvlock": false },
+        { "model": "minecraft:block/nether_quartz_ore_crystals_alt_overlay", "y": 90, "uvlock": false },
+        { "model": "minecraft:block/nether_quartz_ore_crystals_alt_overlay", "y": 180, "uvlock": false },
+        { "model": "minecraft:block/nether_quartz_ore_crystals_alt_overlay", "y": 270, "uvlock": false },
+        { "model": "minecraft:block/nether_quartz_ore_crystals_3_overlay", "y": 0, "uvlock": false },
+        { "model": "minecraft:block/nether_quartz_ore_crystals_3_overlay", "y": 90, "uvlock": false },
+        { "model": "minecraft:block/nether_quartz_ore_crystals_3_overlay", "y": 180, "uvlock": false },
+        { "model": "minecraft:block/nether_quartz_ore_crystals_3_overlay", "y": 270, "uvlock": false },
+        { "model": "minecraft:block/nether_quartz_ore_crystals_4_overlay", "y": 0, "uvlock": false },
+        { "model": "minecraft:block/nether_quartz_ore_crystals_4_overlay", "y": 90, "uvlock": false },
+        { "model": "minecraft:block/nether_quartz_ore_crystals_4_overlay", "y": 180, "uvlock": false },
+        { "model": "minecraft:block/nether_quartz_ore_crystals_4_overlay", "y": 270, "uvlock": false },
+        { "model": "minecraft:block/nether_quartz_ore_crystals_5_overlay", "y": 0, "uvlock": false },
+        { "model": "minecraft:block/nether_quartz_ore_crystals_5_overlay", "y": 90, "uvlock": false },
+        { "model": "minecraft:block/nether_quartz_ore_crystals_5_overlay", "y": 180, "uvlock": false },
+        { "model": "minecraft:block/nether_quartz_ore_crystals_5_overlay", "y": 270, "uvlock": false },
+        { "model": "minecraft:block/nether_quartz_ore_crystals_6_overlay", "y": 0, "uvlock": false },
+        { "model": "minecraft:block/nether_quartz_ore_crystals_6_overlay", "y": 90, "uvlock": false },
+        { "model": "minecraft:block/nether_quartz_ore_crystals_6_overlay", "y": 180, "uvlock": false },
+        { "model": "minecraft:block/nether_quartz_ore_crystals_6_overlay", "y": 270, "uvlock": false }
+      ]
+    }
+  ]
+}

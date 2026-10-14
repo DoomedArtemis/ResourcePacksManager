@@ -1,0 +1,226 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": true,
+  "textures": {
+    "particle": "#base"
+  },
+  "elements": [
+    {
+      "name": "plain_rock_core",
+      "from": [0, 0, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "down": { "uv": [0, 0, 16, 16], "texture": "#top", "cullface": "down" },
+        "up": { "uv": [0, 0, 16, 16], "texture": "#top", "cullface": "up" },
+        "north": { "uv": [0, 0, 16, 16], "texture": "#base", "cullface": "north" },
+        "south": { "uv": [0, 0, 16, 16], "texture": "#base", "cullface": "south" },
+        "west": { "uv": [0, 0, 16, 16], "texture": "#base", "cullface": "west" },
+        "east": { "uv": [0, 0, 16, 16], "texture": "#base", "cullface": "east" }
+      }
+    },
+    {
+      "name": "down_cluster_1",
+      "from": [2.875, -2, 3.375],
+      "to": [7.875, 1, 7.375],
+      "light_emission": 15,
+      "shade": false,
+      "faces": {
+        "up": { "texture": "#crystal_a", "uv": [5.5, 10.5, 8, 8.5], "cullface": "down" },
+        "down": { "texture": "#crystal_a", "uv": [5.5, 7, 8, 5], "cullface": "down" },
+        "north": { "texture": "#crystal_a", "uv": [10, 8.5, 12.5, 7], "cullface": "down" },
+        "south": { "texture": "#crystal_a", "uv": [5.5, 8.5, 8, 7], "cullface": "down" },
+        "west": { "texture": "#crystal_a", "uv": [3.5, 8.5, 5.5, 7], "cullface": "down" },
+        "east": { "texture": "#crystal_a", "uv": [8, 8.5, 10, 7], "cullface": "down" }
+      }
+    },
+    {
+      "name": "down_cluster_2",
+      "from": [9.125, -2, 7.5],
+      "to": [12.125, 1, 12.5],
+      "light_emission": 15,
+      "shade": false,
+      "faces": {
+        "up": { "texture": "#crystal_b", "uv": [6.5, 11, 8, 8.5], "cullface": "down" },
+        "down": { "texture": "#crystal_b", "uv": [6.5, 7, 8, 4.5], "cullface": "down" },
+        "north": { "texture": "#crystal_b", "uv": [10.5, 8.5, 12, 7], "cullface": "down" },
+        "south": { "texture": "#crystal_b", "uv": [6.5, 8.5, 8, 7], "cullface": "down" },
+        "west": { "texture": "#crystal_b", "uv": [4, 8.5, 6.5, 7], "cullface": "down" },
+        "east": { "texture": "#crystal_b", "uv": [8, 8.5, 10.5, 7], "cullface": "down" }
+      },
+      "rotation": { "origin": [10.625, -0.5, 10], "axis": "z", "angle": 45, "rescale": false }
+    },
+    {
+      "name": "up_cluster_1",
+      "from": [9.125, 15, 7.5],
+      "to": [12.125, 18, 12.5],
+      "light_emission": 15,
+      "shade": false,
+      "faces": {
+        "down": { "texture": "#crystal_b", "uv": [6.5, 8.5, 8, 11], "cullface": "up" },
+        "up": { "texture": "#crystal_b", "uv": [6.5, 4.5, 8, 7], "cullface": "up" },
+        "north": { "texture": "#crystal_b", "uv": [10.5, 7, 12, 8.5], "cullface": "up" },
+        "south": { "texture": "#crystal_b", "uv": [6.5, 7, 8, 8.5], "cullface": "up" },
+        "west": { "texture": "#crystal_b", "uv": [4, 7, 6.5, 8.5], "cullface": "up" },
+        "east": { "texture": "#crystal_b", "uv": [8, 7, 10.5, 8.5], "cullface": "up" }
+      },
+      "rotation": { "origin": [10.625, 16.5, 10], "axis": "z", "angle": 45, "rescale": false }
+    },
+    {
+      "name": "up_cluster_2",
+      "from": [2.875, 15, 3.375],
+      "to": [7.875, 18, 7.375],
+      "light_emission": 15,
+      "shade": false,
+      "faces": {
+        "down": { "texture": "#crystal_a", "uv": [5.5, 8.5, 8, 10.5], "cullface": "up" },
+        "up": { "texture": "#crystal_a", "uv": [5.5, 5, 8, 7], "cullface": "up" },
+        "north": { "texture": "#crystal_a", "uv": [10, 7, 12.5, 8.5], "cullface": "up" },
+        "south": { "texture": "#crystal_a", "uv": [5.5, 7, 8, 8.5], "cullface": "up" },
+        "west": { "texture": "#crystal_a", "uv": [3.5, 7, 5.5, 8.5], "cullface": "up" },
+        "east": { "texture": "#crystal_a", "uv": [8, 7, 10, 8.5], "cullface": "up" }
+      },
+      "rotation": { "origin": [5.375, 16.5, 5.375], "axis": "x", "angle": -45, "rescale": false }
+    },
+    {
+      "name": "north_cluster_1",
+      "from": [5.5, 6, -2],
+      "to": [10.5, 10, 1],
+      "light_emission": 15,
+      "shade": false,
+      "faces": {
+        "south": { "texture": "#crystal_a", "uv": [5.5, 8.5, 8, 10.5], "cullface": "north" },
+        "north": { "texture": "#crystal_a", "uv": [5.5, 5, 8, 7], "cullface": "north", "rotation": 180 },
+        "down": { "texture": "#crystal_a", "uv": [10, 7, 12.5, 8.5], "cullface": "north", "rotation": 180 },
+        "up": { "texture": "#crystal_a", "uv": [5.5, 7, 8, 8.5], "cullface": "north" },
+        "west": { "texture": "#crystal_a", "uv": [3.5, 7, 5.5, 8.5], "cullface": "north", "rotation": 90 },
+        "east": { "texture": "#crystal_a", "uv": [8, 7, 10, 8.5], "cullface": "north", "rotation": 270 }
+      },
+      "rotation": { "origin": [8, 8, -0.5], "axis": "x", "angle": -45, "rescale": false }
+    },
+    {
+      "name": "south_cluster_1",
+      "from": [9.125, 2.875, 15],
+      "to": [12.125, 7.875, 18],
+      "light_emission": 15,
+      "shade": false,
+      "faces": {
+        "north": { "texture": "#crystal_b", "uv": [6.5, 11, 8, 8.5], "cullface": "south", "rotation": 180 },
+        "south": { "texture": "#crystal_b", "uv": [6.5, 7, 8, 4.5], "cullface": "south" },
+        "down": { "texture": "#crystal_b", "uv": [10.5, 8.5, 12, 7], "cullface": "south", "rotation": 180 },
+        "up": { "texture": "#crystal_b", "uv": [6.5, 8.5, 8, 7], "cullface": "south" },
+        "west": { "texture": "#crystal_b", "uv": [4, 8.5, 6.5, 7], "cullface": "south", "rotation": 90 },
+        "east": { "texture": "#crystal_b", "uv": [8, 8.5, 10.5, 7], "cullface": "south", "rotation": 270 }
+      },
+      "rotation": { "origin": [10.625, 5.375, 16.5], "axis": "y", "angle": 22.5, "rescale": false }
+    },
+    {
+      "name": "south_cluster_2",
+      "from": [8.125, 8.625, 15],
+      "to": [13.125, 12.625, 18],
+      "light_emission": 15,
+      "shade": false,
+      "faces": {
+        "north": { "texture": "#crystal_a", "uv": [5.5, 10.5, 8, 8.5], "cullface": "south", "rotation": 180 },
+        "south": { "texture": "#crystal_a", "uv": [5.5, 7, 8, 5], "cullface": "south" },
+        "down": { "texture": "#crystal_a", "uv": [10, 8.5, 12.5, 7], "cullface": "south", "rotation": 180 },
+        "up": { "texture": "#crystal_a", "uv": [5.5, 8.5, 8, 7], "cullface": "south" },
+        "west": { "texture": "#crystal_a", "uv": [3.5, 8.5, 5.5, 7], "cullface": "south", "rotation": 90 },
+        "east": { "texture": "#crystal_a", "uv": [8, 8.5, 10, 7], "cullface": "south", "rotation": 270 }
+      },
+      "rotation": { "origin": [10.625, 10.625, 16.5], "axis": "x", "angle": -22.5, "rescale": false }
+    },
+    {
+      "name": "south_cluster_3",
+      "from": [3.875, 4.5, 15],
+      "to": [6.875, 9.5, 18],
+      "light_emission": 15,
+      "shade": false,
+      "faces": {
+        "north": { "texture": "#crystal_b", "uv": [6.5, 11, 8, 8.5], "cullface": "south", "rotation": 180 },
+        "south": { "texture": "#crystal_b", "uv": [6.5, 7, 8, 4.5], "cullface": "south" },
+        "down": { "texture": "#crystal_b", "uv": [10.5, 8.5, 12, 7], "cullface": "south", "rotation": 180 },
+        "up": { "texture": "#crystal_b", "uv": [6.5, 8.5, 8, 7], "cullface": "south" },
+        "west": { "texture": "#crystal_b", "uv": [4, 8.5, 6.5, 7], "cullface": "south", "rotation": 90 },
+        "east": { "texture": "#crystal_b", "uv": [8, 8.5, 10.5, 7], "cullface": "south", "rotation": 270 }
+      }
+    },
+    {
+      "name": "west_cluster_1",
+      "from": [-2, 6, 2.875],
+      "to": [1, 10, 7.875],
+      "light_emission": 15,
+      "shade": false,
+      "faces": {
+        "east": { "texture": "#crystal_a", "uv": [5.5, 10.5, 8, 8.5], "cullface": "west", "rotation": 180 },
+        "west": { "texture": "#crystal_a", "uv": [5.5, 7, 8, 5], "cullface": "west" },
+        "down": { "texture": "#crystal_a", "uv": [10, 8.5, 12.5, 7], "cullface": "west", "rotation": 270 },
+        "up": { "texture": "#crystal_a", "uv": [5.5, 8.5, 8, 7], "cullface": "west", "rotation": 270 },
+        "north": { "texture": "#crystal_a", "uv": [3.5, 8.5, 5.5, 7], "cullface": "west", "rotation": 90 },
+        "south": { "texture": "#crystal_a", "uv": [8, 8.5, 10, 7], "cullface": "west", "rotation": 270 }
+      },
+      "rotation": { "origin": [-0.5, 8, 5.375], "axis": "y", "angle": -22.5, "rescale": false }
+    },
+    {
+      "name": "west_cluster_2",
+      "from": [-2, 5.5, 9.125],
+      "to": [1, 10.5, 12.125],
+      "light_emission": 15,
+      "shade": false,
+      "faces": {
+        "east": { "texture": "#crystal_b", "uv": [6.5, 11, 8, 8.5], "cullface": "west", "rotation": 180 },
+        "west": { "texture": "#crystal_b", "uv": [6.5, 7, 8, 4.5], "cullface": "west" },
+        "down": { "texture": "#crystal_b", "uv": [10.5, 8.5, 12, 7], "cullface": "west", "rotation": 270 },
+        "up": { "texture": "#crystal_b", "uv": [6.5, 8.5, 8, 7], "cullface": "west", "rotation": 270 },
+        "north": { "texture": "#crystal_b", "uv": [4, 8.5, 6.5, 7], "cullface": "west", "rotation": 90 },
+        "south": { "texture": "#crystal_b", "uv": [8, 8.5, 10.5, 7], "cullface": "west", "rotation": 270 }
+      }
+    },
+    {
+      "name": "east_cluster_1",
+      "from": [15, 2.875, 9.125],
+      "to": [18, 7.875, 12.125],
+      "light_emission": 15,
+      "shade": false,
+      "faces": {
+        "west": { "texture": "#crystal_b", "uv": [6.5, 8.5, 8, 11], "cullface": "east" },
+        "east": { "texture": "#crystal_b", "uv": [6.5, 4.5, 8, 7], "cullface": "east", "rotation": 180 },
+        "down": { "texture": "#crystal_b", "uv": [10.5, 7, 12, 8.5], "cullface": "east", "rotation": 270 },
+        "up": { "texture": "#crystal_b", "uv": [6.5, 7, 8, 8.5], "cullface": "east", "rotation": 270 },
+        "north": { "texture": "#crystal_b", "uv": [4, 7, 6.5, 8.5], "cullface": "east", "rotation": 90 },
+        "south": { "texture": "#crystal_b", "uv": [8, 7, 10.5, 8.5], "cullface": "east", "rotation": 270 }
+      }
+    },
+    {
+      "name": "east_cluster_2",
+      "from": [15, 8.625, 4.5],
+      "to": [18, 12.625, 9.5],
+      "light_emission": 15,
+      "shade": false,
+      "faces": {
+        "west": { "texture": "#crystal_a", "uv": [5.5, 8.5, 8, 10.5], "cullface": "east" },
+        "east": { "texture": "#crystal_a", "uv": [5.5, 5, 8, 7], "cullface": "east", "rotation": 180 },
+        "down": { "texture": "#crystal_a", "uv": [10, 7, 12.5, 8.5], "cullface": "east", "rotation": 270 },
+        "up": { "texture": "#crystal_a", "uv": [5.5, 7, 8, 8.5], "cullface": "east", "rotation": 270 },
+        "north": { "texture": "#crystal_a", "uv": [3.5, 7, 5.5, 8.5], "cullface": "east", "rotation": 90 },
+        "south": { "texture": "#crystal_a", "uv": [8, 7, 10, 8.5], "cullface": "east", "rotation": 270 }
+      },
+      "rotation": { "origin": [16.5, 10.625, 7], "axis": "y", "angle": 45, "rescale": false }
+    },
+    {
+      "name": "east_cluster_3",
+      "from": [15, 2.875, 3.875],
+      "to": [18, 7.875, 6.875],
+      "light_emission": 15,
+      "shade": false,
+      "faces": {
+        "west": { "texture": "#crystal_b", "uv": [6.5, 8.5, 8, 11], "cullface": "east" },
+        "east": { "texture": "#crystal_b", "uv": [6.5, 4.5, 8, 7], "cullface": "east", "rotation": 180 },
+        "down": { "texture": "#crystal_b", "uv": [10.5, 7, 12, 8.5], "cullface": "east", "rotation": 270 },
+        "up": { "texture": "#crystal_b", "uv": [6.5, 7, 8, 8.5], "cullface": "east", "rotation": 270 },
+        "north": { "texture": "#crystal_b", "uv": [4, 7, 6.5, 8.5], "cullface": "east", "rotation": 90 },
+        "south": { "texture": "#crystal_b", "uv": [8, 7, 10.5, 8.5], "cullface": "east", "rotation": 270 }
+      },
+      "rotation": { "origin": [16.5, 5.375, 5.375], "axis": "z", "angle": -45, "rescale": false }
+    }
+  ]
+}

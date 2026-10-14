@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/alternative_ores/crystal_layout_5_overlay",
+  "textures": {
+    "base": "minecraft:block/stone",
+    "top": "minecraft:block/stone",
+    "crystal_a": "minecraft:block/alternative_ores/lapis_crystal_a",
+    "crystal_b": "minecraft:block/alternative_ores/lapis_crystal_b",
+    "particle": "#base"
+  }
+}

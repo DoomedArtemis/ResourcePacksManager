@@ -1,0 +1,16 @@
+{
+  "parent": "minecraft:block/alternative_ores/copper_crystal_layout_4_overlay",
+  "textures": {
+    "base": "minecraft:block/stone",
+    "top": "minecraft:block/stone",
+    "particle": "#base",
+    "crystal_copper_a": "minecraft:block/alternative_ores/copper_crystal_a",
+    "crystal_copper_b": "minecraft:block/alternative_ores/copper_crystal_b",
+    "crystal_exposed_copper_a": "minecraft:block/alternative_ores/exposed_copper_crystal_a",
+    "crystal_exposed_copper_b": "minecraft:block/alternative_ores/exposed_copper_crystal_b",
+    "crystal_weathered_copper_a": "minecraft:block/alternative_ores/weathered_copper_crystal_a",
+    "crystal_weathered_copper_b": "minecraft:block/alternative_ores/weathered_copper_crystal_b",
+    "crystal_oxidized_copper_a": "minecraft:block/alternative_ores/oxidized_copper_crystal_a",
+    "crystal_oxidized_copper_b": "minecraft:block/alternative_ores/oxidized_copper_crystal_b"
+  }
+}

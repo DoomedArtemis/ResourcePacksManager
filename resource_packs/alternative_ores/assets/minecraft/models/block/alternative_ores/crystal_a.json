@@ -1,0 +1,23 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "#crystal_a"
+  },
+  "elements": [
+    {
+      "name": "crystal_a",
+      "from": [-2.5, -1, -2],
+      "to": [2.5, 2, 2],
+      "light_emission": 15,
+      "shade": false,
+      "faces": {
+        "down": { "texture": "#crystal_a", "uv": [5.5, 8.5, 8, 10.5] },
+        "up": { "texture": "#crystal_a", "uv": [5.5, 5, 8, 7] },
+        "north": { "texture": "#crystal_a", "uv": [10, 7, 12.5, 8.5] },
+        "south": { "texture": "#crystal_a", "uv": [5.5, 7, 8, 8.5] },
+        "west": { "texture": "#crystal_a", "uv": [3.5, 7, 5.5, 8.5] },
+        "east": { "texture": "#crystal_a", "uv": [8, 7, 10, 8.5] }
+      }
+    }
+  ]
+}
