@@ -4,8 +4,7 @@
         name = 'Vanilla Lavender Enhanced'
         author = 'DoomedArtemis'
         description = @(
-            @{ text = 'A fuller bloom of '; color = 'gray' }
-            @{ text = 'vanilla lavender'; color = 'light_purple' }
+            @{ text = 'Lavender in full bloom'; color = 'light_purple' }
             @{ text = ' by '; color = 'gray' }
             @{ text = 'Artemis'; color = 'gold' }
         )

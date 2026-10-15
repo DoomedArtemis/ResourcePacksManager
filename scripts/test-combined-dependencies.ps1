@@ -77,6 +77,7 @@ try {
     Write-FixtureAsset $high (Join-Path $fixture 'high') $texturePath 'high pixels'
     # Root notices survive component extraction and are packaged alongside the repo license.
     Set-Content -LiteralPath (Join-Path $fixture 'low/CREDITS.txt') -Value 'Original texture credits'
+    Set-Content -LiteralPath (Join-Path $fixture 'low/pack.mcmeta') -Value '{"pack":{"author":"Fixture Artist","credits":["Original modeller","Texture contributor"]}}'
     Set-Content -LiteralPath (Join-Path $fixture 'low/LICENSE.txt') -Value 'Original texture license'
     $noticeZip = Join-Path $fixture 'notices.zip'
     New-ZipFromDirectory -SourceDirectory (Join-Path $fixture 'low') -DestinationPath $noticeZip
@@ -96,8 +97,8 @@ try {
     if ($documentationVersions.low -ne '1.10.0' -or $documentationVersions.no_archive -ne 'unreleased') { throw 'Latest archived release selection failed.' }
     if ((Get-FileHash (Join-Path $fixture 'LICENSE')).Hash -ne (Get-FileHash (Join-Path $documentOutput 'license.txt')).Hash) { throw 'Repository license was not copied verbatim.' }
     $combinedCredits = Get-Content (Join-Path $documentOutput 'credits.txt') -Raw
-    if ($combinedCredits -notmatch 'Combined credits' -or $combinedCredits -notmatch 'low:\s+Original texture credits' -or $combinedCredits -match 'no_archive:') { throw 'Automatic credit sections were not merged correctly.' }
-    if ((Get-Content (Join-Path $documentOutput 'licenses/low/LICENSE.txt') -Raw).Trim() -ne 'Original texture license') { throw 'Component legal notices were lost.' }
+    if ($combinedCredits -match 'Combined credits|Fixture Artist|Original modeller|Texture contributor|DoomedArtemis' -or $combinedCredits -notmatch 'low:\s+Original texture credits' -or $combinedCredits -match 'no_archive:') { throw 'Automatic credit sections were not merged correctly.' }
+    if ((Get-Content (Join-Path $documentOutput 'licenses/low.txt') -Raw).Trim() -ne 'Original texture license') { throw 'Component legal notices were lost.' }
     $readme = Get-Content (Join-Path $documentOutput 'readme.txt') -Raw
     if ($readme -notmatch 'Low: 1\.10\.0' -or $readme -notmatch 'No Archive: unreleased' -or $readme -notmatch 'For Minecraft Java Edition fixture') { throw 'README is missing component versions or target Minecraft version.' }
     if ($readme -notmatch 'A player-friendly pack description\.' -or $readme -notmatch 'Options > Resource Packs > Open Pack Folder') { throw 'Player description or installation instructions are missing.' }
@@ -114,10 +115,30 @@ try {
     New-ZipFromDirectory -SourceDirectory $documentOutput -DestinationPath $documentZip
     $documentArchive = [IO.Compression.ZipFile]::OpenRead($documentZip)
     try {
-        foreach ($path in @('credits.txt', 'readme.txt', 'license.txt', 'licenses/low/LICENSE.txt')) { if (-not $documentArchive.GetEntry($path)) { throw "Missing documentation ZIP entry: $path" } }
+        foreach ($path in @('credits.txt', 'readme.txt', 'license.txt', 'licenses/low.txt')) { if (-not $documentArchive.GetEntry($path)) { throw "Missing documentation ZIP entry: $path" } }
         if ($documentArchive.GetEntry('credits/low/CREDITS.txt')) { throw 'Credits were duplicated into separate component files.' }
     }
     finally { $documentArchive.Dispose() }
+    # Metadata alone must never generate credits for our own work.
+    $automaticDocs = Join-Path $fixture 'automatic-docs'
+    Ensure-Directory $automaticDocs
+    Remove-Item -LiteralPath (Join-Path $fixture 'low/CREDITS.txt')
+    New-ZipFromDirectory -SourceDirectory (Join-Path $fixture 'low') -DestinationPath (Join-Path $fixture 'metadata-only.zip')
+    $metadataComponent = Read-CombinedComponent -ZipPath (Join-Path $fixture 'metadata-only.zip') -Entry $low.Entry -Definition @{ Exclude = @() } -Root (Join-Path $fixture 'metadata-input')
+    $null = Copy-CombinedPackDocumentation -RepoRoot $fixture -DefinitionDirectory $automaticDocs -Destination $automaticDocs -Components @{ low = $metadataComponent } -DisplayName 'Artemis Enhanced Visuals'
+    $automaticCredits = Get-Content (Join-Path $automaticDocs 'credits.txt') -Raw
+    if (-not [string]::IsNullOrWhiteSpace($automaticCredits)) { throw 'Metadata generated unwanted author credits.' }
+    # Multiple notices from the same pack stay flat and retain their exact contents.
+    Set-Content -LiteralPath (Join-Path $fixture 'low/NOTICE.txt') -Value 'Additional attribution notice'
+    New-ZipFromDirectory -SourceDirectory (Join-Path $fixture 'low') -DestinationPath (Join-Path $fixture 'multiple-notices.zip')
+    $multipleComponent = Read-CombinedComponent -ZipPath (Join-Path $fixture 'multiple-notices.zip') -Entry $low.Entry -Definition @{ Exclude = @() } -Root (Join-Path $fixture 'multiple-input')
+    $multipleDocs = Join-Path $fixture 'multiple-docs'
+    Ensure-Directory $multipleDocs
+    $null = Copy-CombinedPackDocumentation -RepoRoot $fixture -DefinitionDirectory $ownDocs -Destination $multipleDocs -Components @{ low = $multipleComponent }
+    foreach ($name in @('LICENSE.txt', 'NOTICE.txt')) {
+        if ((Get-FileHash (Join-Path $fixture "low/$name")).Hash -ne (Get-FileHash (Join-Path $multipleDocs "licenses/low-$name")).Hash) { throw 'Flat license notices lost content.' }
+    }
+    if (@(Get-ChildItem (Join-Path $multipleDocs 'licenses') -Directory).Count) { throw 'License subdirectories were generated.' }
     Write-FixtureAsset $low (Join-Path $fixture 'low') "$texturePath.mcmeta" '{"animation":{}}'
     Write-FixtureAsset $low (Join-Path $fixture 'low') 'assets/demo/blockstates/other.json' '{"multipart":[{"apply":[{"model":"demo:block/child"}]}]}'
     Write-FixtureAsset $low (Join-Path $fixture 'low') 'assets/demo/models/block/child.json' '{"parent":"minecraft:block/shared"}'
@@ -140,17 +161,12 @@ try {
     $child = Get-Content (Join-Path $result.Root $childPath) -Raw | ConvertFrom-Json
     $parentPath = Convert-CombinedResourcePath $child.parent 'models'
     $parent = Get-Content (Join-Path $result.Root $parentPath) -Raw | ConvertFrom-Json
-    if ($parent.owner -ne 'low' -or $parentPath -eq $winnerModel) { throw 'Shared parent was not preserved separately for the other active block.' }
-    $privateTexture = Convert-CombinedResourcePath $parent.textures.all 'textures'
-    if ($privateTexture -ne 'assets/combined/textures/block/pack_dependencies/low/minecraft/block/shared.png') { throw 'Private texture did not keep a readable name inside the vanilla block atlas.' }
-    if ((Get-Content (Join-Path $result.Root $privateTexture) -Raw).Trim() -ne 'low pixels' -or -not (Test-Path (Join-Path $result.Root "$privateTexture.mcmeta"))) { throw 'Conflicting texture or animation metadata was lost.' }
+    if ($parent.owner -ne 'high' -or $parentPath -ne $winnerModel) { throw 'Lower-priority block parent bypassed the winning model.' }
+    $winningTexture = Convert-CombinedResourcePath $parent.textures.all 'textures'
+    if ($winningTexture -ne $texturePath -or (Get-Content (Join-Path $result.Root $winningTexture) -Raw).Trim() -ne 'high pixels') { throw 'Winning texture was not used by the lower-priority block.' }
     if (Test-Path (Join-Path $result.Root "$texturePath.mcmeta")) { throw 'Low-priority animation metadata leaked onto the high-priority texture.' }
-    $preservedModelText = Get-Content (Join-Path $result.Root $parentPath) -Raw
-    $originalModelText = Get-Content $low.Files[$sharedPath] -Raw
-    if ($preservedModelText.Replace($parent.textures.all, 'minecraft:block/shared') -cne $originalModelText) { throw 'JSON whitespace, indentation, or inline texture formatting was lost.' }
-    if ($parentPath -ne 'assets/combined/models/pack_dependencies/low/minecraft/block/shared.json') { throw 'Isolated model did not keep its original readable name.' }
-    if ($result.Owners.ContainsKey('assets/combined/models/pack_dependencies/high/minecraft/block/shared.json')) { throw 'Unnecessary copy of the winning model was emitted.' }
-    if ($result.Owners.Keys | Where-Object { $_ -like 'assets/combined/models/pack_dependencies/*/minecraft/block/cube.json' }) { throw 'Unchanged vanilla parents were copied unnecessarily.' }
+    if ((Get-Content (Join-Path $result.Root $parentPath) -Raw) -cne (Get-Content $high.Files[$sharedPath] -Raw)) { throw 'Winning JSON formatting was changed.' }
+    if ($result.Owners.Keys | Where-Object { $_ -like '*/pack_dependencies/*' }) { throw 'Overridden assets were preserved as private dependencies.' }
     $orphanPath = 'assets/combined/models/pack_dependencies/low/minecraft/block/orphan.json'
     Ensure-Directory (Split-Path (Join-Path $result.Root $orphanPath) -Parent)
     Set-Content (Join-Path $result.Root $orphanPath) '{}'
@@ -161,6 +177,9 @@ try {
     $item = Get-Content (Join-Path $result.Root 'assets/demo/items/widget.json') -Raw | ConvertFrom-Json
     $itemPath = Convert-CombinedResourcePath $item.model.model 'models'
     $itemModel = Get-Content (Join-Path $result.Root $itemPath) -Raw | ConvertFrom-Json
+    $itemParentPath = Convert-CombinedResourcePath $itemModel.parent 'models'
+    $itemParent = Get-Content (Join-Path $result.Root $itemParentPath) -Raw | ConvertFrom-Json
+    if ((Convert-CombinedResourcePath $itemParent.parent 'models') -ne $winnerModel) { throw 'Inventory parent did not use the higher-priority model.' }
     $overridePath = Convert-CombinedResourcePath $itemModel.overrides[0].model 'models'
     if (-not (Test-Path (Join-Path $result.Root $overridePath)) -or $itemModel.overrides -isnot [array]) { throw 'Item definition/override dependencies were lost.' }
     Write-FixtureAsset $high (Join-Path $fixture 'high') $statePath '{"variants":{"": [{"model":"minecraft:block/shared","weight":1},{"model":"minecraft:block/shared","weight":2}]}}'
@@ -178,6 +197,9 @@ try {
     $explicitWinner = Invoke-FixtureCombine $components $vanilla $fixture
     if ($explicitWinner.Result.Blockstates[$statePath].Implicit -or $explicitWinner.Result.Blockstates[$statePath].Pack -ne 'low') { throw 'Higher-priority explicit state did not win over a model-only pack.' }
     $high.Entry.Priority = 20
+    # Once the winning files are absent, remaining dependencies must still be validated.
+    $high.Files.Remove($sharedPath); $high.Included.Remove($sharedPath)
+    $high.Files.Remove($texturePath); $high.Included.Remove($texturePath)
     # A required file filtered out by the configuration must never silently fall back.
     $low.Included.Remove($sharedPath)
     Assert-DependencyRejected { Invoke-FixtureCombine $components $vanilla $fixture } 'Excluded dependency'
@@ -197,7 +219,7 @@ try {
     Write-FixtureAsset $low (Join-Path $fixture 'low') $sharedPath '{"parent":"minecraft:block/cube","textures":{"all":"minecraft:block/missing"}}'
     $missingTexture = Invoke-FixtureCombine $components $vanilla $fixture
     if (@($missingTexture.Result.TextureWarnings | Where-Object { $_.Type -eq 'MissingTexture' -and $_.Reference -eq 'assets/minecraft/textures/block/missing.png' }).Count -eq 0) { throw 'Missing texture file did not become a report warning.' }
-    $missingTextureModelPath = (Get-CombinedPrivateLocation @{ Name = 'combined' } 'low' $sharedPath).Path
+    $missingTextureModelPath = $sharedPath
     $originalModel = Get-Content (Join-Path $missingTexture.Root $missingTextureModelPath) -Raw | ConvertFrom-Json
     if ($originalModel.textures.all -ne 'minecraft:block/missing') { throw 'Missing texture reference was modified.' }
     Write-FixtureAsset $low (Join-Path $fixture 'low') $sharedPath $lowJson

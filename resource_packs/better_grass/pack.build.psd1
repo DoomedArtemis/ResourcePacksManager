@@ -4,8 +4,7 @@
         name = 'Better Grass'
         author = 'DoomedArtemis'
         description = @(
-            @{ text = 'A touch of '; color = 'gray' }
-            @{ text = 'wilder grass'; color = 'green' }
+            @{ text = 'Wilder grass'; color = 'green' }
             @{ text = ' by '; color = 'gray' }
             @{ text = 'Artemis'; color = 'gold' }
         )

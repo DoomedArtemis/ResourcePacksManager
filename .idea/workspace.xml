@@ -4,42 +4,74 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69da52cd-7463-4c66-9153-40bdcaaf6a07" name="Changes" comment="Built Better Grass">
+    <list default="true" id="69da52cd-7463-4c66-9153-40bdcaaf6a07" name="Changes" comment="Added &quot;Alternative Ores&quot;">
+      <change beforePath="$PROJECT_DIR$/../Artemis-Texture-Packs/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Artemis-Texture-Packs/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cybernetic-Enhancements/src/generated/resources/assets/cyberneticenhancements/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Cybernetic-Enhancements/src/generated/resources/assets/cyberneticenhancements/lang/en_us.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cybernetic-Enhancements/src/main/java/de/artemis/cyberneticenhancements/client/screen/FixerDialogScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cybernetic-Enhancements/src/main/java/de/artemis/cyberneticenhancements/client/screen/FixerDialogScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cybernetic-Enhancements/src/main/java/de/artemis/cyberneticenhancements/common/datagen/ModLanguageProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cybernetic-Enhancements/src/main/java/de/artemis/cyberneticenhancements/common/datagen/ModLanguageProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cybernetic-Enhancements/src/main/java/de/artemis/cyberneticenhancements/common/dialogue/NpcDialogueTrees.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cybernetic-Enhancements/src/main/java/de/artemis/cyberneticenhancements/common/dialogue/NpcDialogueTrees.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cybernetic-Enhancements/src/main/java/de/artemis/cyberneticenhancements/common/menu/FixerDialogMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cybernetic-Enhancements/src/main/java/de/artemis/cyberneticenhancements/common/menu/FixerDialogMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cybernetic-Enhancements/src/main/java/de/artemis/cyberneticenhancements/common/quest/PlayerQuestManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cybernetic-Enhancements/src/main/java/de/artemis/cyberneticenhancements/common/quest/PlayerQuestManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cybernetic-Enhancements/src/main/java/de/artemis/cyberneticenhancements/common/quest/QuestContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cybernetic-Enhancements/src/main/java/de/artemis/cyberneticenhancements/common/quest/QuestContract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cybernetic-Enhancements/src/main/java/de/artemis/cyberneticenhancements/common/ui/Icons.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cybernetic-Enhancements/src/main/java/de/artemis/cyberneticenhancements/common/ui/Icons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heartwood/src/main/java/de/doomedartemis/heartwood/Heartwood.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Heartwood/src/main/java/de/doomedartemis/heartwood/Heartwood.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heartwood/src/main/java/de/doomedartemis/heartwood/client/HeartwoodCinematicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Heartwood/src/main/java/de/doomedartemis/heartwood/client/HeartwoodCinematicController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heartwood/src/main/java/de/doomedartemis/heartwood/client/gui/HeartwoodFaithHud.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Heartwood/src/main/java/de/doomedartemis/heartwood/client/gui/HeartwoodFaithHud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heartwood/src/main/java/de/doomedartemis/heartwood/common/block/HeartwoodFocusBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Heartwood/src/main/java/de/doomedartemis/heartwood/common/block/HeartwoodFocusBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heartwood/src/main/java/de/doomedartemis/heartwood/common/event/HeartwoodPlayerEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Heartwood/src/main/java/de/doomedartemis/heartwood/common/event/HeartwoodPlayerEvents.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heartwood/src/main/java/de/doomedartemis/heartwood/common/faith/FaithApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Heartwood/src/main/java/de/doomedartemis/heartwood/common/faith/FaithApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heartwood/src/main/java/de/doomedartemis/heartwood/common/registry/ModAttachments.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Heartwood/src/main/java/de/doomedartemis/heartwood/common/registry/ModAttachments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Laboratory-Blocks/src/generated/resources/data/laboratoryblocks/advancements/recipes/laboratoryblocks.laboratory_blocks_creative_tab/glowing_dark_oak_laboratory_tiles_from_glowing_dark_oak_laboratory_floor_stonecutting.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Laboratory-Blocks/src/generated/resources/data/laboratoryblocks/advancements/recipes/laboratoryblocks.laboratory_blocks_creative_tab/glowing_dark_oak_laboratory_tiles_from_glowing_dark_oak_laboratory_floor_stonecutting.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matterworks/src/main/java/de/artemis/matterworks/common/blockentity/MatterNetworkControllerBlockEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Matterworks/src/main/java/de/artemis/matterworks/common/blockentity/MatterNetworkControllerBlockEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matterworks/src/main/java/de/artemis/matterworks/common/blockentity/MultiblockPortBlockEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Matterworks/src/main/java/de/artemis/matterworks/common/blockentity/MultiblockPortBlockEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matterworks/src/main/java/de/artemis/matterworks/common/matter/MatterValueCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Matterworks/src/main/java/de/artemis/matterworks/common/matter/MatterValueCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.17.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.17.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.18.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.18.2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.18.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.19.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.19.2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.19.3.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.19.4.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.19.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.20.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.20.2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.20.3.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.20.4.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.20.5.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.20.6.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.20.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.21.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.21.10.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.21.11.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.21.2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.21.3.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.21.4.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.21.5.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.21.6.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.21.7.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.21.8.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.21.9.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-1.21.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-26.1.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-26.1.2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-26.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-26.2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/better_grass/better_grass-26.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.run/Build All Texture Packs For Version Range.run.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.run/Build All Texture Packs.run.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.run/Build All Texture Packs.run.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.run/Build Selected Texture Packs For Version Range.run.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.run/Build Selected Texture Packs.run.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.run/Build Selected Texture Packs.run.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.run/Dry Run CurseForge Publish Version Range.run.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.run/Dry Run Modrinth Publish Version Range.run.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/artemis_enhanced_visuals/artemis_enhanced_visuals.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/artemis_enhanced_visuals/artemis_enhanced_visuals.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/artemis_enhanced_visuals/credits.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/artemis_enhanced_visuals/license.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/alternative_birch_leaves/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/alternative_birch_leaves/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/alternative_end_rod/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/alternative_end_rod/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/alternative_mud_color/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/alternative_mud_color/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/alternative_nether_portal_color/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/alternative_nether_portal_color/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/alternative_ores/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/amethyst_to_jade/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/amethyst_to_jade/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/better_cake_slices/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_cake_slices/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/better_carpets/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_carpets/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/better_grass/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_grass/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/better_moss/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_moss/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/flowering_lily_pads/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/flowering_lily_pads/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/flowering_oak_leaves/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/flowering_oak_leaves/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/nuggets_to_coins/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/nuggets_to_coins/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/swords_to_lightsabers/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/swords_to_lightsabers/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/vanilla_lavender/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/vanilla_lavender/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/vanilla_lavender_enhanced/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/vanilla_lavender_enhanced/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/alternative-ores.test.cjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/audit-ore-textures.cjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/build-combined-pack.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/build-combined-pack.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/carpet-models.test.cjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/combined-pack-dependencies.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/combined-pack-dependencies.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/combined-pack-support.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/combined-pack-support.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/dye-depot-candle-models.test.cjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/format-json.cjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/generate-alternative-ores.cjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/grass-models.test.cjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/moss-legacy-geometry.cjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/moss-legacy-geometry.test.cjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/ore-crystal-spacing.cjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/ore-crystal-textures.cjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/test-combined-dependencies.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/test-combined-dependencies.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/test-moss-detail-models.ps1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/update-moss-legacy-geometry.ps1" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,23 +104,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.9059050144077023" />
-      <entry key="MS500" value="5.407713241956834" />
-      <entry key="S2" value="17.361539944455625" />
-      <entry key="S5" value="33.65181724426879" />
-      <entry key="S10" value="46.10942535528383" />
-      <entry key="S30" value="58.75544497117329" />
-      <entry key="S60" value="62.6891375545916" />
-      <entry key="M2" value="64.79621368627497" />
-      <entry key="M5" value="67.27313062851587" />
-      <entry key="M10" value="84.06160161017007" />
-      <entry key="M15" value="121.79234802907007" />
-      <entry key="M30" value="294.9033365194514" />
-      <entry key="H1" value="700.670550679924" />
-      <entry key="H2" value="1631.4287440508388" />
-      <entry key="H4" value="3361.294585759526" />
-      <entry key="D1" value="12314.70728369216" />
-      <entry key="W1" value="17929.89268501249" />
+      <entry key="MS100" value="1.669114334327813" />
+      <entry key="MS500" value="4.181372466037576" />
+      <entry key="S2" value="13.19288259583107" />
+      <entry key="S5" value="31.64701419069754" />
+      <entry key="S10" value="51.94268791926005" />
+      <entry key="S30" value="88.80392794372604" />
+      <entry key="S60" value="139.5463406509642" />
+      <entry key="M2" value="218.44334521842558" />
+      <entry key="M5" value="321.81395165117425" />
+      <entry key="M10" value="386.24939019112395" />
+      <entry key="M15" value="437.9536054836186" />
+      <entry key="M30" value="619.2335917894163" />
+      <entry key="H1" value="1025.7077728299853" />
+      <entry key="H2" value="1953.2547136807557" />
+      <entry key="H4" value="3683.4088934366528" />
+      <entry key="D1" value="12657.776104438166" />
+      <entry key="W1" value="18297.47540295854" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -110,23 +142,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.846219984289576" />
-      <entry key="MS500" value="5.380575030105657" />
-      <entry key="S2" value="17.340081013599047" />
-      <entry key="S5" value="33.63474472854881" />
-      <entry key="S10" value="46.097592695119104" />
-      <entry key="S30" value="58.750379036218725" />
-      <entry key="S60" value="62.68642970914385" />
-      <entry key="M2" value="64.7948128948933" />
-      <entry key="M5" value="67.27254826280561" />
-      <entry key="M10" value="84.0612360001828" />
-      <entry key="M15" value="121.79199248336002" />
-      <entry key="M30" value="294.90289967627297" />
-      <entry key="H1" value="700.6700283377503" />
-      <entry key="H2" value="1631.4281416319677" />
-      <entry key="H4" value="3361.2939749986567" />
-      <entry key="D1" value="12314.706922891031" />
-      <entry key="W1" value="17929.89261037184" />
+      <entry key="MS100" value="1.6183112283340515" />
+      <entry key="MS500" value="4.151699703731687" />
+      <entry key="S2" value="13.166493503986668" />
+      <entry key="S5" value="31.617099480876924" />
+      <entry key="S10" value="51.916783026294425" />
+      <entry key="S30" value="88.78978675689214" />
+      <entry key="S60" value="139.53668611655777" />
+      <entry key="M2" value="218.43670041068398" />
+      <entry key="M5" value="321.8103666667858" />
+      <entry key="M10" value="386.2473111516633" />
+      <entry key="M15" value="437.9520663025166" />
+      <entry key="M30" value="619.232551376057" />
+      <entry key="H1" value="1025.7069483222526" />
+      <entry key="H2" value="1953.2539612056974" />
+      <entry key="H4" value="3683.4082074444323" />
+      <entry key="D1" value="12657.775730432277" />
+      <entry key="W1" value="18297.475326328604" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -153,7 +185,6 @@
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;Shell Script.Build All Texture Packs.executor&quot;: &quot;Run&quot;,
     &quot;Shell Script.Build Artemis Enhanced Visuals.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Build Selected Texture Packs For Version Range.executor&quot;: &quot;Run&quot;,
     &quot;Shell Script.Build Selected Texture Packs.executor&quot;: &quot;Run&quot;,
     &quot;Shell Script.Create New Texture Pack.executor&quot;: &quot;Run&quot;,
     &quot;Shell Script.Publish All Resource Packs to CurseForge.executor&quot;: &quot;Run&quot;,
@@ -190,7 +221,7 @@
       <recent name="C:\Users\grego\IdeaProjects\Resource-Packs-Manager\archive\better_candles\1.0.0" />
     </key>
   </component>
-  <component name="RunManager" selected="Shell Script.Build Selected Texture Packs" />
+  <component name="RunManager" selected="Shell Script.Build Artemis Enhanced Visuals" />
   <component name="SharedIndexes">
     <attachedChunks>
       <set>

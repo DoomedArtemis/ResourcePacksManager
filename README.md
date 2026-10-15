@@ -6,7 +6,16 @@ The project is designed for maintaining multiple small resource packs against ma
 
 ## Getting Started
 
-Run commands from the repository root using PowerShell. Use a lowercase folder name for each pack; `example_pack` below is a placeholder for your own pack name.
+Use Windows PowerShell 5.1 (`powershell.exe`) and run commands from the repository root. The builders use .NET Framework's `System.Web.Extensions`, so PowerShell 7 (`pwsh`) is not a drop-in replacement. IntelliJ is optional; the shared run configurations invoke the same scripts shown below.
+
+Asset routing and combined dependency checks may need internet access to fetch official Mojang metadata and client assets when they are not cached locally. Refreshing the release matrix also downloads official client JARs and may invoke `javap`; put a JDK capable of reading the target releases' class files on `PATH` before running the sync script.
+
+Use a lowercase folder name for each pack; `example_pack` below is a placeholder for your own pack name. List the available packs and configured versions before building:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -ListPacks
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -ListVersions
+```
 
 1. Create a source pack with `powershell -ExecutionPolicy Bypass -File scripts/new-texture-pack.ps1 -Name example_pack -MinVersion 1.13`, or add an existing pack under `resource_packs/`.
 2. Add its assets under `assets/<namespace>/...` or the supported typed `drop/` folders. Configure supported versions, file variants, mod compatibility, and publishing settings in its `pack.build.psd1`.
@@ -20,7 +29,7 @@ See the sections below for asset routing, version selection, build output, and p
 
 ```text
 resource_packs/            editable source packs, one folder per pack
-artemis_enhanced_visuals/  combined-pack definition, icon, and credits introduction
+artemis_enhanced_visuals/  combined-pack definition and icon
 scripts/                   build, scaffold, publish, and version-matrix scripts
 config/                    global build configuration and Minecraft version matrix
 build/                     generated ZIP files, grouped by pack
@@ -44,8 +53,6 @@ The source folder contains:
 artemis_enhanced_visuals/
   artemis_enhanced_visuals.psd1   inclusion, priorities, description, and publishing options
   pack.png                      combined pack icon
-  credits.txt                   optional introduction to automatically collected credits
-  license.txt                   reference copy of the repository MIT License
 ```
 
 ### Description, icon, and publishing settings
@@ -63,11 +70,10 @@ For Minecraft {VersionId}.
 
 Credits are collected automatically from each included component's credit files
 into one ZIP-root `credits.txt`, with headings such as `example_pack:`.
-`artemis_enhanced_visuals/credits.txt` supplies an optional introduction; no manual
-component attribution list is needed. `artemis_enhanced_visuals/license.txt` is a
-copy of the repository's MIT License. Each build uses the current repository
+No manual combined credit file or component attribution list is needed.
+Each build uses the current repository
 `LICENSE` as the ZIP's `license.txt`. Included components' original
-license notices are preserved under `licenses/<pack>/`, so
+license notices are preserved under `licenses/<pack>.txt`, so
 third-party attribution and original copyright/license notices remain included.
 Use `PackMetadata.description` for colored Minecraft text components in the
 resource-pack menu while retaining plain `Description` text for the player README.
@@ -112,8 +118,8 @@ numerically. Only recognized version folders with ZIP files directly inside coun
 Credits are collected from component ZIP-root credit notices such as `credits.txt`
 and `CREDITS.txt`, regardless of filename capitalization. Only packs included for
 the selected Minecraft version contribute credits and README entries. A pack with
-no credits file still appears in the README. Credit contents are preserved beneath
-the pack-name heading; they are not duplicated into separate `credits/<pack>/` files.
+no credits file appears only in the README. Author and credits metadata do not generate attribution. Credit contents are preserved beneath
+the pack-name heading; they are not duplicated into separate `credits/<pack>/` files. Component licenses are stored directly in `licenses/`, named after the pack (for example, `vanilla_lavender_enhanced.txt`). If a pack has multiple notices, each filename includes the pack name and original notice filename to preserve them all.
 
 ### Inclusion, priority, and dependency handling
 
@@ -151,26 +157,21 @@ For finer control, add `Include` and/or `Exclude` to a pack entry:
 Rules match final ZIP paths after version routing and rewrites. Wildcards are supported;
 a trailing slash matches a directory prefix. Missing `Include` means all assets,
 while `Include = @()` includes none. The top-level `Exclude` list removes matching
-files from every component. If an active block or item needs a missing model or
-parent, or a dependency deliberately excluded from its pack, the build fails with
-a dependency chain instead
-of silently falling back to another pack. JSON contents are not merged by key.
+files from every component. References first use the highest-priority included
+file at the required path. If no included file supplies it, a dependency deliberately
+excluded from the referencing pack fails the build, even when vanilla has that path.
+Missing models and parents also fail with a dependency chain. JSON contents are
+not merged by key.
 
 The combined builder walks each winning blockstate's variants and multipart models,
 their parents, model overrides, textures, and animation metadata. It also checks
-item models and modern item definitions. Component dependencies stay available even
-when another pack wins their original file path. Models that can use their normal
-paths stay there, and unchanged vanilla models are supplied by Minecraft itself.
-Only alternate dependencies that need separate paths are placed in the
-`artemis_enhanced_visuals` namespace under `models/pack_dependencies/<pack>/<namespace>/`
-or `textures/block/pack_dependencies/<pack>/<namespace>/`, retaining their original
-filenames and subfolders. For example, a required alternate `block/<block>.json`
-from `component_a` becomes
-`assets/artemis_enhanced_visuals/models/pack_dependencies/component_a/minecraft/block/<block>.json`.
-
-When two active blocks need different versions of a shared model or texture, both
-versions remain available. Identical models and textures share the normal output
-where possible, and unreferenced dependency copies are removed before packaging.
+item models and modern item definitions. Every model and texture reference uses
+whichever included component has the highest priority at that path, including
+parents referenced by lower-priority inventory models. Overridden component assets
+are not preserved as private alternatives. For example, Better Moss's moss carpet
+models and textures also replace those referenced by Better Carpets' inventory models.
+Unchanged vanilla models are supplied by Minecraft itself. Unreferenced generated
+dependency copies are removed before packaging.
 Reference edits preserve original JSON indentation, property order, inline faces,
 number formatting, and line endings. Unchanged component JSON is copied verbatim.
 Shorter temporary staging paths accommodate readable model names on Windows.
@@ -195,7 +196,7 @@ and item model dependencies; custom mod model loaders are outside their scope.
 | --- | --- |
 | Missing texture file or undefined texture variable such as `#missing` | Keep the reference, record a texture warning, and build the ZIP |
 | Missing model or parent model | Fail with the dependency chain |
-| Required file deliberately excluded by configuration | Fail with the dependency chain |
+| Required file deliberately excluded, with no included provider at that path | Fail with the dependency chain |
 | Circular model references or texture variables | Fail |
 | Component unsupported for the selected Minecraft version | Skip that component and record it in the report |
 
@@ -233,7 +234,7 @@ build/artemis_enhanced_visuals/
 
 The ZIP contains `pack.mcmeta`, the configured `pack.png`, assets, a single generated
 `credits.txt`, a generated `readme.txt`, the current repository license as
-`license.txt`, and applicable component notices under `licenses/<pack>/`.
+`license.txt`, and applicable component notices under `licenses/<pack>.txt`.
 
 The report describes the same build:
 
@@ -297,7 +298,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\test-combined-depe
 powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\test-combined-publishing.ps1
 ```
 
-These check inclusion and priority, dependency preservation and texture warnings,
+These check inclusion and priority, model and texture references and warnings,
 automatic credits and README version selection, publisher discovery, and report
 cleanup after successful archive moves.
 
@@ -381,13 +382,13 @@ Important settings include:
 - `PackageNameTemplate`: generated ZIP basename template
 - `Validation`: build-time validation rules
 
-The config supports token replacement in templates. Common tokens are:
+Build descriptions and package-name templates support these tokens:
 
 - `{PackName}`
 - `{PackDisplayName}`
 - `{VersionId}`
-- `{MinecraftVersion}`
-- `{ReleaseVersion}`
+
+Publishing templates additionally support `{MinecraftVersion}` and `{ReleaseVersion}`.
 
 ## Minecraft Version Matrix
 
@@ -573,28 +574,30 @@ The scripts can be run directly with PowerShell:
 powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1
 powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -ListPacks
 powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -ListVersions
-powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Pack <pack>
-powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Version <version>
-powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Pack <pack> -Version <version>
+powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Pack example_pack
+powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Version 26.2
+powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Pack example_pack -Version 26.2
 powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -PromptForPack
 powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -PromptForPack -Version all
 powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -PromptForPack -PromptForVersion
 powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Pack example_pack -Version '1.21.4..26.3'
 powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -PromptForVersion
-powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Clean
+powershell -ExecutionPolicy Bypass -File .\scripts\build-texture-packs.ps1 -Pack example_pack -Version 26.2 -Clean
 ```
+
+Without pack or version arguments, the builder selects all packs (including Artemis Enhanced Visuals) and all enabled versions allowed by each pack. `-Clean` removes the shared temporary staging directory before continuing with the requested build; existing ZIPs in `build/` and `archive/` are retained until a matching build ZIP is replaced normally.
 
 Both `-Version` and interactive version selection accept `all`, a single version, an inclusive range such as `<start>..<end>` or `<start> to <end>`, and comma-separated mixes. Ranges follow the configured version matrix order; each pack's version filters still apply. Quote command-line ranges and mixes containing spaces.
 
-`Build Selected Texture Packs For Version Range` uses this same version selection after you enter the pack names. For example, select `example_pack`, then enter `1.21.4..26.3` to build every configured version in that inclusive range, or `1.21.4, 1.21.11 to 26.3` to mix individual versions and ranges.
+`Build Selected Texture Packs` uses this same version selection after you enter the pack names. For example, select `example_pack`, then enter `1.21.4..26.3` to build every configured version in that inclusive range, or `1.21.4, 1.21.11 to 26.3` to mix individual versions and ranges.
 The builder also prompts for versions when run with just `-PromptForPack`, unless `-Version` is supplied or you are only listing packs with `-ListPacks`.
 
-`Build Selected Texture Packs` asks only for pack names and builds all enabled versions supported by those packs. `Build All Texture Packs` builds all packs for all enabled supported versions without prompting. Their `For Version Range` counterparts ask for version selection.
+All build and publishing run configurations prompt for versions. Enter `all` for every enabled supported version, or choose individual versions and ranges. Selected-pack configurations also ask for pack names.
 
 The scaffold script creates a new pack folder using the configured source layout:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\new-texture-pack.ps1 -Name <pack> -MinVersion <version>
+powershell -ExecutionPolicy Bypass -File .\scripts\new-texture-pack.ps1 -Name example_pack -MinVersion 1.13
 ```
 
 The sync script refreshes the generated Minecraft release matrix:
@@ -609,10 +612,8 @@ Shared IntelliJ run configurations are stored in `.run/`:
 
 | Build configuration | Pack selection | Version selection |
 | --- | --- | --- |
-| `Build All Texture Packs` | All packs | All enabled supported versions; no prompt |
-| `Build All Texture Packs For Version Range` | All packs | Prompts for versions or ranges |
-| `Build Selected Texture Packs` | Prompts for pack names | All enabled supported versions; no version prompt |
-| `Build Selected Texture Packs For Version Range` | Prompts for pack names | Prompts for versions or ranges |
+| `Build All Texture Packs` | All packs | Prompts for versions, ranges, or `all` |
+| `Build Selected Texture Packs` | Prompts for pack names | Prompts for versions, ranges, or `all` |
 
 Other shared configurations:
 
@@ -620,12 +621,10 @@ Other shared configurations:
 - `Create New Texture Pack`
 - `Dry Run Modrinth Publish All`
 - `Dry Run Modrinth Publish Selected`
-- `Dry Run Modrinth Publish Version Range`
 - `Publish All Resource Packs to Modrinth`
 - `Publish Selected Resource Packs to Modrinth`
 - `Dry Run CurseForge Publish All`
 - `Dry Run CurseForge Publish Selected`
-- `Dry Run CurseForge Publish Version Range`
 - `Publish All Resource Packs to CurseForge`
 - `Publish Selected Resource Packs to CurseForge`
 
@@ -652,6 +651,7 @@ Useful publishing parameters:
 - `-CheckRemote`: check existing remote Modrinth versions during dry runs
 - `-PromptForToken`: prompt for a token
 - `-PromptForChangelog`: prompt for a changelog
+- `-Changelog`: provide the changelog directly, including an empty string to clear it
 - `-ReleaseVersion`: override the release version used in Modrinth version numbers
 - `-PromptForReleaseVersion`: prompt for that release version
 
@@ -713,6 +713,7 @@ Useful publishing parameters match the Modrinth publisher where CurseForge suppo
 - `-CheckRemote`: check local publish state for duplicates; CurseForge does not document a remote file-listing endpoint for this upload API
 - `-PromptForToken`: prompt for a token
 - `-PromptForChangelog`: prompt for a changelog
+- `-Changelog`: provide the changelog directly, including an empty string to clear it
 - `-ReleaseVersion`: override the release version used in file names
 - `-PromptForReleaseVersion`: prompt for that release version
 
@@ -751,5 +752,5 @@ archive/<pack>/<releaseVersion>/<display name> <releaseVersion> MC<minecraftVers
 The repository is licensed under the MIT License; see `LICENSE`. Individual packs may include third-party work with separate credits and license notices in their source folders. Preserve those notices when editing or publishing a pack. The builders include applicable notices in individual ZIPs and collect them for the combined pack.
 
 Artemis Enhanced Visuals collects the included packs' attribution into its generated
-`credits.txt`, preserves their original license notices under `licenses/<pack>/`,
+`credits.txt`, preserves their original license notices under `licenses/<pack>.txt`,
 and includes the current repository `LICENSE` as its root `license.txt`.

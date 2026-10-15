@@ -4,8 +4,7 @@
         name = 'Alternative Birch Leaves'
         author = 'DoomedArtemis'
         description = @(
-            @{ text = 'A touch of '; color = 'gray' }
-            @{ text = 'golden birch leaves'; color = 'yellow' }
+            @{ text = 'Golden birch leaves'; color = 'yellow' }
             @{ text = ' by '; color = 'gray' }
             @{ text = 'Artemis'; color = 'gold' }
         )

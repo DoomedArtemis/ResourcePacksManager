@@ -4,8 +4,7 @@
         name = 'Better Candles'
         author = 'DoomedArtemis'
         description = @(
-            @{ text = 'A warm touch of '; color = 'gray' }
-            @{ text = 'melted candle wax'; color = 'yellow' }
+            @{ text = 'Melted candle wax'; color = 'yellow' }
             @{ text = ' by '; color = 'gray' }
             @{ text = 'Artemis'; color = 'gold' }
         )

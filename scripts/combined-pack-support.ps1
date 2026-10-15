@@ -111,11 +111,6 @@ function Copy-CombinedPackDocumentation {
     param([string]$RepoRoot, [string]$DefinitionDirectory, [string]$Destination, [hashtable]$Components,
         [string]$DisplayName = 'Artemis Enhanced Visuals', [string]$MinecraftVersion = '', [string]$Description = '')
     $credits = New-Object 'System.Collections.Generic.List[string]'
-    $creditsPath = Join-Path $DefinitionDirectory 'credits.txt'
-    if (Test-Path -LiteralPath $creditsPath -PathType Leaf) {
-        $credits.Add((Get-Content -LiteralPath $creditsPath -Raw -Encoding UTF8).Trim())
-        $credits.Add('')
-    }
     $readme = New-Object 'System.Collections.Generic.List[string]'
     $readme.Add($DisplayName)
     if ($MinecraftVersion) { $readme.Add("For Minecraft Java Edition $MinecraftVersion") }
@@ -145,11 +140,13 @@ function Copy-CombinedPackDocumentation {
             foreach ($name in $creditNames) { $credits.Add((Get-Content -LiteralPath $Components[$pack].Notices[$name] -Raw -Encoding UTF8).Trim()) }
             $credits.Add('')
         }
-        foreach ($name in @($Components[$pack].Notices.Keys | Where-Object { $_ -inotmatch '^credits?(\.|$)' } | Sort-Object)) {
+        $licenseNames = @($Components[$pack].Notices.Keys | Where-Object { $_ -inotmatch '^credits?(\.|$)' } | Sort-Object)
+        foreach ($name in $licenseNames) {
             $hasLicenseNotices = $true
-            $folder = Join-Path $Destination "licenses/$pack"
+            $folder = Join-Path $Destination 'licenses'
             Ensure-Directory -Path $folder
-            Copy-Item -LiteralPath $Components[$pack].Notices[$name] -Destination (Join-Path $folder $name) -Force
+            $fileName = if ($licenseNames.Count -eq 1) { "$pack.txt" } else { "$pack-$name" }
+            Copy-Item -LiteralPath $Components[$pack].Notices[$name] -Destination (Join-Path $folder $fileName) -Force
         }
     }
     $readme.Add('')

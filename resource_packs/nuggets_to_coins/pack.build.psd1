@@ -4,8 +4,7 @@
         name = 'Nuggets to Coins'
         author = 'DoomedArtemis'
         description = @(
-            @{ text = 'A little shine for '; color = 'gray' }
-            @{ text = 'nugget coins'; color = 'gold' }
+            @{ text = 'Nuggets become coins'; color = 'gold' }
             @{ text = ' by '; color = 'gray' }
             @{ text = 'Artemis'; color = 'gold' }
         )

@@ -2,13 +2,11 @@
     Name = 'artemis_enhanced_visuals'
     DisplayName = 'Artemis Enhanced Visuals'
 
-    Description = 'A collection of Artemis resource packs that enhances Minecraft''s vanilla visuals while preserving its familiar style.'
     PackMetadata = @{
         name = 'Artemis Enhanced Visuals'
         author = 'DoomedArtemis'
         description = @(
-            @{ text = 'A collection of '; color = 'gray' }
-            @{ text = 'vanilla visual touches'; color = 'aqua' }
+            @{ text = 'Vanilla visuals'; color = 'aqua' }
             @{ text = ' by '; color = 'gray' }
             @{ text = 'Artemis'; color = 'gold' }
         )
@@ -21,10 +19,12 @@
         @{ Name = 'alternative_end_rod'; Enabled = $true; Priority = 20 }
         @{ Name = 'alternative_mud_color'; Enabled = $true; Priority = 30 }
         @{ Name = 'alternative_nether_portal_color'; Enabled = $true; Priority = 40 }
+        @{ Name = 'alternative_ores'; Enabled = $true; Priority = 45 }
         @{ Name = 'amethyst_to_jade'; Enabled = $false; Priority = 50 }
         @{ Name = 'better_cake_slices'; Enabled = $true; Priority = 60 }
         @{ Name = 'better_candles'; Enabled = $true; Priority = 70 }
         @{ Name = 'better_carpets'; Enabled = $true; Priority = 80 }
+        @{ Name = 'better_grass'; Enabled = $true; Priority = 90 }
         @{ Name = 'better_moss'; Enabled = $true; Priority = 100 }
         @{ Name = 'flowering_lily_pads'; Enabled = $true; Priority = 110 }
         @{ Name = 'flowering_oak_leaves'; Enabled = $true; Priority = 120 }

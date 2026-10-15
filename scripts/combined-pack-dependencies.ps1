@@ -177,11 +177,12 @@ function Add-CombinedTextureWarning {
 
 function Resolve-CombinedDependencySource {
     param([hashtable]$Context, [string]$Pack, [string]$Path, [string]$Chain, [switch]$AllowMissingTexture)
+    # References use the same priority winner as files, including inventory parents.
+    if ($Context.OriginalOwners.ContainsKey($Path)) { return [string]$Context.OriginalOwners[$Path].Pack }
     if ($Context.Components.ContainsKey($Pack) -and $Context.Components[$Pack].Files.ContainsKey($Path)) {
         if (-not $Context.Components[$Pack].Included.ContainsKey($Path)) { throw "Excluded dependency: $Chain -> $Path (required from '$Pack')." }
         return $Pack
     }
-    if ($Context.OriginalOwners.ContainsKey($Path)) { return [string]$Context.OriginalOwners[$Path].Pack }
     if ($Context.Vanilla.Paths.ContainsKey($Path)) { return '@vanilla' }
     if ($AllowMissingTexture) {
         Add-CombinedTextureWarning -Context $Context -Type 'MissingTexture' -Reference $Path -Chain $Chain -ModelKey $Pack
