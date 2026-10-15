@@ -20,7 +20,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\build-texture-pack
 1. Create a source pack with `powershell -ExecutionPolicy Bypass -File scripts/new-texture-pack.ps1 -Name example_pack -MinVersion 1.13`, or add an existing pack under `resource_packs/`.
 2. Add its assets under `assets/<namespace>/...` or the supported typed `drop/` folders. Configure supported versions, file variants, mod compatibility, and publishing settings in its `pack.build.psd1`.
 3. Build it with `powershell -ExecutionPolicy Bypass -File scripts/build-texture-packs.ps1 -Pack example_pack -Version '1.21.4..26.3'`, or use the IntelliJ build configurations. Test the matching ZIP from `build/example_pack/` in Minecraft.
-4. Preview an upload with the Modrinth or CurseForge dry-run configuration, then publish using the matching publish configuration. Successful uploads move build ZIPs into `archive/<pack>/<release>/`.
+4. Use **Archive Pack** to rename and move build ZIPs into `archive/<pack>/<release>/`, or preview an upload with a Modrinth or CurseForge dry-run configuration and publish using the matching publish configuration. Successful uploads archive build ZIPs automatically too.
 5. To include the pack in Artemis Enhanced Visuals, add it to the combined definition's `Packs` list and choose its priority. Rebuild the combined pack after updating its component releases.
 
 See the sections below for asset routing, version selection, build output, and publishing configuration.
@@ -619,6 +619,7 @@ Other shared configurations:
 
 - `Build Artemis Enhanced Visuals`
 - `Create New Texture Pack`
+- `Archive Pack`
 - `Dry Run Modrinth Publish All`
 - `Dry Run Modrinth Publish Selected`
 - `Publish All Resource Packs to Modrinth`
@@ -633,6 +634,34 @@ These configurations run the repository's PowerShell scripts. Build prompts foll
 The all-pack and selected-pack build/publish configurations also include Artemis
 Enhanced Visuals. Its dedicated build configuration prompts for Minecraft versions
 and uses the combined builder directly.
+
+## Archiving Without Publishing
+
+Run the IntelliJ **Archive Pack** configuration, or:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\archive-pack.ps1
+```
+
+It prompts for pack names (comma-separated, or `all`), Minecraft versions (individual versions, ranges, mixes, or `all`), and the pack release version, such as `1.0.0`. Individual packs and Artemis Enhanced Visuals are supported. To supply the answers directly or preview the moves:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\archive-pack.ps1 -Pack example_pack -Version '1.21.4..26.3' -ReleaseVersion 1.0.0
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\archive-pack.ps1 -Pack all -Version all -ReleaseVersion 1.0.0 -WhatIf
+```
+
+Existing build ZIPs are renamed and moved using the same archive function as the publishers:
+
+```text
+build/example_pack/example_pack-26.2.zip
+  -> archive/example_pack/1.0.0/Example Pack 1.0.0 MC26.2.zip
+```
+
+The display name comes from `PackMetadata.name`, then `DisplayName`, then the pack folder name converted to title case. Pack version filters still apply; missing build ZIPs are skipped. All selected ZIPs must open successfully and contain root `pack.mcmeta` before any moves begin. This command uses existing build ZIPs and requires no publishing settings, project IDs, or tokens.
+
+Identical archived contents remove the duplicate build copy; different contents keep the existing archive and use the publishers' `-uploaded-<timestamp>` collision suffix. Successfully archived ZIPs have their matching build reports removed. Archived releases can subsequently be published using the usual publishing commands or used as components of Artemis Enhanced Visuals. Choose a numeric release version such as `1.0.0` or `1.0.0-beta.1` so the combined builder can recognize and compare it.
+
+Run `powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\test-archive-pack.ps1` to verify archiving, previews, collisions, and validation using temporary fixtures.
 
 ## Modrinth Publishing
 

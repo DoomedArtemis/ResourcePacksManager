@@ -1,4 +1,4 @@
-﻿[CmdletBinding()]
+[CmdletBinding()]
 param(
     [string]$ConfigPath = 'config/texture-pack.build.psd1',
     [string[]]$Version,
@@ -899,39 +899,7 @@ function Move-UploadedZipToArchive {
         [Parameter(Mandatory = $true)]$Item,
         [Parameter(Mandatory = $true)][string]$ArchiveRootPath
     )
-
-    $destinationDirectory = Join-Path -Path (Join-Path -Path $ArchiveRootPath -ChildPath $Item.PackName) -ChildPath $Item.ReleaseVersion
-    # Archived uploads retain their exact filename on every platform.
-    if ([IO.Path]::GetFullPath((Split-Path $Item.ZipPath -Parent)).Equals([IO.Path]::GetFullPath($destinationDirectory), [StringComparison]::OrdinalIgnoreCase)) {
-        return $Item.ZipPath
-    }
-    Ensure-Directory -Path $destinationDirectory
-
-    $destinationFileName = Get-CurseForgeZipFileName -Item $Item
-    $destinationPath = Join-Path -Path $destinationDirectory -ChildPath $destinationFileName
-    if ([System.IO.Path]::GetFullPath($Item.ZipPath).Equals([System.IO.Path]::GetFullPath($destinationPath), [System.StringComparison]::OrdinalIgnoreCase)) {
-        Remove-ArchivedBuildReport -ZipPath $Item.ZipPath
-        return $destinationPath
-    }
-
-    if (Test-Path -LiteralPath $destinationPath -PathType Leaf) {
-        $sourceHash = (Get-FileHash -LiteralPath $Item.ZipPath -Algorithm SHA256).Hash
-        $destinationHash = (Get-FileHash -LiteralPath $destinationPath -Algorithm SHA256).Hash
-        if ($sourceHash -eq $destinationHash) {
-            Remove-Item -LiteralPath $Item.ZipPath
-            Remove-ArchivedBuildReport -ZipPath $Item.ZipPath
-            return $destinationPath
-        }
-
-        $timestamp = [System.DateTimeOffset]::UtcNow.ToString('yyyyMMddHHmmss')
-        $baseName = [System.IO.Path]::GetFileNameWithoutExtension($destinationFileName)
-        $extension = [System.IO.Path]::GetExtension($Item.ZipPath)
-        $destinationPath = Join-Path -Path $destinationDirectory -ChildPath "$baseName-uploaded-$timestamp$extension"
-    }
-
-    Move-Item -LiteralPath $Item.ZipPath -Destination $destinationPath
-    Remove-ArchivedBuildReport -ZipPath $Item.ZipPath
-    return $destinationPath
+    return Move-ReleaseZipToArchive -Item $Item -ArchiveRootPath $ArchiveRootPath
 }
 
 function Invoke-BuildForPublishItem {

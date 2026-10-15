@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69da52cd-7463-4c66-9153-40bdcaaf6a07" name="Changes" comment="- Reworked some scripts&#10;- Published &quot;Alternative Ores 1.0.0&quot; to CurseForge&#10;- Reworked Readme" />
+    <list default="true" id="69da52cd-7463-4c66-9153-40bdcaaf6a07" name="Changes" comment="workspace">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/combined-pack-support.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/combined-pack-support.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/publish-curseforge.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/publish-curseforge.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/publish-modrinth.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/publish-modrinth.ps1" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,23 +42,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.00472389948097" />
-      <entry key="MS500" value="1.5078843425974602" />
-      <entry key="S2" value="3.8518060182308225" />
-      <entry key="S5" value="8.50252937985666" />
-      <entry key="S10" value="13.815059077508586" />
-      <entry key="S30" value="28.341701657850457" />
-      <entry key="S60" value="44.87219353703004" />
-      <entry key="M2" value="63.846152870789766" />
-      <entry key="M5" value="131.00654604045485" />
-      <entry key="M10" value="241.73644653114894" />
-      <entry key="M15" value="327.20287718925044" />
-      <entry key="M30" value="547.5967727857052" />
-      <entry key="H1" value="972.6819177380637" />
-      <entry key="H2" value="1902.6052521791355" />
-      <entry key="H4" value="3638.5425125349284" />
-      <entry key="D1" value="12668.629357242913" />
-      <entry key="W1" value="18369.50532704989" />
+      <entry key="MS100" value="1.7267417171420631" />
+      <entry key="MS500" value="5.58757720947921" />
+      <entry key="S2" value="17.721265647629462" />
+      <entry key="S5" value="32.20169872285129" />
+      <entry key="S10" value="49.911439021819305" />
+      <entry key="S30" value="83.10383263417953" />
+      <entry key="S60" value="98.17578071666854" />
+      <entry key="M2" value="107.42576596961015" />
+      <entry key="M5" value="120.78520862846642" />
+      <entry key="M10" value="162.1699783188892" />
+      <entry key="M15" value="203.12810176704085" />
+      <entry key="M30" value="293.97667099301077" />
+      <entry key="H1" value="503.30072153450396" />
+      <entry key="H2" value="1160.8551301908756" />
+      <entry key="H4" value="2734.7554022368236" />
+      <entry key="D1" value="12184.436093614535" />
+      <entry key="W1" value="18596.523603323818" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -74,23 +80,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.07391117025718952" />
-      <entry key="MS500" value="1.0910207694077738" />
-      <entry key="S2" value="3.7227153116445773" />
-      <entry key="S5" value="8.446357194684785" />
-      <entry key="S10" value="13.785075133974487" />
-      <entry key="S30" value="28.3300470349076" />
-      <entry key="S60" value="44.86542768680649" />
-      <entry key="M2" value="63.842226986030454" />
-      <entry key="M5" value="131.0042276649437" />
-      <entry key="M10" value="241.7347000804979" />
-      <entry key="M15" value="327.2014238274247" />
-      <entry key="M30" value="547.5956941389472" />
-      <entry key="H1" value="972.6810532950292" />
-      <entry key="H2" value="1902.6044764390124" />
-      <entry key="H4" value="3638.541812937835" />
-      <entry key="D1" value="12668.628979123021" />
-      <entry key="W1" value="18369.505249573453" />
+      <entry key="MS100" value="1.6516240183108144" />
+      <entry key="MS500" value="5.545325345851229" />
+      <entry key="S2" value="17.690674052587926" />
+      <entry key="S5" value="32.18055783358706" />
+      <entry key="S10" value="49.895464341129994" />
+      <entry key="S30" value="83.0951169064776" />
+      <entry key="S60" value="98.17065107667727" />
+      <entry key="M2" value="107.42296410099746" />
+      <entry key="M5" value="120.78394800348909" />
+      <entry key="M10" value="162.1691274271342" />
+      <entry key="M15" value="203.12738643313273" />
+      <entry key="M30" value="293.9761250385562" />
+      <entry key="H1" value="503.300217567799" />
+      <entry key="H2" value="1160.8545801176806" />
+      <entry key="H4" value="2734.754817787861" />
+      <entry key="D1" value="12184.435716142223" />
+      <entry key="W1" value="18596.523522805852" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -107,36 +113,37 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;Shell Script.Build All Texture Packs.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Build Artemis Enhanced Visuals.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Build Selected Texture Packs.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Create New Texture Pack.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Publish All Resource Packs to CurseForge.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Publish Selected Resource Packs to CurseForge.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Publish Selected Resource Packs to Modrinth.executor&quot;: &quot;Run&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/grego/Documents/IdeaProjects/Resource-Packs-Manager/resource_packs/better_candles_x_dye_depot&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Shell Script.Archive Pack.executor": "Run",
+    "Shell Script.Build All Texture Packs.executor": "Run",
+    "Shell Script.Build Artemis Enhanced Visuals.executor": "Run",
+    "Shell Script.Build Selected Texture Packs.executor": "Run",
+    "Shell Script.Create New Texture Pack.executor": "Run",
+    "Shell Script.Publish All Resource Packs to CurseForge.executor": "Run",
+    "Shell Script.Publish Selected Resource Packs to CurseForge.executor": "Run",
+    "Shell Script.Publish Selected Resource Packs to Modrinth.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/grego/Documents/IdeaProjects/Resource-Packs-Manager/resource_packs/better_candles_x_dye_depot",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\grego\Documents\IdeaProjects\Resource-Packs-Manager\resource_packs\better_candles_x_dye_depot" />
@@ -153,7 +160,7 @@
       <recent name="C:\Users\grego\IdeaProjects\Resource-Packs-Manager\archive\better_candles\1.0.0" />
     </key>
   </component>
-  <component name="RunManager" selected="Shell Script.Build Artemis Enhanced Visuals" />
+  <component name="RunManager" selected="Shell Script.Publish Selected Resource Packs to CurseForge" />
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -232,7 +239,8 @@
     <MESSAGE value="&quot;Better Candles&quot; Update 1.1.0" />
     <MESSAGE value="Built Better Grass" />
     <MESSAGE value="- Reworked some scripts&#10;- Published &quot;Alternative Ores 1.0.0&quot; to CurseForge&#10;- Reworked Readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Reworked some scripts&#10;- Published &quot;Alternative Ores 1.0.0&quot; to CurseForge&#10;- Reworked Readme" />
+    <MESSAGE value="workspace" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
