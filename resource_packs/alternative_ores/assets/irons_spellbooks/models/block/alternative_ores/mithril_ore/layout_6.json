@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/alternative_ores/crystal_layout_6",
+  "textures": {
+    "base": "minecraft:block/stone",
+    "top": "#base",
+    "particle": "#base",
+    "crystal_a": "irons_spellbooks:block/alternative_ores/mithril_crystal_a",
+    "crystal_b": "irons_spellbooks:block/alternative_ores/mithril_crystal_b"
+  }
+}

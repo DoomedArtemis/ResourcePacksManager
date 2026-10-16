@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/alternative_ores/crystal_layout_6_overlay",
+  "textures": {
+    "base": "undergarden:block/dreadrock",
+    "top": "#base",
+    "particle": "#base",
+    "crystal_a": "undergarden:block/alternative_ores/rogdorium_crystal_a",
+    "crystal_b": "undergarden:block/alternative_ores/rogdorium_crystal_b"
+  }
+}

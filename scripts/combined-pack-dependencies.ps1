@@ -66,7 +66,7 @@ function Get-CombinedVanillaDependencies {
 function Read-CombinedComponent {
     param([string]$ZipPath, [hashtable]$Entry, [hashtable]$Definition, [string]$Root, [hashtable]$Validation, [hashtable]$VersionConfig)
     Add-Type -AssemblyName System.IO.Compression.FileSystem
-    $component = @{ Entry = $Entry; Files = @{}; Included = @{}; Notices = @{} }
+    $component = @{ Entry = $Entry; Files = @{}; Included = @{}; Notices = @{}; CompatibilityText = '' }
     $archive = [IO.Compression.ZipFile]::OpenRead($ZipPath)
     try {
         $paths = @{}
@@ -76,6 +76,11 @@ function Read-CombinedComponent {
             if ($path.StartsWith('/') -or $path.Split('/') -contains '..' -or $path.Contains(':')) { throw "Unsafe component path '$path'." }
             if ($paths.ContainsKey($path)) { throw "Duplicate archive output path '$path' in '$ZipPath'." }
             $paths[$path] = $true
+            if ($path -ieq 'compatibility.txt') {
+                $reader = [IO.StreamReader]::new($file.Open())
+                try { $component.CompatibilityText = $reader.ReadToEnd().Trim() } finally { $reader.Dispose() }
+                continue
+            }
             if ($Validation) {
                 if ($Validation.RequireLowercasePaths -and $path.StartsWith('assets/') -and $path -cmatch '[A-Z]') { throw "Output path contains uppercase characters: $path" }
                 if (($Validation.ParseJsonFiles -and $path.EndsWith('.json')) -or ($Validation.ParseMcmetaFiles -and $path.EndsWith('.mcmeta'))) {
@@ -293,6 +298,16 @@ function Write-CombinedDependencyJson {
     [IO.File]::WriteAllText($output, $raw, [Text.UTF8Encoding]::new($hasBom))
 }
 
+function Get-CombinedFileHash {
+    param([hashtable]$Context, [string]$Pack, [string]$Path)
+    # Extracted component files are immutable throughout this combine operation.
+    $key = $Context.Components[$Pack].Files[$Path]
+    if (-not $Context.FileHashes.ContainsKey($key)) {
+        $Context.FileHashes[$key] = (Get-FileHash -LiteralPath $key -Algorithm SHA256).Hash
+    }
+    return $Context.FileHashes[$key]
+}
+
 function Resolve-CombinedTexture {
     param([hashtable]$Context, [string]$Pack, [string]$Id, [string]$Chain)
     $path = Convert-CombinedResourcePath $Id 'textures'
@@ -301,14 +316,14 @@ function Resolve-CombinedTexture {
     if ($provider -eq '@vanilla' -or ($Context.OriginalOwners.ContainsKey($path) -and $Context.OriginalOwners[$path].Pack -eq $provider)) { return $Id }
     if ($Context.OriginalOwners.ContainsKey($path)) {
         $winner = $Context.OriginalOwners[$path].Pack
-        $sourceHash = (Get-FileHash -LiteralPath $Context.Components[$provider].Files[$path] -Algorithm SHA256).Hash
-        $winnerHash = (Get-FileHash -LiteralPath $Context.Components[$winner].Files[$path] -Algorithm SHA256).Hash
+        $sourceHash = Get-CombinedFileHash $Context $provider $path
+        $winnerHash = Get-CombinedFileHash $Context $winner $path
         $sidecar = "$path.mcmeta"
         $sourceHasMeta = $Context.Components[$provider].Files.ContainsKey($sidecar)
         $winnerHasMeta = $Context.Components[$winner].Files.ContainsKey($sidecar)
         if ($sourceHasMeta -and -not $Context.Components[$provider].Included.ContainsKey($sidecar)) { throw "Excluded dependency: $Chain -> $sidecar" }
         $sameMeta = $sourceHasMeta -eq $winnerHasMeta
-        if ($sameMeta -and $sourceHasMeta) { $sameMeta = (Get-FileHash -LiteralPath $Context.Components[$provider].Files[$sidecar]).Hash -eq (Get-FileHash -LiteralPath $Context.Components[$winner].Files[$sidecar]).Hash }
+        if ($sameMeta -and $sourceHasMeta) { $sameMeta = (Get-CombinedFileHash $Context $provider $sidecar) -eq (Get-CombinedFileHash $Context $winner $sidecar) }
         if ($sourceHash -eq $winnerHash -and $sameMeta) { return $Id }
     }
     $location = Get-CombinedPrivateLocation $Context $provider $path
@@ -516,7 +531,7 @@ function Complete-CombinedDependencies {
         }
     }
     $context = @{ Name = $Name; Components = $Components; Vanilla = $Vanilla; Destination = $Destination; Owners = $Owners;
-        OriginalOwners = @{} + $Owners; Documents = @{}; CanonicalDocuments = @{}; Resolved = @{}; Visiting = @{}; TextureWarnings = @{} }
+        OriginalOwners = @{} + $Owners; Documents = @{}; CanonicalDocuments = @{}; Resolved = @{}; Visiting = @{}; TextureWarnings = @{}; FileHashes = @{} }
     # Resolve normal output models first so identical alternate contexts can share them.
     $modelPaths = @($context.OriginalOwners.Keys | Where-Object { $_ -match '^assets/[^/]+/models/.+\.json$' } | Sort-Object @{ Expression = { $context.OriginalOwners[$_].Priority }; Descending = $true }, @{ Expression = { $_ } })
     $dependencyIndex = 0

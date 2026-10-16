@@ -81,19 +81,19 @@ try {
     Set-CompatibilityFixture "@{ Compatibility = @{ demo = @{ Versions = @() } } }"
     Assert-CompatibilityFiles '1.20.1' 2
     $supportOptions = @{ Compatibility = @{
-        second = @{ Versions = @('1.20.1..1.21.1'); Support = 'Second mod support.' }
-        first = @{ Versions = @('1.20.1'); Support = 'First mod support.' }
+        second = @{ Name = 'Second Mod'; Versions = @('1.20.1..1.21.1'); Support = 'Second mod support.' }
+        first = @{ Name = 'First Mod'; Versions = @('1.20.1'); Support = 'First mod support.' }
         disabled = @{ Enabled = $false; Support = 'Must not appear.' }
-        no_note = @{ Versions = @('1.20.1') }
+        no_note = @{ Name = 'First Mod'; Versions = @('1.20.1') }
     } }
     $supportRules = @(Get-PackCompatibilityRules -Options $supportOptions -Config $config -VersionConfig $config.Versions[0] -PackName 'fixture')
-    $supportText = Get-PackCompatibilitySupportText -Rules $supportRules
-    $expectedSupport = 'First mod support.' + [Environment]::NewLine + [Environment]::NewLine + 'Second mod support.' + [Environment]::NewLine
+    $supportText = Get-PackCompatibilityText -Rules $supportRules
+    $expectedSupport = 'First Mod' + [Environment]::NewLine + 'Second Mod' + [Environment]::NewLine
     if ($supportText -cne $expectedSupport) { throw 'Active support notes were not combined in stable mod-ID order.' }
     $supportRules = @(Get-PackCompatibilityRules -Options $supportOptions -Config $config -VersionConfig $config.Versions[3] -PackName 'fixture')
-    if ((Get-PackCompatibilitySupportText -Rules $supportRules) -cne ('Second mod support.' + [Environment]::NewLine)) { throw 'Unsupported mod note leaked into support text.' }
+    if ((Get-PackCompatibilityText -Rules $supportRules) -cne ('Second Mod' + [Environment]::NewLine)) { throw 'Unsupported mod note leaked into support text.' }
     $supportRules = @(Get-PackCompatibilityRules -Options $supportOptions -Config $config -VersionConfig $config.Versions[4] -PackName 'fixture')
-    if (Get-PackCompatibilitySupportText -Rules $supportRules) { throw 'Support text generated without an active mod note.' }
+    if (Get-PackCompatibilityText -Rules $supportRules) { throw 'Support text generated without an active mod note.' }
     foreach ($invalidOptions in @(
         "@{ Compatibility = @{ demo = @{ Versions = @('unknown') } } }",
         "@{ Compatibility = @{ demo = @{ Versions = @('1.21.1..1.20.1') } } }",
@@ -116,7 +116,7 @@ try {
     $rejected = $false
     try { Get-PackBuildOptions -PackDirectory $directory -Config $config | Out-Null } catch { $rejected = $true }
     if (-not $rejected) { throw 'FileOptionsPath escaped the pack.' }
-    Write-Output 'Passed JSON options, variants, compatibility selectors, exclusions, custom paths, disabled entries, support-note aggregation, and invalid option checks.'
+    Write-Output 'Passed JSON options, variants, compatibility selectors, exclusions, custom paths, disabled entries, compatibility names and deduplication, and invalid option checks.'
 } finally {
     $resolvedFixture = [IO.Path]::GetFullPath($fixtureRoot)
     if (-not $resolvedFixture.StartsWith($temporaryRoot.TrimEnd('\') + '\', [StringComparison]::OrdinalIgnoreCase) -or (Split-Path $resolvedFixture -Leaf) -notlike 'moss-file-options-*') {

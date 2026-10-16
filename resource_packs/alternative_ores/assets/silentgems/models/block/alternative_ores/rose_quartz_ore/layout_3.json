@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/alternative_ores/crystal_layout_3",
+  "textures": {
+    "base": "minecraft:block/stone",
+    "top": "#base",
+    "particle": "#base",
+    "crystal_a": "silentgems:block/alternative_ores/rose_quartz_crystal_a",
+    "crystal_b": "silentgems:block/alternative_ores/rose_quartz_crystal_b"
+  }
+}

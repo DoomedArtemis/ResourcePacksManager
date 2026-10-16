@@ -94,6 +94,66 @@ function Test-CombinedPath {
     return $true
 }
 
+function Test-CombinedArchivedCompatibility {
+    param([string]$ZipPath, $PackDirectory, $Config, $VersionConfig, [hashtable]$PackOptions)
+    $rules = @(Get-PackCompatibilityRules -Options $PackOptions -Config $Config -VersionConfig $VersionConfig -PackName $PackDirectory.Name)
+    if (-not $rules.Count) { return $true }
+    $expected = @{}
+    foreach ($inputFile in @(Get-PackInputFiles -PackDirectory $PackDirectory -Config $Config -VersionConfig $VersionConfig -PackOptions $PackOptions)) {
+        $matched = $false
+        foreach ($rule in $rules) {
+            foreach ($rulePath in $rule.Paths) {
+                foreach ($candidate in $inputFile.RulePaths) {
+                    if (Test-RuleMatch -Path $candidate -Rule $rulePath) { $matched = $true; break }
+                }
+            }
+        }
+        if (-not $matched) { continue }
+        # Auto-routed compatibility needs a full source build to establish its paths.
+        if ($inputFile.Kind -eq 'auto') { return $false }
+        $target = Get-TransformedPath -RelativePath $inputFile.VirtualPath -VersionConfig $VersionConfig
+        if (-not $target) { continue }
+        if (-not $expected.ContainsKey($target) -or $expected[$target].Priority -lt $inputFile.Priority) { $expected[$target] = $inputFile }
+    }
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    $archive = [IO.Compression.ZipFile]::OpenRead($ZipPath)
+    $hasher = [Security.Cryptography.SHA256]::Create()
+    try {
+        $actual = @{}
+        foreach ($entry in $archive.Entries) {
+            if ($entry.FullName.EndsWith('/')) { continue }
+            if ($expected.ContainsKey($entry.FullName)) { $actual[$entry.FullName] = $entry; continue }
+            foreach ($rule in $rules) {
+                foreach ($rulePath in $rule.Paths) {
+                    if (Test-RuleMatch -Path $entry.FullName -Rule $rulePath) { return $false }
+                }
+            }
+        }
+        if ($actual.Count -ne $expected.Count) { return $false }
+        foreach ($target in $expected.Keys) {
+            $sourceStream = [IO.File]::OpenRead($expected[$target].SourcePath)
+            try { $sourceHash = [BitConverter]::ToString($hasher.ComputeHash($sourceStream)) } finally { $sourceStream.Dispose() }
+            $archiveStream = $actual[$target].Open()
+            try { $archiveHash = [BitConverter]::ToString($hasher.ComputeHash($archiveStream)) } finally { $archiveStream.Dispose() }
+            if ($sourceHash -cne $archiveHash) { return $false }
+        }
+        $generatedNotes = @($rules).Count -gt 0
+        if ($generatedNotes) {
+            if ($archive.GetEntry('support.txt')) { return $false }
+            $expectedNotes = (Get-PackCompatibilityText -Rules $rules).Trim()
+            $notesEntry = $archive.GetEntry('compatibility.txt')
+            $actualNotes = ''
+            if ($notesEntry) {
+                $reader = [IO.StreamReader]::new($notesEntry.Open())
+                try { $actualNotes = $reader.ReadToEnd().Trim() } finally { $reader.Dispose() }
+            }
+            if ($actualNotes -cne $expectedNotes) { return $false }
+        }
+        return $true
+    }
+    finally { $hasher.Dispose(); $archive.Dispose() }
+}
+
 function Merge-CombinedArchive {
     param([string]$ZipPath, [hashtable]$Entry, [hashtable]$Definition, [string]$Destination, [hashtable]$Owners, [hashtable]$Component)
     if ($Component) {
@@ -176,6 +236,7 @@ function Get-TemporaryBuildRoot { return Join-Path $workRoot 'staging' }
 try {
     $versionIndex = 0
     $enabledEntries = @($definition.Packs | Where-Object { $_.Enabled } | Sort-Object Priority, Name)
+    $componentOptions = @{}
     foreach ($versionConfig in $selectedVersions) {
         $combinedActivity = "$($definition.DisplayName) / Minecraft $($versionConfig.Id)"
         Show-BuildProgress -Id 1 -Activity $definition.DisplayName -Stage "Minecraft $($versionConfig.Id)" -Completed $versionIndex -Total $selectedVersions.Count
@@ -191,13 +252,20 @@ try {
             Show-BuildProgress -Id 4 -Activity $combinedActivity -Stage "Finding archived component: $($entry.Name)" -Completed $componentIndex -Total $enabledEntries.Count
             $componentIndex++
             $directory = $directories | Where-Object { $_.Name -eq $entry.Name } | Select-Object -First 1
-            $supported = @(Get-PackSelectedVersions -PackDirectory $directory -Config $config -GloballySelectedVersions @($versionConfig))
+            if (-not $componentOptions.ContainsKey($entry.Name)) {
+                $componentOptions[$entry.Name] = Get-PackBuildOptions -PackDirectory $directory -Config $config
+            }
+            $supported = @(Get-PackSelectedVersions -PackDirectory $directory -Config $config -GloballySelectedVersions @($versionConfig) -PackOptions $componentOptions[$entry.Name])
             if ($supported.Count -eq 0) {
                 $skipped += $entry.Name
                 Write-Output "Skipping $($entry.Name) for $($versionConfig.Id): outside its supported versions."
                 continue
             }
             $archived = Get-CombinedArchivedComponent -RepoRoot $repoRoot -PackName $entry.Name -MinecraftVersion $versionConfig.Id
+            if ($archived -and -not (Test-CombinedArchivedCompatibility -ZipPath $archived.ZipPath -PackDirectory $directory -Config $config -VersionConfig $versionConfig -PackOptions $componentOptions[$entry.Name])) {
+                Write-Host "Archived $($entry.Name) has outdated mod compatibility for $($versionConfig.Id); building current sources."
+                $archived = $null
+            }
             if ($archived) {
                 $componentZipPath = $archived.ZipPath
                 Write-Host "Using archived $($entry.Name) $($archived.ReleaseVersion) for Minecraft $($versionConfig.Id)."
@@ -205,7 +273,7 @@ try {
             }
             else {
                 Show-BuildProgress -Id 4 -Activity $combinedActivity -Stage "Building component without matching archive: $($entry.Name)" -Completed ($componentIndex - 1) -Total $enabledEntries.Count
-                $result = Build-PackVersion -RepoRoot $repoRoot -Config $componentConfig -PackDirectory $directory -VersionConfig $versionConfig
+                $result = Build-PackVersion -RepoRoot $repoRoot -Config $componentConfig -PackDirectory $directory -VersionConfig $versionConfig -PackOptions $componentOptions[$entry.Name]
                 $componentZipPath = $result.ZipPath
                 $componentSources[$entry.Name] = @{ Source = 'source'; ReleaseVersion = 'unreleased' }
             }

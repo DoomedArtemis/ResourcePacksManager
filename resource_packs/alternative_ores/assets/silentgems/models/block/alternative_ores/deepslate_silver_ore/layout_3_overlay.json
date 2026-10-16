@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/alternative_ores/crystal_layout_3_overlay",
+  "textures": {
+    "base": "minecraft:block/deepslate",
+    "top": "minecraft:block/deepslate_top",
+    "particle": "#base",
+    "crystal_a": "silentgems:block/alternative_ores/silver_crystal_a",
+    "crystal_b": "silentgems:block/alternative_ores/silver_crystal_b"
+  }
+}

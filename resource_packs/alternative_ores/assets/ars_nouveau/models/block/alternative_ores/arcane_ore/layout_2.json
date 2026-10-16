@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/alternative_ores/crystal_layout_2",
+  "textures": {
+    "base": "minecraft:block/stone",
+    "top": "#base",
+    "particle": "#base",
+    "crystal_a": "ars_nouveau:block/alternative_ores/arcane_crystal_a",
+    "crystal_b": "ars_nouveau:block/alternative_ores/arcane_crystal_b"
+  }
+}

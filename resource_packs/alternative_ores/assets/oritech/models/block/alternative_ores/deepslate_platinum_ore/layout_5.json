@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/alternative_ores/crystal_layout_5",
+  "textures": {
+    "base": "minecraft:block/deepslate",
+    "top": "minecraft:block/deepslate_top",
+    "particle": "#base",
+    "crystal_a": "oritech:block/alternative_ores/platinum_crystal_a",
+    "crystal_b": "oritech:block/alternative_ores/platinum_crystal_b"
+  }
+}

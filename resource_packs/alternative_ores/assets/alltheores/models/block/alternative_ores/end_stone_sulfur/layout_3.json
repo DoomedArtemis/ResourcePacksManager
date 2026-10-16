@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/alternative_ores/crystal_layout_3",
+  "textures": {
+    "base": "minecraft:block/end_stone",
+    "top": "#base",
+    "particle": "#base",
+    "crystal_a": "alltheores:block/alternative_ores/sulfur_crystal_a",
+    "crystal_b": "alltheores:block/alternative_ores/sulfur_crystal_b"
+  }
+}

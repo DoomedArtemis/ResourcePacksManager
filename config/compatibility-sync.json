@@ -1,0 +1,381 @@
+{
+  "packs": [
+    {
+      "name": "alternative_ores",
+      "groups": [
+        {
+          "namespaces": [
+            "create"
+          ],
+          "projects": [
+            {
+              "modrinth": "LNytGWDc",
+              "curseforge": "328085"
+            },
+            {
+              "modrinth": "Xbc0uyRg",
+              "curseforge": "624165"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "appliedenergistics2",
+            "ae2"
+          ],
+          "projects": [
+            {
+              "modrinth": "XxWD5pD3",
+              "curseforge": "223794"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "mekanism"
+          ],
+          "projects": [
+            {
+              "modrinth": "Ce6I4WUE",
+              "curseforge": "268560"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "alltheores"
+          ],
+          "projects": [
+            {
+              "curseforge": "405593"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "immersiveengineering"
+          ],
+          "projects": [
+            {
+              "modrinth": "tIm2nV03",
+              "curseforge": "231951"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "allthemodium"
+          ],
+          "projects": [
+            {
+              "curseforge": "364466"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "draconicevolution"
+          ],
+          "projects": [
+            {
+              "modrinth": "nBqivi8H",
+              "curseforge": "223565"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "ars_nouveau"
+          ],
+          "projects": [
+            {
+              "modrinth": "TKB6INcv",
+              "curseforge": "401955"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "mysticalagriculture"
+          ],
+          "projects": [
+            {
+              "modrinth": "C95ReXie",
+              "curseforge": "246640"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "tconstruct"
+          ],
+          "projects": [
+            {
+              "modrinth": "rxIIYO6c",
+              "curseforge": "74072"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "modern_industrialization"
+          ],
+          "projects": [
+            {
+              "modrinth": "Gov5Dboq",
+              "curseforge": "405388"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "actuallyadditions"
+          ],
+          "projects": [
+            {
+              "modrinth": "4K7Q3nqd",
+              "curseforge": "228404"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "irons_spellbooks"
+          ],
+          "projects": [
+            {
+              "modrinth": "s4OWxYQQ",
+              "curseforge": "855414"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "mysticalagradditions"
+          ],
+          "projects": [
+            {
+              "modrinth": "pl0jGXIx",
+              "curseforge": "256247"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "forbidden_arcanus"
+          ],
+          "projects": [
+            {
+              "modrinth": "MdlnLS7Q",
+              "curseforge": "309858"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "evilcraft"
+          ],
+          "projects": [
+            {
+              "modrinth": "3ANq2btA",
+              "curseforge": "74610"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "xycraft_world"
+          ],
+          "projects": [
+            {
+              "curseforge": "653789"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "theurgy"
+          ],
+          "projects": [
+            {
+              "modrinth": "uOVMgoil",
+              "curseforge": "430636"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "occultism"
+          ],
+          "projects": [
+            {
+              "modrinth": "sbJh4AZw",
+              "curseforge": "361026"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "silentgear"
+          ],
+          "projects": [
+            {
+              "modrinth": "73mSSnCf",
+              "curseforge": "297039"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "rftoolsbase"
+          ],
+          "projects": [
+            {
+              "modrinth": "hIO8IsD8",
+              "curseforge": "326041"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "deeperdarker"
+          ],
+          "projects": [
+            {
+              "modrinth": "fnAffV0n",
+              "curseforge": "659011"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "undergarden"
+          ],
+          "projects": [
+            {
+              "modrinth": "Ejfl5qDL",
+              "curseforge": "379849"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "oritech"
+          ],
+          "projects": [
+            {
+              "modrinth": "4sYI62kA",
+              "curseforge": "1030830"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "silentgems"
+          ],
+          "projects": [
+            {
+              "modrinth": "Y036wakZ",
+              "curseforge": "220311"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "powah"
+          ],
+          "projects": [
+            {
+              "modrinth": "KZO4S4DO",
+              "curseforge": "352656"
+            },
+            {
+              "curseforge": "633483"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "bigreactors"
+          ],
+          "projects": [
+            {
+              "modrinth": "idkvShUy",
+              "curseforge": "250277"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "aether"
+          ],
+          "projects": [
+            {
+              "modrinth": "YhmgMVyu",
+              "curseforge": "255308"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "neovitae"
+          ],
+          "projects": [
+            {
+              "modrinth": "rvaW4C93",
+              "curseforge": "1404763"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "astralsorcery"
+          ],
+          "projects": [
+            {
+              "curseforge": "241721"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "ad_astra"
+          ],
+          "projects": [
+            {
+              "modrinth": "3ufwT9JF",
+              "curseforge": "635042"
+            }
+          ]
+        },
+        {
+          "namespaces": [
+            "eternal_starlight"
+          ],
+          "projects": [
+            {
+              "modrinth": "XvcfUGfB",
+              "curseforge": "1080592"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "better_candles",
+      "groups": [
+        {
+          "namespaces": [
+            "dye_depot"
+          ],
+          "projects": [
+            {
+              "modrinth": "dl88rsIq",
+              "curseforge": "988504"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

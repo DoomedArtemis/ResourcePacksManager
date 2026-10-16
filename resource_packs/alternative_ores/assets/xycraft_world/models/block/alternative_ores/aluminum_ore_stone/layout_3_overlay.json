@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/alternative_ores/crystal_layout_3_overlay",
+  "textures": {
+    "base": "minecraft:block/stone",
+    "top": "#base",
+    "particle": "#base",
+    "crystal_a": "xycraft_world:block/alternative_ores/aluminum_crystal_a",
+    "crystal_b": "xycraft_world:block/alternative_ores/aluminum_crystal_b"
+  }
+}

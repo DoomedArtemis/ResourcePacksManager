@@ -1,0 +1,1025 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minecraft:block/alternative_ores/legacy_lighting/stone"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_1_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_1_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_1_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_1_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_2_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_2_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_2_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_2_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_3_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_3_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_3_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_3_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_4_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_4_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_4_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_4_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_5_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_5_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_5_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_5_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_6_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_6_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_6_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_0/layout_6_overlay",
+          "y": 270,
+          "uvlock": false
+        }
+      ],
+      "when": {
+        "oxidization": "0"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_1_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_1_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_1_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_1_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_2_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_2_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_2_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_2_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_3_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_3_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_3_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_3_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_4_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_4_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_4_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_4_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_5_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_5_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_5_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_5_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_6_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_6_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_6_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_1/layout_6_overlay",
+          "y": 270,
+          "uvlock": false
+        }
+      ],
+      "when": {
+        "oxidization": "1"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_1_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_1_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_1_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_1_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_2_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_2_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_2_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_2_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_3_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_3_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_3_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_3_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_4_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_4_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_4_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_4_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_5_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_5_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_5_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_5_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_6_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_6_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_6_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_2/layout_6_overlay",
+          "y": 270,
+          "uvlock": false
+        }
+      ],
+      "when": {
+        "oxidization": "2"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_1_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_1_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_1_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_1_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_2_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_2_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_2_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_2_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_3_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_3_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_3_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_3_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_4_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_4_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_4_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_4_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_5_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_5_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_5_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_5_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_6_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_6_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_6_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_3/layout_6_overlay",
+          "y": 270,
+          "uvlock": false
+        }
+      ],
+      "when": {
+        "oxidization": "3"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_1_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_1_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_1_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_1_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_2_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_2_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_2_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_2_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_3_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_3_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_3_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_3_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_4_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_4_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_4_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_4_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_5_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_5_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_5_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_5_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_6_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_6_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_6_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_4/layout_6_overlay",
+          "y": 270,
+          "uvlock": false
+        }
+      ],
+      "when": {
+        "oxidization": "4"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_1_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_1_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_1_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_1_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_2_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_2_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_2_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_2_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_3_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_3_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_3_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_3_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_4_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_4_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_4_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_4_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_5_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_5_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_5_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_5_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_6_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_6_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_6_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_5/layout_6_overlay",
+          "y": 270,
+          "uvlock": false
+        }
+      ],
+      "when": {
+        "oxidization": "5"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_1_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_1_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_1_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_1_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_2_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_2_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_2_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_2_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_3_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_3_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_3_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_3_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_4_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_4_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_4_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_4_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_5_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_5_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_5_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_5_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_6_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_6_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_6_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_6/layout_6_overlay",
+          "y": 270,
+          "uvlock": false
+        }
+      ],
+      "when": {
+        "oxidization": "6"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_1_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_1_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_1_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_1_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_2_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_2_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_2_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_2_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_3_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_3_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_3_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_3_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_4_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_4_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_4_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_4_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_5_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_5_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_5_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_5_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_6_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_6_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_6_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "create:block/alternative_ores/copper_ore/oxidization_7/layout_6_overlay",
+          "y": 270,
+          "uvlock": false
+        }
+      ],
+      "when": {
+        "oxidization": "7"
+      }
+    }
+  ]
+}

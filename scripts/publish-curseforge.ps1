@@ -11,6 +11,7 @@ param(
     [switch]$Publish,
     [switch]$Yes,
     [switch]$CheckRemote,
+    [switch]$Republish,
     [switch]$PromptForToken,
     [switch]$PromptForChangelog,
     [AllowEmptyString()][string]$Changelog,
@@ -105,7 +106,7 @@ function ConvertTo-Hashtable {
         foreach ($item in $InputObject) {
             $list += ,(ConvertTo-Hashtable -InputObject $item)
         }
-        return $list
+        return ,$list
     }
 
     if ($InputObject.PSObject -and @($InputObject.PSObject.Properties).Count -gt 0 -and $InputObject -isnot [string]) {
@@ -221,7 +222,7 @@ function Test-VersionSelectorMatch {
     $versionId = [string]$VersionConfig.Id
     $versionIndex = [int]$VersionOrder[$versionId]
 
-    if ($Options.ContainsKey('Versions') -and $Options.Versions) {
+    if ($Options.ContainsKey('Versions')) {
         $lookup = @{}
         foreach ($candidateVersionId in @($Options.Versions)) {
             $normalizedVersionId = [string]$candidateVersionId
@@ -470,7 +471,7 @@ function Read-LocalCurseForgeState {
     }
 
     if (Test-Path -LiteralPath $StatePath -PathType Leaf) {
-        $state = ConvertTo-Hashtable -InputObject (Import-PowerShellDataFile -Path $StatePath)
+        $state = ConvertTo-Hashtable -InputObject (Read-PublishStateDataFile -Path $StatePath)
     }
 
     if (-not $state.ContainsKey('Projects') -or $null -eq $state.Projects) {
@@ -651,7 +652,7 @@ function Get-PackBuildOptions {
     )
 
     $definitionPath = Get-CombinedDefinitionPath -PackDirectory $PackDirectory
-    if ($definitionPath) { return ConvertTo-Hashtable -InputObject (Import-PowerShellDataFile -Path $definitionPath) }
+    if ($definitionPath) { return Get-CombinedPublishingOptions -PackDirectory $PackDirectory -Config $Config }
     $configPath = Join-Path -Path $PackDirectory.FullName -ChildPath ([string]$Config.PackBuildConfigFile)
     if (-not (Test-Path -LiteralPath $configPath)) {
         return @{}
@@ -767,7 +768,97 @@ function Get-PackCurseForgeConfig {
         ChangelogType = $changelogType
         ManualRelease = $manualRelease
         GameVersionNameTemplates = @($gameVersionNameTemplates)
+        Dependencies = @(Get-HashtableValueOrDefault -Table $curseforgeConfig -Key 'Dependencies' -DefaultValue @())
+        DependenciesConfigured = $curseforgeConfig.ContainsKey('Dependencies')
     }
+}
+
+function Get-CurseForgeDependencies {
+    param(
+        [AllowEmptyCollection()][object[]]$Dependencies,
+        [Parameter(Mandatory = $true)][string]$PackName,
+        [Parameter(Mandatory = $true)]$VersionConfig,
+        [Parameter(Mandatory = $true)][hashtable]$VersionOrder
+    )
+
+    $types = @('embeddedLibrary', 'incompatible', 'optionalDependency', 'requiredDependency', 'tool')
+    $selectors = @('Versions', 'ExcludeVersions', 'MinVersion', 'MaxVersion', 'AfterVersion', 'BeforeVersion')
+    $seen = @{}
+    foreach ($entry in $Dependencies) {
+        if ($entry -isnot [System.Collections.IDictionary]) {
+            throw "CurseForge.Dependencies for pack '$PackName' must contain dependency tables."
+        }
+        $dependency = ConvertTo-Hashtable -InputObject $entry
+        $context = "CurseForge dependency for pack '$PackName'"
+        foreach ($key in $dependency.Keys) {
+            if ($key -notin (@('ProjectId', 'Slug', 'Type', 'Enabled') + $selectors)) {
+                throw "$context has unknown option '$key'."
+            }
+        }
+        if ($dependency.ContainsKey('Enabled') -and -not [bool]$dependency.Enabled) { continue }
+
+        $projectId = [string](Get-HashtableValueOrDefault -Table $dependency -Key 'ProjectId' -DefaultValue '')
+        $slug = [string](Get-HashtableValueOrDefault -Table $dependency -Key 'Slug' -DefaultValue '')
+        if ($projectId -and $projectId -notmatch '^[1-9][0-9]*$') {
+            throw "$context has invalid ProjectId '$projectId'; use a positive numeric CurseForge project ID."
+        }
+        if (-not $projectId -and [string]::IsNullOrWhiteSpace($slug)) {
+            throw "$context requires ProjectId or Slug."
+        }
+        if ([string]::IsNullOrWhiteSpace($slug)) {
+            throw "$context requires Slug (the final segment of the related project's CurseForge URL), even when ProjectId is provided."
+        }
+        $numericProjectId = 0
+        if ($projectId -and -not [int]::TryParse($projectId, [ref]$numericProjectId)) {
+            throw "$context has invalid ProjectId '$projectId'; it must fit a positive 32-bit integer."
+        }
+        if ($slug -and $slug -notmatch '^[a-z0-9]+(?:-[a-z0-9]+)*$') {
+            throw "$context has invalid Slug '$slug'."
+        }
+        $type = [string](Get-HashtableValueOrDefault -Table $dependency -Key 'Type' -DefaultValue 'optionalDependency')
+        if ($type -notin $types) { throw "$context has invalid Type '$type'. Choose: $($types -join ', ')." }
+        $type = @($types | Where-Object { $_ -eq $type })[0]
+
+        # Validate every selector, including those after a selector that would exclude this version.
+        foreach ($selector in $selectors) {
+            if ($dependency.ContainsKey($selector)) {
+                foreach ($versionId in @($dependency[$selector])) {
+                    Assert-KnownVersionSelectorId -VersionId ([string]$versionId) -OptionName $selector -VersionOrder $VersionOrder -ContextDescription $context
+                }
+            }
+        }
+        if (-not (Test-VersionSelectorMatch -Options $dependency -VersionConfig $VersionConfig -VersionOrder $VersionOrder -ContextDescription $context)) { continue }
+
+        $identity = if ($projectId) { "id:$projectId" } else { "slug:$slug" }
+        if ($seen.ContainsKey($identity)) {
+            if ($seen[$identity] -ne $type) {
+                throw "$context '$identity' has conflicting relation types for Minecraft '$($VersionConfig.Id)'."
+            }
+            continue
+        }
+        $seen[$identity] = $type
+        $relation = [ordered]@{ type = $type }
+        if ($projectId) { $relation['projectID'] = $numericProjectId }
+        if ($slug) { $relation['slug'] = $slug }
+        $relation
+    }
+}
+
+function Get-CurseForgeUploadMetadata {
+    param([Parameter(Mandatory = $true)]$Item)
+
+    $data = [ordered]@{
+        changelog = $Item.Changelog
+        changelogType = $Item.ChangelogType
+        displayName = $Item.VersionName
+        gameVersionNames = @($Item.GameVersionNames)
+        releaseType = $Item.ReleaseType
+        isMarkedForManualRelease = [bool]$Item.ManualRelease
+    }
+    if ($Item.DependenciesConfigured -and @($Item.Dependencies).Count -gt 0) {
+        $data['relations'] = @{ projects = @($Item.Dependencies) }
+    }
+    return $data
 }
 
 function Test-ZipHasRootPackMcmeta {
@@ -821,14 +912,7 @@ function Publish-CurseForgeVersion {
         [Parameter(Mandatory = $true)]$Item
     )
 
-    $data = [ordered]@{
-        changelog = $Item.Changelog
-        changelogType = $Item.ChangelogType
-        displayName = $Item.VersionName
-        gameVersionNames = @($Item.GameVersionNames)
-        releaseType = $Item.ReleaseType
-        isMarkedForManualRelease = [bool]$Item.ManualRelease
-    }
+    $data = Get-CurseForgeUploadMetadata -Item $Item
 
     $json = $data | ConvertTo-Json -Depth 20 -Compress
     $multipart = [System.Net.Http.MultipartFormDataContent]::new()
@@ -1145,6 +1229,8 @@ foreach ($packDirectory in $packDirectories) {
             ChangelogType = $curseforge.ChangelogType
             ManualRelease = $curseforge.ManualRelease
             GameVersionNames = @($gameVersionNames)
+            DependenciesConfigured = $curseforge.DependenciesConfigured
+            Dependencies = @(Get-CurseForgeDependencies -Dependencies $curseforge.Dependencies -PackName $packDirectory.Name -VersionConfig $versionConfig -VersionOrder (Get-VersionOrderLookup -Config $config))
             ZipPath = $zipPath
             ZipSource = ''
             Token = ''
@@ -1232,7 +1318,7 @@ $summary = New-Object System.Collections.Generic.List[object]
 foreach ($item in $uploadItems) {
     $alreadyExists = Test-LocalCurseForgeVersionPublished -State $localCurseForgeState -Item $item
 
-    if ($alreadyExists) {
+    if ($alreadyExists -and -not $Republish) {
         Write-Host "Skipping existing $($item.PackName) $($item.MinecraftVersion): $($item.VersionNumber)"
         $summary.Add([pscustomobject]@{
             Pack = $item.PackName
@@ -1246,6 +1332,9 @@ foreach ($item in $uploadItems) {
 
     if (-not $Publish) {
         Write-Host "Dry run: would publish $($item.PackName) $($item.MinecraftVersion) as $($item.VersionNumber) using $($item.ZipSource) file $(Get-CurseForgeZipFileName -Item $item) -> project $($item.ProjectId)"
+        if ($item.DependenciesConfigured) {
+            Write-Host "  CurseForge relations: $(@{ projects = @($item.Dependencies) } | ConvertTo-Json -Depth 5 -Compress)"
+        }
         $summary.Add([pscustomobject]@{
             Pack = $item.PackName
             MinecraftVersion = $item.MinecraftVersion

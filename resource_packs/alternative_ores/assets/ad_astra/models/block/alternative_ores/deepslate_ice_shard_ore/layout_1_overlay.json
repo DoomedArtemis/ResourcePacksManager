@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/alternative_ores/crystal_layout_1_overlay",
+  "textures": {
+    "base": "minecraft:block/deepslate",
+    "top": "minecraft:block/deepslate_top",
+    "particle": "#base",
+    "crystal_a": "ad_astra:block/alternative_ores/ice_shard_crystal_a",
+    "crystal_b": "ad_astra:block/alternative_ores/ice_shard_crystal_b"
+  }
+}

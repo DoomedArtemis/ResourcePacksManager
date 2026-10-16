@@ -106,7 +106,7 @@ function ConvertTo-Hashtable {
         foreach ($item in $InputObject) {
             $list += ,(ConvertTo-Hashtable -InputObject $item)
         }
-        return $list
+        return ,$list
     }
 
     if ($InputObject.PSObject -and @($InputObject.PSObject.Properties).Count -gt 0 -and $InputObject -isnot [string]) {
@@ -222,7 +222,7 @@ function Test-VersionSelectorMatch {
     $versionId = [string]$VersionConfig.Id
     $versionIndex = [int]$VersionOrder[$versionId]
 
-    if ($Options.ContainsKey('Versions') -and $Options.Versions) {
+    if ($Options.ContainsKey('Versions')) {
         $lookup = @{}
         foreach ($candidateVersionId in @($Options.Versions)) {
             $normalizedVersionId = [string]$candidateVersionId
@@ -471,7 +471,7 @@ function Read-LocalModrinthState {
     }
 
     if (Test-Path -LiteralPath $StatePath -PathType Leaf) {
-        $state = ConvertTo-Hashtable -InputObject (Import-PowerShellDataFile -Path $StatePath)
+        $state = ConvertTo-Hashtable -InputObject (Read-PublishStateDataFile -Path $StatePath)
     }
 
     if (-not $state.ContainsKey('Projects') -or $null -eq $state.Projects) {
@@ -587,7 +587,7 @@ function Get-PackBuildOptions {
     )
 
     $definitionPath = Get-CombinedDefinitionPath -PackDirectory $PackDirectory
-    if ($definitionPath) { return ConvertTo-Hashtable -InputObject (Import-PowerShellDataFile -Path $definitionPath) }
+    if ($definitionPath) { return Get-CombinedPublishingOptions -PackDirectory $PackDirectory -Config $Config }
     $configPath = Join-Path -Path $PackDirectory.FullName -ChildPath ([string]$Config.PackBuildConfigFile)
     if (-not (Test-Path -LiteralPath $configPath)) {
         return @{}
@@ -709,6 +709,72 @@ function Get-PackModrinthConfig {
         Environment = $environment
         Featured = $featured
         Loaders = @($loaders)
+        Dependencies = @(Get-HashtableValueOrDefault -Table $modrinthConfig -Key 'Dependencies' -DefaultValue @())
+        DependenciesConfigured = $modrinthConfig.ContainsKey('Dependencies')
+    }
+}
+
+function Get-ModrinthDependencies {
+    param(
+        [AllowEmptyCollection()][object[]]$Dependencies,
+        [Parameter(Mandatory = $true)][string]$PackName,
+        [Parameter(Mandatory = $true)]$VersionConfig,
+        [Parameter(Mandatory = $true)][hashtable]$VersionOrder
+    )
+
+    $types = @('required', 'optional', 'incompatible', 'embedded')
+    $selectors = @('Versions', 'ExcludeVersions', 'MinVersion', 'MaxVersion', 'AfterVersion', 'BeforeVersion')
+    # Modrinth base62 identifiers are case-sensitive.
+    $seen = [System.Collections.Generic.Dictionary[string, string]]::new([StringComparer]::Ordinal)
+    foreach ($entry in $Dependencies) {
+        if ($entry -isnot [System.Collections.IDictionary]) {
+            throw "Modrinth.Dependencies for pack '$PackName' must contain dependency tables."
+        }
+        $dependency = ConvertTo-Hashtable -InputObject $entry
+        $context = "Modrinth dependency for pack '$PackName'"
+        foreach ($key in $dependency.Keys) {
+            if ($key -notin (@('ProjectId', 'VersionId', 'FileName', 'Type', 'Enabled') + $selectors)) {
+                throw "$context has unknown option '$key'."
+            }
+        }
+        if ($dependency.ContainsKey('Enabled') -and -not [bool]$dependency.Enabled) { continue }
+        $projectId = [string](Get-HashtableValueOrDefault -Table $dependency -Key 'ProjectId' -DefaultValue '')
+        $versionId = [string](Get-HashtableValueOrDefault -Table $dependency -Key 'VersionId' -DefaultValue '')
+        $fileName = [string](Get-HashtableValueOrDefault -Table $dependency -Key 'FileName' -DefaultValue '')
+        foreach ($field in @('ProjectId', 'VersionId')) {
+            $value = if ($field -eq 'ProjectId') { $projectId } else { $versionId }
+            if ($value -and $value -cnotmatch '^[0-9A-Za-z]{8}$') {
+                throw "$context has invalid $field '$value'; use a Modrinth ID (8 letters/digits), not a CurseForge ID or slug."
+            }
+        }
+        if (-not $projectId -and -not $versionId -and [string]::IsNullOrWhiteSpace($fileName)) {
+            throw "$context requires ProjectId, VersionId, or FileName."
+        }
+        $type = [string](Get-HashtableValueOrDefault -Table $dependency -Key 'Type' -DefaultValue 'optional')
+        if ($type -notin $types) { throw "$context has invalid Type '$type'. Choose: $($types -join ', ')." }
+        $type = @($types | Where-Object { $_ -eq $type })[0]
+        foreach ($selector in $selectors) {
+            if ($dependency.ContainsKey($selector)) {
+                foreach ($minecraftVersion in @($dependency[$selector])) {
+                    Assert-KnownVersionSelectorId -VersionId ([string]$minecraftVersion) -OptionName $selector -VersionOrder $VersionOrder -ContextDescription $context
+                }
+            }
+        }
+        if (-not (Test-VersionSelectorMatch -Options $dependency -VersionConfig $VersionConfig -VersionOrder $VersionOrder -ContextDescription $context)) { continue }
+        $relation = [ordered]@{ project_id = $null; version_id = $null; file_name = $null; dependency_type = $type }
+        if ($projectId) { $relation.project_id = $projectId }
+        if ($versionId) { $relation.version_id = $versionId }
+        if ($fileName) { $relation.file_name = $fileName }
+        $identity = if ($projectId) { "project:$projectId" } elseif ($versionId) { "version:$versionId" } else { "file:$fileName" }
+        $signature = $relation | ConvertTo-Json -Compress
+        if ($seen.ContainsKey($identity)) {
+            if ($seen[$identity] -cne $signature) {
+                throw "$context '$identity' has conflicting dependency settings for Minecraft '$($VersionConfig.Id)'."
+            }
+            continue
+        }
+        $seen[$identity] = $signature
+        $relation
     }
 }
 
@@ -802,17 +868,15 @@ function Invoke-ModrinthGetProject {
     return ($body | ConvertFrom-Json)
 }
 
-function Publish-ModrinthVersion {
-    param(
-        [Parameter(Mandatory = $true)][System.Net.Http.HttpClient]$Client,
-        [Parameter(Mandatory = $true)]$Item
-    )
-
-    $data = [ordered]@{
+function Get-ModrinthUploadMetadata {
+    param([Parameter(Mandatory = $true)]$Item)
+    $dependencies = @()
+    if ($Item.PSObject.Properties['Dependencies']) { $dependencies = @($Item.Dependencies) }
+    return [ordered]@{
         name = $Item.VersionName
         version_number = $Item.VersionNumber
         changelog = $Item.Changelog
-        dependencies = @()
+        dependencies = @($dependencies)
         game_versions = @($Item.MinecraftVersion)
         version_type = $Item.VersionType
         loaders = @($Item.Loaders)
@@ -823,7 +887,15 @@ function Publish-ModrinthVersion {
         primary_file = 'file'
         environment = $Item.Environment
     }
+}
 
+function Publish-ModrinthVersion {
+    param(
+        [Parameter(Mandatory = $true)][System.Net.Http.HttpClient]$Client,
+        [Parameter(Mandatory = $true)]$Item
+    )
+
+    $data = Get-ModrinthUploadMetadata -Item $Item
     $json = $data | ConvertTo-Json -Depth 20 -Compress
     $multipart = [System.Net.Http.MultipartFormDataContent]::new()
     $fileStream = [System.IO.File]::OpenRead($Item.ZipPath)
@@ -1128,6 +1200,8 @@ foreach ($packDirectory in $packDirectories) {
             Environment = $modrinth.Environment
             Featured = $modrinth.Featured
             Loaders = @($modrinth.Loaders)
+            DependenciesConfigured = $modrinth.DependenciesConfigured
+            Dependencies = @(Get-ModrinthDependencies -Dependencies $modrinth.Dependencies -PackName $packDirectory.Name -VersionConfig $versionConfig -VersionOrder (Get-VersionOrderLookup -Config $config))
             ZipPath = $zipPath
             ZipSource = ''
             Token = ''
@@ -1253,6 +1327,9 @@ foreach ($item in $uploadItems) {
 
     if (-not $Publish) {
         Write-Host "Dry run: would publish $($item.PackName) $($item.MinecraftVersion) as $($item.VersionNumber) using $($item.ZipSource) file $(Get-ModrinthZipFileName -Item $item) -> project $($item.ProjectId)"
+        if ($item.DependenciesConfigured) {
+            Write-Host "  Modrinth dependencies: $(ConvertTo-Json -InputObject @($item.Dependencies) -Depth 5 -Compress)"
+        }
         $summary.Add([pscustomobject]@{
             Pack = $item.PackName
             MinecraftVersion = $item.MinecraftVersion

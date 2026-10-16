@@ -1,0 +1,133 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minecraft:block/end_stone"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_1_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_1_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_1_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_1_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_2_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_2_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_2_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_2_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_3_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_3_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_3_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_3_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_4_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_4_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_4_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_4_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_5_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_5_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_5_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_5_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_6_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_6_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_6_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "alltheores:block/alternative_ores/end_stone_zinc/layout_6_overlay",
+          "y": 270,
+          "uvlock": false
+        }
+      ]
+    }
+  ]
+}

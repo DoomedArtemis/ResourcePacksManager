@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/alternative_ores/crystal_layout_2_overlay",
+  "textures": {
+    "base": "aether:block/natural/holystone",
+    "top": "#base",
+    "particle": "#base",
+    "crystal_a": "aether:block/alternative_ores/ambrosium_crystal_a",
+    "crystal_b": "aether:block/alternative_ores/ambrosium_crystal_b"
+  }
+}

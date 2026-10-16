@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/alternative_ores/crystal_layout_3_overlay",
+  "textures": {
+    "base": "undergarden:block/depthrock",
+    "top": "#base",
+    "particle": "#base",
+    "crystal_a": "undergarden:block/alternative_ores/cloggrum_crystal_a",
+    "crystal_b": "undergarden:block/alternative_ores/cloggrum_crystal_b"
+  }
+}

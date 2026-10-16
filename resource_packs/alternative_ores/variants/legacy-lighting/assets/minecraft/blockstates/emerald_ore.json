@@ -1,0 +1,133 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minecraft:block/alternative_ores/legacy_lighting/stone"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "minecraft:block/emerald_ore_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "minecraft:block/emerald_ore_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "minecraft:block/emerald_ore_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "minecraft:block/emerald_ore_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "minecraft:block/emerald_ore_crystals_alt_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "minecraft:block/emerald_ore_crystals_alt_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "minecraft:block/emerald_ore_crystals_alt_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "minecraft:block/emerald_ore_crystals_alt_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "minecraft:block/emerald_ore_crystals_3_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "minecraft:block/emerald_ore_crystals_3_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "minecraft:block/emerald_ore_crystals_3_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "minecraft:block/emerald_ore_crystals_3_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "minecraft:block/emerald_ore_crystals_4_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "minecraft:block/emerald_ore_crystals_4_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "minecraft:block/emerald_ore_crystals_4_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "minecraft:block/emerald_ore_crystals_4_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "minecraft:block/emerald_ore_crystals_5_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "minecraft:block/emerald_ore_crystals_5_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "minecraft:block/emerald_ore_crystals_5_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "minecraft:block/emerald_ore_crystals_5_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "minecraft:block/emerald_ore_crystals_6_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "minecraft:block/emerald_ore_crystals_6_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "minecraft:block/emerald_ore_crystals_6_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "minecraft:block/emerald_ore_crystals_6_overlay",
+          "y": 270,
+          "uvlock": false
+        }
+      ]
+    }
+  ]
+}

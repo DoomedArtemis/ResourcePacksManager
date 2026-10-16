@@ -1,5 +1,24 @@
 @{
     MinVersion = '1.17'
+    Modrinth = @{
+        Dependencies = @(
+            @{
+                ProjectId = 'dl88rsIq' # Dye Depot
+                Type = 'optional'
+                Versions = @('1.20.1', '1.21.1')
+            }
+        )
+    }
+    CurseForge = @{
+        Dependencies = @(
+            @{
+                ProjectId = '988504' # Dye Depot
+                Slug = 'dye-depot'
+                Type = 'optionalDependency'
+                Versions = @('1.20.1', '1.21.1')
+            }
+        )
+    }
     PackMetadata = @{
         name = 'Better Candles'
         author = 'DoomedArtemis'
@@ -11,18 +30,8 @@
     }
     Compatibility = @{
         dye_depot = @{
-            # Published Minecraft versions checked on Modrinth and CurseForge.
-            # https://modrinth.com/mod/dye-depot/versions
-            # https://www.curseforge.com/minecraft/mc-mods/dye-depot/files/all
             Versions = @('1.20.1', '1.21.1')
-            Support = @'
-Better Candles includes support for Dye Depot's 16 additional candle colors.
-Matching candle models and wax puddles, with no separate compatibility pack needed.
-
-Modrinth: https://modrinth.com/mod/dye-depot
-CurseForge: https://www.curseforge.com/minecraft/mc-mods/dye-depot
-GitHub: https://github.com/PssbleTrngle/dye_depot
-'@
+            Support = 'Includes candle models and wax puddles for Dye Depot.'
         }
     }
 }

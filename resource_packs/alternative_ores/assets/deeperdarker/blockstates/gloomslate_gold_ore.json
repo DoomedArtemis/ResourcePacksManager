@@ -1,0 +1,133 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "deeperdarker:block/alternative_ores/gloomslate"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_1_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_1_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_1_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_1_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_2_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_2_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_2_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_2_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_3_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_3_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_3_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_3_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_4_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_4_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_4_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_4_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_5_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_5_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_5_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_5_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_6_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_6_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_6_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "deeperdarker:block/alternative_ores/gloomslate_gold_ore/layout_6_overlay",
+          "y": 270,
+          "uvlock": false
+        }
+      ]
+    }
+  ]
+}

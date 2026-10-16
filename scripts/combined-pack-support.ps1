@@ -1,4 +1,49 @@
 # Shared discovery for builds and publishers. Definitions stay outside resource_packs.
+function ConvertFrom-PublishStateAst {
+    param([Management.Automation.Language.Ast]$Node)
+    # Windows PowerShell's SafeGetValue limits the size of one expression. Read
+    # containers separately, retaining safe literal evaluation for every leaf.
+    if ($Node -is [Management.Automation.Language.HashtableAst]) {
+        $result = @{}
+        foreach ($pair in $Node.KeyValuePairs) {
+            $key = $pair.Item1.SafeGetValue()
+            $result[$key] = ConvertFrom-PublishStateAst $pair.Item2
+        }
+        return $result
+    }
+    if ($Node -is [Management.Automation.Language.ArrayExpressionAst] -or $Node -is [Management.Automation.Language.ArrayLiteralAst]) {
+        $values = New-Object System.Collections.Generic.List[object]
+        $elements = if ($Node -is [Management.Automation.Language.ArrayExpressionAst]) { $Node.SubExpression.Statements } else { $Node.Elements }
+        foreach ($element in $elements) { $values.Add((ConvertFrom-PublishStateAst $element)) }
+        return ,$values.ToArray()
+    }
+    if ($Node -is [Management.Automation.Language.StatementBlockAst]) {
+        if ($Node.Statements.Count -ne 1) { throw 'Expected one data expression.' }
+        return ConvertFrom-PublishStateAst $Node.Statements[0]
+    }
+    if ($Node -is [Management.Automation.Language.PipelineAst]) {
+        if ($Node.PipelineElements.Count -ne 1 -or $Node.PipelineElements[0] -isnot [Management.Automation.Language.CommandExpressionAst]) { throw 'Commands are not allowed in publish state.' }
+        return ConvertFrom-PublishStateAst $Node.PipelineElements[0].Expression
+    }
+    return $Node.SafeGetValue()
+}
+
+function Read-PublishStateDataFile {
+    param([string]$Path)
+    try {
+        $tokens = $null; $parseErrors = $null
+        $ast = [Management.Automation.Language.Parser]::ParseFile($Path, [ref]$tokens, [ref]$parseErrors)
+        if ($parseErrors.Count -or $null -eq $ast.EndBlock -or $ast.EndBlock.Statements.Count -ne 1) { throw 'Expected a data table.' }
+        $state = ConvertFrom-PublishStateAst $ast.EndBlock.Statements[0]
+        if ($state -isnot [hashtable]) { throw 'Expected a data table.' }
+        return $state
+    }
+    catch {
+        # Parser/SafeGetValue errors can include the complete source and tokens.
+        throw "Unable to read local publishing state '$Path'. It must contain a valid literal PSD1 table; state contents are omitted to protect tokens."
+    }
+}
+
 function Convert-PublishVersionNumber {
     param([string]$Value)
     return ($Value -replace '-mc\.(?=[0-9])', '-mc')
@@ -127,12 +172,18 @@ function Copy-CombinedPackDocumentation {
     $readme.Add('')
     $readme.Add('Included packs and versions')
     $versions = @{}
+    $support = New-Object 'System.Collections.Generic.List[string]'
     $hasLicenseNotices = $false
     # The repository license remains authoritative if it changes in a future release.
     Copy-Item -LiteralPath (Join-Path $RepoRoot 'LICENSE') -Destination (Join-Path $Destination 'license.txt') -Force
     foreach ($pack in @($Components.Keys | Sort-Object)) {
         $versions[$pack] = if ($Components[$pack].ContainsKey('ReleaseVersion')) { $Components[$pack].ReleaseVersion } else { Get-LatestArchivedPackVersion -RepoRoot $RepoRoot -PackName $pack }
         $packTitle = Convert-ToPackDisplayName -PackFolderName $pack
+        if ($Components[$pack].ContainsKey('CompatibilityText') -and -not [string]::IsNullOrWhiteSpace($Components[$pack].CompatibilityText)) {
+            foreach ($modName in ($Components[$pack].CompatibilityText -split '\r?\n')) {
+                if (-not [string]::IsNullOrWhiteSpace($modName)) { $support.Add($modName.Trim()) }
+            }
+        }
         $readme.Add("$($packTitle): $($versions[$pack])")
         $creditNames = @($Components[$pack].Notices.Keys | Where-Object { $_ -imatch '^credits?(\.|$)' } | Sort-Object)
         if ($creditNames.Count) {
@@ -156,6 +207,9 @@ function Copy-CombinedPackDocumentation {
     if ($hasLicenseNotices) { $readme.Add('Additional license notices are included in the licenses folder.') }
     Set-Content -LiteralPath (Join-Path $Destination 'credits.txt') -Value ($credits -join [Environment]::NewLine) -Encoding UTF8
     Set-Content -LiteralPath (Join-Path $Destination 'readme.txt') -Value ($readme -join [Environment]::NewLine) -Encoding UTF8
+    if ($support.Count) {
+        Set-Content -LiteralPath (Join-Path $Destination 'compatibility.txt') -Value (@($support | Sort-Object -Unique) -join [Environment]::NewLine) -Encoding UTF8
+    }
     return $versions
 }
 
@@ -181,6 +235,55 @@ function Get-CombinedDefinitionPath {
     $property = $PackDirectory.PSObject.Properties['CombinedDefinitionPath']
     if ($null -ne $property) { return [string]$property.Value }
     return ''
+}
+
+function Get-CombinedPublishingOptions {
+    param($PackDirectory, $Config)
+    $definitionPath = Get-CombinedDefinitionPath $PackDirectory
+    $options = Import-PowerShellDataFile -Path $definitionPath
+    $repoRoot = Split-Path (Split-Path $definitionPath -Parent) -Parent
+    $order = Get-VersionOrderLookup -Config $Config
+    foreach ($platform in @('Modrinth', 'CurseForge')) {
+        $dependencies = @()
+        $configured = $options.ContainsKey($platform) -and $options[$platform].ContainsKey('Dependencies')
+        if ($configured) { $dependencies = @($options[$platform].Dependencies) }
+        foreach ($entry in @($options['Packs'])) {
+            if ($null -eq $entry) { continue }
+            if (-not $entry.Enabled -or ($entry.ContainsKey('Include') -and @($entry.Include).Count -eq 0)) { continue }
+            $path = Join-Path (Join-Path (Resolve-FullPath -BasePath $repoRoot -Path $Config.PackRoot) $entry.Name) $Config.PackBuildConfigFile
+            if (-not (Test-Path -LiteralPath $path -PathType Leaf)) { continue }
+            $component = Import-PowerShellDataFile -Path $path
+            if (-not $component.ContainsKey($platform) -or -not $component[$platform].ContainsKey('Dependencies')) { continue }
+            $configured = $true
+            $versions = @($Config.Versions | Where-Object {
+                Test-VersionSelectorMatch -Options $component -VersionConfig $_ -VersionOrder $order -ContextDescription "Combined component '$($entry.Name)'"
+            } | ForEach-Object { $_.Id })
+            foreach ($dependency in @($component[$platform].Dependencies)) {
+                # Intersect selectors with component support before the platform's
+                # normal validation, deduplication and conflict detection.
+                if ($dependency -isnot [System.Collections.IDictionary]) { throw "$platform.Dependencies for '$($entry.Name)' must contain dependency tables." }
+                $copy = @{} + $dependency
+                foreach ($selector in @('Versions', 'ExcludeVersions', 'MinVersion', 'MaxVersion', 'AfterVersion', 'BeforeVersion')) {
+                    if ($copy.ContainsKey($selector)) {
+                        foreach ($id in @($copy[$selector])) {
+                            Assert-KnownVersionSelectorId -VersionId ([string]$id) -OptionName $selector -VersionOrder $order -ContextDescription "Dependency in '$($entry.Name)'"
+                        }
+                    }
+                }
+                $matching = @($Config.Versions | Where-Object {
+                    $_.Id -in $versions -and (Test-VersionSelectorMatch -Options $copy -VersionConfig $_ -VersionOrder $order -ContextDescription "Dependency in '$($entry.Name)'")
+                } | ForEach-Object { $_.Id })
+                $copy.Versions = $matching
+                if ($matching.Count -eq 0) { continue }
+                $dependencies += $copy
+            }
+        }
+        if ($configured) {
+            if (-not $options.ContainsKey($platform)) { $options[$platform] = @{} }
+            $options[$platform].Dependencies = $dependencies
+        }
+    }
+    return $options
 }
 
 function Get-CombinedPackDirectories {

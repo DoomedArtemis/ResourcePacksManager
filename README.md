@@ -35,7 +35,7 @@ config/                    global build configuration and Minecraft version matr
 build/                     generated ZIP files, grouped by pack
 archive/                   uploaded or retained release ZIPs, grouped by pack and release
 cache/                     disposable Mojang asset catalogs and resolved route caches
-.run/                      shared IntelliJ run configurations
+.idea/runConfigurations/   shared IntelliJ run configurations
 ```
 
 `cache/`, `config/modrinth.local.psd1`, and `config/curseforge.local.psd1` are ignored by git. The local publishing state files may contain project IDs and tokens, and the publishers refuse to use them if they are tracked.
@@ -104,6 +104,10 @@ within a release, the most recently modified matching ZIP is used, including
 timestamped `-uploaded-` collision copies. ZIPs for other Minecraft versions and
 empty release folders do not affect selection. If no matching archive exists,
 the component is built from source and listed as `unreleased`.
+Components with `Compatibility` settings also compare their selected mod assets
+and generated support notes against the archive. If those files are missing,
+different, or incompatible with the target Minecraft version, the component is
+rebuilt from current sources instead. Matching components still use their archives.
 The player README records the release actually used, rather than the newest
 release available for a different Minecraft version.
 The same version list is stored as `ComponentVersions` in the build report.
@@ -177,6 +181,24 @@ number formatting, and line endings. Unchanged component JSON is copied verbatim
 Shorter temporary staging paths accommodate readable model names on Windows.
 The report records the original paths and why alternate dependencies were needed;
 source packs remain untouched.
+
+Component source builds apply their usual `Compatibility` filters before merging.
+Component ZIPs contribute their generated mod names to the combined pack's
+`compatibility.txt`, sorted and deduplicated. Archives are reused when their compatibility assets
+and mod lists match the current source selection; outdated components are
+rebuilt from source and reported as `unreleased`.
+
+Both publishers automatically inherit `Modrinth.Dependencies` and
+`CurseForge.Dependencies` from enabled components. Each relation must match both
+the component's supported Minecraft versions and its own version selectors.
+Disabled components and entries with `Include = @()` contribute no relations.
+Dependencies on the combined definition are added to inherited dependencies;
+the publishers deduplicate identical relations and reject conflicting ones.
+Publishing metadata uses the current component configuration, including when
+uploading an archived ZIP, so keep it aligned with the component releases used.
+Run `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-artemis-compatibility.ps1`
+to check inheritance across the release matrix. Add `-BuildSources` to also build
+and combine the mod-supporting components for supported and unsupported versions.
 
 Validation checks missing/filtered models and deliberately excluded textures,
 parent/reference cycles, and circular texture variables using the effective
@@ -453,7 +475,7 @@ Use `Compatibility` to control which Minecraft versions include each mod's asset
             MaxVersion = '26.3'
             # Optional: include files outside assets/example_mod/ too.
             Paths = @('assets/example_mod/', 'assets/minecraft/textures/block/example.png')
-            Support = 'Includes support for Example Mod. No separate compatibility pack needed.'
+            Name = 'Example Mod'
         }
     }
 }
@@ -463,9 +485,78 @@ Each mod ID defaults to filtering `assets/<mod-id>/`. Override `Paths` with exac
 
 Supported selectors are `Versions`, `ExcludeVersions`, `MinVersion`, `MaxVersion`, `AfterVersion`, and `BeforeVersion`. `Versions` and `ExcludeVersions` accept exact versions, inclusive `start..end` or `start to end` ranges, and comma-separated mixes. Ranges follow the configured Minecraft release matrix; multiple selectors apply together. Omit `Versions` to allow all versions within the other bounds, use `Versions = @()` to include none, or set `Enabled = $false` to disable that mod's assets entirely. Unknown versions, reversed bounds, invalid paths, and unknown compatibility options fail the build.
 
-Set `Support` inside each mod entry to a short player-facing note, including any links. It accepts a plain string or a multiline PowerShell here-string. The builder combines notes for enabled compatibilities matching the target version into one ZIP-root `support.txt`, separated by blank lines and ordered by mod ID. Unsupported and disabled mod notes are omitted. No file is generated when no active entry has a nonempty note. Keep the text in `pack.build.psd1`; do not also supply a source `support.txt`, which would conflict with the generated file.
+Set `Name` inside each mod entry to its player-facing mod name. The builder writes enabled compatibilities matching the target Minecraft version to ZIP-root `compatibility.txt`, one mod per line, sorted and deduplicated. The mod ID is used when `Name` is omitted. No file is generated when no mods match. Do not also supply a source `compatibility.txt`, which would conflict with the generated file. Legacy `Support` fields remain accepted but are not included in the list.
 
 Check a mod's published Minecraft versions before setting its compatibility selectors, and update them when new releases become available. Compatibility configuration filters bundled assets; it does not install or detect mods in a player's game. Run `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-file-options.ps1` to check compatibility selectors and file routing.
+
+### Updating mod compatibility automatically
+
+Run the **Update Mod Compatibility** IDE configuration, or:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync-mod-compatibility.ps1
+```
+
+The updater checks current Modrinth and CurseForge file listings for the projects
+in `config/compatibility-sync.json`: Create and Create Fabric, AE2's two namespaces,
+Mekanism, Immersive Engineering, Draconic Evolution, Dye Depot, and the verified CurseForge projects
+for ATO and Allthemodium. It includes publicly listed release, beta, and alpha files.
+It adds missing versions to `Compatibility` and the appropriate platform's
+`Dependencies`, preserving existing entries, project IDs, comments outside edited
+arrays, support notes, and other options. Existing entries are not removed when a
+platform stops listing an old file.
+
+Before enabling a new version, it inspects the latest published JAR per project,
+platform, and loader. The pack's overridden asset paths and the relevant upstream
+blockstate properties/model references must match a known supported release.
+The matching release supplies version rules for the existing assets: explicit
+`Versions` arrays in the pack's `FileOptionsPath` are extended too, while historical
+rules for other assets stay unchanged. This comparison checks resource structure;
+it does not replace an in-game visual check or generate artwork for new blocks.
+Renamed assets or changed blockstate schemas require review, and a release without
+the overridden assets is excluded (for example, modern AE2 releases without ores).
+
+Shared compatibility accepts a verified release from either platform. Each platform
+dependency accepts only releases available on that platform. Thus a CurseForge-only
+Create 26.2 release can enable Create assets in the 26.2 ZIP uploaded to either
+platform without adding a nonexistent 26.2 Modrinth relation.
+
+Only versions already in `config/minecraft-release-version-matrix.psd1` are enabled.
+Newer Minecraft versions outside that matrix are reported; update the matrix first.
+The updater downloads release JARs into the ignored `cache/compatibility-sync/`
+directory and reuses them on later runs. Metadata is fetched fresh by default.
+
+```powershell
+# Preview changes without modifying pack configuration.
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync-mod-compatibility.ps1 -Check
+# Update one configured pack.
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync-mod-compatibility.ps1 -Pack alternative_ores
+# Repeat using previously fetched catalogues (not a fresh availability check).
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync-mod-compatibility.ps1 -CachedMetadata -Check
+```
+
+The report at `build/compatibility-sync.report.json` records additions, inspected
+files, reference versions, and cases requiring review. Network failures, malformed
+responses, and checksum failures stop the command before configuration is applied.
+`-Check` still updates caches and the report. After updating, build normally;
+Artemis rebuilds components whose archived compatibility assets are outdated.
+Builds do not contact mod hosting platforms automatically. Publishers still prefer
+an existing archive of the requested release, so use a new release number when
+publishing updated resource packs.
+
+Modrinth metadata comes from its [project versions API](https://docs.modrinth.com/api/operations/getprojectversions/).
+By default, CurseForge metadata comes through the public CFWidget index, as in the
+existing release-audit scripts. Set `CURSEFORGE_API_KEY` to use the
+[official CurseForge API](https://docs.curseforge.com/rest-api/) with pagination instead.
+This API key is separate from the publishing token. The report identifies the
+metadata source used. Automatic synchronization currently manages explicit
+`Versions` arrays and default `assets/<namespace>/` compatibility paths.
+
+Run `node scripts/test-sync-mod-compatibility.cjs` for offline regression tests,
+including a simulated CurseForge-only future release, changed/removed assets,
+formatting preservation, preview/apply behavior, and repeated runs.
+
+Alternative Ores includes finished mod compatibility assets and lighting variants for older Minecraft clients. Building and publishing use the resources under `resource_packs/alternative_ores/`; optional dependency versions are configured in `pack.build.psd1`. The compatibility updater works from these finished assets and checks the platforms directly, without artwork sources or saved release audits.
 
 File rules include or exclude source files by version:
 
@@ -502,6 +593,12 @@ Large generated rule sets can be stored in a JSON file inside the pack. Set `Fil
 
 ## Build Output
 
+Source selection indexes exact paths and directory prefixes once per pack/version, normalizes each rule once, and reuses each matching rule's version result within that selection. It preserves declaration order, case-insensitive path matching, OR inclusion rules, variant conflict detection, compatibility exclusions, and source priorities. The index is rebuilt for each selection, so edits to files and configuration remain visible without clearing a cache.
+
+To measure just the **Selecting source files** stage, run `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/measure-source-selection.ps1 -Pack alternative_ores -Version 1.21.1`. In the measured workspace, selection of the same 492 Alternative Ores files fell from 99.37 seconds to 1.86 seconds. This measures selection only; asset resolution, validation, copying, and ZIP creation still run normally. `scripts/test-source-selection.ps1` checks indexed lookup against the original path predicate and exercises rule/variant interactions.
+
+The builder also reuses pack options and base-path URIs within a build, reuses the JSON validator, caches combined-component texture/animation hashes, and limits interactive progress updates to five per second while showing stage changes and completion immediately. All validation remains enabled. Run `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-build-performance.ps1` for the related regression checks. `scripts/measure-build-performance.ps1` measures seven complete Alternative Ores/Better Candles builds in an isolated cache directory and records ZIP entry hashes; use `-BuilderPath`, `-OutputRoot`, and `-CompareManifest` to compare revisions. A local before/after run took approximately 66 seconds versus 18 seconds with identical entry names, contents, and warning counts; timings depend on the machine and filesystem cache.
+
 The build script generates:
 
 ```text
@@ -515,7 +612,7 @@ An individual source pack's generated ZIP contains:
 - root `pack.mcmeta`
 - root `pack.png`, when present in the source pack
 - extra files placed directly in the source pack root (such as `LICENSE.txt`)
-- generated root `support.txt`, when active `Compatibility` entries define support notes
+- generated root `compatibility.txt`, listing active compatible mods for the target Minecraft version
 - files from `extras/`, copied to the ZIP root with their subfolders preserved
 - resolved `assets/<namespace>/...` files from `assets/` and `drop/`, including mod namespaces when their compatibility rules allow them
 
@@ -608,7 +705,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\sync-minecraft-release-matrix
 
 ## IntelliJ Run Configurations
 
-Shared IntelliJ run configurations are stored in `.run/`:
+Shared IntelliJ run configurations are stored in `.idea/runConfigurations/` so IntelliJ can load them even when the folder is opened without a module:
 
 | Build configuration | Pack selection | Version selection |
 | --- | --- | --- |
@@ -706,6 +803,33 @@ Per-pack Modrinth settings live in the pack's `pack.build.psd1`:
 
 `ProjectId`, `Project`, or `Slug` can be used instead of `ProjectUrl`. Set `Enabled = $false` inside the `Modrinth` block to exclude a pack from publishing.
 
+Add `Dependencies` inside `Modrinth` to select dependencies for each Minecraft upload:
+
+```powershell
+Modrinth = @{
+    Dependencies = @(
+        @{
+            ProjectId = 'Ce6I4WUE' # Mekanism's Modrinth ID
+            Type = 'optional'
+            Versions = @('1.15.2')
+        }
+    )
+}
+```
+
+Each entry supports `ProjectId`, `VersionId` (an exact dependency release ID), `FileName` (the API's external-file/display name), `Type`, `Enabled`, and the same `Versions`, `ExcludeVersions`, `MinVersion`, `MaxVersion`, `AfterVersion`, and `BeforeVersion` selectors as CurseForge. At least one of `ProjectId`, `VersionId`, or `FileName` is required. Use Modrinth's case-sensitive 8-character project/version IDs; CurseForge's numeric IDs cannot be reused here. `Versions` and the bounds filter the **pack's Minecraft version**, while `VersionId` pins a **dependency release**. Without selectors, an enabled entry applies to every selected Minecraft upload.
+
+| Modrinth `Type` | Corresponding CurseForge `Type` |
+| --- | --- |
+| `optional` (default) | `optionalDependency` |
+| `required` | `requiredDependency` |
+| `incompatible` | `incompatible` |
+| `embedded` | `embeddedLibrary` |
+
+Modrinth has no equivalent to CurseForge's `tool` relation. Dry runs print the selected dependency JSON, including `[]` when no entries match. Duplicate matching entries with the same identifier are collapsed; conflicting types, version pins, or file names for that identifier fail before upload. Use the same identifier consistently across entries. Existing packs without dependency settings continue to send an empty dependency list. These settings also work in combined-pack definitions and apply to new uploads; existing versions skipped by duplicate detection are not edited.
+
+Alternative Ores declares optional Mekanism dependencies on both platforms for all audited supported releases, including 1.15.2. Better Candles declares optional Dye Depot dependencies for 1.20.1 and 1.21.1 on both platforms. `scripts/test-modrinth-dependencies.ps1` verifies both configurations across the version matrix and captures multipart upload metadata without a network upload. The fields and relation types follow [Modrinth's Create Version API](https://docs.modrinth.com/api/operations/createversion/).
+
 The publisher validates every selected upload item before upload:
 
 - a matching archive or build ZIP must exist, or be built when `-Build` is enabled
@@ -767,6 +891,37 @@ Per-pack CurseForge settings live in the pack's `pack.build.psd1`:
 ```
 
 `ProjectUrl`, `Url`, or `Project` can be used instead of `ProjectId` as long as the value resolves to a numeric CurseForge project ID. Set `Enabled = $false` inside the `CurseForge` block to exclude a pack from publishing.
+
+Add `Dependencies` inside the same `CurseForge` block to control file relations for each Minecraft upload:
+
+```powershell
+Dependencies = @(
+    @{
+        ProjectId = '988504' # Dye Depot
+        Slug = 'dye-depot'
+        Type = 'optionalDependency'
+        Versions = @('1.20.1', '1.21.1')
+    }
+)
+```
+
+Each dependency accepts:
+
+| Setting | Meaning |
+| --- | --- |
+| `ProjectId` | Optional positive 32-bit CurseForge project ID, configured as a string or number and sent as a JSON integer. |
+| `Slug` | Required related-project URL slug, including when `ProjectId` is supplied. |
+| `Type` | `optionalDependency` (default), `requiredDependency`, `incompatible`, `embeddedLibrary`, or `tool`. |
+| `Enabled` | Set to `$false` to disable the entry. Defaults to enabled. |
+| `Versions` / `ExcludeVersions` | Include or exclude specific Minecraft version IDs from the configured version matrix. |
+| `MinVersion` / `MaxVersion` | Inclusive bounds in version matrix order. |
+| `AfterVersion` / `BeforeVersion` | Exclusive bounds in version matrix order. |
+
+Without version selectors, the dependency applies to every uploaded Minecraft version. Selectors combine, and exclusions take precedence. These select the **pack's Minecraft version**, not a version of the dependency. CurseForge's documented upload relations do not support pinning dependency files or mod version ranges.
+
+Better Candles uses the example above: Dye Depot is optional because the pack works without the mod. The relation is included only on its 1.20.1 and 1.21.1 uploads. Dry runs print the selected relations, including an empty list when none match. When `Dependencies` is present, the uploader explicitly sends that version's relations (even if empty); when absent, it leaves relations unspecified, preserving the existing publishing behavior. Identical matching entries are deduplicated by project ID (or slug when no ID is provided); conflicting types for the same identifier fail before upload. Use the same identifier consistently across entries for a project.
+
+Dependency settings affect new uploads. Existing files and uploads skipped by local duplicate detection are not updated. See the [CurseForge Upload API](https://support.curseforge.com/support/solutions/articles/9000197321-curseforge-upload-api) for the relation format.
 
 Publishing requires a CurseForge API token. The token can come from `-PromptForToken`, the `CURSEFORGE_TOKEN` environment variable, or the ignored local state file at `config/curseforge.local.psd1`.
 

@@ -1,0 +1,133 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minecraft:block/alternative_ores/legacy_lighting/netherrack"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_1_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_1_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_1_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_1_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_2_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_2_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_2_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_2_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_3_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_3_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_3_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_3_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_4_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_4_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_4_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_4_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_5_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_5_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_5_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_5_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_6_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_6_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_6_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "rftoolsbase:block/alternative_ores/dimensionalshard_nether/layout_6_overlay",
+          "y": 270,
+          "uvlock": false
+        }
+      ]
+    }
+  ]
+}

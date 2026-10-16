@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/alternative_ores/crystal_layout_3",
+  "textures": {
+    "base": "deeperdarker:block/gloomslate",
+    "top": "#base",
+    "particle": "#base",
+    "crystal_a": "minecraft:block/alternative_ores/gold_crystal_a",
+    "crystal_b": "minecraft:block/alternative_ores/gold_crystal_b"
+  }
+}

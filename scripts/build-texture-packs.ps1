@@ -18,15 +18,19 @@ function Show-BuildProgress {
     param([int]$Id, [string]$Activity, [string]$Stage, [int]$Completed = -1, [int]$Total = 1)
     $percent = -1
     if ($Completed -ge 0) { $percent = [Math]::Min(100, [Math]::Max(0, [int][Math]::Floor(100 * $Completed / [Math]::Max(1, $Total)))) }
-    Write-Progress -Id $Id -Activity $Activity -Status $Stage -PercentComplete $percent
     # IDE output panes may not render PowerShell's interactive progress bar.
     if (-not (Get-Variable -Name BuildProgressLog -Scope Script -ErrorAction SilentlyContinue)) { $script:BuildProgressLog = @{} }
     $now = [DateTime]::UtcNow
     $previous = $script:BuildProgressLog[$Id]
+    $stageChanged = $null -eq $previous -or $previous.Activity -ne $Activity -or $previous.Stage -ne $Stage
+    if ($stageChanged -or ($now - $previous.UiTime).TotalMilliseconds -ge 200 -or ($Completed -ge 0 -and $Completed -ge $Total)) {
+        Write-Progress -Id $Id -Activity $Activity -Status $Stage -PercentComplete $percent
+        if (-not $stageChanged) { $previous.UiTime = $now }
+    }
     if ($null -eq $previous -or $previous.Activity -ne $Activity -or $previous.Stage -ne $Stage -or ($now - $previous.Time).TotalSeconds -ge 5) {
         if ($Completed -ge 0) { Write-Host "[$percent%] $Activity - $Stage ($Completed/$Total)" }
         else { Write-Host "$Activity - $Stage" }
-        $script:BuildProgressLog[$Id] = @{ Activity = $Activity; Stage = $Stage; Time = $now }
+        $script:BuildProgressLog[$Id] = @{ Activity = $Activity; Stage = $Stage; Time = $now; UiTime = $now }
     }
 }
 
@@ -61,17 +65,23 @@ function Get-TemporaryBuildRoot {
     return Join-Path -Path ([System.IO.Path]::GetTempPath()) -ChildPath 'artemis-texture-pack-builder'
 }
 
+function New-RelativePathBaseUri {
+    param([Parameter(Mandatory = $true)][string]$BasePath)
+    $baseResolved = (Resolve-Path -LiteralPath $BasePath).Path
+    return [System.Uri]::new(($baseResolved.TrimEnd('\') + '\'))
+}
+
 function Get-NormalizedRelativePath {
     param(
         [Parameter(Mandatory = $true)][string]$BasePath,
-        [Parameter(Mandatory = $true)][string]$FullPath
+        [Parameter(Mandatory = $true)][string]$FullPath,
+        [System.Uri]$BaseUri
     )
 
-    $baseResolved = (Resolve-Path -LiteralPath $BasePath).Path
+    if ($null -eq $BaseUri) { $BaseUri = New-RelativePathBaseUri -BasePath $BasePath }
     $fullResolved = (Resolve-Path -LiteralPath $FullPath).Path
 
-    $baseUri = New-Object System.Uri(($baseResolved.TrimEnd('\') + '\'))
-    $fullUri = New-Object System.Uri($fullResolved)
+    $fullUri = [System.Uri]::new($fullResolved)
     $relative = [System.Uri]::UnescapeDataString($baseUri.MakeRelativeUri($fullUri).ToString())
 
     return ($relative -replace '\\', '/').TrimStart('./')
@@ -622,12 +632,15 @@ function Get-PackCompatibilityRules {
             throw "$context must be a table."
         }
         $rawEntry = $Options.Compatibility[$modId]
+        if ($rawEntry.Contains('Name') -and ($rawEntry['Name'] -isnot [string] -or [string]::IsNullOrWhiteSpace($rawEntry['Name']))) {
+            throw "$context Name must be a non-empty text string."
+        }
         if ($rawEntry.Contains('Support') -and $rawEntry['Support'] -isnot [string]) {
             throw "$context Support must be a text string or here-string."
         }
         $entry = ConvertTo-Hashtable -InputObject $rawEntry
         foreach ($key in $entry.Keys) {
-            if ($key -notin @('Enabled', 'Paths', 'Versions', 'ExcludeVersions', 'MinVersion', 'MaxVersion', 'AfterVersion', 'BeforeVersion', 'Support')) {
+            if ($key -notin @('Enabled', 'Paths', 'Versions', 'ExcludeVersions', 'MinVersion', 'MaxVersion', 'AfterVersion', 'BeforeVersion', 'Support', 'Name')) {
                 throw "$context has an unknown option '$key'."
             }
         }
@@ -665,24 +678,24 @@ function Get-PackCompatibilityRules {
         if ($entry.ContainsKey('Versions') -and @($entry.Versions).Count -eq 0) { $include = $false }
         if ($entry.ContainsKey('Enabled') -and -not $entry.Enabled) { $include = $false }
         [pscustomobject]@{ ModId = [string]$modId; Paths = $paths; IncludeForVersion = [bool]$include;
+            Name = [string](Get-HashtableValueOrDefault -Table $entry -Key 'Name' -DefaultValue ([string]$modId))
             Support = [string](Get-HashtableValueOrDefault -Table $entry -Key 'Support' -DefaultValue '') }
     }
 }
 
-function Get-PackCompatibilitySupportText {
+function Get-PackCompatibilityText {
     param([object[]]$Rules = @())
-    $notes = @($Rules | Where-Object {
-        $_.IncludeForVersion -and -not [string]::IsNullOrWhiteSpace($_.Support)
-    } | Sort-Object ModId | ForEach-Object { $_.Support.Trim() })
-    if ($notes.Count -eq 0) { return '' }
-    return ($notes -join ([Environment]::NewLine + [Environment]::NewLine)) + [Environment]::NewLine
+    $names = @($Rules | Where-Object { $_.IncludeForVersion } | ForEach-Object { $_.Name.Trim() } | Sort-Object -Unique)
+    if ($names.Count -eq 0) { return '' }
+    return ($names -join [Environment]::NewLine) + [Environment]::NewLine
 }
 
 function New-InputFileWithReplacedSource {
     param(
         [Parameter(Mandatory = $true)]$InputFile,
         [Parameter(Mandatory = $true)][string]$NewSourcePath,
-        [Parameter(Mandatory = $true)][string]$PackRoot
+        [Parameter(Mandatory = $true)][string]$PackRoot,
+        [System.Uri]$BaseUri
     )
 
     $copy = [ordered]@{}
@@ -691,7 +704,7 @@ function New-InputFileWithReplacedSource {
     }
 
     $copy['SourcePath'] = $NewSourcePath
-    $copy['SourceRelativePath'] = Get-NormalizedRelativePath -BasePath $PackRoot -FullPath $NewSourcePath
+    $copy['SourceRelativePath'] = Get-NormalizedRelativePath -BasePath $PackRoot -FullPath $NewSourcePath -BaseUri $BaseUri
 
     return [pscustomobject]$copy
 }
@@ -700,10 +713,11 @@ function Get-PackSelectedVersions {
     param(
         [Parameter(Mandatory = $true)]$PackDirectory,
         [Parameter(Mandatory = $true)]$Config,
-        [Parameter(Mandatory = $true)][object[]]$GloballySelectedVersions
+        [Parameter(Mandatory = $true)][object[]]$GloballySelectedVersions,
+        [hashtable]$PackOptions
     )
 
-    $packOptions = Get-PackBuildOptions -PackDirectory $PackDirectory -Config $Config
+    if ($null -eq $PackOptions) { $PackOptions = Get-PackBuildOptions -PackDirectory $PackDirectory -Config $Config }
     if ($packOptions.Count -eq 0) {
         return @($GloballySelectedVersions)
     }
@@ -1059,18 +1073,75 @@ function Resolve-AutoAssetPath {
     throw "Unable to auto-sort '$FileName'. Multiple vanilla target paths match: $($candidates -join ', '). Place that file under the pack's assets/ folder with the exact intended relative path."
 }
 
+function New-PackPathRuleIndex {
+    param(
+        [AllowEmptyCollection()][object[]]$Rules = @(),
+        [Parameter(Mandatory = $true)][string]$ContextDescription,
+        [switch]$Variants
+    )
+
+    $exact = [System.Collections.Generic.Dictionary[string, object]]::new([StringComparer]::OrdinalIgnoreCase)
+    $prefixes = [System.Collections.Generic.Dictionary[string, object]]::new([StringComparer]::OrdinalIgnoreCase)
+    $ordinal = 0
+    foreach ($rawRule in $Rules) {
+        if ($null -eq $rawRule) { continue }
+        # Normalize once, rather than recursively copying each rule for every file.
+        $options = ConvertTo-Hashtable -InputObject $rawRule
+        $rulePath = [string](Get-HashtableValueOrDefault -Table $options -Key 'Path' -DefaultValue '')
+        if ([string]::IsNullOrWhiteSpace($rulePath)) { throw "$ContextDescription has an entry without a non-empty 'Path'." }
+        if ($Variants -and [string]::IsNullOrWhiteSpace([string](Get-HashtableValueOrDefault -Table $options -Key 'SourcePath' -DefaultValue ''))) {
+            throw "$ContextDescription Path '$rulePath' is missing a non-empty 'SourcePath'."
+        }
+        $entry = [pscustomobject]@{ Ordinal = $ordinal; Path = $rulePath; Options = $options; VersionMatches = $null }
+        $ordinal++
+        $table = if ($rulePath.EndsWith('/')) { $prefixes } else { $exact }
+        if (-not $table.ContainsKey($rulePath)) { $table[$rulePath] = New-Object System.Collections.Generic.List[object] }
+        $table[$rulePath].Add($entry)
+    }
+    return [pscustomobject]@{ Exact = $exact; Prefixes = $prefixes }
+}
+
+function Get-PackPathRuleMatches {
+    param(
+        [Parameter(Mandatory = $true)]$Index,
+        [Parameter(Mandatory = $true)][string[]]$Paths
+    )
+
+    $matches = @{}
+    foreach ($candidatePath in $Paths) {
+        if ($Index.Exact.ContainsKey($candidatePath)) {
+            foreach ($entry in $Index.Exact[$candidatePath]) { $matches[$entry.Ordinal] = $entry }
+        }
+        # Only ancestors can match a directory-prefix rule. Look them up directly
+        # instead of scanning every prefix in the configuration.
+        $slash = $candidatePath.IndexOf('/')
+        while ($slash -ge 0) {
+            $prefix = $candidatePath.Substring(0, $slash + 1)
+            if ($Index.Prefixes.ContainsKey($prefix)) {
+                foreach ($entry in $Index.Prefixes[$prefix]) { $matches[$entry.Ordinal] = $entry }
+            }
+            $slash = $candidatePath.IndexOf('/', $slash + 1)
+        }
+    }
+    # Keep declaration order and count separate declarations separately. The same
+    # entry matching both canonical and typed paths must only be applied once.
+    foreach ($ordinal in @($matches.Keys | Sort-Object)) { $matches[$ordinal] }
+}
+
 function Get-PackInputFiles {
     param(
         [Parameter(Mandatory = $true)]$PackDirectory,
         [Parameter(Mandatory = $true)]$Config,
-        [Parameter(Mandatory = $true)]$VersionConfig
+        [Parameter(Mandatory = $true)]$VersionConfig,
+        [hashtable]$PackOptions
     )
 
     $packRoot = $PackDirectory.FullName
+    $packBaseUri = New-RelativePathBaseUri -BasePath $packRoot
     $canonicalAssetsFolder = [string]$Config.CanonicalAssetsFolder
     $autoSortFolder = [string]$Config.AutoSortFolder
     $autoSortMappings = @($Config.AutoSortMappings)
-    $packOptions = Get-PackBuildOptions -PackDirectory $PackDirectory -Config $Config
+    if ($null -eq $PackOptions) { $PackOptions = Get-PackBuildOptions -PackDirectory $PackDirectory -Config $Config }
     $fileRules = @()
     $compatibilityRules = @(Get-PackCompatibilityRules -Options $packOptions -Config $Config -VersionConfig $VersionConfig -PackName $PackDirectory.Name)
     if ($packOptions.ContainsKey('FileRules') -and $packOptions.FileRules) {
@@ -1082,27 +1153,9 @@ function Get-PackInputFiles {
     }
     $versionOrder = Get-VersionOrderLookup -Config $Config
 
-    # Generated compatibility models can supply hundreds of exact replacements.
-    # Index those paths once instead of scanning the complete list for each file.
-    $exactVariants = @{}
-    $prefixVariants = New-Object System.Collections.Generic.List[hashtable]
-    foreach ($rawVariant in $fileVariants) {
-        if ($null -eq $rawVariant) { continue }
-        $variant = ConvertTo-Hashtable -InputObject $rawVariant
-        $variantPath = [string](Get-HashtableValueOrDefault -Table $variant -Key 'Path' -DefaultValue '')
-        $variantSourcePath = [string](Get-HashtableValueOrDefault -Table $variant -Key 'SourcePath' -DefaultValue '')
-        if ([string]::IsNullOrWhiteSpace($variantPath) -or [string]::IsNullOrWhiteSpace($variantSourcePath)) {
-            throw "Pack '$($PackDirectory.Name)' has a FileVariants entry without a non-empty Path or SourcePath."
-        }
-        if ($variantPath.EndsWith('/')) {
-            $prefixVariants.Add($variant)
-        } else {
-            if (-not $exactVariants.ContainsKey($variantPath)) {
-                $exactVariants[$variantPath] = New-Object System.Collections.Generic.List[hashtable]
-            }
-            $exactVariants[$variantPath].Add($variant)
-        }
-    }
+    $contextPrefix = "Pack '$($PackDirectory.Name)' inside $([string]$Config.PackBuildConfigFile)"
+    $ruleIndex = New-PackPathRuleIndex -Rules $fileRules -ContextDescription "$contextPrefix FileRules"
+    $variantIndex = New-PackPathRuleIndex -Rules $fileVariants -ContextDescription "$contextPrefix FileVariants" -Variants
     $inputFiles = New-Object System.Collections.Generic.List[object]
 
     $definitions = @(
@@ -1130,27 +1183,28 @@ function Get-PackInputFiles {
                     continue
                 }
 
+                $sourceRelative = Get-NormalizedRelativePath -BasePath $packRoot -FullPath $fullPath -BaseUri $packBaseUri
                 $inputFiles.Add([pscustomobject]@{
                     SourcePath = $fullPath
                     Kind = 'root'
                     VirtualPath = [string]$definition.VirtualRoot
                     HintPath = ''
-                    SourceRelativePath = Get-NormalizedRelativePath -BasePath $packRoot -FullPath $fullPath
-                    RulePaths = @(
-                        Get-NormalizedRelativePath -BasePath $packRoot -FullPath $fullPath
-                    )
+                    SourceRelativePath = $sourceRelative
+                    RulePaths = @($sourceRelative)
                     Priority = [int]$definition.Priority
                 })
             }
 
             'direct' {
+                $sourceBaseUri = New-RelativePathBaseUri -BasePath $fullPath
                 $files = Get-ChildItem -LiteralPath $fullPath -File -Recurse
                 foreach ($file in $files) {
                     if (Test-IgnoredSourceFile -Name $file.Name) {
                         continue
                     }
 
-                    $relative = Get-NormalizedRelativePath -BasePath $fullPath -FullPath $file.FullName
+                    $relative = Get-NormalizedRelativePath -BasePath $fullPath -FullPath $file.FullName -BaseUri $sourceBaseUri
+                    $sourceRelative = Get-NormalizedRelativePath -BasePath $packRoot -FullPath $file.FullName -BaseUri $packBaseUri
                     $virtualPath = if (-not [string]$definition.VirtualRoot) {
                         $relative
                     }
@@ -1166,9 +1220,9 @@ function Get-PackInputFiles {
                         Kind = 'direct'
                         VirtualPath = $virtualPath
                         HintPath = ''
-                        SourceRelativePath = Get-NormalizedRelativePath -BasePath $packRoot -FullPath $file.FullName
+                        SourceRelativePath = $sourceRelative
                         RulePaths = @(
-                            Get-NormalizedRelativePath -BasePath $packRoot -FullPath $file.FullName
+                            $sourceRelative
                             $relative
                         )
                         Priority = [int]$definition.Priority
@@ -1187,13 +1241,15 @@ function Get-PackInputFiles {
                         continue
                     }
 
+                    $mappedBaseUri = New-RelativePathBaseUri -BasePath $mappedFolder
                     $files = Get-ChildItem -LiteralPath $mappedFolder -File -Recurse
                     foreach ($file in $files) {
                         if (Test-IgnoredSourceFile -Name $file.Name) {
                             continue
                         }
 
-                        $relative = Get-NormalizedRelativePath -BasePath $mappedFolder -FullPath $file.FullName
+                        $relative = Get-NormalizedRelativePath -BasePath $mappedFolder -FullPath $file.FullName -BaseUri $mappedBaseUri
+                        $sourceRelative = Get-NormalizedRelativePath -BasePath $packRoot -FullPath $file.FullName -BaseUri $packBaseUri
                         $hintPath = [System.IO.Path]::GetDirectoryName($relative)
                         if ($hintPath) {
                             $hintPath = $hintPath -replace '\\', '/'
@@ -1209,9 +1265,9 @@ function Get-PackInputFiles {
                             HintPath = $hintPath
                             AssetPrefix = [string]$mapping.AssetPrefix
                             CategoryFolder = [string]$mapping.Folder
-                            SourceRelativePath = Get-NormalizedRelativePath -BasePath $packRoot -FullPath $file.FullName
+                            SourceRelativePath = $sourceRelative
                             RulePaths = @(
-                                Get-NormalizedRelativePath -BasePath $packRoot -FullPath $file.FullName
+                                $sourceRelative
                                 (([string]$mapping.Folder).TrimEnd('/') + '/' + $relative)
                             )
                             Priority = [int]$definition.Priority
@@ -1222,7 +1278,6 @@ function Get-PackInputFiles {
         }
     }
 
-    $contextPrefix = "Pack '$($PackDirectory.Name)' inside $([string]$Config.PackBuildConfigFile)"
     $selectedInputFiles = New-Object System.Collections.Generic.List[object]
 
     foreach ($inputFile in @($inputFiles | Sort-Object Priority, SourcePath)) {
@@ -1231,47 +1286,11 @@ function Get-PackInputFiles {
         if ($fileVariants.Count -gt 0) {
             $matchingVariants = New-Object System.Collections.Generic.List[hashtable]
 
-            $variantCandidates = New-Object System.Collections.Generic.List[hashtable]
-            foreach ($variant in $prefixVariants) { $variantCandidates.Add($variant) }
-            foreach ($candidatePath in @($inputFile.RulePaths)) {
-                if ($exactVariants.ContainsKey([string]$candidatePath)) {
-                    foreach ($variant in $exactVariants[[string]$candidatePath]) {
-                        if (-not $variantCandidates.Contains($variant)) { $variantCandidates.Add($variant) }
-                    }
+            foreach ($entry in @(Get-PackPathRuleMatches -Index $variantIndex -Paths $inputFile.RulePaths)) {
+                if ($null -eq $entry.VersionMatches) {
+                    $entry.VersionMatches = Test-VersionSelectorMatch -Options $entry.Options -VersionConfig $VersionConfig -VersionOrder $versionOrder -ContextDescription "$contextPrefix FileVariants Path '$($entry.Path)'"
                 }
-            }
-            foreach ($rawVariant in $variantCandidates) {
-                if ($null -eq $rawVariant) {
-                    continue
-                }
-
-                $variant = ConvertTo-Hashtable -InputObject $rawVariant
-                $variantPath = [string](Get-HashtableValueOrDefault -Table $variant -Key 'Path' -DefaultValue '')
-                $variantSourcePath = [string](Get-HashtableValueOrDefault -Table $variant -Key 'SourcePath' -DefaultValue '')
-                if ([string]::IsNullOrWhiteSpace($variantPath)) {
-                    throw "$contextPrefix has a FileVariants entry without a non-empty 'Path'."
-                }
-
-                if ([string]::IsNullOrWhiteSpace($variantSourcePath)) {
-                    throw "$contextPrefix FileVariants Path '$variantPath' is missing a non-empty 'SourcePath'."
-                }
-
-                $isPathMatch = $false
-                foreach ($candidatePath in @($inputFile.RulePaths)) {
-                    if (Test-RuleMatch -Path ([string]$candidatePath) -Rule $variantPath) {
-                        $isPathMatch = $true
-                        break
-                    }
-                }
-
-                if (-not $isPathMatch) {
-                    continue
-                }
-
-                $contextDescription = "$contextPrefix FileVariants Path '$variantPath'"
-                if (Test-VersionSelectorMatch -Options $variant -VersionConfig $VersionConfig -VersionOrder $versionOrder -ContextDescription $contextDescription) {
-                    $matchingVariants.Add($variant)
-                }
+                if ($entry.VersionMatches) { $matchingVariants.Add($entry.Options) }
             }
 
             if ($matchingVariants.Count -gt 1) {
@@ -1289,7 +1308,7 @@ function Get-PackInputFiles {
                     throw "$contextPrefix FileVariants Path '$([string]$variant.Path)' points to missing SourcePath '$([string]$variant.SourcePath)'."
                 }
 
-                $selectedInputFile = New-InputFileWithReplacedSource -InputFile $inputFile -NewSourcePath $variantSourceFullPath -PackRoot $packRoot
+                $selectedInputFile = New-InputFileWithReplacedSource -InputFile $inputFile -NewSourcePath $variantSourceFullPath -PackRoot $packRoot -BaseUri $packBaseUri
             }
         }
 
@@ -1316,26 +1335,7 @@ function Get-PackInputFiles {
             continue
         }
 
-        $matchingRules = New-Object System.Collections.Generic.List[hashtable]
-
-        foreach ($rawRule in $fileRules) {
-            if ($null -eq $rawRule) {
-                continue
-            }
-
-            $rule = ConvertTo-Hashtable -InputObject $rawRule
-            $rulePath = [string](Get-HashtableValueOrDefault -Table $rule -Key 'Path' -DefaultValue '')
-            if ([string]::IsNullOrWhiteSpace($rulePath)) {
-                throw "$contextPrefix has a FileRules entry without a non-empty 'Path'."
-            }
-
-            foreach ($candidatePath in @($selectedInputFile.RulePaths)) {
-                if (Test-RuleMatch -Path ([string]$candidatePath) -Rule $rulePath) {
-                    $matchingRules.Add($rule)
-                    break
-                }
-            }
-        }
+        $matchingRules = @(Get-PackPathRuleMatches -Index $ruleIndex -Paths $selectedInputFile.RulePaths)
 
         if ($matchingRules.Count -eq 0) {
             $selectedInputFiles.Add($selectedInputFile)
@@ -1343,10 +1343,11 @@ function Get-PackInputFiles {
         }
 
         $includeForVersion = $false
-        foreach ($rule in $matchingRules) {
-            $rulePath = [string]$rule.Path
-            $contextDescription = "$contextPrefix FileRules Path '$rulePath'"
-            if (Test-VersionSelectorMatch -Options $rule -VersionConfig $VersionConfig -VersionOrder $versionOrder -ContextDescription $contextDescription) {
+        foreach ($entry in $matchingRules) {
+            if ($null -eq $entry.VersionMatches) {
+                $entry.VersionMatches = Test-VersionSelectorMatch -Options $entry.Options -VersionConfig $VersionConfig -VersionOrder $versionOrder -ContextDescription "$contextPrefix FileRules Path '$($entry.Path)'"
+            }
+            if ($entry.VersionMatches) {
                 $includeForVersion = $true
                 break
             }
@@ -1363,10 +1364,14 @@ function Get-PackInputFiles {
 function Assert-ValidJsonFile {
     param([Parameter(Mandatory = $true)][string]$Path)
 
-    $raw = Get-Content -LiteralPath $Path -Raw -Encoding UTF8
-    Add-Type -AssemblyName System.Web.Extensions
-    $serializer = New-Object System.Web.Script.Serialization.JavaScriptSerializer
-    $null = $serializer.DeserializeObject($raw)
+    if (-not (Get-Variable -Name BuildJsonValidator -Scope Script -ErrorAction SilentlyContinue)) {
+        Add-Type -AssemblyName System.Web.Extensions
+        $script:BuildJsonValidator = New-Object System.Web.Script.Serialization.JavaScriptSerializer
+    }
+    $raw = [System.IO.File]::ReadAllText((Resolve-Path -LiteralPath $Path).ProviderPath, [System.Text.Encoding]::UTF8)
+    # Get-Content -Raw returns null for an empty file; preserve its rejection.
+    if ($raw.Length -eq 0) { throw [System.ArgumentNullException]::new('input') }
+    $null = $script:BuildJsonValidator.DeserializeObject($raw)
 }
 
 function New-ZipFromDirectory {
@@ -1383,11 +1388,12 @@ function New-ZipFromDirectory {
     Add-Type -AssemblyName System.IO.Compression.FileSystem
     $archive = [System.IO.Compression.ZipFile]::Open($DestinationPath, [System.IO.Compression.ZipArchiveMode]::Create)
     try {
+        $zipBaseUri = New-RelativePathBaseUri -BasePath $SourceDirectory
         $zipFiles = @(Get-ChildItem -LiteralPath $SourceDirectory -File -Recurse)
         $zipIndex = 0
         foreach ($file in $zipFiles) {
             Show-BuildProgress -Id 3 -Activity 'Creating ZIP' -Stage ([IO.Path]::GetFileName($DestinationPath)) -Completed $zipIndex -Total $zipFiles.Count
-            $entryPath = Get-NormalizedRelativePath -BasePath $SourceDirectory -FullPath $file.FullName
+            $entryPath = Get-NormalizedRelativePath -BasePath $SourceDirectory -FullPath $file.FullName -BaseUri $zipBaseUri
             $entry = $archive.CreateEntry($entryPath, [System.IO.Compression.CompressionLevel]::Optimal)
             $entryStream = $entry.Open()
             try {
@@ -1416,7 +1422,8 @@ function Build-PackVersion {
         [Parameter(Mandatory = $true)][string]$RepoRoot,
         [Parameter(Mandatory = $true)]$Config,
         [Parameter(Mandatory = $true)]$PackDirectory,
-        [Parameter(Mandatory = $true)]$VersionConfig
+        [Parameter(Mandatory = $true)]$VersionConfig,
+        [hashtable]$PackOptions
     )
 
     if (-not $VersionConfig.Enabled) {
@@ -1464,7 +1471,8 @@ function Build-PackVersion {
     try {
         $activity = "$($PackDirectory.Name) / Minecraft $($VersionConfig.Id)"
         Show-BuildProgress -Id 2 -Activity $activity -Stage 'Selecting source files'
-        $inputFiles = Get-PackInputFiles -PackDirectory $PackDirectory -Config $Config -VersionConfig $VersionConfig
+        if ($null -eq $PackOptions) { $PackOptions = Get-PackBuildOptions -PackDirectory $PackDirectory -Config $Config }
+        $inputFiles = Get-PackInputFiles -PackDirectory $PackDirectory -Config $Config -VersionConfig $VersionConfig -PackOptions $PackOptions
         $warnings = New-Object System.Collections.Generic.List[string]
         $destinations = @{}
         $catalog = $null
@@ -1548,15 +1556,14 @@ function Build-PackVersion {
                 throw "Source pack.mcmeta must contain a JSON object: $sourceMcmeta"
             }
         }
-        $packOptions = Get-PackBuildOptions -PackDirectory $PackDirectory -Config $Config
         $compatibilityRules = @(Get-PackCompatibilityRules -Options $packOptions -Config $Config -VersionConfig $VersionConfig -PackName $PackDirectory.Name)
-        $supportText = Get-PackCompatibilitySupportText -Rules $compatibilityRules
+        $supportText = Get-PackCompatibilityText -Rules $compatibilityRules
         if ($supportText) {
-            if ($destinations.ContainsKey('support.txt')) {
-                throw "Pack '$($PackDirectory.Name)' supplies support.txt and Compatibility.Support. Remove the source support.txt to generate it from compatibility entries."
+            if ($destinations.ContainsKey('compatibility.txt')) {
+                throw "Pack '$($PackDirectory.Name)' supplies compatibility.txt and Compatibility. Remove the source compatibility.txt to generate it from compatibility entries."
             }
-            [IO.File]::WriteAllText((Join-Path $outputFolder 'support.txt'), $supportText, (New-Object System.Text.UTF8Encoding($false)))
-            $destinations['support.txt'] = @{ SourcePath = '<generated compatibility support>'; Priority = 30 }
+            [IO.File]::WriteAllText((Join-Path $outputFolder 'compatibility.txt'), $supportText, (New-Object System.Text.UTF8Encoding($false)))
+            $destinations['compatibility.txt'] = @{ SourcePath = '<generated compatibility support>'; Priority = 30 }
         }
         if ($packOptions.ContainsKey('RootMetadata')) {
             $customMetadata = Merge-Hashtable -Base $customMetadata -Overlay (ConvertTo-Hashtable -InputObject $packOptions.RootMetadata)
@@ -1742,9 +1749,10 @@ $failures = New-Object System.Collections.Generic.List[string]
 
 $buildJobs = @(
 foreach ($packDirectory in $packDirectories) {
-    $packSelectedVersions = Get-PackSelectedVersions -PackDirectory $packDirectory -Config $config -GloballySelectedVersions $selectedVersions
+    $packOptions = Get-PackBuildOptions -PackDirectory $packDirectory -Config $config
+    $packSelectedVersions = Get-PackSelectedVersions -PackDirectory $packDirectory -Config $config -GloballySelectedVersions $selectedVersions -PackOptions $packOptions
     foreach ($versionConfig in $packSelectedVersions) {
-        @{ PackDirectory = $packDirectory; VersionConfig = $versionConfig }
+        @{ PackDirectory = $packDirectory; VersionConfig = $versionConfig; PackOptions = $packOptions }
     }
 }
 )
@@ -1755,7 +1763,7 @@ try {
         $versionConfig = $job.VersionConfig
         Show-BuildProgress -Id 0 -Activity 'Building resource packs' -Stage "$($packDirectory.Name) / Minecraft $($versionConfig.Id)" -Completed $jobIndex -Total $buildJobs.Count
         try {
-            $result = Build-PackVersion -RepoRoot $repoRoot -Config $config -PackDirectory $packDirectory -VersionConfig $versionConfig
+            $result = Build-PackVersion -RepoRoot $repoRoot -Config $config -PackDirectory $packDirectory -VersionConfig $versionConfig -PackOptions $job.PackOptions
             $results += ,$result
             if ($result.Status -eq 'success') {
                 Write-Output "Built $($result.PackName) $($result.VersionId) -> $($result.ZipPath)"

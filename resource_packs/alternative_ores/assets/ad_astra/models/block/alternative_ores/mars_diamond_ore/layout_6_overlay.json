@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/alternative_ores/crystal_layout_6_overlay",
+  "textures": {
+    "base": "ad_astra:block/mars_stone",
+    "top": "#base",
+    "particle": "#base",
+    "crystal_a": "minecraft:block/alternative_ores/diamond_crystal_a",
+    "crystal_b": "minecraft:block/alternative_ores/diamond_crystal_b"
+  }
+}

@@ -79,6 +79,7 @@ try {
     Set-Content -LiteralPath (Join-Path $fixture 'low/CREDITS.txt') -Value 'Original texture credits'
     Set-Content -LiteralPath (Join-Path $fixture 'low/pack.mcmeta') -Value '{"pack":{"author":"Fixture Artist","credits":["Original modeller","Texture contributor"]}}'
     Set-Content -LiteralPath (Join-Path $fixture 'low/LICENSE.txt') -Value 'Original texture license'
+    Set-Content -LiteralPath (Join-Path $fixture 'low/compatibility.txt') -Value 'Demo Mod'
     $noticeZip = Join-Path $fixture 'notices.zip'
     New-ZipFromDirectory -SourceDirectory (Join-Path $fixture 'low') -DestinationPath $noticeZip
     $noticeComponent = Read-CombinedComponent -ZipPath $noticeZip -Entry $low.Entry -Definition @{ Exclude = @() } -Root (Join-Path $fixture 'notice-input')
@@ -94,6 +95,7 @@ try {
         if ($release -ne '9.0.0') { Set-Content -LiteralPath (Join-Path $releaseRoot 'low.zip') -Value 'archived ZIP placeholder' }
     }
     $documentationVersions = Copy-CombinedPackDocumentation -RepoRoot $fixture -DefinitionDirectory $ownDocs -Destination $documentOutput -Components @{ low = $noticeComponent; no_archive = @{ Notices = @{} } } -MinecraftVersion 'fixture' -Description 'A player-friendly pack description.'
+    if ((Get-Content (Join-Path $documentOutput 'compatibility.txt') -Raw).Trim() -cne 'Demo Mod') { throw 'Component compatibility list was lost.' }
     if ($documentationVersions.low -ne '1.10.0' -or $documentationVersions.no_archive -ne 'unreleased') { throw 'Latest archived release selection failed.' }
     if ((Get-FileHash (Join-Path $fixture 'LICENSE')).Hash -ne (Get-FileHash (Join-Path $documentOutput 'license.txt')).Hash) { throw 'Repository license was not copied verbatim.' }
     $combinedCredits = Get-Content (Join-Path $documentOutput 'credits.txt') -Raw
@@ -115,7 +117,7 @@ try {
     New-ZipFromDirectory -SourceDirectory $documentOutput -DestinationPath $documentZip
     $documentArchive = [IO.Compression.ZipFile]::OpenRead($documentZip)
     try {
-        foreach ($path in @('credits.txt', 'readme.txt', 'license.txt', 'licenses/low.txt')) { if (-not $documentArchive.GetEntry($path)) { throw "Missing documentation ZIP entry: $path" } }
+        foreach ($path in @('credits.txt', 'readme.txt', 'license.txt', 'licenses/low.txt', 'compatibility.txt')) { if (-not $documentArchive.GetEntry($path)) { throw "Missing documentation ZIP entry: $path" } }
         if ($documentArchive.GetEntry('credits/low/CREDITS.txt')) { throw 'Credits were duplicated into separate component files.' }
     }
     finally { $documentArchive.Dispose() }

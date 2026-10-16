@@ -111,7 +111,30 @@ try {
     if (-not (Test-CombinedPath 'assets/minecraft/models/block/carpets.json' $selective $definition)) { throw 'Directory inclusion ignored.' }
     if (Test-CombinedPath 'assets/minecraft/textures/block/test.png' $selective $definition) { throw 'Include allow-list ignored.' }
     if (Test-CombinedPath $conflictPath @{ Include = @() } $definition) { throw 'Empty Include was ignored.' }
-    Write-Output 'Passed archive release/target selection, legacy names, collision copies, missing-archive fallback selection, archived JSON/required-output validation, extract-once equivalence, priorities, exclusions, metadata isolation, conflicts, and definition validation.'
+    # Archived components must not hide newly synchronized compatibility assets.
+    $compatRoot = Join-Path $fixture 'compatibility-source'
+    Ensure-Directory (Join-Path $compatRoot 'assets/demo/models/block')
+    $compatModel = Join-Path $compatRoot 'assets/demo/models/block/ore.json'
+    Set-Content $compatModel '{"textures":{"all":"demo:block/ore"}}'
+    Set-Content (Join-Path $compatRoot 'compatibility.txt') 'demo'
+    $compatConfig = @{ CanonicalAssetsFolder = 'assets'; AutoSortFolder = 'drop'; AutoSortMappings = @(); PackBuildConfigFile = 'pack.build.psd1'; Versions = @(@{ Id = '1.17' }, @{ Id = '1.18' }) }
+    $compatOptions = @{ Compatibility = @{ demo = @{ Versions = @('1.17'); Support = 'Includes demo ores.' } } }
+    $compatArchive = Join-Path $fixture 'compatibility.zip'
+    New-ZipFromDirectory $compatRoot $compatArchive
+    $compatDirectory = Get-Item $compatRoot
+    if (-not (Test-CombinedArchivedCompatibility $compatArchive $compatDirectory $compatConfig @{ Id = '1.17' } $compatOptions)) { throw 'Matching archived compatibility was not reused.' }
+    if (Test-CombinedArchivedCompatibility $compatArchive $compatDirectory $compatConfig @{ Id = '1.18' } $compatOptions) { throw 'Incompatible archived mod files were accepted.' }
+    Set-Content $compatModel '{"textures":{"all":"demo:block/new_ore"}}'
+    if (Test-CombinedArchivedCompatibility $compatArchive $compatDirectory $compatConfig @{ Id = '1.17' } $compatOptions) { throw 'Stale archived mod assets were accepted.' }
+    New-ZipFromDirectory $compatRoot $compatArchive
+    Set-Content (Join-Path $compatRoot 'assets/demo/models/block/new_ore.json') '{}'
+    if (Test-CombinedArchivedCompatibility $compatArchive $compatDirectory $compatConfig @{ Id = '1.17' } $compatOptions) { throw 'Archive missing newly compatible assets was accepted.' }
+    Remove-Item (Join-Path $compatRoot 'assets/demo/models/block/new_ore.json')
+    Set-Content (Join-Path $compatRoot 'compatibility.txt') 'Old support notes'
+    New-ZipFromDirectory $compatRoot $compatArchive
+    if (Test-CombinedArchivedCompatibility $compatArchive $compatDirectory $compatConfig @{ Id = '1.17' } $compatOptions) { throw 'Stale archived support notes were accepted.' }
+    if (-not (Test-CombinedArchivedCompatibility $compatArchive $compatDirectory $compatConfig @{ Id = '1.17' } @{})) { throw 'Ordinary archive reuse changed.' }
+    Write-Output 'Passed archive selection/validation, merge conflicts, exclusions, metadata isolation, and detection of stale/missing/incompatible archived mod assets and support notes.'
 }
 finally {
     $resolved = [IO.Path]::GetFullPath($fixture)

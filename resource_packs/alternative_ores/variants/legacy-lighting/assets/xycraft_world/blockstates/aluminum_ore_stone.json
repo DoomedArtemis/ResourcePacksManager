@@ -1,0 +1,133 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minecraft:block/alternative_ores/legacy_lighting/stone"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_1_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_1_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_1_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_1_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_2_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_2_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_2_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_2_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_3_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_3_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_3_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_3_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_4_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_4_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_4_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_4_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_5_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_5_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_5_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_5_overlay",
+          "y": 270,
+          "uvlock": false
+        },
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_6_overlay",
+          "y": 0,
+          "uvlock": false
+        },
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_6_overlay",
+          "y": 90,
+          "uvlock": false
+        },
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_6_overlay",
+          "y": 180,
+          "uvlock": false
+        },
+        {
+          "model": "xycraft_world:block/alternative_ores/aluminum_ore_stone/layout_6_overlay",
+          "y": 270,
+          "uvlock": false
+        }
+      ]
+    }
+  ]
+}
