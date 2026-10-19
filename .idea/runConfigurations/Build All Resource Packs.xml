@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Build All Texture Packs" type="ShConfigurationType">
+  <configuration default="false" name="Build All Resource Packs" type="ShConfigurationType">
     <option name="SCRIPT_TEXT" value="powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File &quot;$PROJECT_DIR$/scripts/build-texture-packs.ps1&quot; -PromptForVersion" />
     <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
     <option name="SCRIPT_PATH" value="" />

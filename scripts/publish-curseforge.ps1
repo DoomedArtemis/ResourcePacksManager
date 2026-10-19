@@ -360,18 +360,18 @@ function Read-RequestedPackNames {
 
     $availablePacks = @(Get-PackDirectories -RepoRoot $RepoRoot -Config $Config -RequestedPackNames @() | Select-Object -ExpandProperty Name)
     if ($availablePacks.Count -eq 0) {
-        throw 'No texture packs are available to select.'
+        throw 'No resource packs are available to select.'
     }
 
-    Write-Host 'Available texture packs:'
+    Write-Host 'Available resource packs:'
     foreach ($packName in $availablePacks) {
         Write-Host "  - $packName"
     }
     Write-Host ''
 
-    $inputValue = Read-Host 'Enter texture pack name(s) to publish (comma-separated)'
+    $inputValue = Read-Host 'Enter resource pack name(s) to publish (comma-separated)'
     if ([string]::IsNullOrWhiteSpace($inputValue)) {
-        throw 'No texture pack names entered.'
+        throw 'No resource pack names entered.'
     }
 
     return @(

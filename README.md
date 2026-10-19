@@ -686,7 +686,7 @@ Without pack or version arguments, the builder selects all packs (including Arte
 
 Both `-Version` and interactive version selection accept `all`, a single version, an inclusive range such as `<start>..<end>` or `<start> to <end>`, and comma-separated mixes. Ranges follow the configured version matrix order; each pack's version filters still apply. Quote command-line ranges and mixes containing spaces.
 
-`Build Selected Texture Packs` uses this same version selection after you enter the pack names. For example, select `example_pack`, then enter `1.21.4..26.3` to build every configured version in that inclusive range, or `1.21.4, 1.21.11 to 26.3` to mix individual versions and ranges.
+`Build Selected Resource Packs` uses this same version selection after you enter the pack names. For example, select `example_pack`, then enter `1.21.4..26.3` to build every configured version in that inclusive range, or `1.21.4, 1.21.11 to 26.3` to mix individual versions and ranges.
 The builder also prompts for versions when run with just `-PromptForPack`, unless `-Version` is supplied or you are only listing packs with `-ListPacks`.
 
 All build and publishing run configurations prompt for versions. Enter `all` for every enabled supported version, or choose individual versions and ranges. Selected-pack configurations also ask for pack names.
@@ -709,13 +709,13 @@ Shared IntelliJ run configurations are stored in `.idea/runConfigurations/` so I
 
 | Build configuration | Pack selection | Version selection |
 | --- | --- | --- |
-| `Build All Texture Packs` | All packs | Prompts for versions, ranges, or `all` |
-| `Build Selected Texture Packs` | Prompts for pack names | Prompts for versions, ranges, or `all` |
+| `Build All Resource Packs` | All packs | Prompts for versions, ranges, or `all` |
+| `Build Selected Resource Packs` | Prompts for pack names | Prompts for versions, ranges, or `all` |
 
 Other shared configurations:
 
 - `Build Artemis Enhanced Visuals`
-- `Create New Texture Pack`
+- `Create New Resource Pack`
 - `Archive Pack`
 - `Dry Run Modrinth Publish All`
 - `Dry Run Modrinth Publish Selected`
