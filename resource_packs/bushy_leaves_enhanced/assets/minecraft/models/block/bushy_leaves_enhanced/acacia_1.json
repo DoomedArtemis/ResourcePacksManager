@@ -1,0 +1,6 @@
+{
+  "parent": "bushy_leaves_enhanced:block/airy_1",
+  "textures": {
+    "all": "minecraft:block/acacia_leaves"
+  }
+}

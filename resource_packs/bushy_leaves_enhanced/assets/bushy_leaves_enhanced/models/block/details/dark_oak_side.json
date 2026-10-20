@@ -1,0 +1,99 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "detail": "bushy_leaves_enhanced:block/details/apple",
+    "particle": "minecraft:block/dark_oak_leaves"
+  },
+  "elements": [
+    {
+      "from": [
+        6,
+        2,
+        0.25
+      ],
+      "to": [
+        11,
+        7,
+        0.25
+      ],
+      "shade": false,
+      "rotation": {
+        "origin": [
+          8.5,
+          7,
+          0.25
+        ],
+        "axis": "x",
+        "angle": 22.5,
+        "rescale": false
+      },
+      "faces": {
+        "north": {
+          "texture": "#detail",
+          "uv": [
+            5,
+            0,
+            10,
+            5
+          ],
+          "cullface": "north"
+        },
+        "south": {
+          "texture": "#detail",
+          "uv": [
+            10,
+            0,
+            5,
+            5
+          ],
+          "cullface": "north"
+        }
+      }
+    },
+    {
+      "from": [
+        8.5,
+        2,
+        -2.25
+      ],
+      "to": [
+        8.5,
+        7,
+        2.75
+      ],
+      "shade": false,
+      "rotation": {
+        "origin": [
+          8.5,
+          7,
+          0.25
+        ],
+        "axis": "x",
+        "angle": 22.5,
+        "rescale": false
+      },
+      "faces": {
+        "west": {
+          "texture": "#detail",
+          "uv": [
+            5,
+            0,
+            10,
+            5
+          ],
+          "cullface": "north"
+        },
+        "east": {
+          "texture": "#detail",
+          "uv": [
+            10,
+            0,
+            5,
+            5
+          ],
+          "cullface": "north"
+        }
+      }
+    }
+  ]
+}

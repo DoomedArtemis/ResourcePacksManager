@@ -1,0 +1,6 @@
+{
+  "parent": "bushy_leaves_enhanced:block/blossom_0_untinted",
+  "textures": {
+    "all": "minecraft:block/azalea_leaves"
+  }
+}

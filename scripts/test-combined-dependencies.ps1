@@ -4,6 +4,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'combined-pack-support.ps1')
 . (Join-Path $PSScriptRoot 'combined-pack-dependencies.ps1')
+. (Join-Path $PSScriptRoot 'combined-pack-compatibility.ps1')
 foreach ($scriptName in @('build-texture-packs.ps1', 'build-combined-pack.ps1')) {
     $tokens = $null; $errors = $null
     $ast = [Management.Automation.Language.Parser]::ParseFile((Join-Path $PSScriptRoot $scriptName), [ref]$tokens, [ref]$errors)
@@ -47,6 +48,32 @@ $temporaryRoot = [IO.Path]::GetFullPath([IO.Path]::GetTempPath())
 $fixture = Join-Path $temporaryRoot ('combined-dependencies-test-' + [Guid]::NewGuid().ToString('N'))
 Ensure-Directory $fixture
 try {
+    $compatDefinitionRoot = Join-Path $fixture 'compatibility-definition'
+    $compatAssets = Join-Path $compatDefinitionRoot 'compatibility/foliage+flowers/assets/demo/models/block'
+    Ensure-Directory $compatAssets
+    Set-Content -LiteralPath (Join-Path $compatAssets 'combined.json') '{"parent":"minecraft:block/block"}'
+    $compatOutput = Join-Path $fixture 'compatibility-output'
+    $compatOwners = @{}
+    $compatComponents = @{
+        foliage = @{ Entry = @{ Priority = 5 }; Files = @{}; Included = @{} }
+        flowers = @{ Entry = @{ Priority = 10 }; Files = @{}; Included = @{} }
+    }
+    $compatArguments = @{ Components = $compatComponents; Destination = $compatOutput; Owners = $compatOwners; DefinitionDirectory = $compatDefinitionRoot; Definition = @{ Exclude = @() } }
+    Merge-CombinedCompatibilityAssets @compatArguments
+    $compatPath = 'assets/demo/models/block/combined.json'
+    if ($compatOwners[$compatPath].Pack -ne 'flowers' -or -not $compatComponents.flowers.Included.ContainsKey($compatPath)) { throw 'Combined compatibility assets were not registered for dependency checking.' }
+    $compatOwners.Clear()
+    $compatComponents.Remove('flowers')
+    Merge-CombinedCompatibilityAssets @compatArguments
+    if ($compatOwners.Count) { throw 'Compatibility assets applied without all required packs.' }
+    $compatComponents.flowers = @{ Entry = @{ Priority = 10 }; Files = @{}; Included = @{} }
+    $compatArguments.Definition.Exclude = @($compatPath)
+    Merge-CombinedCompatibilityAssets @compatArguments
+    if ($compatOwners.Count) { throw 'Compatibility assets ignored combined exclusions.' }
+    $compatArguments.Definition.Exclude = @()
+    $compatOwners[$compatPath] = @{ Pack = 'higher'; Priority = 20 }
+    Merge-CombinedCompatibilityAssets @compatArguments
+    if ($compatOwners[$compatPath].Pack -ne 'higher') { throw 'Compatibility assets replaced a higher priority pack.' }
     $dependencyCache = Join-Path $fixture 'vanilla-cache/dependency-data'
     Ensure-Directory $dependencyCache
     $cachedFixture = @{ Version = '1.17'; Paths = @{ 'assets/minecraft/blockstates/test.json' = $true }; JsonAssets = @{ 'assets/minecraft/blockstates/test.json' = '{"variants":{"":{"model":"minecraft:block/test"}}}' } }

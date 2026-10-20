@@ -1,0 +1,232 @@
+{
+  "multipart": [
+    {
+      "apply": [
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/jungle_0",
+          "y": 0,
+          "uvlock": false,
+          "weight": 2
+        },
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/jungle_0",
+          "y": 90,
+          "uvlock": false,
+          "weight": 2
+        },
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/jungle_0",
+          "y": 180,
+          "uvlock": false,
+          "weight": 2
+        },
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/jungle_0",
+          "y": 270,
+          "uvlock": false,
+          "weight": 2
+        },
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/jungle_1",
+          "y": 0,
+          "uvlock": false,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/jungle_1",
+          "y": 90,
+          "uvlock": false,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/jungle_1",
+          "y": 180,
+          "uvlock": false,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/jungle_1",
+          "y": 270,
+          "uvlock": false,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/jungle_2",
+          "y": 0,
+          "uvlock": false,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/jungle_2",
+          "y": 90,
+          "uvlock": false,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/jungle_2",
+          "y": 180,
+          "uvlock": false,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/jungle_2",
+          "y": 270,
+          "uvlock": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "apply": [
+        {
+          "model": "bushy_leaves_enhanced:block/details/none",
+          "weight": 504
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_underside",
+          "y": 0,
+          "uvlock": false,
+          "weight": 3
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_underside",
+          "y": 90,
+          "uvlock": false,
+          "weight": 3
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_underside",
+          "y": 180,
+          "uvlock": false,
+          "weight": 3
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_underside",
+          "y": 270,
+          "uvlock": false,
+          "weight": 3
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_side",
+          "y": 0,
+          "uvlock": false,
+          "weight": 3
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_side",
+          "y": 90,
+          "uvlock": false,
+          "weight": 3
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_side",
+          "y": 180,
+          "uvlock": false,
+          "weight": 3
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_side",
+          "y": 270,
+          "uvlock": false,
+          "weight": 3
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_vine_short_underside",
+          "y": 0,
+          "uvlock": false,
+          "weight": 4
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_vine_short_underside",
+          "y": 90,
+          "uvlock": false,
+          "weight": 4
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_vine_short_underside",
+          "y": 180,
+          "uvlock": false,
+          "weight": 4
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_vine_short_underside",
+          "y": 270,
+          "uvlock": false,
+          "weight": 4
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_vine_short_side",
+          "y": 0,
+          "uvlock": false,
+          "weight": 4
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_vine_short_side",
+          "y": 90,
+          "uvlock": false,
+          "weight": 4
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_vine_short_side",
+          "y": 180,
+          "uvlock": false,
+          "weight": 4
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_vine_short_side",
+          "y": 270,
+          "uvlock": false,
+          "weight": 4
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_vine_long_underside",
+          "y": 0,
+          "uvlock": false,
+          "weight": 2
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_vine_long_underside",
+          "y": 90,
+          "uvlock": false,
+          "weight": 2
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_vine_long_underside",
+          "y": 180,
+          "uvlock": false,
+          "weight": 2
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_vine_long_underside",
+          "y": 270,
+          "uvlock": false,
+          "weight": 2
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_vine_long_side",
+          "y": 0,
+          "uvlock": false,
+          "weight": 2
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_vine_long_side",
+          "y": 90,
+          "uvlock": false,
+          "weight": 2
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_vine_long_side",
+          "y": 180,
+          "uvlock": false,
+          "weight": 2
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/jungle_vine_long_side",
+          "y": 270,
+          "uvlock": false,
+          "weight": 2
+        }
+      ]
+    }
+  ]
+}

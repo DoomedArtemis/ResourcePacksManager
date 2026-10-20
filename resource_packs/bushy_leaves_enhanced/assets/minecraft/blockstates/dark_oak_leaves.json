@@ -1,0 +1,184 @@
+{
+  "multipart": [
+    {
+      "apply": [
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/dark_oak_0",
+          "y": 0,
+          "uvlock": false,
+          "weight": 2
+        },
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/dark_oak_0",
+          "y": 90,
+          "uvlock": false,
+          "weight": 2
+        },
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/dark_oak_0",
+          "y": 180,
+          "uvlock": false,
+          "weight": 2
+        },
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/dark_oak_0",
+          "y": 270,
+          "uvlock": false,
+          "weight": 2
+        },
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/dark_oak_1",
+          "y": 0,
+          "uvlock": false,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/dark_oak_1",
+          "y": 90,
+          "uvlock": false,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/dark_oak_1",
+          "y": 180,
+          "uvlock": false,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/dark_oak_1",
+          "y": 270,
+          "uvlock": false,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/dark_oak_2",
+          "y": 0,
+          "uvlock": false,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/dark_oak_2",
+          "y": 90,
+          "uvlock": false,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/dark_oak_2",
+          "y": 180,
+          "uvlock": false,
+          "weight": 1
+        },
+        {
+          "model": "minecraft:block/bushy_leaves_enhanced/dark_oak_2",
+          "y": 270,
+          "uvlock": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "apply": [
+        {
+          "model": "bushy_leaves_enhanced:block/details/none",
+          "weight": 712
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/dark_oak_underside",
+          "y": 0,
+          "uvlock": false,
+          "weight": 4
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/dark_oak_underside",
+          "y": 90,
+          "uvlock": false,
+          "weight": 4
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/dark_oak_underside",
+          "y": 180,
+          "uvlock": false,
+          "weight": 4
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/dark_oak_underside",
+          "y": 270,
+          "uvlock": false,
+          "weight": 4
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/dark_oak_side",
+          "y": 0,
+          "uvlock": false,
+          "weight": 4
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/dark_oak_side",
+          "y": 90,
+          "uvlock": false,
+          "weight": 4
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/dark_oak_side",
+          "y": 180,
+          "uvlock": false,
+          "weight": 4
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/dark_oak_side",
+          "y": 270,
+          "uvlock": false,
+          "weight": 4
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/dark_oak_blossoms_top",
+          "y": 0,
+          "uvlock": false,
+          "weight": 3
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/dark_oak_blossoms_top",
+          "y": 90,
+          "uvlock": false,
+          "weight": 3
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/dark_oak_blossoms_top",
+          "y": 180,
+          "uvlock": false,
+          "weight": 3
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/dark_oak_blossoms_top",
+          "y": 270,
+          "uvlock": false,
+          "weight": 3
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/dark_oak_blossoms_side",
+          "y": 0,
+          "uvlock": false,
+          "weight": 3
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/dark_oak_blossoms_side",
+          "y": 90,
+          "uvlock": false,
+          "weight": 3
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/dark_oak_blossoms_side",
+          "y": 180,
+          "uvlock": false,
+          "weight": 3
+        },
+        {
+          "model": "bushy_leaves_enhanced:block/details/dark_oak_blossoms_side",
+          "y": 270,
+          "uvlock": false,
+          "weight": 3
+        }
+      ]
+    }
+  ]
+}

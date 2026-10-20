@@ -15,6 +15,7 @@
     IconPath = 'artemis_enhanced_visuals/pack.png'
 
     Packs = @(
+        @{ Name = 'bushy_leaves_enhanced'; Enabled = $true; Priority = 5 }
         @{ Name = 'alternative_birch_leaves'; Enabled = $true; Priority = 10 }
         @{ Name = 'alternative_end_rod'; Enabled = $true; Priority = 20 }
         @{ Name = 'alternative_mud_color'; Enabled = $true; Priority = 30 }
@@ -30,8 +31,8 @@
         @{ Name = 'flowering_oak_leaves'; Enabled = $true; Priority = 120 }
         @{ Name = 'nuggets_to_coins'; Enabled = $false; Priority = 130 }
         @{ Name = 'swords_to_lightsabers'; Enabled = $false; Priority = 140 }
-        @{ Name = 'vanilla_lavender'; Enabled = $false; Priority = 150 }
-        @{ Name = 'vanilla_lavender_enhanced'; Enabled = $true; Priority = 160 }
+        @{ Name = 'vanilla_lavender'; Enabled = $true; Priority = 150 }
+        @{ Name = 'vanilla_lavender_enhanced'; Enabled = $false; Priority = 160 }
     )
 
     Exclude = @()

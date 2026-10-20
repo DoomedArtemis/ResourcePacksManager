@@ -1,0 +1,103 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "detail": "bushy_leaves_enhanced:block/details/spruce_growth",
+    "particle": "minecraft:block/spruce_leaves"
+  },
+  "elements": [
+    {
+      "from": [
+        6,
+        7,
+        -1.5
+      ],
+      "to": [
+        11,
+        14,
+        -1.5
+      ],
+      "shade": false,
+      "rotation": {
+        "origin": [
+          8.5,
+          7,
+          -1.5
+        ],
+        "axis": "x",
+        "angle": -45,
+        "rescale": false
+      },
+      "faces": {
+        "north": {
+          "texture": "#detail",
+          "uv": [
+            5,
+            0,
+            10,
+            7
+          ],
+          "cullface": "north",
+          "tintindex": 0
+        },
+        "south": {
+          "texture": "#detail",
+          "uv": [
+            10,
+            0,
+            5,
+            7
+          ],
+          "cullface": "north",
+          "tintindex": 0
+        }
+      }
+    },
+    {
+      "from": [
+        8.5,
+        7,
+        -4
+      ],
+      "to": [
+        8.5,
+        14,
+        1
+      ],
+      "shade": false,
+      "rotation": {
+        "origin": [
+          8.5,
+          7,
+          -1.5
+        ],
+        "axis": "x",
+        "angle": -45,
+        "rescale": false
+      },
+      "faces": {
+        "west": {
+          "texture": "#detail",
+          "uv": [
+            5,
+            0,
+            10,
+            7
+          ],
+          "cullface": "north",
+          "tintindex": 0
+        },
+        "east": {
+          "texture": "#detail",
+          "uv": [
+            10,
+            0,
+            5,
+            7
+          ],
+          "cullface": "north",
+          "tintindex": 0
+        }
+      }
+    }
+  ]
+}

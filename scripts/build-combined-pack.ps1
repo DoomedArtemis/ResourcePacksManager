@@ -11,6 +11,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'combined-pack-support.ps1')
 . (Join-Path $PSScriptRoot 'combined-pack-dependencies.ps1')
+. (Join-Path $PSScriptRoot 'combined-pack-compatibility.ps1')
 
 # Reuse the normal builder's functions without executing its build/publish entry point.
 function Import-PackBuilderFunctions {
@@ -283,6 +284,8 @@ try {
             Merge-CombinedArchive -ZipPath $componentZipPath -Entry $entry -Definition $definition -Destination $mergedRoot -Owners $owners -Component $components[$entry.Name]
             $included += $entry.Name
         }
+        $definitionDirectory = Split-Path (Resolve-FullPath -BasePath $repoRoot -Path $DefinitionPath) -Parent
+        Merge-CombinedCompatibilityAssets -Components $components -Destination $mergedRoot -Owners $owners -DefinitionDirectory $definitionDirectory -Definition $definition
         if ($owners.Count -eq 0) { throw "No assets included for Minecraft $($versionConfig.Id)." }
         Show-BuildProgress -Id 4 -Activity $combinedActivity -Stage 'Loading vanilla dependency definitions'
         $vanilla = Get-CombinedVanillaDependencies -RepoRoot $repoRoot -Config $config -VersionConfig $versionConfig

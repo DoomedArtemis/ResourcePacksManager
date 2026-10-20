@@ -1,0 +1,6 @@
+{
+  "parent": "bushy_leaves_enhanced:block/airy_2_untinted",
+  "textures": {
+    "all": "minecraft:block/orange_poplar_leaves"
+  }
+}

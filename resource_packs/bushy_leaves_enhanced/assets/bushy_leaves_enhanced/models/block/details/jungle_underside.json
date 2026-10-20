@@ -1,0 +1,79 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "detail": "bushy_leaves_enhanced:block/details/jungle_orchid",
+    "particle": "minecraft:block/jungle_leaves"
+  },
+  "elements": [
+    {
+      "from": [
+        4,
+        -5.25,
+        10
+      ],
+      "to": [
+        7,
+        0.75,
+        10
+      ],
+      "shade": false,
+      "faces": {
+        "north": {
+          "texture": "#detail",
+          "uv": [
+            6,
+            0,
+            9,
+            6
+          ],
+          "cullface": "down"
+        },
+        "south": {
+          "texture": "#detail",
+          "uv": [
+            9,
+            0,
+            6,
+            6
+          ],
+          "cullface": "down"
+        }
+      }
+    },
+    {
+      "from": [
+        5.5,
+        -5.25,
+        8.5
+      ],
+      "to": [
+        5.5,
+        0.75,
+        11.5
+      ],
+      "shade": false,
+      "faces": {
+        "west": {
+          "texture": "#detail",
+          "uv": [
+            6,
+            0,
+            9,
+            6
+          ],
+          "cullface": "down"
+        },
+        "east": {
+          "texture": "#detail",
+          "uv": [
+            9,
+            0,
+            6,
+            6
+          ],
+          "cullface": "down"
+        }
+      }
+    }
+  ]
+}

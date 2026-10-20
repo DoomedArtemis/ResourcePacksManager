@@ -1,0 +1,99 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "detail": "bushy_leaves_enhanced:block/details/oak_acorns",
+    "particle": "minecraft:block/oak_leaves"
+  },
+  "elements": [
+    {
+      "from": [
+        5.5,
+        2,
+        0.25
+      ],
+      "to": [
+        11.5,
+        7,
+        0.25
+      ],
+      "shade": false,
+      "rotation": {
+        "origin": [
+          8.5,
+          7,
+          0.25
+        ],
+        "axis": "x",
+        "angle": 22.5,
+        "rescale": false
+      },
+      "faces": {
+        "north": {
+          "texture": "#detail",
+          "uv": [
+            5,
+            0,
+            11,
+            5
+          ],
+          "cullface": "north"
+        },
+        "south": {
+          "texture": "#detail",
+          "uv": [
+            11,
+            0,
+            5,
+            5
+          ],
+          "cullface": "north"
+        }
+      }
+    },
+    {
+      "from": [
+        8.5,
+        2,
+        -2.75
+      ],
+      "to": [
+        8.5,
+        7,
+        3.25
+      ],
+      "shade": false,
+      "rotation": {
+        "origin": [
+          8.5,
+          7,
+          0.25
+        ],
+        "axis": "x",
+        "angle": 22.5,
+        "rescale": false
+      },
+      "faces": {
+        "west": {
+          "texture": "#detail",
+          "uv": [
+            5,
+            0,
+            11,
+            5
+          ],
+          "cullface": "north"
+        },
+        "east": {
+          "texture": "#detail",
+          "uv": [
+            11,
+            0,
+            5,
+            5
+          ],
+          "cullface": "north"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "detail": "bushy_leaves_enhanced:block/details/jungle_vine_long",
+    "particle": "minecraft:block/jungle_leaves"
+  },
+  "elements": [
+    {
+      "from": [
+        6.5,
+        -3,
+        -1.5
+      ],
+      "to": [
+        10.5,
+        7,
+        -1.5
+      ],
+      "shade": false,
+      "rotation": {
+        "origin": [
+          8.5,
+          7,
+          -1.5
+        ],
+        "axis": "x",
+        "angle": 22.5,
+        "rescale": false
+      },
+      "faces": {
+        "north": {
+          "texture": "#detail",
+          "uv": [
+            5,
+            0,
+            9,
+            10
+          ],
+          "cullface": "north",
+          "tintindex": 0
+        },
+        "south": {
+          "texture": "#detail",
+          "uv": [
+            9,
+            0,
+            5,
+            10
+          ],
+          "cullface": "north",
+          "tintindex": 0
+        }
+      }
+    },
+    {
+      "from": [
+        8.5,
+        -3,
+        -3.5
+      ],
+      "to": [
+        8.5,
+        7,
+        0.5
+      ],
+      "shade": false,
+      "rotation": {
+        "origin": [
+          8.5,
+          7,
+          -1.5
+        ],
+        "axis": "x",
+        "angle": 22.5,
+        "rescale": false
+      },
+      "faces": {
+        "west": {
+          "texture": "#detail",
+          "uv": [
+            5,
+            0,
+            9,
+            10
+          ],
+          "cullface": "north",
+          "tintindex": 0
+        },
+        "east": {
+          "texture": "#detail",
+          "uv": [
+            9,
+            0,
+            5,
+            10
+          ],
+          "cullface": "north",
+          "tintindex": 0
+        }
+      }
+    }
+  ]
+}

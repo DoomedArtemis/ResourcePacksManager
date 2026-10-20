@@ -1,0 +1,78 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "minecraft:block/bushy_leaves_enhanced/pale_oak_0",
+        "y": 0,
+        "uvlock": false,
+        "weight": 2
+      },
+      {
+        "model": "minecraft:block/bushy_leaves_enhanced/pale_oak_0",
+        "y": 90,
+        "uvlock": false,
+        "weight": 2
+      },
+      {
+        "model": "minecraft:block/bushy_leaves_enhanced/pale_oak_0",
+        "y": 180,
+        "uvlock": false,
+        "weight": 2
+      },
+      {
+        "model": "minecraft:block/bushy_leaves_enhanced/pale_oak_0",
+        "y": 270,
+        "uvlock": false,
+        "weight": 2
+      },
+      {
+        "model": "minecraft:block/bushy_leaves_enhanced/pale_oak_1",
+        "y": 0,
+        "uvlock": false,
+        "weight": 1
+      },
+      {
+        "model": "minecraft:block/bushy_leaves_enhanced/pale_oak_1",
+        "y": 90,
+        "uvlock": false,
+        "weight": 1
+      },
+      {
+        "model": "minecraft:block/bushy_leaves_enhanced/pale_oak_1",
+        "y": 180,
+        "uvlock": false,
+        "weight": 1
+      },
+      {
+        "model": "minecraft:block/bushy_leaves_enhanced/pale_oak_1",
+        "y": 270,
+        "uvlock": false,
+        "weight": 1
+      },
+      {
+        "model": "minecraft:block/bushy_leaves_enhanced/pale_oak_2",
+        "y": 0,
+        "uvlock": false,
+        "weight": 1
+      },
+      {
+        "model": "minecraft:block/bushy_leaves_enhanced/pale_oak_2",
+        "y": 90,
+        "uvlock": false,
+        "weight": 1
+      },
+      {
+        "model": "minecraft:block/bushy_leaves_enhanced/pale_oak_2",
+        "y": 180,
+        "uvlock": false,
+        "weight": 1
+      },
+      {
+        "model": "minecraft:block/bushy_leaves_enhanced/pale_oak_2",
+        "y": 270,
+        "uvlock": false,
+        "weight": 1
+      }
+    ]
+  }
+}

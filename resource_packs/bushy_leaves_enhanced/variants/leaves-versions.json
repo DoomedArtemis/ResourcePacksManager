@@ -1,0 +1,384 @@
+{
+  "FileRules": [
+    {
+      "Path": "assets/minecraft/blockstates/oak_leaves.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/oak_leaves.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/oak_0.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/oak_1.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/oak_2.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/oak_underside.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/oak_side.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/oak_apple_underside.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/oak_apple_side.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/oak_blossoms_top.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/oak_blossoms_side.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/blockstates/birch_leaves.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/birch_leaves.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/birch_0.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/birch_1.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/birch_2.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/birch_underside.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/birch_side.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/blockstates/spruce_leaves.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/spruce_leaves.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/spruce_0.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/spruce_1.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/spruce_2.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/spruce_underside.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/spruce_side.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/spruce_growth_side.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/blockstates/jungle_leaves.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/jungle_leaves.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/jungle_0.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/jungle_1.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/jungle_2.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/jungle_underside.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/jungle_side.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/jungle_vine_short_underside.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/jungle_vine_short_side.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/jungle_vine_long_underside.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/jungle_vine_long_side.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/blockstates/acacia_leaves.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/acacia_leaves.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/acacia_0.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/acacia_1.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/acacia_2.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/blockstates/dark_oak_leaves.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/dark_oak_leaves.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/dark_oak_0.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/dark_oak_1.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/dark_oak_2.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/dark_oak_underside.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/dark_oak_side.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/dark_oak_blossoms_top.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/dark_oak_blossoms_side.json",
+      "MinVersion": "1.13"
+    },
+    {
+      "Path": "assets/minecraft/blockstates/azalea_leaves.json",
+      "MinVersion": "1.17"
+    },
+    {
+      "Path": "assets/minecraft/models/block/azalea_leaves.json",
+      "MinVersion": "1.17"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/azalea_0.json",
+      "MinVersion": "1.17"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/azalea_1.json",
+      "MinVersion": "1.17"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/azalea_2.json",
+      "MinVersion": "1.17"
+    },
+    {
+      "Path": "assets/minecraft/blockstates/flowering_azalea_leaves.json",
+      "MinVersion": "1.17"
+    },
+    {
+      "Path": "assets/minecraft/models/block/flowering_azalea_leaves.json",
+      "MinVersion": "1.17"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/flowering_azalea_0.json",
+      "MinVersion": "1.17"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/flowering_azalea_1.json",
+      "MinVersion": "1.17"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/flowering_azalea_2.json",
+      "MinVersion": "1.17"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/flowering_azalea_top.json",
+      "MinVersion": "1.17"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/flowering_azalea_side.json",
+      "MinVersion": "1.17"
+    },
+    {
+      "Path": "assets/minecraft/blockstates/mangrove_leaves.json",
+      "MinVersion": "1.19"
+    },
+    {
+      "Path": "assets/minecraft/models/block/mangrove_leaves.json",
+      "MinVersion": "1.19"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/mangrove_0.json",
+      "MinVersion": "1.19"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/mangrove_1.json",
+      "MinVersion": "1.19"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/mangrove_2.json",
+      "MinVersion": "1.19"
+    },
+    {
+      "Path": "assets/minecraft/blockstates/cherry_leaves.json",
+      "MinVersion": "1.19.4"
+    },
+    {
+      "Path": "assets/minecraft/models/block/cherry_leaves.json",
+      "MinVersion": "1.19.4"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/cherry_0.json",
+      "MinVersion": "1.19.4"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/cherry_1.json",
+      "MinVersion": "1.19.4"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/cherry_2.json",
+      "MinVersion": "1.19.4"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/cherry_underside.json",
+      "MinVersion": "1.19.4"
+    },
+    {
+      "Path": "assets/bushy_leaves_enhanced/models/block/details/cherry_side.json",
+      "MinVersion": "1.19.4"
+    },
+    {
+      "Path": "assets/minecraft/blockstates/pale_oak_leaves.json",
+      "MinVersion": "1.21.2"
+    },
+    {
+      "Path": "assets/minecraft/models/block/pale_oak_leaves.json",
+      "MinVersion": "1.21.2"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/pale_oak_0.json",
+      "MinVersion": "1.21.2"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/pale_oak_1.json",
+      "MinVersion": "1.21.2"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/pale_oak_2.json",
+      "MinVersion": "1.21.2"
+    },
+    {
+      "Path": "assets/minecraft/blockstates/orange_poplar_leaves.json",
+      "MinVersion": "26.3"
+    },
+    {
+      "Path": "assets/minecraft/models/block/orange_poplar_leaves.json",
+      "MinVersion": "26.3"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/orange_poplar_0.json",
+      "MinVersion": "26.3"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/orange_poplar_1.json",
+      "MinVersion": "26.3"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/orange_poplar_2.json",
+      "MinVersion": "26.3"
+    },
+    {
+      "Path": "assets/minecraft/blockstates/yellow_poplar_leaves.json",
+      "MinVersion": "26.3"
+    },
+    {
+      "Path": "assets/minecraft/models/block/yellow_poplar_leaves.json",
+      "MinVersion": "26.3"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/yellow_poplar_0.json",
+      "MinVersion": "26.3"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/yellow_poplar_1.json",
+      "MinVersion": "26.3"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/yellow_poplar_2.json",
+      "MinVersion": "26.3"
+    },
+    {
+      "Path": "assets/minecraft/blockstates/red_poplar_leaves.json",
+      "MinVersion": "26.3"
+    },
+    {
+      "Path": "assets/minecraft/models/block/red_poplar_leaves.json",
+      "MinVersion": "26.3"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/red_poplar_0.json",
+      "MinVersion": "26.3"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/red_poplar_1.json",
+      "MinVersion": "26.3"
+    },
+    {
+      "Path": "assets/minecraft/models/block/bushy_leaves_enhanced/red_poplar_2.json",
+      "MinVersion": "26.3"
+    }
+  ]
+}

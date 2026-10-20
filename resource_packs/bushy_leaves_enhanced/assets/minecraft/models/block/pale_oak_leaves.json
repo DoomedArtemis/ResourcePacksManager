@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/bushy_leaves_enhanced/pale_oak_0",
+  "textures": {
+    "all": "minecraft:block/pale_oak_leaves"
+  }
+}

@@ -4,612 +4,180 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69da52cd-7463-4c66-9153-40bdcaaf6a07" name="Changes" comment="workspace">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Archive Pack.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Build All Texture Packs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Build Artemis Enhanced Visuals.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Build Selected Texture Packs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Create New Texture Pack.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Dry Run CurseForge Publish All.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Dry Run CurseForge Publish Selected.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Dry Run Modrinth Publish All.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Dry Run Modrinth Publish Selected.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Publish All Resource Packs to CurseForge.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Publish All Resource Packs to Modrinth.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Publish Selected Resource Packs to CurseForge.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Publish Selected Resource Packs to Modrinth.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Update Mod Compatibility.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/compatibility-sync.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/blockstates/deepslate_quartz_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/blockstates/quartz_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/deepslate_quartz_ore/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/deepslate_quartz_ore/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/deepslate_quartz_ore/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/deepslate_quartz_ore/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/deepslate_quartz_ore/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/deepslate_quartz_ore/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/deepslate_quartz_ore/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/deepslate_quartz_ore/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/deepslate_quartz_ore/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/deepslate_quartz_ore/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/deepslate_quartz_ore/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/deepslate_quartz_ore/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/quartz_ore/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/quartz_ore/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/quartz_ore/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/quartz_ore/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/quartz_ore/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/quartz_ore/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/quartz_ore/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/quartz_ore/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/quartz_ore/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/quartz_ore/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/quartz_ore/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/alternative_ores/quartz_ore/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/deepslate_quartz_ore_0.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/deepslate_quartz_ore_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/deepslate_quartz_ore_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/deepslate_quartz_ore_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/quartz_ore_0.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/quartz_ore_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/quartz_ore_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/block/quartz_ore_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/item/deepslate_quartz_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/models/item/quartz_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/textures/block/alternative_ores/certus_crystal_a.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/textures/block/alternative_ores/certus_crystal_a_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/textures/block/alternative_ores/certus_crystal_b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/ae2/textures/block/alternative_ores/certus_crystal_b_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/blockstates/charged_quartz_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/blockstates/deepslate_quartz_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/blockstates/quartz_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/charged_quartz_ore/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/charged_quartz_ore/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/charged_quartz_ore/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/charged_quartz_ore/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/charged_quartz_ore/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/charged_quartz_ore/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/charged_quartz_ore/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/charged_quartz_ore/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/charged_quartz_ore/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/charged_quartz_ore/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/charged_quartz_ore/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/charged_quartz_ore/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/deepslate_quartz_ore/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/deepslate_quartz_ore/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/deepslate_quartz_ore/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/deepslate_quartz_ore/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/deepslate_quartz_ore/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/deepslate_quartz_ore/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/deepslate_quartz_ore/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/deepslate_quartz_ore/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/deepslate_quartz_ore/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/deepslate_quartz_ore/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/deepslate_quartz_ore/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/deepslate_quartz_ore/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/quartz_ore/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/quartz_ore/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/quartz_ore/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/quartz_ore/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/quartz_ore/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/quartz_ore/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/quartz_ore/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/quartz_ore/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/quartz_ore/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/quartz_ore/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/quartz_ore/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/alternative_ores/quartz_ore/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/charged_quartz_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/charged_quartz_ore_0.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/charged_quartz_ore_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/charged_quartz_ore_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/deepslate_quartz_ore_0.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/deepslate_quartz_ore_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/deepslate_quartz_ore_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/deepslate_quartz_ore_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/quartz_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/quartz_ore_0.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/quartz_ore_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/quartz_ore_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/block/quartz_ore_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/item/charged_quartz_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/item/deepslate_quartz_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/models/item/quartz_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/textures/block/alternative_ores/certus_crystal_a.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/textures/block/alternative_ores/certus_crystal_a_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/textures/block/alternative_ores/certus_crystal_b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/textures/block/alternative_ores/certus_crystal_b_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/textures/block/alternative_ores/charged_certus_crystal_a.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/textures/block/alternative_ores/charged_certus_crystal_a_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/textures/block/alternative_ores/charged_certus_crystal_b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/appliedenergistics2/textures/block/alternative_ores/charged_certus_crystal_b_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/blockstates/copper_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/blockstates/deepslate_zinc_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/blockstates/zinc_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_crystal_layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_crystal_layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_crystal_layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_crystal_layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_crystal_layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_crystal_layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_crystal_layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_crystal_layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_crystal_layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_crystal_layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_crystal_layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_crystal_layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_0/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_0/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_0/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_0/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_0/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_0/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_0/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_0/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_0/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_0/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_0/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_0/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_1/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_1/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_1/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_1/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_1/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_1/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_1/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_1/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_1/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_1/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_1/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_1/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_2/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_2/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_2/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_2/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_2/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_2/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_2/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_2/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_2/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_2/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_2/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_2/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_3/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_3/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_3/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_3/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_3/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_3/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_3/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_3/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_3/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_3/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_3/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_3/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_4/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_4/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_4/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_4/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_4/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_4/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_4/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_4/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_4/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_4/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_4/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_4/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_5/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_5/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_5/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_5/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_5/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_5/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_5/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_5/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_5/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_5/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_5/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_5/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_6/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_6/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_6/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_6/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_6/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_6/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_6/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_6/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_6/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_6/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_6/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_6/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_7/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_7/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_7/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_7/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_7/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_7/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_7/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_7/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_7/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_7/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_7/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/copper_ore/oxidization_7/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/deepslate_zinc_ore/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/deepslate_zinc_ore/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/deepslate_zinc_ore/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/deepslate_zinc_ore/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/deepslate_zinc_ore/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/deepslate_zinc_ore/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/deepslate_zinc_ore/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/deepslate_zinc_ore/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/deepslate_zinc_ore/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/deepslate_zinc_ore/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/deepslate_zinc_ore/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/deepslate_zinc_ore/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/zinc_ore/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/zinc_ore/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/zinc_ore/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/zinc_ore/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/zinc_ore/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/zinc_ore/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/zinc_ore/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/zinc_ore/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/zinc_ore/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/zinc_ore/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/zinc_ore/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/alternative_ores/zinc_ore/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/deepslate_zinc_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/oxidized/copper_ore/0.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/oxidized/copper_ore/1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/oxidized/copper_ore/2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/oxidized/copper_ore/3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/oxidized/copper_ore/4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/oxidized/copper_ore/5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/oxidized/copper_ore/6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/oxidized/copper_ore/7.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/oxidized/copper_ore_0.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/oxidized/copper_ore_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/oxidized/copper_ore_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/oxidized/copper_ore_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/oxidized/copper_ore_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/oxidized/copper_ore_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/oxidized/copper_ore_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/oxidized/copper_ore_7.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/block/zinc_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/item/copper_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/item/deepslate_zinc_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/models/item/zinc_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/textures/block/alternative_ores/copper_crystal_a.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/textures/block/alternative_ores/copper_crystal_a_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/textures/block/alternative_ores/copper_crystal_b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/textures/block/alternative_ores/copper_crystal_b_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/textures/block/alternative_ores/exposed_copper_crystal_a.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/textures/block/alternative_ores/exposed_copper_crystal_a_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/textures/block/alternative_ores/exposed_copper_crystal_b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/textures/block/alternative_ores/exposed_copper_crystal_b_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/textures/block/alternative_ores/oxidized_copper_crystal_a.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/textures/block/alternative_ores/oxidized_copper_crystal_a_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/textures/block/alternative_ores/oxidized_copper_crystal_b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/textures/block/alternative_ores/oxidized_copper_crystal_b_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/textures/block/alternative_ores/weathered_copper_crystal_a.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/textures/block/alternative_ores/weathered_copper_crystal_a_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/textures/block/alternative_ores/weathered_copper_crystal_b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/textures/block/alternative_ores/weathered_copper_crystal_b_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/textures/block/alternative_ores/zinc_crystal_a.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/textures/block/alternative_ores/zinc_crystal_a_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/textures/block/alternative_ores/zinc_crystal_b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/create/textures/block/alternative_ores/zinc_crystal_b_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/blockstates/copper_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/blockstates/deepslate_fluorite_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/blockstates/deepslate_lead_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/blockstates/deepslate_osmium_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/blockstates/deepslate_tin_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/blockstates/deepslate_uranium_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/blockstates/fluorite_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/blockstates/lead_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/blockstates/osmium_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/blockstates/tin_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/blockstates/uranium_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_crystal_layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_crystal_layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_crystal_layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_crystal_layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_crystal_layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_crystal_layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_crystal_layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_crystal_layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_crystal_layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_crystal_layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_crystal_layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_crystal_layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_ore/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_ore/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_ore/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_ore/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_ore/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_ore/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_ore/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_ore/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_ore/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_ore/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_ore/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/copper_ore/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_fluorite_ore/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_fluorite_ore/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_fluorite_ore/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_fluorite_ore/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_fluorite_ore/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_fluorite_ore/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_fluorite_ore/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_fluorite_ore/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_fluorite_ore/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_fluorite_ore/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_fluorite_ore/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_fluorite_ore/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_lead_ore/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_lead_ore/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_lead_ore/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_lead_ore/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_lead_ore/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_lead_ore/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_lead_ore/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_lead_ore/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_lead_ore/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_lead_ore/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_lead_ore/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_lead_ore/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_osmium_ore/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_osmium_ore/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_osmium_ore/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_osmium_ore/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_osmium_ore/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_osmium_ore/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_osmium_ore/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_osmium_ore/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_osmium_ore/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_osmium_ore/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_osmium_ore/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_osmium_ore/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_tin_ore/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_tin_ore/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_tin_ore/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_tin_ore/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_tin_ore/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_tin_ore/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_tin_ore/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_tin_ore/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_tin_ore/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_tin_ore/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_tin_ore/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_tin_ore/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_uranium_ore/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_uranium_ore/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_uranium_ore/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_uranium_ore/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_uranium_ore/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_uranium_ore/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_uranium_ore/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_uranium_ore/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_uranium_ore/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_uranium_ore/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_uranium_ore/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/deepslate_uranium_ore/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/fluorite_ore/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/fluorite_ore/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/fluorite_ore/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/fluorite_ore/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/fluorite_ore/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/fluorite_ore/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/fluorite_ore/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/fluorite_ore/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/fluorite_ore/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/fluorite_ore/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/fluorite_ore/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/fluorite_ore/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/lead_ore/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/lead_ore/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/lead_ore/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/lead_ore/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/lead_ore/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/lead_ore/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/lead_ore/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/lead_ore/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/lead_ore/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/lead_ore/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/lead_ore/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/lead_ore/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/osmium_ore/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/osmium_ore/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/osmium_ore/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/osmium_ore/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/osmium_ore/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/osmium_ore/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/osmium_ore/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/osmium_ore/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/osmium_ore/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/osmium_ore/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/osmium_ore/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/osmium_ore/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/tin_ore/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/tin_ore/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/tin_ore/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/tin_ore/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/tin_ore/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/tin_ore/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/tin_ore/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/tin_ore/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/tin_ore/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/tin_ore/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/tin_ore/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/tin_ore/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/uranium_ore/layout_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/uranium_ore/layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/uranium_ore/layout_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/uranium_ore/layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/uranium_ore/layout_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/uranium_ore/layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/uranium_ore/layout_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/uranium_ore/layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/uranium_ore/layout_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/uranium_ore/layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/uranium_ore/layout_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/alternative_ores/uranium_ore/layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/deepslate_ore/fluorite.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/deepslate_ore/lead.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/deepslate_ore/osmium.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/deepslate_ore/tin.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/deepslate_ore/uranium.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/ore/copper.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/ore/fluorite.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/ore/lead.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/ore/osmium.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/ore/tin.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/models/block/ore/uranium.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/copper_crystal_a.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/copper_crystal_a_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/copper_crystal_b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/copper_crystal_b_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/exposed_copper_crystal_a.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/exposed_copper_crystal_a_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/exposed_copper_crystal_b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/exposed_copper_crystal_b_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/fluorite_crystal_a.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/fluorite_crystal_a_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/fluorite_crystal_b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/fluorite_crystal_b_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/lead_crystal_a.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/lead_crystal_a_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/lead_crystal_b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/lead_crystal_b_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/osmium_crystal_a.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/osmium_crystal_a_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/osmium_crystal_b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/osmium_crystal_b_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/oxidized_copper_crystal_a.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/oxidized_copper_crystal_a_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/oxidized_copper_crystal_b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/oxidized_copper_crystal_b_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/tin_crystal_a.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/tin_crystal_a_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/tin_crystal_b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/tin_crystal_b_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/uranium_crystal_a.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/uranium_crystal_a_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/uranium_crystal_b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/uranium_crystal_b_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/weathered_copper_crystal_a.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/weathered_copper_crystal_a_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/weathered_copper_crystal_b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/mekanism/textures/block/alternative_ores/weathered_copper_crystal_b_e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/minecraft/models/block/alternative_ores/legacy_lighting/ancient_debris.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/minecraft/models/block/alternative_ores/legacy_lighting/deepslate.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/minecraft/models/block/alternative_ores/legacy_lighting/netherrack.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/assets/minecraft/models/block/alternative_ores/legacy_lighting/stone.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/ae2/blockstates/deepslate_quartz_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/ae2/blockstates/quartz_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/appliedenergistics2/blockstates/charged_quartz_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/appliedenergistics2/blockstates/deepslate_quartz_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/appliedenergistics2/blockstates/quartz_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/create/blockstates/copper_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/create/blockstates/deepslate_zinc_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/create/blockstates/zinc_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/create/models/block/alternative_ores/copper_crystal_layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/create/models/block/alternative_ores/copper_crystal_layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/create/models/block/alternative_ores/copper_crystal_layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/create/models/block/alternative_ores/copper_crystal_layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/create/models/block/alternative_ores/copper_crystal_layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/create/models/block/alternative_ores/copper_crystal_layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/mekanism/blockstates/copper_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/mekanism/blockstates/deepslate_fluorite_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/mekanism/blockstates/deepslate_lead_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/mekanism/blockstates/deepslate_osmium_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/mekanism/blockstates/deepslate_tin_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/mekanism/blockstates/deepslate_uranium_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/mekanism/blockstates/fluorite_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/mekanism/blockstates/lead_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/mekanism/blockstates/osmium_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/mekanism/blockstates/tin_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/mekanism/blockstates/uranium_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/mekanism/models/block/alternative_ores/copper_crystal_layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/mekanism/models/block/alternative_ores/copper_crystal_layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/mekanism/models/block/alternative_ores/copper_crystal_layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/mekanism/models/block/alternative_ores/copper_crystal_layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/mekanism/models/block/alternative_ores/copper_crystal_layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/mekanism/models/block/alternative_ores/copper_crystal_layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/blockstates/ancient_debris.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/blockstates/coal_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/blockstates/copper_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/blockstates/deepslate_coal_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/blockstates/deepslate_copper_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/blockstates/deepslate_diamond_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/blockstates/deepslate_emerald_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/blockstates/deepslate_gold_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/blockstates/deepslate_iron_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/blockstates/deepslate_lapis_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/blockstates/deepslate_redstone_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/blockstates/diamond_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/blockstates/emerald_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/blockstates/gold_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/blockstates/iron_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/blockstates/lapis_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/blockstates/nether_gold_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/blockstates/nether_quartz_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/blockstates/redstone_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/models/block/alternative_ores/copper_crystal_layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/models/block/alternative_ores/copper_crystal_layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/models/block/alternative_ores/copper_crystal_layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/models/block/alternative_ores/copper_crystal_layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/models/block/alternative_ores/copper_crystal_layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/models/block/alternative_ores/copper_crystal_layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/models/block/alternative_ores/crystal_layout_1_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/models/block/alternative_ores/crystal_layout_2_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/models/block/alternative_ores/crystal_layout_3_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/models/block/alternative_ores/crystal_layout_4_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/models/block/alternative_ores/crystal_layout_5_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/legacy-lighting/assets/minecraft/models/block/alternative_ores/crystal_layout_6_overlay.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/measure-build-performance.ps1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/measure-source-selection.ps1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/sync-mod-compatibility.cjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/sync-mod-compatibility.ps1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/test-artemis-compatibility.ps1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/test-build-performance.ps1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/test-create-geometry.cjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/test-curseforge-dependencies.ps1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/test-modrinth-dependencies.ps1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/test-ore-lighting.cjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/test-ore-lighting.ps1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/test-publish-state.ps1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/test-source-selection.ps1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/test-sync-mod-compatibility.cjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/update-ore-lighting.cjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="69da52cd-7463-4c66-9153-40bdcaaf6a07" name="Changes" comment="Added &quot;Bushy Leaves Enhanced&quot;">
+      <change afterPath="$PROJECT_DIR$/artemis_enhanced_visuals/compatibility/bushy_leaves_enhanced+alternative_birch_leaves/assets/bushy_leaves_enhanced/models/block/combined/birch_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artemis_enhanced_visuals/compatibility/bushy_leaves_enhanced+alternative_birch_leaves/assets/bushy_leaves_enhanced/models/block/combined/birch_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artemis_enhanced_visuals/compatibility/bushy_leaves_enhanced+alternative_birch_leaves/assets/bushy_leaves_enhanced/models/block/combined/birch_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artemis_enhanced_visuals/compatibility/bushy_leaves_enhanced+alternative_birch_leaves/assets/minecraft/blockstates/birch_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artemis_enhanced_visuals/compatibility/bushy_leaves_enhanced+alternative_birch_leaves/assets/minecraft/models/block/birch_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artemis_enhanced_visuals/compatibility/bushy_leaves_enhanced+flowering_oak_leaves/assets/bushy_leaves_enhanced/models/block/combined/flowering_oak_leaves_1_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artemis_enhanced_visuals/compatibility/bushy_leaves_enhanced+flowering_oak_leaves/assets/bushy_leaves_enhanced/models/block/combined/flowering_oak_leaves_1_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artemis_enhanced_visuals/compatibility/bushy_leaves_enhanced+flowering_oak_leaves/assets/bushy_leaves_enhanced/models/block/combined/flowering_oak_leaves_1_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artemis_enhanced_visuals/compatibility/bushy_leaves_enhanced+flowering_oak_leaves/assets/bushy_leaves_enhanced/models/block/combined/flowering_oak_leaves_2_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artemis_enhanced_visuals/compatibility/bushy_leaves_enhanced+flowering_oak_leaves/assets/bushy_leaves_enhanced/models/block/combined/flowering_oak_leaves_2_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artemis_enhanced_visuals/compatibility/bushy_leaves_enhanced+flowering_oak_leaves/assets/bushy_leaves_enhanced/models/block/combined/flowering_oak_leaves_2_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artemis_enhanced_visuals/compatibility/bushy_leaves_enhanced+flowering_oak_leaves/assets/bushy_leaves_enhanced/models/block/combined/flowering_oak_leaves_3_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artemis_enhanced_visuals/compatibility/bushy_leaves_enhanced+flowering_oak_leaves/assets/bushy_leaves_enhanced/models/block/combined/flowering_oak_leaves_3_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artemis_enhanced_visuals/compatibility/bushy_leaves_enhanced+flowering_oak_leaves/assets/bushy_leaves_enhanced/models/block/combined/flowering_oak_leaves_3_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artemis_enhanced_visuals/compatibility/bushy_leaves_enhanced+flowering_oak_leaves/assets/minecraft/blockstates/oak_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artemis_enhanced_visuals/compatibility/bushy_leaves_enhanced+flowering_oak_leaves/assets/minecraft/models/item/oak_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/airy_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/airy_0_untinted.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/airy_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/airy_1_untinted.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/airy_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/airy_2_untinted.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/blossom_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/blossom_0_untinted.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/blossom_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/blossom_1_untinted.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/blossom_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/blossom_2_untinted.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/broad_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/broad_0_untinted.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/broad_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/broad_1_untinted.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/broad_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/broad_2_untinted.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/conifer_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/conifer_0_untinted.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/conifer_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/conifer_1_untinted.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/conifer_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/conifer_2_untinted.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/birch_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/birch_underside.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/cherry_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/cherry_underside.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/dark_oak_blossoms_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/dark_oak_blossoms_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/dark_oak_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/dark_oak_underside.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/flowering_azalea_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/flowering_azalea_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/jungle_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/jungle_underside.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/jungle_vine_long_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/jungle_vine_long_underside.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/jungle_vine_short_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/jungle_vine_short_underside.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/none.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/oak_apple_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/oak_apple_underside.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/oak_blossoms_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/oak_blossoms_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/oak_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/oak_underside.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/spruce_growth_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/spruce_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/details/spruce_underside.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/lush_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/lush_0_untinted.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/lush_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/lush_1_untinted.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/lush_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/models/block/lush_2_untinted.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/textures/block/details/apple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/textures/block/details/azalea_blossom.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/textures/block/details/birch_catkins.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/textures/block/details/cherries.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/textures/block/details/jungle_orchid.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/textures/block/details/jungle_vine_long.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/textures/block/details/jungle_vine_short.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/textures/block/details/oak_acorns.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/textures/block/details/oak_blossoms.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/textures/block/details/spruce_cone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/bushy_leaves_enhanced/textures/block/details/spruce_growth.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/blockstates/acacia_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/blockstates/azalea_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/blockstates/birch_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/blockstates/cherry_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/blockstates/dark_oak_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/blockstates/flowering_azalea_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/blockstates/jungle_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/blockstates/mangrove_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/blockstates/oak_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/blockstates/orange_poplar_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/blockstates/pale_oak_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/blockstates/red_poplar_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/blockstates/spruce_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/blockstates/yellow_poplar_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/acacia_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/azalea_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/birch_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/acacia_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/acacia_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/acacia_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/azalea_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/azalea_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/azalea_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/birch_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/birch_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/birch_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/cherry_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/cherry_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/cherry_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/dark_oak_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/dark_oak_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/dark_oak_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/flowering_azalea_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/flowering_azalea_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/flowering_azalea_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/jungle_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/jungle_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/jungle_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/mangrove_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/mangrove_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/mangrove_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/oak_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/oak_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/oak_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/orange_poplar_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/orange_poplar_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/orange_poplar_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/pale_oak_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/pale_oak_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/pale_oak_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/red_poplar_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/red_poplar_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/red_poplar_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/spruce_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/spruce_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/spruce_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/yellow_poplar_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/yellow_poplar_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/bushy_leaves_enhanced/yellow_poplar_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/cherry_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/dark_oak_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/flowering_azalea_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/jungle_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/mangrove_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/oak_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/orange_poplar_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/pale_oak_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/red_poplar_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/spruce_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/assets/minecraft/models/block/yellow_poplar_leaves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/pack.build.psd1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/pack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource_packs/bushy_leaves_enhanced/variants/leaves-versions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/build-bushy-leaves-enhanced-compatibility.ps1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/bushy-leaves-enhanced-compatibility.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/bushy-leaves-enhanced-details.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/combined-pack-compatibility.ps1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/preview-bushy-leaves-enhanced.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/test-bushy-leaves-enhanced-packages.ps1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/test-bushy-leaves-enhanced.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/test-combined-bushy-leaves-enhanced.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/update-bushy-leaves-enhanced.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/update-combined-bushy-leaves-enhanced.cjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/Archive Pack.run.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/Build All Texture Packs.run.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/Build Artemis Enhanced Visuals.run.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/Build Selected Texture Packs.run.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/Create New Texture Pack.run.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/Dry Run CurseForge Publish All.run.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/Dry Run CurseForge Publish Selected.run.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/Dry Run Modrinth Publish All.run.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/Dry Run Modrinth Publish Selected.run.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/Publish All Resource Packs to CurseForge.run.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/Publish All Resource Packs to Modrinth.run.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/Publish Selected Resource Packs to CurseForge.run.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/Publish Selected Resource Packs to Modrinth.run.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/alternative_ores/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/pack.build.psd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/ore-versions.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/ore-versions.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_candles/pack.build.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_candles/pack.build.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/artemis_enhanced_visuals/artemis_enhanced_visuals.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/artemis_enhanced_visuals/artemis_enhanced_visuals.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/flowering_oak_leaves/assets/minecraft/blockstates/oak_leaves.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/flowering_oak_leaves/assets/minecraft/blockstates/oak_leaves.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/build-combined-pack.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/build-combined-pack.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/build-texture-packs.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/build-texture-packs.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/combined-pack-dependencies.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/combined-pack-dependencies.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/combined-pack-support.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/combined-pack-support.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/publish-curseforge.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/publish-curseforge.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/publish-modrinth.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/publish-modrinth.ps1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/test-combined-dependencies.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/test-combined-dependencies.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/test-combined-pack.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/test-combined-pack.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/test-file-options.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/test-file-options.ps1" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -642,23 +210,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="2.153905201001347" />
-      <entry key="MS500" value="6.269832922001282" />
-      <entry key="S2" value="14.50462269266796" />
-      <entry key="S5" value="26.03971384475834" />
-      <entry key="S10" value="45.419737781152875" />
-      <entry key="S30" value="81.36078301973411" />
-      <entry key="S60" value="97.74087993171412" />
-      <entry key="M2" value="119.07722450754086" />
-      <entry key="M5" value="188.80908538609273" />
-      <entry key="M10" value="256.8893962244106" />
-      <entry key="M15" value="295.5340562501182" />
-      <entry key="M30" value="384.1735384661399" />
-      <entry key="H1" value="564.2296181726044" />
-      <entry key="H2" value="1009.9738362689349" />
-      <entry key="H4" value="2173.851531202146" />
-      <entry key="D1" value="12557.40748179671" />
-      <entry key="W1" value="21975.487079799477" />
+      <entry key="MS100" value="1.003297340257286" />
+      <entry key="MS500" value="1.6588846290473689" />
+      <entry key="S2" value="4.507581653380447" />
+      <entry key="S5" value="6.60969631118795" />
+      <entry key="S10" value="7.668843532213404" />
+      <entry key="S30" value="8.76813803986086" />
+      <entry key="S60" value="12.472798057867196" />
+      <entry key="M2" value="23.777559923896234" />
+      <entry key="M5" value="55.01321649164999" />
+      <entry key="M10" value="95.65420948737281" />
+      <entry key="M15" value="127.35175448140579" />
+      <entry key="M30" value="250.15883515813817" />
+      <entry key="H1" value="584.1191404784148" />
+      <entry key="H2" value="1218.6809790891332" />
+      <entry key="H4" value="2454.876813607725" />
+      <entry key="D1" value="13019.784334560309" />
+      <entry key="W1" value="23185.979761835857" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -680,23 +248,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="2.095032134420637" />
-      <entry key="MS500" value="6.240752672432216" />
-      <entry key="S2" value="14.488017090987885" />
-      <entry key="S5" value="26.026899022350868" />
-      <entry key="S10" value="45.408011925433975" />
-      <entry key="S30" value="81.3536793522171" />
-      <entry key="S60" value="97.73662076438433" />
-      <entry key="M2" value="119.07467444557325" />
-      <entry key="M5" value="188.80754325893162" />
-      <entry key="M10" value="256.888370660679" />
-      <entry key="M15" value="295.53327346380223" />
-      <entry key="M30" value="384.1730244921005" />
-      <entry key="H1" value="564.2292319901059" />
-      <entry key="H2" value="1009.9734797173957" />
-      <entry key="H4" value="2173.8511292554613" />
-      <entry key="D1" value="12557.40709573843" />
-      <entry key="W1" value="21975.486984687155" />
+      <entry key="MS100" value="0.9624605035709906" />
+      <entry key="MS500" value="1.6197877540934194" />
+      <entry key="S2" value="4.4485467540476575" />
+      <entry key="S5" value="6.573243115332165" />
+      <entry key="S10" value="7.647643670884036" />
+      <entry key="S30" value="8.760285249595963" />
+      <entry key="S60" value="12.468614353045659" />
+      <entry key="M2" value="23.775191866335792" />
+      <entry key="M5" value="55.01197793355107" />
+      <entry key="M10" value="95.65340056486457" />
+      <entry key="M15" value="127.35111583080436" />
+      <entry key="M30" value="250.15832112145094" />
+      <entry key="H1" value="584.1186205677584" />
+      <entry key="H2" value="1218.6804745368015" />
+      <entry key="H4" value="2454.8763231565977" />
+      <entry key="D1" value="13019.783926858257" />
+      <entry key="W1" value="23185.979660293335" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -724,7 +292,9 @@
     &quot;Shell Script.Archive Pack.executor&quot;: &quot;Run&quot;,
     &quot;Shell Script.Build All Texture Packs.executor&quot;: &quot;Run&quot;,
     &quot;Shell Script.Build Artemis Enhanced Visuals.executor&quot;: &quot;Run&quot;,
+    &quot;Shell Script.Build Selected Resource Packs.executor&quot;: &quot;Run&quot;,
     &quot;Shell Script.Build Selected Texture Packs.executor&quot;: &quot;Run&quot;,
+    &quot;Shell Script.Create New Resource Pack.executor&quot;: &quot;Run&quot;,
     &quot;Shell Script.Create New Texture Pack.executor&quot;: &quot;Run&quot;,
     &quot;Shell Script.Publish All Resource Packs to CurseForge.executor&quot;: &quot;Run&quot;,
     &quot;Shell Script.Publish Selected Resource Packs to CurseForge.executor&quot;: &quot;Run&quot;,
@@ -760,7 +330,7 @@
       <recent name="C:\Users\grego\IdeaProjects\Resource-Packs-Manager\archive\better_candles\1.0.0" />
     </key>
   </component>
-  <component name="RunManager" selected="Shell Script.Archive Pack" />
+  <component name="RunManager" selected="Shell Script.Build Selected Resource Packs" />
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -840,7 +410,9 @@
     <MESSAGE value="Built Better Grass" />
     <MESSAGE value="- Reworked some scripts&#10;- Published &quot;Alternative Ores 1.0.0&quot; to CurseForge&#10;- Reworked Readme" />
     <MESSAGE value="workspace" />
-    <option name="LAST_COMMIT_MESSAGE" value="workspace" />
+    <MESSAGE value="Replace &quot;Texture Pack&quot; with &quot;Resource Pack&quot; to match Mojangs normal wording better" />
+    <MESSAGE value="Added &quot;Bushy Leaves Enhanced&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added &quot;Bushy Leaves Enhanced&quot;" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

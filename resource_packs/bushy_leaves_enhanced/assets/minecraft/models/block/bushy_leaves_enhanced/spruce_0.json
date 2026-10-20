@@ -1,0 +1,6 @@
+{
+  "parent": "bushy_leaves_enhanced:block/conifer_0",
+  "textures": {
+    "all": "minecraft:block/spruce_leaves"
+  }
+}

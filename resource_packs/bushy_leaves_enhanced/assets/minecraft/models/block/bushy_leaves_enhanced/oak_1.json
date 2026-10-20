@@ -1,0 +1,6 @@
+{
+  "parent": "bushy_leaves_enhanced:block/broad_1",
+  "textures": {
+    "all": "minecraft:block/oak_leaves"
+  }
+}

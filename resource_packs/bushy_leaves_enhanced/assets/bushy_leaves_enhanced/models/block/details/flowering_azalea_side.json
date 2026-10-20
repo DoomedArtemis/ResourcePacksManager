@@ -1,0 +1,99 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "detail": "bushy_leaves_enhanced:block/details/azalea_blossom",
+    "particle": "minecraft:block/flowering_azalea_leaves"
+  },
+  "elements": [
+    {
+      "from": [
+        7,
+        7,
+        -1.5
+      ],
+      "to": [
+        10,
+        13,
+        -1.5
+      ],
+      "shade": false,
+      "rotation": {
+        "origin": [
+          8.5,
+          7,
+          -1.5
+        ],
+        "axis": "x",
+        "angle": -45,
+        "rescale": false
+      },
+      "faces": {
+        "north": {
+          "texture": "#detail",
+          "uv": [
+            6,
+            0,
+            9,
+            6
+          ],
+          "cullface": "north"
+        },
+        "south": {
+          "texture": "#detail",
+          "uv": [
+            9,
+            0,
+            6,
+            6
+          ],
+          "cullface": "north"
+        }
+      }
+    },
+    {
+      "from": [
+        8.5,
+        7,
+        -3
+      ],
+      "to": [
+        8.5,
+        13,
+        0
+      ],
+      "shade": false,
+      "rotation": {
+        "origin": [
+          8.5,
+          7,
+          -1.5
+        ],
+        "axis": "x",
+        "angle": -45,
+        "rescale": false
+      },
+      "faces": {
+        "west": {
+          "texture": "#detail",
+          "uv": [
+            6,
+            0,
+            9,
+            6
+          ],
+          "cullface": "north"
+        },
+        "east": {
+          "texture": "#detail",
+          "uv": [
+            9,
+            0,
+            6,
+            6
+          ],
+          "cullface": "north"
+        }
+      }
+    }
+  ]
+}
