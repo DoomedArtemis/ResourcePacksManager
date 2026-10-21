@@ -6,67 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="69da52cd-7463-4c66-9153-40bdcaaf6a07" name="Changes" comment="Added Bushy Leaves Enhanced">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/archive/alternative_ores/1.1.0/Alternative Ores 1.1.0 MC1.16.3.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/alternative_ores/1.1.0/Alternative Ores 1.1.0 MC1.16.3.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/archive/alternative_ores/1.1.0/Alternative Ores 1.1.0 MC1.16.4.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/alternative_ores/1.1.0/Alternative Ores 1.1.0 MC1.16.4.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/archive/alternative_ores/1.1.0/Alternative Ores 1.1.0 MC1.16.5.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/alternative_ores/1.1.0/Alternative Ores 1.1.0 MC1.16.5.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemis_enhanced_visuals/artemis_enhanced_visuals.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/artemis_enhanced_visuals/artemis_enhanced_visuals.psd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.13.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.13.2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.13.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.14.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.14.2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.14.3.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.14.4.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.14.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.15.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.15.2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.15.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.16.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.16.2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.16.3.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.16.4.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.16.5.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.16.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.17.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.17.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.18.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.18.2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.18.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.19.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.19.2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.19.3.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.19.4.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.19.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.20.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.20.2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.20.3.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.20.4.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.20.5.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.20.6.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.20.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.10.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.11.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.3.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.4.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.5.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.6.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.7.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.8.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.9.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-26.1.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-26.1.2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-26.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-26.2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-26.3.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/ore-versions.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/ore-versions.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/build-combined-pack.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/build-combined-pack.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/test-combined-pack.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/test-combined-pack.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/test-ore-lighting.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/test-ore-lighting.cjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/update-ore-lighting.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/update-ore-lighting.cjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice1.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice2.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice3.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice3.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice4.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice4.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice5.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice6.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice6.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/better_cake_slices/pack.png" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_cake_slices/pack.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +165,7 @@
       <recent name="C:\Users\grego\IdeaProjects\Resource-Packs-Manager\archive\better_candles\1.0.0" />
     </key>
   </component>
-  <component name="RunManager" selected="Shell Script.Publish Selected Resource Packs to CurseForge" />
+  <component name="RunManager" selected="Shell Script.Publish Selected Resource Packs to Modrinth" />
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
