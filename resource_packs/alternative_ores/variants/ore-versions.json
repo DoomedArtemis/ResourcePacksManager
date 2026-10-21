@@ -3421,7 +3421,7 @@
     { "Path": "assets/eternal_starlight/models/block/alternative_ores/legacy_lighting/grimstone.json", "Versions": ["1.21","1.21.1"], "BeforeVersion": "1.21.2" },
     { "Path": "assets/eternal_starlight/models/block/alternative_ores/legacy_lighting/voidstone.json", "Versions": ["1.21","1.21.1"], "BeforeVersion": "1.21.2" },
     { "Path": "assets/minecraft/models/block/alternative_ores/legacy_lighting/stone.json", "MinVersion": "1.13", "BeforeVersion": "1.21.2" },
-    { "Path": "assets/minecraft/models/block/alternative_ores/legacy_lighting/deepslate.json", "MinVersion": "1.17", "BeforeVersion": "1.21.2" },
+    { "Path": "assets/minecraft/models/block/alternative_ores/legacy_lighting/deepslate.json", "MinVersion": "1.16.3", "BeforeVersion": "1.21.2" },
     { "Path": "assets/minecraft/models/block/alternative_ores/legacy_lighting/netherrack.json", "MinVersion": "1.13", "BeforeVersion": "1.21.2" },
     { "Path": "assets/alltheores/models/block/alternative_ores/legacy_lighting/end_stone.json", "MinVersion": "1.16.2", "BeforeVersion": "1.21.2" },
     { "Path": "assets/alltheores/models/block/alternative_ores/legacy_lighting/otherstone.json", "Versions": ["1.16.3","1.16.4","1.16.5","1.17.1","1.18","1.18.1","1.18.2","1.19.2","1.20","1.20.1","1.21","1.21.1","26.1.2"], "BeforeVersion": "1.21.2" },

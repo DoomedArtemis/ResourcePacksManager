@@ -5,6 +5,9 @@ const crypto = require('node:crypto');
 const root = path.resolve(__dirname, '../resource_packs/alternative_ores');
 const read = relative => JSON.parse(fs.readFileSync(path.join(root, relative), 'utf8'));
 const routing = read('variants/ore-versions.json');
+// Silent Gear references the shared deepslate helper before vanilla adds deepslate.
+const deepslateHelper = routing.FileRules.find(rule => rule.Path === 'assets/minecraft/models/block/alternative_ores/legacy_lighting/deepslate.json');
+assert.equal(deepslateHelper.MinVersion, '1.16.3', 'Silent Gear legacy blockstates need their deepslate helper starting in 1.16.3.');
 const variants = routing.FileVariants.filter(rule => rule.SourcePath.startsWith('variants/legacy-lighting/'));
 let expectedVariants = 0;
 for (const namespace of fs.readdirSync(path.join(root,'assets'))) {

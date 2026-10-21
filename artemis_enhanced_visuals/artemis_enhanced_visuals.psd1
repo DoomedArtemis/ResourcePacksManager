@@ -6,7 +6,7 @@
         name = 'Artemis Enhanced Visuals'
         author = 'DoomedArtemis'
         description = @(
-            @{ text = 'Vanilla visuals'; color = 'aqua' }
+            @{ text = 'Enhanced Vanilla visuals'; color = 'aqua' }
             @{ text = ' by '; color = 'gray' }
             @{ text = 'Artemis'; color = 'gold' }
         )

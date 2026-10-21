@@ -42,7 +42,8 @@ function updateOreLighting() {
     'eternal_starlight:block/alternative_ores/grimstone': { name: 'grimstone', namespace: 'eternal_starlight', gate: 'assets/eternal_starlight/models/block/alternative_ores/grimstone.json', minimum: '1.21', textures: { all: 'eternal_starlight:block/grimstone' } },
     'eternal_starlight:block/alternative_ores/voidstone': { name: 'voidstone', namespace: 'eternal_starlight', gate: 'assets/eternal_starlight/models/block/alternative_ores/voidstone.json', minimum: '1.21', textures: { all: 'eternal_starlight:block/voidstone' } },
     'minecraft:block/stone': { name: 'stone', minimum: '1.13', textures: { all: 'minecraft:block/stone' } },
-    'minecraft:block/deepslate': { name: 'deepslate', minimum: '1.17', textures: { end: 'minecraft:block/deepslate_top', side: 'minecraft:block/deepslate' } },
+    // Silent Gear's deepslate ore variants already reference this helper in 1.16.3.
+    'minecraft:block/deepslate': { name: 'deepslate', minimum: '1.16.3', textures: { end: 'minecraft:block/deepslate_top', side: 'minecraft:block/deepslate' } },
     'minecraft:block/netherrack': { name: 'netherrack', minimum: '1.13', textures: { all: 'minecraft:block/netherrack' } },
     'minecraft:block/end_stone': { name: 'end_stone', namespace: 'alltheores', minimum: '1.16.2', textures: { all: 'minecraft:block/end_stone' } },
     'alltheores:block/alternative_ores/otherstone': { name: 'otherstone', namespace: 'alltheores', gate: 'assets/alltheores/models/block/alternative_ores/otherstone.json', minimum: '1.16.2', textures: { all: 'alltheores:block/alternative_ores/otherstone' } },

@@ -98,16 +98,18 @@ attribution text; their introduction is also written for players.
 
 The combined builder first looks in `archive/<pack>/<release>/` for each component
 and target Minecraft version. It uses the newest release containing a matching ZIP,
-comparing numeric versions (so `1.10.0` comes after `1.2.0`). Prerelease ordering is
+regardless of whether that version has been uploaded or published. The archived
+files determine availability; Modrinth and CurseForge publishing state is ignored.
+Versions are compared numerically (so `1.10.0` comes after `1.2.0`). Prerelease ordering is
 also supported. Both `mc1.21.11` and legacy `mc.1.21.11` filenames are accepted;
 within a release, the most recently modified matching ZIP is used, including
 timestamped `-uploaded-` collision copies. ZIPs for other Minecraft versions and
 empty release folders do not affect selection. If no matching archive exists,
 the component is built from source and listed as `unreleased`.
-Components with `Compatibility` settings also compare their selected mod assets
-and generated support notes against the archive. If those files are missing,
-different, or incompatible with the target Minecraft version, the component is
-rebuilt from current sources instead. Matching components still use their archives.
+Matching archives are authoritative, including their mod compatibility assets and
+support notes. Changes to current component sources do not trigger a rebuild or
+change the archived version to `unreleased`. Archive a new component version when
+those changes should be included in the combined pack.
 The player README records the release actually used, rather than the newest
 release available for a different Minecraft version.
 The same version list is stored as `ComponentVersions` in the build report.

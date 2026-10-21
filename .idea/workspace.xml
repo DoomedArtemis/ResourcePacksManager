@@ -4,8 +4,69 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69da52cd-7463-4c66-9153-40bdcaaf6a07" name="Changes" comment="Added &quot;Bushy Leaves Enhanced&quot;">
+    <list default="true" id="69da52cd-7463-4c66-9153-40bdcaaf6a07" name="Changes" comment="Added Bushy Leaves Enhanced">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/archive/alternative_ores/1.1.0/Alternative Ores 1.1.0 MC1.16.3.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/alternative_ores/1.1.0/Alternative Ores 1.1.0 MC1.16.3.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/archive/alternative_ores/1.1.0/Alternative Ores 1.1.0 MC1.16.4.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/alternative_ores/1.1.0/Alternative Ores 1.1.0 MC1.16.4.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/archive/alternative_ores/1.1.0/Alternative Ores 1.1.0 MC1.16.5.zip" beforeDir="false" afterPath="$PROJECT_DIR$/archive/alternative_ores/1.1.0/Alternative Ores 1.1.0 MC1.16.5.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/artemis_enhanced_visuals/artemis_enhanced_visuals.psd1" beforeDir="false" afterPath="$PROJECT_DIR$/artemis_enhanced_visuals/artemis_enhanced_visuals.psd1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.13.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.13.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.13.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.14.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.14.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.14.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.14.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.14.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.15.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.15.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.15.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.16.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.16.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.16.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.16.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.16.5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.16.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.17.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.17.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.18.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.18.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.18.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.19.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.19.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.19.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.19.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.19.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.20.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.20.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.20.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.20.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.20.5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.20.6.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.20.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.10.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.11.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.6.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.7.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.8.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.9.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-1.21.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-26.1.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-26.1.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-26.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-26.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bushy_leaves_enhanced/bushy_leaves_enhanced-26.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/ore-versions.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/alternative_ores/variants/ore-versions.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/build-combined-pack.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/build-combined-pack.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/test-combined-pack.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/test-combined-pack.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/test-ore-lighting.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/test-ore-lighting.cjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/update-ore-lighting.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/update-ore-lighting.cjs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,23 +99,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.003297340257286" />
-      <entry key="MS500" value="1.6588846290473689" />
-      <entry key="S2" value="4.507581653380447" />
-      <entry key="S5" value="6.60969631118795" />
-      <entry key="S10" value="7.668843532213404" />
-      <entry key="S30" value="8.76813803986086" />
-      <entry key="S60" value="12.472798057867196" />
-      <entry key="M2" value="23.777559923896234" />
-      <entry key="M5" value="55.01321649164999" />
-      <entry key="M10" value="95.65420948737281" />
-      <entry key="M15" value="127.35175448140579" />
-      <entry key="M30" value="250.15883515813817" />
-      <entry key="H1" value="584.1191404784148" />
-      <entry key="H2" value="1218.6809790891332" />
-      <entry key="H4" value="2454.876813607725" />
-      <entry key="D1" value="13019.784334560309" />
-      <entry key="W1" value="23185.979761835857" />
+      <entry key="MS100" value="2.501385238806174" />
+      <entry key="MS500" value="7.386166024996599" />
+      <entry key="S2" value="18.40872978063277" />
+      <entry key="S5" value="30.935877455146088" />
+      <entry key="S10" value="47.28685475317538" />
+      <entry key="S30" value="83.25095704960401" />
+      <entry key="S60" value="100.93628412568584" />
+      <entry key="M2" value="112.05948859674757" />
+      <entry key="M5" value="124.4348871418379" />
+      <entry key="M10" value="155.4449401584979" />
+      <entry key="M15" value="191.32220804523953" />
+      <entry key="M30" value="313.10835234517725" />
+      <entry key="H1" value="626.8930482015019" />
+      <entry key="H2" value="1254.1553666258812" />
+      <entry key="H4" value="2488.7017069179137" />
+      <entry key="D1" value="13072.934338979796" />
+      <entry key="W1" value="23351.515339993406" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -76,23 +137,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9624605035709906" />
-      <entry key="MS500" value="1.6197877540934194" />
-      <entry key="S2" value="4.4485467540476575" />
-      <entry key="S5" value="6.573243115332165" />
-      <entry key="S10" value="7.647643670884036" />
-      <entry key="S30" value="8.760285249595963" />
-      <entry key="S60" value="12.468614353045659" />
-      <entry key="M2" value="23.775191866335792" />
-      <entry key="M5" value="55.01197793355107" />
-      <entry key="M10" value="95.65340056486457" />
-      <entry key="M15" value="127.35111583080436" />
-      <entry key="M30" value="250.15832112145094" />
-      <entry key="H1" value="584.1186205677584" />
-      <entry key="H2" value="1218.6804745368015" />
-      <entry key="H4" value="2454.8763231565977" />
-      <entry key="D1" value="13019.783926858257" />
-      <entry key="W1" value="23185.979660293335" />
+      <entry key="MS100" value="2.424100828310737" />
+      <entry key="MS500" value="7.3405072998934955" />
+      <entry key="S2" value="18.381386635175836" />
+      <entry key="S5" value="30.91775765043229" />
+      <entry key="S10" value="47.27252417851771" />
+      <entry key="S30" value="83.24197763115039" />
+      <entry key="S60" value="100.9307285175381" />
+      <entry key="M2" value="112.05637219446595" />
+      <entry key="M5" value="124.43347322604754" />
+      <entry key="M10" value="155.4440196377431" />
+      <entry key="M15" value="191.32144197472658" />
+      <entry key="M30" value="313.10774268474967" />
+      <entry key="H1" value="626.892483482694" />
+      <entry key="H2" value="1254.154837923005" />
+      <entry key="H4" value="2488.70120344074" />
+      <entry key="D1" value="13072.933928145414" />
+      <entry key="W1" value="23351.515237496293" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -158,7 +219,7 @@
       <recent name="C:\Users\grego\IdeaProjects\Resource-Packs-Manager\archive\better_candles\1.0.0" />
     </key>
   </component>
-  <component name="RunManager" selected="Shell Script.Build Selected Resource Packs" />
+  <component name="RunManager" selected="Shell Script.Publish Selected Resource Packs to CurseForge" />
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
