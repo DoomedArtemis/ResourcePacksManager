@@ -108,7 +108,7 @@ function Get-ReleaseArchiveZip {
     $readable = '.+ ' + [regex]::Escape($ReleaseVersion) + ' MC' + [regex]::Escape($MinecraftVersion)
     $pattern = '^(?:' + $legacy + '|' + $readable + ')(?:-uploaded-[0-9]{14})?\.zip$'
     return Get-ChildItem -LiteralPath $Directory -File -Filter '*.zip' |
-        Where-Object { $_.Name -match $pattern } |
+        Where-Object { $_.Name -match $pattern -or $MinecraftVersion -in @(Get-PackZipVersions $_.FullName) } |
         Sort-Object LastWriteTimeUtc, Name -Descending | Select-Object -First 1
 }
 
@@ -129,6 +129,10 @@ function Get-ReleaseZipFileName {
     }
     $title = if ($Item.PSObject.Properties['PackDisplayName']) { [string]$Item.PackDisplayName } else { Convert-ToPackDisplayName -PackFolderName $Item.PackName }
     $minecraft = if ($Item.PSObject.Properties['MinecraftVersion']) { [string]$Item.MinecraftVersion } else { [string]$Item.VersionNumber -replace '^.*-mc\.?', '' }
+    if ($Item.PSObject.Properties['ZipPath'] -and (Test-Path -LiteralPath "$($Item.ZipPath).versions.json")) {
+        $null = Get-PackZipVersions $Item.ZipPath
+        $minecraft = (Get-Content -LiteralPath "$($Item.ZipPath).versions.json" -Raw | ConvertFrom-Json).Label
+    }
     if ([string]::IsNullOrWhiteSpace($title) -or $title -match '[<>:"/\\|?*\x00-\x1f]' -or $title -match '[. ]$') {
         throw "Invalid pack name for release ZIP: '$title'."
     }
@@ -331,6 +335,9 @@ function Move-ReleaseZipToArchive {
         $sourceHash = (Get-FileHash -LiteralPath $Item.ZipPath -Algorithm SHA256).Hash
         $destinationHash = (Get-FileHash -LiteralPath $destinationPath -Algorithm SHA256).Hash
         if ($sourceHash -eq $destinationHash) {
+            if (Test-Path -LiteralPath "$($Item.ZipPath).versions.json") {
+                Move-Item -LiteralPath "$($Item.ZipPath).versions.json" -Destination "$destinationPath.versions.json" -Force
+            }
             Remove-Item -LiteralPath $Item.ZipPath
             Remove-ArchivedBuildReport -ZipPath $Item.ZipPath
             return $destinationPath
@@ -343,6 +350,164 @@ function Move-ReleaseZipToArchive {
     }
 
     Move-Item -LiteralPath $Item.ZipPath -Destination $destinationPath
+    if (Test-Path -LiteralPath "$($Item.ZipPath).versions.json") {
+        Move-Item -LiteralPath "$($Item.ZipPath).versions.json" -Destination "$destinationPath.versions.json" -Force
+    }
     Remove-ArchivedBuildReport -ZipPath $Item.ZipPath
     return $destinationPath
+}
+
+function Get-PackZipVersions {
+    param([string]$ZipPath)
+    $path = "$ZipPath.versions.json"
+    if (Test-Path -LiteralPath $path -PathType Leaf) {
+        $data = Get-Content -LiteralPath $path -Raw | ConvertFrom-Json
+        if ($data.Sha256 -ne (Get-FileHash -LiteralPath $ZipPath -Algorithm SHA256).Hash) { throw "Version metadata does not match ZIP: $ZipPath" }
+        return @($data.Versions)
+    }
+    return @()
+}
+
+function Set-PackZipVersions {
+    param([string]$ZipPath, [string[]]$Versions, [string]$Label)
+    @{ Versions = @($Versions); Label = $Label; Sha256 = (Get-FileHash -LiteralPath $ZipPath -Algorithm SHA256).Hash } |
+        ConvertTo-Json -Depth 5 | Set-Content -LiteralPath "$ZipPath.versions.json" -Encoding UTF8
+}
+
+function Get-PackVersionLabel {
+    param([string[]]$Versions, $Config)
+    $ordered = @($Config.Versions | Where-Object { $_.Id -in $Versions } | ForEach-Object { [string]$_.Id })
+    if ($ordered.Count -eq 1) { return $ordered[0] }
+    $segments = New-Object 'Collections.Generic.List[string]'
+    $run = New-Object 'Collections.Generic.List[string]'
+    # A range may never claim a missing version, including versions disabled in the matrix.
+    foreach ($entry in $Config.Versions) {
+        if ($entry.Id -in $Versions) { $run.Add([string]$entry.Id) }
+        elseif ($run.Count) {
+            $segments.Add(($run.ToArray() -join ',')); $run.Clear()
+        }
+    }
+    if ($run.Count) { $segments.Add(($run.ToArray() -join ',')) }
+    $labels = foreach ($segment in $segments) {
+        $ids = @($segment.Split(','))
+        $family = ($ids[0].Split('.')[0..1] -join '.')
+        $familyIds = @($Config.Versions | Where-Object { $_.Id -eq $family -or $_.Id -like "$family.*" } | ForEach-Object { $_.Id })
+        if ($ids.Count -gt 1 -and @($ids | Where-Object { $_ -notin $familyIds }).Count -eq 0 -and @($familyIds | Where-Object { $_ -notin $ids }).Count -eq 0) { "$family.x" }
+        elseif ($ids.Count -gt 1) { "$($ids[0])-$($ids[-1])" }
+        else { $ids[0] }
+    }
+    return ($labels -join '+')
+}
+
+function Get-PackZipContentHash {
+    param([string]$ZipPath)
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    $zip = [IO.Compression.ZipFile]::OpenRead($ZipPath)
+    try {
+        $entries = foreach ($entry in $zip.Entries | Sort-Object FullName -CaseSensitive) {
+            $stream = $entry.Open(); $sha = [Security.Cryptography.SHA256]::Create()
+            try { $hash = [BitConverter]::ToString($sha.ComputeHash($stream)) }
+            finally { $sha.Dispose(); $stream.Dispose() }
+            @($entry.FullName, $entry.Length, $hash)
+        }
+        $bytes = [Text.Encoding]::UTF8.GetBytes((ConvertTo-Json -InputObject @($entries) -Compress -Depth 5))
+        $sha = [Security.Cryptography.SHA256]::Create()
+        try { return [BitConverter]::ToString($sha.ComputeHash($bytes)) } finally { $sha.Dispose() }
+    }
+    finally { $zip.Dispose() }
+}
+
+function Find-PackBuildZip {
+    param([string]$BuildZipPath, [string]$MinecraftVersion)
+    if (Test-Path -LiteralPath $BuildZipPath -PathType Leaf) { return $BuildZipPath }
+    $directory = Split-Path $BuildZipPath -Parent
+    if (-not (Test-Path -LiteralPath $directory)) { return $BuildZipPath }
+    foreach ($zip in Get-ChildItem -LiteralPath $directory -File -Filter '*.zip') {
+        if ($MinecraftVersion -in @(Get-PackZipVersions $zip.FullName)) { return $zip.FullName }
+    }
+    return $BuildZipPath
+}
+
+function Merge-IdenticalPackBuilds {
+    param([string]$Directory, [string]$PackName, [string]$DisplayName, $Config)
+    if (-not (Test-Path -LiteralPath $Directory)) { return }
+    $byVersion = @{}; $oldPaths = @{}
+    foreach ($zip in Get-ChildItem -LiteralPath $Directory -File -Filter '*.zip') {
+        foreach ($id in @(Get-PackZipVersions $zip.FullName)) {
+            if ($id -notin @($Config.Versions | ForEach-Object { $_.Id })) { throw "Cannot regroup '$($zip.FullName)': version '$id' is missing from the configured matrix." }
+            $byVersion[$id] = $zip.FullName; $oldPaths[$zip.FullName] = $true
+        }
+    }
+    # Fresh individual builds override only their own members of an earlier group.
+    foreach ($entry in $Config.Versions) {
+        $name = Convert-Tokens -Value $Config.PackageNameTemplate -Tokens @{ PackName = $PackName; PackDisplayName = $DisplayName; VersionId = $entry.Id }
+        $path = Join-Path $Directory "$name.zip"
+        if (Test-Path -LiteralPath $path -PathType Leaf) { $byVersion[$entry.Id] = $path; $oldPaths[$path] = $true }
+    }
+    $hashes = @{}; $groups = @{}
+    foreach ($entry in $Config.Versions) {
+        $id = [string]$entry.Id
+        if (-not $byVersion.ContainsKey($id)) { continue }
+        $path = $byVersion[$id]
+        if (-not $hashes.ContainsKey($path)) { $hashes[$path] = Get-PackZipContentHash $path }
+        $hash = $hashes[$path]
+        if (-not $groups.ContainsKey($hash)) { $groups[$hash] = New-Object 'Collections.Generic.List[string]' }
+        $groups[$hash].Add($id)
+    }
+    if (-not $groups.Count) { return }
+    $staging = Join-Path $Directory ('.group-' + [Guid]::NewGuid().ToString('N'))
+    New-Item -ItemType Directory -Path $staging | Out-Null
+    $retiring = $false; $complete = $false
+    try {
+        foreach ($group in $groups.Values) {
+            $ids = $group.ToArray(); $label = Get-PackVersionLabel -Versions $ids -Config $Config
+            $name = Convert-Tokens -Value $Config.PackageNameTemplate -Tokens @{ PackName = $PackName; PackDisplayName = $DisplayName; VersionId = $label }
+            $target = Join-Path $staging "$name.zip"
+            Copy-Item -LiteralPath $byVersion[$ids[0]] -Destination $target
+            Set-PackZipVersions -ZipPath $target -Versions $ids -Label $label
+        }
+        $retiring = $true
+        foreach ($path in $oldPaths.Keys) {
+            Remove-Item -LiteralPath $path
+            if (Test-Path -LiteralPath "$path.versions.json") { Remove-Item -LiteralPath "$path.versions.json" }
+        }
+        Get-ChildItem -LiteralPath $staging -File | Move-Item -Destination $Directory
+        $complete = $true
+    }
+    finally {
+        # The directory is a newly created immediate child of the checked build directory.
+        if ((Split-Path ([IO.Path]::GetFullPath($staging)) -Parent) -ne [IO.Path]::GetFullPath($Directory)) { throw 'Unsafe grouping cleanup path.' }
+        if ($complete -or -not $retiring) { Remove-Item -LiteralPath $staging -Recurse -Force }
+        else { Write-Warning "Regrouping was interrupted. Remaining replacement ZIPs are retained in '$staging'." }
+    }
+}
+
+function Merge-PackUploadItems {
+    param([object[]]$Items, $Config)
+    $groups = @{}
+    foreach ($item in $Items) {
+        $deps = ConvertTo-Json -InputObject @($item.Dependencies) -Depth 20 -Compress
+        $key = "$($item.PackName)|$($item.ProjectId)|$($item.ReleaseVersion)|$($item.ZipPath)|$deps"
+        if (-not $groups.ContainsKey($key)) { $groups[$key] = New-Object 'Collections.Generic.List[object]' }
+        $groups[$key].Add($item)
+    }
+    foreach ($group in $groups.Values) {
+        $item = $group[0]
+        $members = @($group | ForEach-Object { [pscustomobject]@{ MinecraftVersion = $_.MinecraftVersion; VersionNumber = $_.VersionNumber } })
+        $item | Add-Member -NotePropertyName PublishMembers -NotePropertyValue $members -Force
+        $ids = @($group | ForEach-Object { $_.MinecraftVersion })
+        $item | Add-Member -NotePropertyName MinecraftVersions -NotePropertyValue $ids -Force
+        if ($group.Count -gt 1) {
+            $label = Get-PackVersionLabel -Versions $ids -Config $Config
+            $tokens = @{ PackName = $item.PackName; PackDisplayName = $item.PackDisplayName; VersionId = $label; MinecraftVersion = $label; ReleaseVersion = $item.ReleaseVersion }
+            $item.VersionNumber = Convert-PublishVersionNumber (Convert-Tokens -Value $item.PublishTemplates.VersionNumber -Tokens $tokens)
+            $item.VersionName = Convert-Tokens -Value $item.PublishTemplates.VersionName -Tokens $tokens
+            $item.Changelog = Convert-Tokens -Value $item.PublishTemplates.Changelog -Tokens $tokens
+            if ($item.PSObject.Properties['GameVersionNames']) {
+                $item.GameVersionNames = @($group | ForEach-Object { $_.GameVersionNames } | Select-Object -Unique)
+            }
+            $item.MinecraftVersion = $label
+        }
+        $item
+    }
 }

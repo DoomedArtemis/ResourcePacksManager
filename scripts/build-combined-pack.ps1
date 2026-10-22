@@ -256,10 +256,13 @@ try {
         Ensure-Directory -Path (Split-Path $reportPath -Parent)
         $report | ConvertTo-Json -Depth 100 | Set-Content -LiteralPath $reportPath -Encoding UTF8
         Move-Item -LiteralPath $stagedZip -Destination (Join-Path $outputRoot "$baseName.zip") -Force
+        $sidecar = Join-Path $outputRoot "$baseName.zip.versions.json"
+        if (Test-Path -LiteralPath $sidecar) { Remove-Item -LiteralPath $sidecar }
         Write-Output "Built $($definition.DisplayName) $($versionConfig.Id) -> $(Join-Path $outputRoot "$baseName.zip")"
         $versionIndex++
         Show-BuildProgress -Id 1 -Activity $definition.DisplayName -Stage 'Versions completed' -Completed $versionIndex -Total $selectedVersions.Count
     }
+    Merge-IdenticalPackBuilds -Directory $outputRoot -PackName $definition.Name -DisplayName $definition.DisplayName -Config $config
 }
 finally {
     foreach ($progressId in @(1, 4, 5)) { Close-BuildProgress -Id $progressId -Activity 'Building combined pack' }

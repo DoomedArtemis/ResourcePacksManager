@@ -1448,7 +1448,7 @@ function Build-PackVersion {
         $tokens = Get-PackTokens -Config $Config -PackDirectory $PackDirectory -VersionConfig $VersionConfig
         $packageName = Convert-Tokens -Value $Config.PackageNameTemplate -Tokens $tokens
         return @{ PackName = $PackDirectory.Name; VersionId = $VersionConfig.Id; Status = 'success'; WarningCount = 0;
-            ZipPath = Join-Path (Resolve-FullPath -BasePath $RepoRoot -Path $Config.BuildRoot) "$($PackDirectory.Name)/$packageName.zip" }
+            ZipPath = Find-PackBuildZip -BuildZipPath (Join-Path (Resolve-FullPath -BasePath $RepoRoot -Path $Config.BuildRoot) "$($PackDirectory.Name)/$packageName.zip") -MinecraftVersion $VersionConfig.Id }
     }
     $tokens = Get-PackTokens -Config $Config -PackDirectory $PackDirectory -VersionConfig $VersionConfig
     $buildRoot = Resolve-FullPath -BasePath $RepoRoot -Path ([string]$Config.BuildRoot)
@@ -1456,6 +1456,7 @@ function Build-PackVersion {
     $packageBaseName = Convert-Tokens -Value ([string]$Config.PackageNameTemplate) -Tokens $tokens
     $zipPackRoot = Join-Path -Path $buildRoot -ChildPath $PackDirectory.Name
     $zipPath = Join-Path -Path $zipPackRoot -ChildPath "$packageBaseName.zip"
+    if (Test-Path -LiteralPath "$zipPath.versions.json") { Remove-Item -LiteralPath "$zipPath.versions.json" }
     $tempBuildRoot = Get-TemporaryBuildRoot
     $outputFolder = Join-Path -Path (Join-Path -Path $tempBuildRoot -ChildPath $PackDirectory.Name) -ChildPath ([string]$VersionConfig.Id)
 
@@ -1782,4 +1783,12 @@ finally { Close-BuildProgress -Id 0 -Activity 'Building resource packs' }
 
 if ($failures.Count -gt 0) {
     throw ($failures -join [Environment]::NewLine)
+}
+
+foreach ($directory in $packDirectories) {
+    $options = Get-PackBuildOptions -PackDirectory $directory -Config $config
+    Merge-IdenticalPackBuilds -Directory (Join-Path $buildRoot $directory.Name) -PackName $directory.Name -DisplayName (Get-ReleasePackDisplayName -PackDirectory $directory -PackOptions $options) -Config $config
+    foreach ($zip in Get-ChildItem -LiteralPath (Join-Path $buildRoot $directory.Name) -File -Filter '*.zip' -ErrorAction SilentlyContinue) {
+        Write-Output "Package $($directory.Name) / $(@(Get-PackZipVersions $zip.FullName) -join ', ') -> $($zip.FullName)"
+    }
 }

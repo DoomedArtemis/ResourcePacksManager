@@ -2,6 +2,7 @@
 param([string[]]$Version = @('1.13', '1.15.1', '1.15.2', '1.16.5', '1.18.2', '1.21.1', '1.21.2', '26.2', '26.3'))
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'combined-pack-support.ps1')
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 $repoRoot = Split-Path $PSScriptRoot -Parent
 $packRoot = Join-Path $repoRoot 'resource_packs/alternative_ores'
@@ -14,7 +15,8 @@ foreach ($variant in $rules.FileVariants | Where-Object { $_.SourcePath.StartsWi
 foreach ($versionId in $Version) {
     if (-not $order.ContainsKey($versionId)) { throw "Unknown version: $versionId" }
     $legacy = $order[$versionId] -lt $order['1.21.2']
-    $zip = [IO.Compression.ZipFile]::OpenRead((Join-Path $repoRoot "build/alternative_ores/alternative_ores-$versionId.zip"))
+    $zipPath = Find-PackBuildZip -BuildZipPath (Join-Path $repoRoot "build/alternative_ores/alternative_ores-$versionId.zip") -MinecraftVersion $versionId
+    $zip = [IO.Compression.ZipFile]::OpenRead($zipPath)
     try {
         $assetEntries = @($zip.Entries | Where-Object { $_.FullName.StartsWith('assets/') -and -not $_.FullName.EndsWith('/') })
         $names = @($assetEntries.FullName)

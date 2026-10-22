@@ -600,6 +600,13 @@ function Test-LocalCurseForgeVersionPublished {
         [Parameter(Mandatory = $true)]$Item
     )
 
+    if ($Item.PSObject.Properties['PublishMembers']) {
+        foreach ($member in $Item.PublishMembers) {
+            $probe = [pscustomobject]@{ PackName = $Item.PackName; ProjectId = $Item.ProjectId; VersionNumber = $member.VersionNumber }
+            if (-not (Test-LocalCurseForgeVersionPublished -State $State -Item $probe)) { return $false }
+        }
+        return $true
+    }
     $packState = Get-LocalCurseForgePackState -State $State -PackName $Item.PackName
     foreach ($publishedFile in @(Get-HashtableValueOrDefault -Table $packState -Key 'PublishedFiles' -DefaultValue @())) {
         $publishedFileState = ConvertTo-Hashtable -InputObject $publishedFile
@@ -1024,6 +1031,7 @@ function Resolve-PublishZipPath {
         }
     }
 
+    $BuildZipPath = Find-PackBuildZip -BuildZipPath $BuildZipPath -MinecraftVersion $Item.MinecraftVersion
     if (Test-Path -LiteralPath $BuildZipPath -PathType Leaf) {
         return [pscustomobject]@{
             Path = $BuildZipPath
@@ -1033,6 +1041,7 @@ function Resolve-PublishZipPath {
 
     if ($ShouldBuildIfMissing) {
         Invoke-BuildForPublishItem -ConfigPath $ConfigPath -PackName $Item.PackName -VersionId $Item.MinecraftVersion
+        $BuildZipPath = Find-PackBuildZip -BuildZipPath $BuildZipPath -MinecraftVersion $Item.MinecraftVersion
         if (Test-Path -LiteralPath $BuildZipPath -PathType Leaf) {
             return [pscustomobject]@{
                 Path = $BuildZipPath
@@ -1192,6 +1201,20 @@ foreach ($packDirectory in $packDirectories) {
     }
 
     $packSelectedVersions = @(Get-PackSelectedVersions -PackDirectory $packDirectory -Config $config -GloballySelectedVersions $selectedVersions)
+    if ($Build -and -not $SkipBuild) {
+        $missing = @($packSelectedVersions | Where-Object {
+            $name = Convert-Tokens -Value $packageNameTemplate -Tokens @{ PackName = $packDirectory.Name; PackDisplayName = (Get-ReleasePackDisplayName -PackDirectory $packDirectory -PackOptions $packOptions); VersionId = $_.Id }
+            $expected = Join-Path (Join-Path $buildRoot $packDirectory.Name) "$name.zip"
+            $found = Find-PackBuildZip -BuildZipPath $expected -MinecraftVersion $_.Id
+            $release = $curseforge.ReleaseVersion
+            $archived = Get-ReleaseArchiveZip -Directory (Join-Path (Join-Path $archiveRootPath $packDirectory.Name) $release) -PackName $packDirectory.Name -ReleaseVersion $release -MinecraftVersion $_.Id
+            -not (Test-Path -LiteralPath $found -PathType Leaf) -and $null -eq $archived
+        })
+        if ($missing.Count) {
+            & (Join-Path $PSScriptRoot 'build-texture-packs.ps1') -ConfigPath $ConfigPath -Pack $packDirectory.Name -Version @($missing | ForEach-Object { $_.Id }) | Out-Host
+            if (-not $?) { throw "Build failed for '$($packDirectory.Name)'." }
+        }
+    }
     foreach ($versionConfig in $packSelectedVersions) {
         $minecraftVersion = [string]$versionConfig.Id
         $tokens = @{
@@ -1224,6 +1247,7 @@ foreach ($packDirectory in $packDirectories) {
             ReleaseVersion = $curseforge.ReleaseVersion
             VersionNumber = $versionNumber
             VersionName = $versionName
+            PublishTemplates = @{ VersionNumber = $curseforge.VersionNumberTemplate; VersionName = $curseforge.NameTemplate; Changelog = $curseforge.Changelog }
             Changelog = $changelog
             ReleaseType = $curseforge.ReleaseType
             ChangelogType = $curseforge.ChangelogType
@@ -1243,6 +1267,8 @@ foreach ($packDirectory in $packDirectories) {
         $uploadItems.Add($item) | Out-Null
     }
 }
+
+$uploadItems = @(Merge-PackUploadItems -Items @($uploadItems.ToArray()) -Config $config)
 
 if ($uploadItems.Count -eq 0) {
     Write-Host 'No CurseForge upload items were selected.'
@@ -1366,7 +1392,13 @@ foreach ($item in $uploadItems) {
     }
 
     Save-LocalCurseForgePackState -State $localCurseForgeState -StatePath $localCurseForgeStateFullPath -PackName $item.PackName -ProjectId $item.ProjectId -Token ([string]$item.Token) -VersionNumber $item.VersionNumber -MinecraftVersion $item.MinecraftVersion -FileId $(if ($createdVersion) { [string]$createdVersion.id } else { '' })
+    foreach ($member in $item.PublishMembers) {
+        Save-LocalCurseForgePackState -State $localCurseForgeState -StatePath $localCurseForgeStateFullPath -PackName $item.PackName -ProjectId $item.ProjectId -Token ([string]$item.Token) -VersionNumber $member.VersionNumber -MinecraftVersion $member.MinecraftVersion -FileId $(if ($createdVersion) { [string]$createdVersion.id } else { '' })
+    }
     $archivePath = Move-UploadedZipToArchive -Item $item -ArchiveRootPath $archiveRootPath
+    foreach ($pending in $uploadItems) {
+        if ($pending.ZipPath -eq $originalZipPath) { $pending.ZipPath = $archivePath; $pending.ZipSource = 'archive' }
+    }
 
     $summary.Add([pscustomobject]@{
         Pack = $item.PackName

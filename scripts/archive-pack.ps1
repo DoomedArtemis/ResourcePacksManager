@@ -58,6 +58,7 @@ $items = @(
             $tokens = @{ PackName = $directory.Name; PackDisplayName = $displayName; VersionId = $versionConfig.Id }
             $baseName = Convert-Tokens -Value $config.PackageNameTemplate -Tokens $tokens
             $zipPath = Join-Path (Join-Path $buildRoot $directory.Name) "$baseName.zip"
+            $zipPath = Find-PackBuildZip -BuildZipPath $zipPath -MinecraftVersion $versionConfig.Id
             if (-not (Test-Path -LiteralPath $zipPath -PathType Leaf)) {
                 Write-Host "Skipping $($directory.Name) / $($versionConfig.Id): no build ZIP."
                 continue
@@ -75,7 +76,7 @@ $items = @(
     }
 )
 if ($items.Count -eq 0) { Write-Host 'No matching build ZIPs to archive.'; return }
-foreach ($item in $items) {
+foreach ($item in @($items | Sort-Object ZipPath -Unique)) {
     $destination = Join-Path (Join-Path (Join-Path $archiveRootPath $item.PackName) $ReleaseVersion) (Get-ReleaseZipFileName -Item $item)
     if ($PSCmdlet.ShouldProcess($item.ZipPath, "Archive as $destination")) {
         $path = Move-ReleaseZipToArchive -Item $item -ArchiveRootPath $archiveRootPath

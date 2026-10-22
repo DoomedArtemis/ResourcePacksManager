@@ -1,6 +1,7 @@
 [CmdletBinding()]
 param([string[]]$Version = @('1.13', '1.17', '1.19', '1.20', '1.21.1', '1.21.4', '26.3'))
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'combined-pack-support.ps1')
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 Add-Type -AssemblyName System.Web.Extensions
 $serializer = New-Object System.Web.Script.Serialization.JavaScriptSerializer
@@ -26,6 +27,7 @@ function Find-ModelReferences($Value) {
 }
 foreach ($versionId in $Version) {
     $zipPath = Join-Path $repo "build/bushy_leaves_enhanced/bushy_leaves_enhanced-$versionId.zip"
+    $zipPath = Find-PackBuildZip -BuildZipPath $zipPath -MinecraftVersion $versionId
     $vanillaPath = Join-Path $repo "cache/vanilla-asset-catalogs/dependency-data/$versionId.json"
     if (-not (Test-Path -LiteralPath $vanillaPath)) { throw "Cache official vanilla dependency definitions for $versionId before this check." }
     $vanilla = $serializer.DeserializeObject([IO.File]::ReadAllText($vanillaPath))

@@ -356,6 +356,22 @@ resource_packs/<pack>/
 
 `pack.png` is copied to the root of each generated ZIP. The builder also creates `pack.mcmeta` for each selected Minecraft version, using the configured pack-format metadata for that version.
 
+Builds with identical entry paths and file bytes (including `pack.mcmeta`) share
+one ZIP per pack. ZIP timestamps and compression details do not affect grouping.
+Names use ranges such as `1.13-1.13.1`, or `1.13.x` when every configured release
+in that family is included. Gaps use `+`, for example `1.13+1.13.2`.
+Different metadata or assets keep builds separate.
+
+Each generated ZIP has a `.zip.versions.json` companion with its exact Minecraft
+versions and a checksum. Keep this file with the ZIP; archiving and successful
+publishing move both together. Existing individual ZIPs remain supported.
+Version selection still uses individual IDs, `all`, and ranges such as
+`1.13..1.13.2`. Selecting one member resolves its shared ZIP; rebuilding one
+member preserves the other members and splits the group if its content changes.
+Publishers upload a shared ZIP once for selected versions with matching
+dependencies, listing those versions in the platform metadata. Versions with
+different dependency requirements retain separate publishing entries.
+
 ## Asset Input Modes
 
 The builder supports two source styles.
@@ -607,7 +623,10 @@ The build script generates:
 build/<pack>/<pack>-<version>.zip
 ```
 
-Builds use a temporary staging directory under the system temp folder, then write the final ZIP into `build/`. Existing ZIPs for other versions remain in place. Rebuilding the same pack/version replaces only that matching ZIP.
+Builds use a temporary staging directory under the system temp folder, then write
+the final ZIPs into `build/` and group identical contents. Rebuilding a selected
+version replaces its content while retaining other versions, splitting or merging
+shared ZIPs as needed.
 
 An individual source pack's generated ZIP contains:
 

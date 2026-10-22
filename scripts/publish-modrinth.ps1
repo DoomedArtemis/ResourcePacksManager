@@ -877,7 +877,7 @@ function Get-ModrinthUploadMetadata {
         version_number = $Item.VersionNumber
         changelog = $Item.Changelog
         dependencies = @($dependencies)
-        game_versions = @($Item.MinecraftVersion)
+        game_versions = @(if ($Item.PSObject.Properties['MinecraftVersions']) { $Item.MinecraftVersions } else { $Item.MinecraftVersion })
         version_type = $Item.VersionType
         loaders = @($Item.Loaders)
         status = $Item.Status
@@ -887,6 +887,24 @@ function Get-ModrinthUploadMetadata {
         primary_file = 'file'
         environment = $Item.Environment
     }
+}
+
+function Test-ModrinthUploadExists {
+    param($Item, [hashtable]$ExistingVersions, $Config)
+    if ($ExistingVersions.ContainsKey((Convert-PublishVersionNumber $Item.VersionNumber))) { return $true }
+    foreach ($member in $Item.PublishMembers) {
+        if ($ExistingVersions.ContainsKey((Convert-PublishVersionNumber $member.VersionNumber))) { continue }
+        $covered = $false
+        foreach ($remote in $ExistingVersions.Values) {
+            if (-not $remote.PSObject.Properties['game_versions'] -or $member.MinecraftVersion -notin @($remote.game_versions)) { continue }
+            $label = Get-PackVersionLabel -Versions @($remote.game_versions) -Config $Config
+            $tokens = @{ PackName = $Item.PackName; PackDisplayName = $Item.PackDisplayName; VersionId = $label; MinecraftVersion = $label; ReleaseVersion = $Item.ReleaseVersion }
+            $expected = Convert-PublishVersionNumber (Convert-Tokens -Value $Item.PublishTemplates.VersionNumber -Tokens $tokens)
+            if ($expected -eq (Convert-PublishVersionNumber $remote.version_number)) { $covered = $true; break }
+        }
+        if (-not $covered) { return $false }
+    }
+    return $true
 }
 
 function Publish-ModrinthVersion {
@@ -997,6 +1015,7 @@ function Resolve-PublishZipPath {
         }
     }
 
+    $BuildZipPath = Find-PackBuildZip -BuildZipPath $BuildZipPath -MinecraftVersion $Item.MinecraftVersion
     if (Test-Path -LiteralPath $BuildZipPath -PathType Leaf) {
         return [pscustomobject]@{
             Path = $BuildZipPath
@@ -1006,6 +1025,7 @@ function Resolve-PublishZipPath {
 
     if ($ShouldBuildIfMissing) {
         Invoke-BuildForPublishItem -ConfigPath $ConfigPath -PackName $Item.PackName -VersionId $Item.MinecraftVersion
+        $BuildZipPath = Find-PackBuildZip -BuildZipPath $BuildZipPath -MinecraftVersion $Item.MinecraftVersion
         if (Test-Path -LiteralPath $BuildZipPath -PathType Leaf) {
             return [pscustomobject]@{
                 Path = $BuildZipPath
@@ -1165,6 +1185,20 @@ foreach ($packDirectory in $packDirectories) {
     }
 
     $packSelectedVersions = @(Get-PackSelectedVersions -PackDirectory $packDirectory -Config $config -GloballySelectedVersions $selectedVersions)
+    if ($Build -and -not $SkipBuild) {
+        $missing = @($packSelectedVersions | Where-Object {
+            $name = Convert-Tokens -Value $packageNameTemplate -Tokens @{ PackName = $packDirectory.Name; PackDisplayName = (Get-ReleasePackDisplayName -PackDirectory $packDirectory -PackOptions $packOptions); VersionId = $_.Id }
+            $expected = Join-Path (Join-Path $buildRoot $packDirectory.Name) "$name.zip"
+            $found = Find-PackBuildZip -BuildZipPath $expected -MinecraftVersion $_.Id
+            $release = $modrinth.ReleaseVersion
+            $archived = Get-ReleaseArchiveZip -Directory (Join-Path (Join-Path $archiveRootPath $packDirectory.Name) $release) -PackName $packDirectory.Name -ReleaseVersion $release -MinecraftVersion $_.Id
+            -not (Test-Path -LiteralPath $found -PathType Leaf) -and $null -eq $archived
+        })
+        if ($missing.Count) {
+            & (Join-Path $PSScriptRoot 'build-texture-packs.ps1') -ConfigPath $ConfigPath -Pack $packDirectory.Name -Version @($missing | ForEach-Object { $_.Id }) | Out-Host
+            if (-not $?) { throw "Build failed for '$($packDirectory.Name)'." }
+        }
+    }
     foreach ($versionConfig in $packSelectedVersions) {
         $minecraftVersion = [string]$versionConfig.Id
         $tokens = @{
@@ -1194,6 +1228,7 @@ foreach ($packDirectory in $packDirectories) {
             ReleaseVersion = $modrinth.ReleaseVersion
             VersionNumber = $versionNumber
             VersionName = $versionName
+            PublishTemplates = @{ VersionNumber = $modrinth.VersionNumberTemplate; VersionName = $modrinth.NameTemplate; Changelog = $modrinth.Changelog }
             Changelog = $changelog
             VersionType = $modrinth.VersionType
             Status = $modrinth.Status
@@ -1214,6 +1249,8 @@ foreach ($packDirectory in $packDirectories) {
         $uploadItems.Add($item) | Out-Null
     }
 }
+
+$uploadItems = @(Merge-PackUploadItems -Items @($uploadItems.ToArray()) -Config $config)
 
 if ($uploadItems.Count -eq 0) {
     Write-Host 'No Modrinth upload items were selected.'
@@ -1310,7 +1347,7 @@ $summary = New-Object System.Collections.Generic.List[object]
 foreach ($item in $uploadItems) {
     $alreadyExists = $false
     if ($existingVersionsByProject.ContainsKey($item.ProjectId)) {
-        $alreadyExists = $existingVersionsByProject[$item.ProjectId].ContainsKey((Convert-PublishVersionNumber $item.VersionNumber))
+        $alreadyExists = Test-ModrinthUploadExists -Item $item -ExistingVersions $existingVersionsByProject[$item.ProjectId] -Config $config
     }
 
     if ($alreadyExists) {
@@ -1366,6 +1403,9 @@ foreach ($item in $uploadItems) {
 
     Save-LocalModrinthPackState -State $localModrinthState -StatePath $localModrinthStateFullPath -PackName $item.PackName -ProjectId $item.ProjectId -Token ([string]$item.Token)
     $archivePath = Move-UploadedZipToArchive -Item $item -ArchiveRootPath $archiveRootPath
+    foreach ($pending in $uploadItems) {
+        if ($pending.ZipPath -eq $originalZipPath) { $pending.ZipPath = $archivePath; $pending.ZipSource = 'archive' }
+    }
 
     $summary.Add([pscustomobject]@{
         Pack = $item.PackName
