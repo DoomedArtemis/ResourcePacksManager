@@ -6,13 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="69da52cd-7463-4c66-9153-40bdcaaf6a07" name="Changes" comment="Added Bushy Leaves Enhanced">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice1.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice2.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice3.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice3.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice4.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice4.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice5.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice6.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_cake_slices/drop/models/block/cake_slice6.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_packs/better_cake_slices/pack.png" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/better_cake_slices/pack.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource_packs/alternative_nether_portal_color/pack.png" beforeDir="false" afterPath="$PROJECT_DIR$/resource_packs/alternative_nether_portal_color/pack.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,23 +39,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="2.501385238806174" />
-      <entry key="MS500" value="7.386166024996599" />
-      <entry key="S2" value="18.40872978063277" />
-      <entry key="S5" value="30.935877455146088" />
-      <entry key="S10" value="47.28685475317538" />
-      <entry key="S30" value="83.25095704960401" />
-      <entry key="S60" value="100.93628412568584" />
-      <entry key="M2" value="112.05948859674757" />
-      <entry key="M5" value="124.4348871418379" />
-      <entry key="M10" value="155.4449401584979" />
-      <entry key="M15" value="191.32220804523953" />
-      <entry key="M30" value="313.10835234517725" />
-      <entry key="H1" value="626.8930482015019" />
-      <entry key="H2" value="1254.1553666258812" />
-      <entry key="H4" value="2488.7017069179137" />
-      <entry key="D1" value="13072.934338979796" />
-      <entry key="W1" value="23351.515339993406" />
+      <entry key="MS100" value="1.6903514074213044" />
+      <entry key="MS500" value="6.036243605241954" />
+      <entry key="S2" value="16.959567812301245" />
+      <entry key="S5" value="30.70465338282296" />
+      <entry key="S10" value="40.25553578864509" />
+      <entry key="S30" value="49.772825291314156" />
+      <entry key="S60" value="60.866765682463004" />
+      <entry key="M2" value="99.24880934303084" />
+      <entry key="M5" value="225.25681194324275" />
+      <entry key="M10" value="368.2897127639358" />
+      <entry key="M15" value="461.45377565405187" />
+      <entry key="M30" value="653.1911405587186" />
+      <entry key="H1" value="998.5908045138385" />
+      <entry key="H2" value="1643.1975730382494" />
+      <entry key="H4" value="2887.6411459458163" />
+      <entry key="D1" value="13492.549797145899" />
+      <entry key="W1" value="23840.090066159253" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -83,23 +77,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="2.424100828310737" />
-      <entry key="MS500" value="7.3405072998934955" />
-      <entry key="S2" value="18.381386635175836" />
-      <entry key="S5" value="30.91775765043229" />
-      <entry key="S10" value="47.27252417851771" />
-      <entry key="S30" value="83.24197763115039" />
-      <entry key="S60" value="100.9307285175381" />
-      <entry key="M2" value="112.05637219446595" />
-      <entry key="M5" value="124.43347322604754" />
-      <entry key="M10" value="155.4440196377431" />
-      <entry key="M15" value="191.32144197472658" />
-      <entry key="M30" value="313.10774268474967" />
-      <entry key="H1" value="626.892483482694" />
-      <entry key="H2" value="1254.154837923005" />
-      <entry key="H4" value="2488.70120344074" />
-      <entry key="D1" value="13072.933928145414" />
-      <entry key="W1" value="23351.515237496293" />
+      <entry key="MS100" value="1.6426909765526758" />
+      <entry key="MS500" value="6.001752810949548" />
+      <entry key="S2" value="16.93527964773338" />
+      <entry key="S5" value="30.686937266875997" />
+      <entry key="S10" value="40.24389298628139" />
+      <entry key="S30" value="49.76801876914787" />
+      <entry key="S60" value="60.863817854776045" />
+      <entry key="M2" value="99.2463741314171" />
+      <entry key="M5" value="225.25449627871683" />
+      <entry key="M10" value="368.287747792235" />
+      <entry key="M15" value="461.4521041075997" />
+      <entry key="M30" value="653.1899414632325" />
+      <entry key="H1" value="998.5899084582314" />
+      <entry key="H2" value="1643.196867472599" />
+      <entry key="H4" value="2887.640550797223" />
+      <entry key="D1" value="13492.54937007282" />
+      <entry key="W1" value="23840.08996102842" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -116,39 +110,40 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;Shell Script.Archive Pack.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Build All Texture Packs.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Build Artemis Enhanced Visuals.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Build Selected Resource Packs.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Build Selected Texture Packs.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Create New Resource Pack.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Create New Texture Pack.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Publish All Resource Packs to CurseForge.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Publish Selected Resource Packs to CurseForge.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Publish Selected Resource Packs to Modrinth.executor&quot;: &quot;Run&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/grego/Documents/IdeaProjects/Resource-Packs-Manager/resource_packs/better_candles_x_dye_depot&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Shell Script.Archive Pack.executor": "Run",
+    "Shell Script.Build All Texture Packs.executor": "Run",
+    "Shell Script.Build Artemis Enhanced Visuals.executor": "Run",
+    "Shell Script.Build Selected Resource Packs.executor": "Run",
+    "Shell Script.Build Selected Texture Packs.executor": "Run",
+    "Shell Script.Create New Resource Pack.executor": "Run",
+    "Shell Script.Create New Texture Pack.executor": "Run",
+    "Shell Script.Publish All Resource Packs to CurseForge.executor": "Run",
+    "Shell Script.Publish Selected Resource Packs to CurseForge.executor": "Run",
+    "Shell Script.Publish Selected Resource Packs to Modrinth.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "git.auto.fetch.suggestion.counter": "1",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/grego/Documents/IdeaProjects/Resource-Packs-Manager/resource_packs/better_candles_x_dye_depot",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\grego\Documents\IdeaProjects\Resource-Packs-Manager\resource_packs\better_candles_x_dye_depot" />
