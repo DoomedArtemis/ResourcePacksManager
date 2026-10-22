@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69da52cd-7463-4c66-9153-40bdcaaf6a07" name="Changes" comment="Added Bushy Leaves Enhanced">
+    <list default="true" id="69da52cd-7463-4c66-9153-40bdcaaf6a07" name="Changes" comment="Anti-Duplication logic to make sure no files are rejected">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/archive-pack.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/archive-pack.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/build-combined-pack.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/build-combined-pack.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/build-texture-packs.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/build-texture-packs.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/combined-pack-support.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/combined-pack-support.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/publish-curseforge.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/publish-curseforge.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/publish-modrinth.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/publish-modrinth.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/test-bushy-leaves-enhanced-packages.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/test-bushy-leaves-enhanced-packages.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/test-ore-lighting.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/test-ore-lighting.ps1" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,23 +39,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.6903514074213044" />
-      <entry key="MS500" value="6.036243605241954" />
-      <entry key="S2" value="16.959567812301245" />
-      <entry key="S5" value="30.70465338282296" />
-      <entry key="S10" value="40.25553578864509" />
-      <entry key="S30" value="49.772825291314156" />
-      <entry key="S60" value="60.866765682463004" />
-      <entry key="M2" value="99.24880934303084" />
-      <entry key="M5" value="225.25681194324275" />
-      <entry key="M10" value="368.2897127639358" />
-      <entry key="M15" value="461.45377565405187" />
-      <entry key="M30" value="653.1911405587186" />
-      <entry key="H1" value="998.5908045138385" />
-      <entry key="H2" value="1643.1975730382494" />
-      <entry key="H4" value="2887.6411459458163" />
-      <entry key="D1" value="13492.549797145899" />
-      <entry key="W1" value="23840.090066159253" />
+      <entry key="MS100" value="1.7003407991091772" />
+      <entry key="MS500" value="6.160971103903788" />
+      <entry key="S2" value="19.00404202008497" />
+      <entry key="S5" value="34.50194335373549" />
+      <entry key="S10" value="52.37236754084579" />
+      <entry key="S30" value="84.12623942889687" />
+      <entry key="S60" value="98.04723424465328" />
+      <entry key="M2" value="106.44855822629238" />
+      <entry key="M5" value="114.61850774862113" />
+      <entry key="M10" value="143.30944720797913" />
+      <entry key="M15" value="185.00414768197257" />
+      <entry key="M30" value="343.35311586560175" />
+      <entry key="H1" value="774.2182395934869" />
+      <entry key="H2" value="1651.2409905703958" />
+      <entry key="H4" value="3151.4839325159423" />
+      <entry key="D1" value="14235.993729748034" />
+      <entry key="W1" value="25471.51658997074" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -85,23 +77,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.6426909765526758" />
-      <entry key="MS500" value="6.001752810949548" />
-      <entry key="S2" value="16.93527964773338" />
-      <entry key="S5" value="30.686937266875997" />
-      <entry key="S10" value="40.24389298628139" />
-      <entry key="S30" value="49.76801876914787" />
-      <entry key="S60" value="60.863817854776045" />
-      <entry key="M2" value="99.2463741314171" />
-      <entry key="M5" value="225.25449627871683" />
-      <entry key="M10" value="368.287747792235" />
-      <entry key="M15" value="461.4521041075997" />
-      <entry key="M30" value="653.1899414632325" />
-      <entry key="H1" value="998.5899084582314" />
-      <entry key="H2" value="1643.196867472599" />
-      <entry key="H4" value="2887.640550797223" />
-      <entry key="D1" value="13492.54937007282" />
-      <entry key="W1" value="23840.08996102842" />
+      <entry key="MS100" value="1.6548492249745632" />
+      <entry key="MS500" value="6.129379987875004" />
+      <entry key="S2" value="18.979538236280852" />
+      <entry key="S5" value="34.48405919457464" />
+      <entry key="S10" value="52.35874588102153" />
+      <entry key="S30" value="84.11890968053586" />
+      <entry key="S60" value="98.04295564314077" />
+      <entry key="M2" value="106.44623348158827" />
+      <entry key="M5" value="114.61750431485213" />
+      <entry key="M10" value="143.3088102089889" />
+      <entry key="M15" value="185.0035902314679" />
+      <entry key="M30" value="343.35257837511114" />
+      <entry key="H1" value="774.217606521261" />
+      <entry key="H2" value="1651.240304874054" />
+      <entry key="H4" value="3151.4832843026797" />
+      <entry key="D1" value="14235.993274123723" />
+      <entry key="W1" value="25471.516476670735" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -118,40 +110,41 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;Shell Script.Archive Pack.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Build All Texture Packs.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Build Artemis Enhanced Visuals.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Build Selected Resource Packs.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Build Selected Texture Packs.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Create New Resource Pack.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Create New Texture Pack.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Publish All Resource Packs to CurseForge.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Publish Selected Resource Packs to CurseForge.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.Publish Selected Resource Packs to Modrinth.executor&quot;: &quot;Run&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;git.auto.fetch.suggestion.counter&quot;: &quot;1&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/grego/Documents/IdeaProjects/Resource-Packs-Manager/resource_packs/better_candles_x_dye_depot&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Shell Script.Archive Pack.executor": "Run",
+    "Shell Script.Build All Texture Packs.executor": "Run",
+    "Shell Script.Build Artemis Enhanced Visuals.executor": "Run",
+    "Shell Script.Build Selected Resource Packs.executor": "Run",
+    "Shell Script.Build Selected Texture Packs.executor": "Run",
+    "Shell Script.Create New Resource Pack.executor": "Run",
+    "Shell Script.Create New Texture Pack.executor": "Run",
+    "Shell Script.Publish All Resource Packs to CurseForge.executor": "Run",
+    "Shell Script.Publish Selected Resource Packs to CurseForge.executor": "Run",
+    "Shell Script.Publish Selected Resource Packs to Modrinth.executor": "Run",
+    "Shell Script.Test Resource Pack in Minecraft.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "git.auto.fetch.suggestion.counter": "1",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/grego/Documents/IdeaProjects/Resource-Packs-Manager/resource_packs/better_candles_x_dye_depot",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\grego\Documents\IdeaProjects\Resource-Packs-Manager\resource_packs\better_candles_x_dye_depot" />
@@ -168,7 +161,7 @@
       <recent name="C:\Users\grego\IdeaProjects\Resource-Packs-Manager\archive\better_candles\1.0.0" />
     </key>
   </component>
-  <component name="RunManager" selected="Shell Script.Build Selected Resource Packs" />
+  <component name="RunManager" selected="Shell Script.Test Resource Pack in Minecraft" />
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -250,7 +243,8 @@
     <MESSAGE value="workspace" />
     <MESSAGE value="Replace &quot;Texture Pack&quot; with &quot;Resource Pack&quot; to match Mojangs normal wording better" />
     <MESSAGE value="Added &quot;Bushy Leaves Enhanced&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added &quot;Bushy Leaves Enhanced&quot;" />
+    <MESSAGE value="Anti-Duplication logic to make sure no files are rejected" />
+    <option name="LAST_COMMIT_MESSAGE" value="Anti-Duplication logic to make sure no files are rejected" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

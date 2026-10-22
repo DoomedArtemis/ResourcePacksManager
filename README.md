@@ -21,6 +21,114 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\build-texture-pack
 2. Add its assets under `assets/<namespace>/...` or the supported typed `drop/` folders. Configure supported versions, file variants, mod compatibility, and publishing settings in its `pack.build.psd1`.
 3. Build it with `powershell -ExecutionPolicy Bypass -File scripts/build-texture-packs.ps1 -Pack example_pack -Version '1.21.4..26.3'`, or use the IntelliJ build configurations. Test the matching ZIP from `build/example_pack/` in Minecraft.
 4. Use **Archive Pack** to rename and move build ZIPs into `archive/<pack>/<release>/`, or preview an upload with a Modrinth or CurseForge dry-run configuration and publish using the matching publish configuration. Successful uploads archive build ZIPs automatically too.
+
+Use the **Test Resource Pack in Minecraft** run configuration to try a pack in
+Modrinth App profiles. Select a pack, Minecraft version, and loader: **Vanilla**,
+**Fabric**, **NeoForge**, or **Forge**. Only loaders available for the exact game
+version are offered, using Fabric and Modrinth launcher metadata. For example,
+Fabric is excluded for exact Minecraft 1.13. Use `-Loader vanilla`, `-Loader fabric`,
+`-Loader neoforge`, or `-Loader forge` to skip the loader prompt.
+
+Each loader uses only its corresponding group: Vanilla, Fabric, NeoForge, or Forge.
+Normal test runs ensure all four loader groups exist with these exact names.
+Duplicate loader groups that differ only in case or surrounding whitespace are
+merged while retaining every profile membership. Other personal groups and
+Favorites are preserved. Group names never include game versions or pack names.
+Profiles must match both the exact Minecraft version and loader. Profiles outside that group are
+excluded from selection, reuse, pack installation, and launching, including when
+requested explicitly with `-Profile`. Select a pack and Minecraft version; if
+multiple profiles match, select the profile too. The command uses the newest
+matching ZIP in `build/` (including grouped builds), builds it if missing, copies
+it into the profile and enables it at the top of the resource pack stack, then
+launches that profile through Modrinth. Existing selected packs remain enabled.
+Each run sets the selected test profile's music volume to off, FOV to 95, and GUI
+scale to 4. The narrator is off and the first-launch accessibility/narrator welcome
+screen is skipped. Other options and the existing options backup behavior are preserved.
+Close Minecraft for that profile before running it again.
+
+If no eligible profile matches, the command creates a profile through Modrinth's
+local `.mrpack` import. Vanilla profiles are named `Resource Pack Test <version>`;
+others use `Resource Pack Test <loader> <version>`. The import includes the
+selected loader version (preferring stable releases),
+waits for Minecraft installation to finish, then installs the pack and launches
+the new profile. New test profiles are added to their loader's group, which is
+created if missing. Profiles outside the chosen group retain their groups and contents,
+even if they have the generated test-profile name or the requested game version.
+All supported pack versions are selectable, including versions
+without an existing profile. The app handles game and Java downloads; first-time
+setup may take a few minutes. Created profiles are reused on later runs, including
+when installation was still in progress during an earlier run. Modded test profiles
+also install the selected pack's required and optional mod dependencies, using the
+same version selectors as publishing. This includes Alternative Ores compatibility
+mods and Better Candles' Dye Depot integration, plus inherited dependencies of combined packs.
+Each mod must have a download for the exact Minecraft version and chosen loader;
+its required libraries are installed recursively. Shared libraries are installed once.
+Optional dependencies of those libraries are not automatically expanded into unrelated mods.
+Unavailable optional mods are listed explicitly; a missing required dependency or
+conflicting versions stop setup before installing mods. Vanilla profiles skip optional mods.
+
+Dependencies are resolved from both platform declarations. Projects listed on both
+platforms use the checked-in compatibility map and file hashes to avoid duplicates.
+CurseForge-only downloads need a CurseForge Core API key in `CURSEFORGE_API_KEY`
+(separate from the publishing token), and the author must allow API downloads.
+Without that access the command reports those optional dependencies as uninstalled;
+it cannot provide a complete compatibility test for them. The
+[CurseForge API documentation](https://docs.curseforge.com/rest-api/) describes key access.
+Checking modded loader availability requires internet access. Choosing Vanilla
+explicitly does not require loader metadata downloads.
+
+Compatible test profiles automatically receive shader support: Iris and Sodium
+for Fabric/NeoForge, or Oculus and its required dependencies for Forge, plus
+Complementary Reimagined. Downloads match the exact game version and loader;
+required dependencies are resolved recursively, including pinned versions.
+When older Iris metadata omits Sodium's version constraint, the command reads
+Iris's own mod manifest before choosing a compatible Sodium version. Stable
+releases are preferred. Pure Vanilla and versions without a compatible shader
+loader report that shader setup is skipped; the selected loader is never changed.
+
+The shader ZIP is kept intact in `shaderpacks/` and selected in Iris/Oculus's
+configuration with shaders enabled. Downloads are checksum-verified before
+installation (SHA512 for Modrinth, SHA1 for CurseForge). `config/rpm-test-shaders.json`
+tracks managed shader and pack dependency files, allowing later
+runs to reuse unchanged downloads and remove superseded managed versions while
+preserving unrelated mods and shader packs. Conflicting existing dependencies
+stop setup before shader files are changed.
+
+Add `-SkipShaders` to skip automatic shader setup while still installing pack
+dependencies. It leaves existing managed files intact unless the selected pack
+needs a different version of the same project. Dependency metadata resolution needs internet access; `-DryRun`
+may populate a temporary Iris metadata cache to inspect dependency requirements,
+but does not install mods or change any profile.
+
+Profile discovery requires a current Modrinth App and Node.js 22.13 or newer
+with `node:sqlite`. The command checks PATH, standard Node installations, and
+IntelliJ's bundled runtimes automatically; `-NodePath` can specify `node.exe`
+explicitly. Profile discovery reads the app database; assigning a test profile
+to a loader group updates only its group membership and creates that group if needed.
+Existing group memberships are retained. The test copy has a stable
+`rpm-test-<pack>.zip` filename, so later
+runs replace that pack without accumulating versioned test copies. The profile's
+previous `options.txt` is backed up as `options.txt.rpm-test.bak`.
+
+For direct use:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/test-resource-pack-in-minecraft.ps1
+powershell -ExecutionPolicy Bypass -File scripts/test-resource-pack-in-minecraft.ps1 -Pack vanilla_lavender_enhanced -Version 1.13
+powershell -ExecutionPolicy Bypass -File scripts/test-resource-pack-in-minecraft.ps1 -Pack better_candles -Version 1.21.1 -Loader neoforge
+```
+
+Add `-Rebuild` to build current source changes even when a ZIP exists, `-NoLaunch`
+to install and enable without starting Minecraft, or `-DryRun` to preview without
+building, changing the profile, or launching. `-Profile` accepts a profile name,
+folder name, or stable instance ID; `-ModrinthAppData` overrides the default
+`%APPDATA%/ModrinthApp` location. Profiles must match the exact requested Minecraft
+version. A new `-Profile` name is used when creating a missing profile; an existing
+profile for a different version, loader, or outside the loader's group is rejected. `-ProfileInstallTimeoutSeconds`
+changes the default 600-second installation wait. `-NoLaunch` still creates and
+installs a missing profile through the app, but does not launch Minecraft;
+`-DryRun` only previews profile creation. Generated bootstrap imports live under
+`build/test-profiles/` and contain the Minecraft version, loader version, and profile name.
 5. To include the pack in Artemis Enhanced Visuals, add it to the combined definition's `Packs` list and choose its priority. Rebuild the combined pack after updating its component releases.
 
 See the sections below for asset routing, version selection, build output, and publishing configuration.
